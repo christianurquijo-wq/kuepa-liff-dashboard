@@ -1,0 +1,9 @@
+# Tema visual -- paleta Kuepa (naranja + dark), equivalente a las variables CSS
+# --kuepa-orange / --kuepa-dark que usábamos en el HTML de n8n.
+[theme]
+base = "dark"
+primaryColor = "#FD531E"
+backgroundColor = "#292929"
+secondaryBackgroundColor = "#1A1A1A"
+textColor = "#FAFAFA"
+font = "sans serif"

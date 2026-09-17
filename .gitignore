@@ -1,0 +1,21 @@
+# Entorno virtual de Python
+venv/
+.venv/
+env/
+
+# Credenciales -- NUNCA subir esto a GitHub
+.streamlit/secrets.toml
+service-account*.json
+credentials*.json
+*-key.json
+
+# Cache / compilados de Python
+__pycache__/
+*.pyc
+
+# Sistema / editor
+.DS_Store
+.vscode/settings.json
+
+# Corrección: el archivo real se llama service_account.json (guion bajo), el patrón de arriba no lo cubre
+service_account.json
