@@ -34,22 +34,38 @@ st.set_page_config(
 
 inicio = st.Page("pages/0_Inicio.py", title="Inicio", default=True)
 liff_data = st.Page("pages/1_LIFF_Data.py", title="LIFF Data")
-eco_overview = st.Page("pages/ecolombia/overview.py", title="Overview")
+eco_overview = st.Page("pages/ecolombia/1_Overview.py", title="Overview")
 eco_academico = st.Page("pages/ecolombia/2_Academico.py", title="Académico")
 eco_seleccion = st.Page("pages/ecolombia/3_Seleccion_Matricula.py", title="Selección y Matrícula")
 eco_empleabilidad = st.Page("pages/ecolombia/4_Pool_Empleabilidad.py", title="Pool de Empleabilidad")
 eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacción")
-iq_overview = st.Page("pages/iq/1_Overview.py", title="Overview")
-iq_historico = st.Page("pages/iq/2_Historico.py", title="Histórico")
-iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo")
-iq_cobertura = st.Page("pages/iq/4_Cobertura.py", title="Cobertura")
-iq_sheets = st.Page("pages/2_IQ.py", title="Usuarios y lecciones (Sheets)")
+# url_path explícito -- sin esto, Streamlit infiere la URL del título, y
+# "Overview" choca con pages/ecolombia/1_Overview.py (mismo título, misma
+# URL inferida -> StreamlitAPIException al arrancar).
+# sept-2026: Overview + Histórico se fusionaron en "Análisis dinámico" --
+# Christian pidió comparar por Mes/Trimestre/Semestre/Año, ver variación
+# año contra año, y filtrar por Rol/Grado/Región a la vez (las 2 páginas
+# viejas solo mostraban el mes más reciente y una serie sin esos filtros
+# combinables). Ver docstring de pages/iq/1_Analisis_Dinamico.py.
+iq_analisis = st.Page("pages/iq/1_Analisis_Dinamico.py", title="Análisis dinámico", url_path="iq-analisis")
+iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo", url_path="iq-detalle-consumo")
+iq_cobertura = st.Page("pages/iq/4_Cobertura.py", title="Cobertura", url_path="iq-cobertura")
+# Página original (recencia/lecciones desde Sheets) -- se mantiene, no se
+# borra nada: las páginas de arriba cubren facturación/consumo de
+# `active_usage_hours`, esta sigue siendo la fuente de usuarios/lecciones.
+iq_sheets = st.Page("pages/2_IQ.py", title="Usuarios y lecciones (Sheets)", url_path="iq-sheets")
+# oct-2026: Christian pidió de vuelta "la hoja inicial de recencia y
+# conectividad por usuario" (histograma de recencia + mapa de calor
+# recencia x tiempo de uso) como página ADICIONAL, aparte -- ese
+# contenido sigue viviendo también en iq_sheets (pestañas 1 y 2), no se
+# quitó de ahí. Ver docstring de pages/iq/5_Recencia_Conectividad.py.
+iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Recencia y Conectividad", url_path="iq-recencia-conectividad")
 
 PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
-    "IQ": [iq_overview, iq_historico, iq_detalle, iq_cobertura, iq_sheets],
+    "IQ": [iq_analisis, iq_detalle, iq_cobertura, iq_sheets, iq_recencia],
 }
 
 pg = st.navigation(PROYECTOS)
