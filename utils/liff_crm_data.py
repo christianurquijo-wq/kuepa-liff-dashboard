@@ -9,18 +9,21 @@ Por qué esto es un módulo aparte de utils/sheets.py::get_liff_data():
   distinta sin tocar código (mismo motivo que utils/iq_data.py -- ver su
   docstring), así que el sheet_id/worksheet viven en
   st.secrets["liff_crm"], con demo como fallback si no están configurados.
-- También agrega el loader de la hoja de Satisfacción/Caracterización
-  (st.secrets["satisfaccion"]). Esquema confirmado (sept-2026, pestaña
-  "Satisfacción" del spreadsheet "LIF Data", gid=0): trae 4 columnas de
-  puntaje agregado (TUTORES/CONTENIDO/PLATAFORMA/SERVICIO), una pregunta
-  de NPS (0-10) y "Número de documento estudiante..." para cruzar. Pero
-  la hoja todavía no tenía filas de respuestas reales al momento de
-  diseñar esto (recién creada), así que el loader sigue sin validar tipos
-  -- pages/1_LIFF_Data.py intenta parsear los puntajes como numéricos y
-  cae a un perfil genérico por columna si no puede, en vez de asumir una
-  escala que todavía no vimos poblada. La pestaña "Caracterización" (la
-  otra tabla del mismo spreadsheet, con datos demográficos) queda
-  PENDIENTE de conectar -- falta su gid/nombre de pestaña.
+- También agrega los loaders de Satisfacción (st.secrets["satisfaccion"])
+  y Caracterización (st.secrets["caracterizacion"]) -- dos pestañas del
+  mismo spreadsheet "LIF Data". Esquema confirmado (sept-2026):
+    * "Satisfacción" (gid=0): 4 columnas de puntaje agregado
+      (TUTORES/CONTENIDO/PLATAFORMA/SERVICIO), una pregunta de NPS (0-10)
+      y "Número de documento estudiante..." para cruzar.
+    * "Caracterización" (gid=250569807): encuesta socioeconómica larga
+      (~65 preguntas -- estrato, estado civil, empleabilidad, ingreso,
+      nivel escolar, etc.) más "Número de identificación..." para cruzar.
+  Ninguna de las dos tenía filas de respuestas reales al momento de
+  diseñar esto (recién creadas), así que ambos loaders siguen sin validar
+  tipos de columna -- pages/1_LIFF_Data.py detecta las columnas clave por
+  substring (no por nombre exacto, ese texto larguísimo podría variar) y
+  parsea defensivamente, cayendo a un perfil genérico si no puede, en vez
+  de asumir un formato que todavía no vimos poblado con datos reales.
 
 Arquitectura de carga (igual criterio que utils/iq_data.py):
   1. Service Account (gspread) -- utils.sheets.get_client().
@@ -177,6 +180,34 @@ def satisfaccion_limpiar_cache() -> None:
     load_satisfaccion.clear()
 
 
+@st.cache_data(ttl=3600, show_spinner="Cargando Caracterización...")
+def load_caracterizacion() -> tuple[pd.DataFrame, str]:
+    """Devuelve (df, estado). estado en {'ok', 'no_configurado', 'error'}.
+    Misma arquitectura que load_satisfaccion() -- pestaña distinta del
+    mismo spreadsheet "LIF Data" (gid=250569807)."""
+    cfg = _config("caracterizacion")
+    sheet_id = cfg.get("sheet_id")
+    worksheet = cfg.get("worksheet", "")
+    gid = cfg.get("gid", "")
+
+    if not sheet_id:
+        return pd.DataFrame(), "no_configurado"
+
+    try:
+        df = _leer_via_gspread(sheet_id, worksheet, gid)
+        return df, "ok"
+    except Exception:
+        try:
+            df = _leer_via_csv_export(sheet_id, gid)
+            return df, "ok"
+        except Exception:
+            return pd.DataFrame(), "error"
+
+
+def caracterizacion_limpiar_cache() -> None:
+    load_caracterizacion.clear()
+
+
 _CANDIDATOS_CEDULA = ["cedula", "cédula", "documento", "document_id", "numero_documento", "num_documento", "identificacion", "identificación", "doc"]
 _CANDIDATOS_NPS = ["recomendar", "recomendarías", "0 al 10", "escala del 0"]
 _CANDIDATOS_GRUPO = ["grupo al que pertenece", "grupo"]
@@ -221,3 +252,55 @@ def detectar_columna_tutor(df: pd.DataFrame) -> str | None:
 # escala 1-5) o como texto, porque la hoja no tenía respuestas al
 # momento de diseñar esto -- ver nota en pages/1_LIFF_Data.py.
 SAT_COLUMNAS_SCORE = ["TUTORES", "CONTENIDO", "PLATAFORMA", "SERVICIO"]
+
+
+# ---------------------------------------------------------------------------
+# Caracterización (gid=250569807) -- encuesta socioeconómica larga (~65
+# preguntas). En vez de mapear cada pregunta 1 a 1 por su texto completo
+# (frágil -- son preguntas largas, con tildes/signos, que podrían variar
+# levemente), se detectan por substring las 6 dimensiones más relevantes
+# para cruzar con desempeño académico. El resto de columnas se ve en el
+# perfilador genérico (misma sección de la página).
+# ---------------------------------------------------------------------------
+_CANDIDATOS_ESTRATO = ["estrato"]
+_CANDIDATOS_ESTADO_CIVIL = ["estado civil"]
+_CANDIDATOS_NIVEL_ESCOLAR = ["nivel escolar más alto que has alcanzado", "nivel escolar mas alto que has alcanzado"]
+_CANDIDATOS_EMPLEABILIDAD = ["estado de empleabilidad"]
+_CANDIDATOS_INGRESO_PROPIO = ["cuál es tu ingreso mensual", "cual es tu ingreso mensual"]
+_CANDIDATOS_GENERO = ["género", "genero"]
+
+
+def detectar_columna_estrato(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_ESTRATO)
+
+
+def detectar_columna_estado_civil(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_ESTADO_CIVIL)
+
+
+def detectar_columna_nivel_escolar(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_NIVEL_ESCOLAR)
+
+
+def detectar_columna_empleabilidad(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_EMPLEABILIDAD)
+
+
+def detectar_columna_ingreso(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_INGRESO_PROPIO)
+
+
+def detectar_columna_genero(df: pd.DataFrame) -> str | None:
+    return _detectar_columna(df, _CANDIDATOS_GENERO)
+
+
+# (etiqueta a mostrar, función detectora) -- usado para armar la grilla de
+# "Perfil socioeconómico" sin repetir la misma lógica 6 veces en la página.
+CARACTERIZACION_DIMENSIONES = [
+    ("Estrato", detectar_columna_estrato),
+    ("Estado civil", detectar_columna_estado_civil),
+    ("Nivel escolar", detectar_columna_nivel_escolar),
+    ("Estado de empleabilidad", detectar_columna_empleabilidad),
+    ("Ingreso mensual", detectar_columna_ingreso),
+    ("Género", detectar_columna_genero),
+]

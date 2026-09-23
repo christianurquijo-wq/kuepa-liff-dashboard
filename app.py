@@ -50,22 +50,22 @@ eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacc
 iq_analisis = st.Page("pages/iq/1_Analisis_Dinamico.py", title="Análisis dinámico", url_path="iq-analisis")
 iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo", url_path="iq-detalle-consumo")
 iq_cobertura = st.Page("pages/iq/4_Cobertura.py", title="Cobertura", url_path="iq-cobertura")
-# Página original (recencia/lecciones desde Sheets) -- se mantiene, no se
-# borra nada: las páginas de arriba cubren facturación/consumo de
-# `active_usage_hours`, esta sigue siendo la fuente de usuarios/lecciones.
-iq_sheets = st.Page("pages/2_IQ.py", title="Usuarios y lecciones (Sheets)", url_path="iq-sheets")
 # oct-2026: Christian pidió de vuelta "la hoja inicial de recencia y
 # conectividad por usuario" (histograma de recencia + mapa de calor
-# recencia x tiempo de uso) como página ADICIONAL, aparte -- ese
-# contenido sigue viviendo también en iq_sheets (pestañas 1 y 2), no se
-# quitó de ahí. Ver docstring de pages/iq/5_Recencia_Conectividad.py.
-iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Recencia y Conectividad", url_path="iq-recencia-conectividad")
+# recencia x tiempo de uso) como página ADICIONAL. Ver docstring de
+# pages/iq/5_Recencia_Conectividad.py.
+# oct-2026 (2): se quitó del menú "Usuarios y lecciones (Sheets)"
+# (pages/2_IQ.py) -- todo su contenido (recencia + lecciones) ya vive acá
+# y quedaba duplicado. El archivo pages/2_IQ.py sigue en el repo por si
+# se necesita recuperar algo puntual, pero ya no aparece en la barra
+# lateral.
+iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y Última Conexión", url_path="iq-actividad-conexion")
 
 PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
-    "IQ": [iq_analisis, iq_detalle, iq_cobertura, iq_sheets, iq_recencia],
+    "IQ": [iq_analisis, iq_detalle, iq_cobertura, iq_recencia],
 }
 
 pg = st.navigation(PROYECTOS)

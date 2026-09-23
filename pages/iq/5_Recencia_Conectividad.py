@@ -70,7 +70,7 @@ df_usuarios = enrich_usuarios(df_usuarios_raw)
 # (Sheets)" (regla 6), con keys propios (iqrc_) para no chocar con esa
 # página si las dos se visitan en la misma sesión.
 # ---------------------------------------------------------------------------
-st.sidebar.header("Filtros -- Recencia y Conectividad")
+st.sidebar.header("Filtros -- Actividad y Última Conexión")
 programas_sel = st.sidebar.multiselect("Programa", PROGRAMAS, default=PROGRAMAS, key="iqrc_programas")
 excluir_carga_masiva = st.sidebar.toggle(
     "Excluir carga masiva IQ512",
@@ -101,7 +101,7 @@ if df_usuarios_f.empty:
 # Encabezado
 # ---------------------------------------------------------------------------
 col_title, col_badge = st.columns([5, 1], vertical_alignment="center")
-col_title.title("Recencia y Conectividad por usuario")
+col_title.title("Actividad y Última Conexión por usuario")
 if demo_usuarios:
     col_badge.markdown(badge("DATOS DEMO", ROJO), unsafe_allow_html=True)
 else:
@@ -110,11 +110,8 @@ else:
 corte = fecha_de_corte(df_usuarios_raw)
 if corte:
     st.caption(
-        f"Datos al {corte.strftime('%d/%m/%Y')} -- fecha reconstruida de los datos "
-        f"(moda de EFFECTIVE_LAST_ACCESS + DAYS_SINCE_ACCESS), no la fecha de hoy. "
-        f"Mismos datos y reglas que la pestaña 'Resumen y recencia' / 'Uso y tiempo' de "
-        f"**Usuarios y lecciones (Sheets)** -- esta página los junta en una sola vista enfocada "
-        f"en recencia + conectividad, sin las pestañas de lecciones/calidad de datos."
+        f"Datos al {corte.strftime('%d/%m/%Y')} -- fecha reconstruida a partir de los "
+        f"registros de acceso, no la fecha de hoy."
     )
 
 resumen_h = kpis_recencia_por_programa(df_usuarios_f, excluir_carga_masiva=excluir_carga_masiva)
@@ -128,25 +125,26 @@ st.write("")
 kpi_row(
     [
         ("Usuarios", f"{total_usuarios:,}".replace(",", "."), NARANJA, "Suma de los programas seleccionados"),
-        ("Accedieron ≤30 d", f"{pct_30:.2f}%", VERDE, f"sobre {total_base:,} usuarios en la base de recencia".replace(",", ".")),
+        ("Accedieron ≤30 d", f"{pct_30:.2f}%", VERDE, f"sobre {total_base:,} usuarios con fecha de acceso registrada".replace(",", ".")),
         ("Accedieron ≤90 d", f"{pct_90:.1f}%", AZUL, ""),
         ("Nunca ingresó", f"{pct_nunca:.0f}%", ROJO, "Segmento 'Sin acceso', ver regla 4"),
     ]
 )
 
 st.write("")
-st.markdown("**KPIs por programa**")
+st.markdown("**Indicadores por programa**")
 tabla_kpi = resumen_h.copy()
+tabla_kpi = tabla_kpi.rename(columns={"Base recencia": "Con fecha de acceso"})
 for c in ["% ≤30 d", "% ≤90 d", "% nunca ingresó"]:
     tabla_kpi[c] = tabla_kpi[c].map(lambda v: f"{v:.1f}%")
 tabla_kpi["Mediana días sin acceso"] = tabla_kpi["Mediana días sin acceso"].map(lambda v: f"{v:.0f}" if pd.notna(v) else "—")
 st.dataframe(tabla_kpi, width="stretch", hide_index=True)
 
 # ---------------------------------------------------------------------------
-# Recencia -- tiempo desde el último logueo
+# Última conexión -- tiempo desde el último logueo
 # ---------------------------------------------------------------------------
 st.divider()
-st.subheader("Recencia -- tiempo desde el último logueo")
+st.subheader("Última conexión -- días desde el último ingreso")
 g1, g2 = st.columns(2)
 with g1, st.container(border=True):
     ancho = st.select_slider("Ancho del histograma (días)", options=[7, 15, 30, 90], value=30, key="iqrc_ancho_hist")
@@ -177,7 +175,7 @@ with g2, st.container(border=True):
     seg = segmentos_por_programa(df_usuarios_f, excluir_carga_masiva=excluir_carga_masiva)
     fig2 = px.bar(
         seg, x="Programa", y="Porcentaje", color="Segmento", barmode="stack",
-        title="Recencia por programa (100%)",
+        title="Última conexión por programa (100%)",
         custom_data=["Usuarios"], color_discrete_map=COLOR_SEGMENTO,
         category_orders={"Segmento": list(COLOR_SEGMENTO.keys())},
     )
@@ -188,11 +186,11 @@ with g2, st.container(border=True):
         st.dataframe(seg, width="stretch", hide_index=True)
 
 # ---------------------------------------------------------------------------
-# Conectividad -- tiempo de consumo (TIME_VIEW)
+# Tiempo de uso (TIME_VIEW)
 # ---------------------------------------------------------------------------
 st.divider()
-st.subheader("Conectividad -- tiempo de consumo")
-st.caption("TIME_VIEW está en segundos en la fuente -- aquí siempre se muestra en minutos/horas. No es comparable con las horas de lecciones (regla 7).")
+st.subheader("Tiempo de uso -- minutos y horas conectados")
+st.caption("El tiempo de conexión se registra en segundos en la fuente y aquí siempre se muestra en minutos/horas. No es comparable con las horas de lecciones.")
 tiempo = kpis_tiempo_por_programa(df_usuarios_f)
 kpi_row(
     [
@@ -213,7 +211,7 @@ with st.container(border=True):
     bt = banda_tiempo_por_programa(df_usuarios_f)
     fig3 = px.bar(
         bt, x="Banda", y="Usuarios", color="Programa", barmode="group",
-        title="Usuarios por banda de tiempo de consumo",
+        title="Usuarios por banda de tiempo de uso",
         color_discrete_map=COLOR_PROGRAMA,
     )
     fig3.update_layout(xaxis_title=None, yaxis_title="Usuarios")
@@ -222,21 +220,26 @@ with st.container(border=True):
         st.dataframe(bt, width="stretch", hide_index=True)
 
 # ---------------------------------------------------------------------------
-# Mapa de calor -- recencia (tiempo desde el último logueo) x conectividad
-# (tiempo de consumo), el que Christian pidió de vuelta.
+# Mapa de calor -- última conexión x tiempo de uso, el que Christian pidió
+# de vuelta.
 # ---------------------------------------------------------------------------
 st.write("")
 with st.container(border=True):
     matriz = matriz_recencia_uso(df_usuarios_f, excluir_carga_masiva=excluir_carga_masiva)
     pivote = matriz.pivot(index="segmento_recencia", columns="banda_tiempo", values="Usuarios").fillna(0)
+    pivote.index.name = "Última conexión"
+    pivote.columns.name = "Tiempo de uso"
     fig4 = px.imshow(
         pivote, text_auto=True, aspect="auto", color_continuous_scale="Oranges",
-        title="Mapa de calor: tiempo desde el último logueo x tiempo de consumo (conteo de usuarios)",
-        labels=dict(x="Banda de tiempo de consumo", y="Segmento de recencia (último logueo)", color="Usuarios"),
+        title="Última conexión x tiempo de uso (cantidad de usuarios)",
+        labels=dict(x="Banda de tiempo de uso", y="Última conexión", color="Usuarios"),
     )
     st.plotly_chart(dark(fig4), width="stretch", key="iqrc_chart_heatmap")
     with st.expander("Ver tabla"):
-        st.dataframe(matriz, width="stretch", hide_index=True)
+        st.dataframe(
+            matriz.rename(columns={"segmento_recencia": "Última conexión", "banda_tiempo": "Tiempo de uso"}),
+            width="stretch", hide_index=True,
+        )
 
 st.write("")
 with st.container(border=True):
