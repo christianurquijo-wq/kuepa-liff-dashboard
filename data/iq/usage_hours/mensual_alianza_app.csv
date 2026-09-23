@@ -1,0 +1,208 @@
+Anio,Mes,Alliance,app,usuarios_activos,horas_totales,registros
+2021,2,IQ Primaria,lms,5,0.6,14
+2021,3,IQ Primaria,lms,1,0.4,9
+2021,4,IQ Primaria,lms,1,0.4,6
+2021,5,IQ Primaria,lms,7,2.2,36
+2021,6,IQ Primaria,lms,11,1.9,40
+2021,7,IQ Primaria,lms,7,0.8,17
+2021,8,IQ Primaria,lms,8,0.7,24
+2021,9,IQ Primaria,lms,20,6.0,102
+2021,10,IQ Primaria,lms,16,2.8,67
+2021,11,IQ Primaria,lms,70,7.0,166
+2021,12,IQ Primaria,lms,30,2.7,72
+2022,1,IQ Primaria,lms,29,3.6,89
+2022,2,IQ Primaria,lms,60,450.6,143
+2022,3,IQ Primaria,lms,112,957.8,231
+2022,4,IQ Primaria,lms,278,1816.3,505
+2022,5,IQ Primaria,lms,577,3996.7,1262
+2022,6,IQ Primaria,lms,224,1487.4,443
+2022,7,IQ Primaria,lms,143,510.9,240
+2022,8,IQ Primaria,lms,64,399.8,144
+2022,8,IQ Secundaria,lms,4,392.4,16
+2022,9,512,lms,1,0.2,1
+2022,9,IQ Primaria,lms,79,588.5,165
+2022,9,IQ Secundaria,lms,159,989.3,280
+2022,10,512,lms,19396,63573.6,19445
+2022,10,IQ Primaria,lms,115,1145.2,268
+2022,10,IQ Secundaria,lms,426,3911.7,855
+2022,11,512,lms,17,139.1,27
+2022,11,IQ Primaria,lms,83,769.8,188
+2022,11,IQ Secundaria,lms,369,2477.4,582
+2022,12,512,lms,366,1383.9,382
+2022,12,IQ Primaria,lms,40,552.7,101
+2022,12,IQ Secundaria,lms,216,809.4,302
+2023,1,512,lms,2648,196784.1,14793
+2023,1,IQ Primaria,lms,103,1106.5,174
+2023,1,IQ Secundaria,lms,652,2657.0,993
+2023,2,512,lms,2634,205413.1,22137
+2023,2,IQ Primaria,lms,172,965.3,271
+2023,2,IQ Secundaria,lms,1294,5051.2,1939
+2023,3,512,lms,2754,212529.8,22731
+2023,3,IQ Primaria,lms,524,1876.7,711
+2023,3,IQ Secundaria,lms,4070,12302.7,5276
+2023,4,512,lms,2819,170415.8,18861
+2023,4,IQ Primaria,lms,1359,5464.1,2154
+2023,4,IQ Secundaria,lms,6883,30186.2,10861
+2023,5,512,lms,2847,158534.1,19769
+2023,5,IQ Primaria,lms,2895,12324.5,4688
+2023,5,IQ Secundaria,lms,26423,146599.2,48121
+2023,6,512,lms,2361,76646.4,9771
+2023,6,IQ Primaria,lms,785,1470.2,866
+2023,6,IQ Secundaria,app,3435,4879.3,5651
+2023,6,IQ Secundaria,lms,26606,220357.6,60361
+2023,7,512,lms,2892,156703.4,19538
+2023,7,IQ Primaria,lms,132,853.8,207
+2023,7,IQ Secundaria,app,560,410.6,727
+2023,7,IQ Secundaria,lms,1720,5478.1,2697
+2023,8,512,lms,2505,54551.2,8777
+2023,8,IQ Primaria,lms,216,1328.9,343
+2023,8,IQ Secundaria,app,368,349.3,565
+2023,8,IQ Secundaria,lms,1916,7836.4,3208
+2023,9,512,lms,1040,9937.9,2160
+2023,9,IQ Primaria,lms,827,2883.0,1106
+2023,9,IQ Secundaria,app,455,370.3,681
+2023,9,IQ Secundaria,lms,2684,9712.7,4106
+2023,10,512,lms,410,2164.0,673
+2023,10,IQ Primaria,lms,40327,253791.1,72733
+2023,10,IQ Secundaria,app,3497,4510.7,5454
+2023,10,IQ Secundaria,lms,46916,318750.9,93586
+2023,11,512,lms,309,401.6,458
+2023,11,IQ Primaria,lms,15317,57214.6,25120
+2023,11,IQ Secundaria,app,1303,1182.3,2031
+2023,11,IQ Secundaria,lms,21006,70455.7,39860
+2023,12,512,lms,179,107.4,250
+2023,12,IQ Primaria,lms,1014,1110.4,1440
+2023,12,IQ Secundaria,app,349,245.0,477
+2023,12,IQ Secundaria,lms,2410,2685.6,3852
+2024,1,512,lms,236,158.5,311
+2024,1,IQ Primaria,lms,705,612.1,963
+2024,1,IQ Secundaria,app,762,714.5,1188
+2024,1,IQ Secundaria,lms,2557,1925.7,3899
+2024,2,512,lms,236,169.5,323
+2024,2,IQ Primaria,lms,1134,1121.5,1907
+2024,2,IQ Secundaria,app,624,632.5,973
+2024,2,IQ Secundaria,lms,3233,2638.3,5417
+2024,3,512,lms,304,308.3,487
+2024,3,IQ Primaria,lms,3036,4611.3,5189
+2024,3,IQ Secundaria,app,1157,1169.0,1888
+2024,3,IQ Secundaria,lms,5628,6595.4,9414
+2024,4,512,lms,374,388.7,617
+2024,4,IQ Primaria,lms,5925,8899.9,10087
+2024,4,IQ Secundaria,app,2835,2874.5,4538
+2024,4,IQ Secundaria,lms,12159,14447.2,21646
+2024,5,512,lms,351,468.7,583
+2024,5,IQ Primaria,lms,1735,1432.4,2237
+2024,5,IQ Secundaria,app,13040,16096.9,23563
+2024,5,IQ Secundaria,lms,37387,40914.8,71365
+2024,6,512,lms,695,830.6,1179
+2024,6,IQ Primaria,lms,668,444.0,785
+2024,6,IQ Secundaria,app,10523,16371.9,21322
+2024,6,IQ Secundaria,lms,28148,46059.9,61290
+2024,7,512,lms,1914,4562.9,5093
+2024,7,IQ Primaria,lms,93,111.2,144
+2024,7,IQ Secundaria,app,459,418.2,698
+2024,7,IQ Secundaria,lms,1281,1039.0,2071
+2024,8,512,lms,1170,4054.3,3486
+2024,8,IQ Primaria,lms,145,139.7,208
+2024,8,IQ Secundaria,app,445,468.0,662
+2024,8,IQ Secundaria,lms,1624,1917.5,2663
+2024,9,512,lms,1652,7580.1,6262
+2024,9,IQ Primaria,lms,176,196.5,276
+2024,9,IQ Secundaria,app,235,152.6,301
+2024,9,IQ Secundaria,lms,935,797.0,1374
+2024,10,512,lms,1789,6680.8,5876
+2024,10,IQ Primaria,lms,156,224.6,294
+2024,10,IQ Secundaria,app,233,166.2,304
+2024,10,IQ Secundaria,lms,1131,1152.9,1772
+2024,11,512,lms,1472,7633.3,5395
+2024,11,IQ Primaria,lms,126,174.6,218
+2024,11,IQ Secundaria,app,311,257.3,441
+2024,11,IQ Secundaria,lms,1222,867.9,1667
+2024,12,512,lms,1318,4622.2,3632
+2024,12,IQ Primaria,lms,48,65.3,71
+2024,12,IQ Secundaria,app,98,72.2,129
+2024,12,IQ Secundaria,lms,426,278.8,574
+2025,1,512,lms,348,625.2,670
+2025,1,IQ Primaria,lms,146,174.3,236
+2025,1,IQ Secundaria,app,660,582.5,960
+2025,1,IQ Secundaria,lms,2117,1918.3,3293
+2025,2,512,lms,201,250.9,320
+2025,2,IQ Primaria,lms,143,182.5,233
+2025,2,IQ Secundaria,app,695,553.4,981
+2025,2,IQ Secundaria,lms,2725,2323.8,4272
+2025,3,512,lms,403,310.9,655
+2025,3,IQ Primaria,lms,337,275.5,428
+2025,3,IQ Secundaria,app,1035,1095.0,1718
+2025,3,IQ Secundaria,lms,4408,4938.7,7542
+2025,4,512,lms,306,182.7,439
+2025,4,IQ Primaria,lms,451,393.4,609
+2025,4,IQ Secundaria,app,1362,1384.8,2129
+2025,4,IQ Secundaria,lms,7625,8387.6,12423
+2025,5,512,lms,215,191.8,322
+2025,5,IQ Primaria,lms,496,599.4,733
+2025,5,IQ Secundaria,app,5839,6053.8,9359
+2025,5,IQ Secundaria,lms,22938,27269.9,41664
+2025,6,512,lms,133,117.2,194
+2025,6,IQ Primaria,lms,120,93.9,147
+2025,6,IQ Secundaria,app,9078,12346.4,17915
+2025,6,IQ Secundaria,lms,25664,29591.5,53781
+2025,7,512,lms,87,96.4,119
+2025,7,IQ Primaria,lms,40,71.9,84
+2025,7,IQ Secundaria,app,403,330.1,581
+2025,7,IQ Secundaria,lms,1022,813.3,1600
+2025,8,512,lms,63,52.6,72
+2025,8,IQ Primaria,lms,84,136.6,147
+2025,8,IQ Secundaria,app,355,324.2,479
+2025,8,IQ Secundaria,lms,1150,675.2,1551
+2025,9,512,lms,58,58.7,77
+2025,9,IQ Primaria,lms,57,107.0,127
+2025,9,IQ Secundaria,app,292,232.0,409
+2025,9,IQ Secundaria,lms,1390,824.5,1861
+2025,10,512,lms,54,53.3,71
+2025,10,IQ Primaria,lms,59,77.2,108
+2025,10,IQ Secundaria,app,141,114.7,230
+2025,10,IQ Secundaria,lms,1123,950.4,1770
+2025,11,512,lms,60,43.7,77
+2025,11,IQ Primaria,lms,61,90.3,113
+2025,11,IQ Secundaria,app,97,74.5,132
+2025,11,IQ Secundaria,lms,927,525.7,1296
+2025,12,512,lms,28,15.3,34
+2025,12,IQ Primaria,lms,23,30.0,42
+2025,12,IQ Secundaria,app,60,32.7,73
+2025,12,IQ Secundaria,lms,595,399.6,778
+2026,1,512,lms,32,24.3,47
+2026,1,IQ Primaria,lms,68,82.3,116
+2026,1,IQ Secundaria,app,311,226.5,415
+2026,1,IQ Secundaria,lms,1849,1070.0,2557
+2026,2,512,lms,25,16.3,29
+2026,2,IQ Primaria,lms,54,81.3,101
+2026,2,IQ Secundaria,app,568,839.1,1056
+2026,2,IQ Secundaria,lms,3427,3944.0,5998
+2026,3,512,lms,47,37.7,60
+2026,3,IQ Primaria,lms,53,71.8,96
+2026,3,IQ Secundaria,app,722,688.5,1150
+2026,3,IQ Secundaria,lms,3818,3272.4,6100
+2026,4,512,lms,72,72.7,109
+2026,4,IQ Primaria,lms,74,60.8,107
+2026,4,IQ Secundaria,app,2279,2040.6,3391
+2026,4,IQ Secundaria,lms,7712,6054.5,11679
+2026,5,512,lms,574,1957.3,2163
+2026,5,IQ Primaria,lms,145,131.1,208
+2026,5,IQ Secundaria,app,5870,6254.7,9530
+2026,5,IQ Secundaria,lms,27876,24849.5,43728
+2026,6,512,lms,317,956.0,874
+2026,6,IQ Primaria,lms,113,132.0,164
+2026,6,IQ Secundaria,app,7851,9246.6,13987
+2026,6,IQ Secundaria,lms,33090,34298.4,56245
+2026,7,512,lms,31,20.3,36
+2026,7,IQ Primaria,lms,16,7.7,38
+2026,7,IQ Secundaria,app,234,36.4,331
+2026,7,IQ Secundaria,lms,762,354.8,1226
+2026,8,512,lms,30,18.7,39
+2026,8,IQ Primaria,lms,35,13.2,66
+2026,8,IQ Secundaria,app,195,35.7,281
+2026,8,IQ Secundaria,lms,778,380.2,1170
+2026,9,512,lms,45,37.0,54
+2026,9,IQ Primaria,lms,29,14.3,66
+2026,9,IQ Secundaria,app,138,23.3,206
+2026,9,IQ Secundaria,lms,813,326.3,1155

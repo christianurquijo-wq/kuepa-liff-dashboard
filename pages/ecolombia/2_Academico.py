@@ -1,19 +1,4 @@
-"""
-Ecolombia -- Académico.
 
-Misma tabla y misma población base que Overview (ECOPLUS_V2_2026,
-Activos/Deserciones/Retención idénticos) -- reutiliza
-utils.ecolombia_metrics.enrich()/kpis_overview() en vez de duplicar esa
-lógica. Lo propio de esta página (estado académico, Sankey, tabla de
-módulos) vive en utils/ecolombia_academico_metrics.py -- ver ese archivo
-para la justificación de cada fórmula, incluyendo la nota de aprobación
-(>=3.0/5.0, confirmada con Christian) que usa la tabla de % por módulo.
-
-Clic-para-filtrar: la barra "Estado Académico por Programa" y la barra
-"Activos por Ciudad" tienen on_select -- el Sankey NO, porque no es una
-gráfica de categoría simple (mismo criterio que excluyó el gantt de
-Overview).
-"""
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st

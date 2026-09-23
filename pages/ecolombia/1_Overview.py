@@ -1,26 +1,4 @@
-"""
-Ecolombia -- Overview general.
 
-Fuente: BigQuery directo (sin bridge de n8n/Sheets, a diferencia de LIFF
-Data) -- ver queries/ecolombia/overview.py y utils/bigquery.run_query().
-
-Las reglas de negocio (qué es "matriculado", "activo", "desertó",
-"finalizado", "seleccionado") NO viven aquí -- están en
-utils/ecolombia_metrics.py, con la justificación de cada una. Si un número
-no cuadra contra el Looker, revisa ese archivo primero.
-
-"Seleccionados" y "Pendientes por ingresar" vienen de una tabla distinta
-(CONVOCATORIA, el embudo completo de candidatos) a la del resto de la
-página (ECOPLUS_V2_2026, solo matriculados) -- por eso se consultan y
-enriquecen por separado más abajo.
-
-Clic-para-filtrar: las 3 gráficas de categoría simple (Programa, Género,
-Ciudad) tienen on_select -- un clic en una barra/porción actualiza el
-selectbox correspondiente, igual que si lo eligieras del dropdown. Ver
-utils/ui.click_to_filter() para el mecanismo. El gantt y la tabla de
-grupos NO son clickeables a propósito (no tienen un mapeo directo a un
-filtro de una sola columna).
-"""
 import plotly.express as px
 import streamlit as st
 

@@ -1,22 +1,6 @@
-"""
-Componentes visuales compartidos entre páginas/proyectos.
 
-Todo lo que hay aquí es SOLO presentación (tarjetas de KPI, badges, tema
-oscuro para Plotly, CSS de la página) -- ningún cálculo de negocio vive en
-este archivo. Se extrajo de pages/1_LIFF_Data.py cuando Ecolombia (Overview)
-empezó a necesitar exactamente los mismos componentes; a partir de ahora
-CUALQUIER página nueva (de cualquier proyecto) debe importar de aquí en vez
-de duplicar estas funciones localmente.
-
-Si cambias un color o el estilo de una tarjeta, el cambio aplica a TODAS las
-páginas que usan este módulo -- no es como Master Library de Apps Script
-(no hay clientes licenciados de por medio), pero sigue siendo un cambio
-transversal: revisa LIFF Data y Ecolombia antes de dar por bueno un ajuste
-aquí.
-"""
 import streamlit as st
 
-# -- Paleta (coherente con .streamlit/config.toml) --------------------------
 NARANJA = "#FD531E"  # marca Kuepa
 AZUL = "#29B6F6"  # dato secundario / "grupo B"
 VERDE = "#2ECC71"  # positivo
@@ -35,22 +19,16 @@ PAGE_CSS = """
 
 
 def inject_css() -> None:
-    """Llama esto una vez al inicio de cada página."""
     st.markdown(PAGE_CSS, unsafe_allow_html=True)
 
 
 def hex_to_rgba(hex_color: str, alpha: float) -> str:
-    """'#FD531E' + 0.35 -> 'rgba(253, 83, 30, 0.35)' -- para los links de
-    un Sankey (necesitan transparencia; los nodos usan el hex tal cual)."""
     hex_color = hex_color.lstrip("#")
     r, g, b = (int(hex_color[i : i + 2], 16) for i in (0, 2, 4))
     return f"rgba({r}, {g}, {b}, {alpha})"
 
 
 def dark(fig, height: int = CHART_HEIGHT):
-    """Tema oscuro de Kuepa + altura uniforme -- Streamlit no aplica el
-    tema del .streamlit/config.toml a las figuras de Plotly solas, hay
-    que pedirlo explícitamente en cada una."""
     fig.update_layout(
         template="plotly_dark",
         paper_bgcolor="rgba(0,0,0,0)",
@@ -91,35 +69,12 @@ def kpi_card(label: str, value: str, color: str = NARANJA, help_text: str = "") 
 
 
 def kpi_row(cards: list) -> None:
-    """cards: lista de tuplas (label, value, color, help_text)."""
     cols = st.columns(len(cards))
     for col, (label, value, color, help_text) in zip(cols, cards):
         with col:
             st.markdown(kpi_card(label, value, color, help_text), unsafe_allow_html=True)
 
 
-# ---------------------------------------------------------------------------
-# Clic-para-filtrar: un clic en una barra/porción de pastel hace lo mismo
-# que elegir esa opción en el selectbox de filtro correspondiente.
-#
-# Mecanismo elegido a propósito (confirmado con Christian, sept-2026):
-# el clic actualiza el MISMO selectbox que ya existe -- no hay un sistema
-# de cross-filter paralelo. Esto reutiliza toda la lógica de filtrado ya
-# validada; lo único nuevo es "¿qué session_state[key] hay que tocar?".
-#
-# Usa on_select=callback (no on_select="rerun" + manejo manual) porque
-# Streamlit prohíbe escribir session_state[key] de un widget DESPUÉS de
-# que ese widget ya se instanció en el mismo run -- el selectbox de
-# arriba ya corrió para cuando se procesa el clic de una gráfica más
-# abajo. Un callback corre en su propio momento (como on_change), así que
-# sí puede escribir el session_state de OTRO widget sin choque; Streamlit
-# hace el rerun automáticamente después.
-#
-# Requiere que la gráfica se haya creado con custom_data=["<columna>"] --
-# así el valor clickeado siempre llega en punto["customdata"][0], sin
-# depender de si Streamlit lo reporta en "x", "y" o "label" (varía entre
-# barra y pastel, y hay bugs reportados en Streamlit justo para ese caso).
-# ---------------------------------------------------------------------------
 def click_to_filter(chart_key: str, filter_key: str):
     """
     Devuelve el callback para pasar a on_select= de un st.plotly_chart:

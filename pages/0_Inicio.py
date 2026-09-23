@@ -15,6 +15,7 @@ st.markdown(
 
     **Estado de la migración:**
     - ✅ LIFF Data -- completo (KPIs, filtros, comparativo extranjeros vs nacionales)
-    - 🔜 Ecolombia -- en construcción (Overview primero, luego las 5 páginas restantes)
+    - ✅ Ecolombia -- completo (Overview, Académico, Selección y Matrícula, Pool de Empleabilidad, Satisfacción)
+    - ✅ IQ -- completo (Resumen y recencia, Uso y tiempo, Lecciones consumidas, Usuarios y calidad de datos)
     """
 )

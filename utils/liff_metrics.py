@@ -191,24 +191,97 @@ def nota_promedio_por_programa(df: pd.DataFrame) -> pd.DataFrame:
 
 def comparativo_kpis(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> dict:
     """KPIs de la sección comparativa -- siempre sobre el total de cada
-    población (sin los filtros de programa/estado del overview)."""
+    población (sin los filtros de programa/estado del overview salvo los
+    que ya se aplicaron antes de separar por población -- ver
+    pages/1_LIFF_Data.py)."""
 
     def _bloque(df: pd.DataFrame) -> dict:
         estudiantes = _por_estudiante(df)
+        total_estudiantes = len(estudiantes)
+        retenidos = int(estudiantes["_RETENIDO"].sum()) if total_estudiantes else 0
+        pct_retencion = (retenidos / total_estudiantes * 100) if total_estudiantes else 0.0
+
         publicados = df[df["_PUBLICADA"]]
         aprobados = int((publicados["_APROBACION"] == "Aprobado").sum())
         no_aprobados = int((publicados["_APROBACION"] == "No Aprobado").sum())
         total_calificados = aprobados + no_aprobados
         pct_aprobacion = (aprobados / total_calificados * 100) if total_calificados else 0.0
         nota_promedio = publicados["_NOTA_NUM"].mean() if len(publicados) else 0.0
+
+        # Monto recaudado -- viene del bloque CRM (ENROLLMENT_DATA_AMOUNT_PAYED),
+        # que sigue presente en `aca` porque academico_de() solo filtra filas y
+        # renombra 3 columnas, no descarta el resto del CRM. Se toma 1 vez por
+        # estudiante (no por materia) para no sumarlo de más.
+        monto = (
+            estudiantes["ENROLLMENT_DATA_AMOUNT_PAYED"].sum()
+            if "ENROLLMENT_DATA_AMOUNT_PAYED" in estudiantes.columns
+            else 0.0
+        )
+
         return {
-            "estudiantes": len(estudiantes),
+            "estudiantes": total_estudiantes,
             "modulos": len(df),
+            "pct_retencion": pct_retencion,
             "pct_aprobacion": pct_aprobacion,
             "nota_promedio": nota_promedio if pd.notna(nota_promedio) else 0.0,
+            "monto_recaudado": float(monto) if pd.notna(monto) else 0.0,
         }
 
     return {"extranjero": _bloque(df_ext), "nacional": _bloque(df_nac)}
+
+
+def academico_resumen_por_dimension_poblacion(
+    df_ext: pd.DataFrame, df_nac: pd.DataFrame, columna: str, top: int = 12
+) -> pd.DataFrame:
+    """% de aprobación y estudiantes por `columna` (ej. PROGRAMA,
+    SALES_ADVISOR_FULL_NAME), separado Extranjeros vs Nacionales -- para
+    los cruces de la pestaña Comparativo. `top` limita a las categorías
+    con más estudiantes en total (evita gráficas ilegibles con muchos
+    asesores)."""
+    filas = []
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        if df.empty or columna not in df.columns:
+            continue
+        d = df.copy()
+        d[columna] = d[columna].fillna("(sin dato)")
+        for valor, g in d.groupby(columna, observed=True):
+            publicadas = g[g["_PUBLICADA"]]
+            aprobadas = int((publicadas["_APROBACION"] == "Aprobado").sum())
+            total_calificadas = len(publicadas)
+            filas.append(
+                {
+                    columna: valor,
+                    "poblacion": poblacion,
+                    "pct_aprobacion": (aprobadas / total_calificadas * 100) if total_calificadas else None,
+                    "estudiantes": g["ID_SIS"].nunique() if "ID_SIS" in g.columns else len(g),
+                }
+            )
+    out = pd.DataFrame(filas)
+    if out.empty:
+        return out
+    top_valores = out.groupby(columna)["estudiantes"].sum().sort_values(ascending=False).head(top).index
+    return out[out[columna].isin(top_valores)]
+
+
+def tendencia_mensual_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:
+    """Estudiantes distintos por mes de inicio de grupo (_FECHA_INICIO,
+    de enrich()), Extranjeros vs Nacionales -- para ver si la composición
+    cambia en el tiempo, no solo el acumulado."""
+    partes = []
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        if df.empty or "_FECHA_INICIO" not in df.columns:
+            continue
+        d = df.dropna(subset=["_FECHA_INICIO"])
+        if d.empty:
+            continue
+        d = d.copy()
+        d["_MES"] = d["_FECHA_INICIO"].dt.to_period("M").dt.to_timestamp()
+        por_mes = d.groupby("_MES", observed=True)["ID_SIS"].nunique().reset_index(name="estudiantes")
+        por_mes["poblacion"] = poblacion
+        partes.append(por_mes)
+    if not partes:
+        return pd.DataFrame(columns=["_MES", "estudiantes", "poblacion"])
+    return pd.concat(partes, ignore_index=True)
 
 
 def modulos_por_estado_pct_comparativo(
@@ -235,3 +308,157 @@ def modulos_por_estado_pct_comparativo(
                 }
             )
     return pd.DataFrame(filas)
+
+
+# =============================================================================
+# CRM + funnel de matrícula (sept-2026) -- consulta unificada CRM+SIS, ver
+# utils/liff_crm_data.py::load_liff_crm() y queries/liff_data.py.
+#
+# Grano de esta fuente: 1 fila por matriculado/prematriculado + materia (o
+# 1 sola fila si no tiene materias -- prematriculado, o matriculado sin
+# usuario SIS). Por eso casi todo lo de abajo dedupe por
+# INCREMENTAL_LEAD_CODE antes de contar personas -- sin eso, alguien con 5
+# materias se contaría 5 veces en el funnel.
+#
+# El bloque académico (PROGRAMA_SIS/ESTADO_ACADEMICO/etc.) se reutiliza vía
+# academico_de(), que lo renombra a los nombres que ya espera enrich() /
+# kpis_overview() / etc. de arriba -- para no duplicar esa lógica ya
+# validada con Christian.
+# =============================================================================
+
+
+def enrich_crm(df: pd.DataFrame) -> pd.DataFrame:
+    """Tipa la salida de load_liff_crm() y agrega las columnas derivadas
+    del bloque CRM. No toca el bloque académico -- eso lo hace
+    academico_de() + enrich() por separado, solo sobre las filas con
+    match real (evita mezclar NULLs de prematriculados en los cálculos
+    académicos)."""
+    df = df.copy()
+    for col in ("ENROLLMENT_DATA_AMOUNT_PAYED", "ENROLLMENT_DATA_AMOUNT_CONTRACT", "EDAD_EXACTA", "Cantidad_Asistencias"):
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+    df["_ES_MATRICULADO"] = df["TIPO_MATRICULA"] == "MATRICULADO"
+    df["_ES_PREMATRICULADO"] = df["TIPO_MATRICULA"] == "PREMATRICULADO"
+    df["_ALERTA_SIN_SIS"] = df["ALERTA_SIN_USUARIO_SIS"].apply(to_bool)
+    df["_TIENE_MATCH_ACADEMICO"] = df["PROGRAM_ID"].notna() if "PROGRAM_ID" in df.columns else False
+    if "CREATED_AT_DATE" in df.columns:
+        df["_CREATED_AT"] = pd.to_datetime(df["CREATED_AT_DATE"], errors="coerce")
+    return df
+
+
+def academico_de(df_crm: pd.DataFrame) -> pd.DataFrame:
+    """Subconjunto con match académico real (excluye prematriculados y
+    matriculados sin usuario SIS), renombrado para reutilizar enrich() y
+    todas las funciones académicas de arriba sin duplicarlas.
+    PROGRAMA_SIS -> PROGRAMA, ESTADO_ACADEMICO -> ESTADO, DOCUMENTO_SIS ->
+    ignorado (ya está CONTACT_DATA_DOCUMENT_ID en el bloque CRM).
+    INCREMENTAL_USER_CODE -> ID_SIS: en la query vieja (solo-SIS) esta
+    columna SE LLAMABA ID_SIS (alias de E100010.INCREMENTAL_USER_CODE).
+    En la unificada es el mismo valor exacto pero expuesto del lado CRM
+    como INCREMENTAL_USER_CODE (es la clave con la que se hizo el JOIN
+    contra Academico_Detalle) -- se re-alias acá para que _por_estudiante()
+    y todo lo que agrupa/ordena por ID_SIS siga funcionando sin tocarlo."""
+    aca = df_crm[df_crm["_TIENE_MATCH_ACADEMICO"]].copy()
+    return aca.rename(columns={
+        "PROGRAMA_SIS": "PROGRAMA",
+        "ESTADO_ACADEMICO": "ESTADO",
+        "INCREMENTAL_USER_CODE": "ID_SIS",
+    })
+
+
+def _por_persona(df: pd.DataFrame) -> pd.DataFrame:
+    """Una fila por persona (INCREMENTAL_LEAD_CODE) -- para no contar 2
+    veces a quien tiene varias materias en el funnel/KPIs de matrícula."""
+    if df.empty or "INCREMENTAL_LEAD_CODE" not in df.columns:
+        return df
+    return df.drop_duplicates("INCREMENTAL_LEAD_CODE").copy()
+
+
+def funnel_kpis(df_crm: pd.DataFrame) -> dict:
+    """KPIs de cabecera del funnel + calidad de datos, sobre personas
+    (no filas/materias)."""
+    personas = _por_persona(df_crm)
+    total = len(personas)
+    matriculados = int((personas["TIPO_MATRICULA"] == "MATRICULADO").sum())
+    prematriculados = int((personas["TIPO_MATRICULA"] == "PREMATRICULADO").sum())
+    pct_conversion = (matriculados / total * 100) if total else 0.0
+    monto_recaudado = personas.loc[personas["TIPO_MATRICULA"] == "MATRICULADO", "ENROLLMENT_DATA_AMOUNT_PAYED"].sum()
+    alerta_n = int(personas["_ALERTA_SIN_SIS"].sum())
+    alerta_pct = (alerta_n / matriculados * 100) if matriculados else 0.0
+    return {
+        "total": total,
+        "matriculados": matriculados,
+        "prematriculados": prematriculados,
+        "pct_conversion": pct_conversion,
+        "monto_recaudado": float(monto_recaudado) if pd.notna(monto_recaudado) else 0.0,
+        "alerta_n": alerta_n,
+        "alerta_pct": alerta_pct,
+    }
+
+
+def funnel_por_categoria(df_crm: pd.DataFrame, columna: str, top: int = 15) -> pd.DataFrame:
+    """Prematriculados vs Matriculados por asesor / campaña / programa /
+    adnetwork -- a nivel persona. `top` limita a las categorías con más
+    volumen total (evita gráficas ilegibles si hay muchos asesores)."""
+    personas = _por_persona(df_crm)
+    if personas.empty or columna not in personas.columns:
+        return pd.DataFrame({columna: [], "TIPO_MATRICULA": [], "cantidad": []})
+    personas = personas.copy()
+    personas[columna] = personas[columna].fillna("(sin dato)")
+    top_valores = personas[columna].value_counts().head(top).index
+    f = personas[personas[columna].isin(top_valores)]
+    out = f.groupby([columna, "TIPO_MATRICULA"], observed=True).size().reset_index(name="cantidad")
+    return out
+
+
+def tendencia_mensual_funnel(df_crm: pd.DataFrame) -> pd.DataFrame:
+    """Matriculados/Prematriculados por mes de creación del lead
+    (_CREATED_AT, de enrich_crm()), a nivel persona (dedup) -- para ver
+    la evolución del funnel, no solo el acumulado."""
+    personas = _por_persona(df_crm)
+    if personas.empty or "_CREATED_AT" not in personas.columns:
+        return pd.DataFrame(columns=["_MES", "TIPO_MATRICULA", "cantidad"])
+    d = personas.dropna(subset=["_CREATED_AT"]).copy()
+    if d.empty:
+        return pd.DataFrame(columns=["_MES", "TIPO_MATRICULA", "cantidad"])
+    d["_MES"] = d["_CREATED_AT"].dt.to_period("M").dt.to_timestamp()
+    return d.groupby(["_MES", "TIPO_MATRICULA"], observed=True).size().reset_index(name="cantidad")
+
+
+def alerta_sin_usuario_tabla(df_crm: pd.DataFrame) -> pd.DataFrame:
+    """Matriculados sin usuario SIS asociado -- lista accionable (posible
+    cédula mal digitada, o falta crear el usuario en el SIS)."""
+    personas = _por_persona(df_crm)
+    alerta = personas[personas["_ALERTA_SIN_SIS"]]
+    cols = [
+        c for c in [
+            "CONTACT_DATA_FULL_NAME", "CONTACT_DATA_DOCUMENT_ID", "SALES_ADVISOR_FULL_NAME",
+            "PROGRAMA_CRM", "CREATED_AT_DATE", "CONTACT_DATA_MOBILE_PHONE",
+        ] if c in alerta.columns
+    ]
+    if "_CREATED_AT" in alerta.columns:
+        alerta = alerta.sort_values("_CREATED_AT", ascending=False)
+    return alerta[cols]
+
+
+def academico_resumen_por_persona(df_academico_enriched: pd.DataFrame) -> pd.DataFrame:
+    """1 fila por persona con su resumen académico (% aprobación propio,
+    nota promedio, retenido) -- insumo para cruzar contra caracterización/
+    satisfacción sin arrastrar el grano de materia. Requiere que ya se
+    haya llamado enrich() de este mismo módulo sobre el resultado de
+    academico_de()."""
+    if df_academico_enriched.empty:
+        return pd.DataFrame()
+
+    def _resumen(g: pd.DataFrame) -> pd.Series:
+        publicadas = g[g["_PUBLICADA"]]
+        aprobadas = int((publicadas["_APROBACION"] == "Aprobado").sum())
+        total_calificadas = len(publicadas)
+        return pd.Series({
+            "pct_aprobacion_propio": (aprobadas / total_calificadas * 100) if total_calificadas else pd.NA,
+            "nota_promedio_propio": publicadas["_NOTA_NUM"].mean() if len(publicadas) else pd.NA,
+            "retenido": g["_RETENIDO"].iloc[0] if "_RETENIDO" in g.columns else pd.NA,
+            "materias": len(g),
+        })
+
+    return df_academico_enriched.groupby("CONTACT_DATA_DOCUMENT_ID").apply(_resumen).reset_index()

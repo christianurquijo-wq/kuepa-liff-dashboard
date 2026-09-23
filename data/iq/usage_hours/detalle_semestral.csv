@@ -1,0 +1,2786 @@
+Anio,Semestre,Programa,Rol,Grado,region_norm,usuarios_activos,horas_totales,registros
+2021,S1,IQP,Admin,No especificado,Sin ubicación,1,0.1,3
+2021,S1,IQP,Docente,No especificado,Sin ubicación,1,0.0,1
+2021,S1,IQP,Estudiante,No especificado,Sin ubicación,9,4.4,85
+2021,S1,IQP,Sin rol,No especificado,Sin ubicación,2,1.0,16
+2021,S2,IQP,Admin,No especificado,Sin ubicación,1,0.2,10
+2021,S2,IQP,Docente,6to grado,BARAHONA,3,0.1,3
+2021,S2,IQP,Docente,6to grado,MAO,4,0.1,7
+2021,S2,IQP,Docente,6to grado,SANTO DOMINGO,6,0.5,17
+2021,S2,IQP,Docente,6to grado,Sin ubicación,10,0.3,10
+2021,S2,IQP,Docente,No especificado,NAGUA,1,0.1,1
+2021,S2,IQP,Docente,No especificado,Sin ubicación,1,0.0,1
+2021,S2,IQP,Estudiante,1er grado,HIGUEY,1,0.1,2
+2021,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,5,0.7,14
+2021,S2,IQP,Estudiante,1er grado,Sin ubicación,3,1.1,25
+2021,S2,IQP,Estudiante,2do grado,LA VEGA,1,0.1,3
+2021,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,1,0.2,5
+2021,S2,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,1,0.0,1
+2021,S2,IQP,Estudiante,3er grado,SANTO DOMINGO,2,0.0,2
+2021,S2,IQP,Estudiante,3er grado,Sin ubicación,1,0.0,2
+2021,S2,IQP,Estudiante,4to grado,PUERTO PLATA,1,0.1,4
+2021,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,5,0.4,8
+2021,S2,IQP,Estudiante,4to grado,Sin ubicación,1,0.1,1
+2021,S2,IQP,Estudiante,5to grado,BAHORUCO,1,0.6,11
+2021,S2,IQP,Estudiante,5to grado,LA VEGA,1,0.0,1
+2021,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,4,0.1,6
+2021,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,4,1.1,17
+2021,S2,IQP,Estudiante,6to grado,Sin ubicación,6,4.5,112
+2021,S2,IQP,Estudiante,No especificado,Sin ubicación,19,4.3,89
+2021,S2,IQP,Parent,No especificado,Sin ubicación,12,0.8,24
+2021,S2,IQP,Sin rol,No especificado,Sin ubicación,1,4.2,72
+2022,S1,IQP,Admin,No especificado,Sin ubicación,1,0.1,8
+2022,S1,IQP,Docente,6to grado,AZUA,2,0.4,2
+2022,S1,IQP,Docente,6to grado,BAHORUCO,1,10.2,3
+2022,S1,IQP,Docente,6to grado,BARAHONA,3,149.5,24
+2022,S1,IQP,Docente,6to grado,COTUI,7,27.4,12
+2022,S1,IQP,Docente,6to grado,HIGUEY,3,31.7,9
+2022,S1,IQP,Docente,6to grado,LA VEGA,9,64.1,14
+2022,S1,IQP,Docente,6to grado,MAO,8,115.5,30
+2022,S1,IQP,Docente,6to grado,MONTE CRISTI,4,28.8,10
+2022,S1,IQP,Docente,6to grado,NAGUA,2,5.7,4
+2022,S1,IQP,Docente,6to grado,PUERTO PLATA,4,11.0,8
+2022,S1,IQP,Docente,6to grado,SAN CRISTOBAL,4,30.5,9
+2022,S1,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,10.8,2
+2022,S1,IQP,Docente,6to grado,SAN JUAN DE LA MAGUANA,2,18.3,7
+2022,S1,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,3,1.3,3
+2022,S1,IQP,Docente,6to grado,SANTIAGO,19,252.9,44
+2022,S1,IQP,Docente,6to grado,SANTO DOMINGO,52,269.7,105
+2022,S1,IQP,Docente,6to grado,Sin ubicación,120,985.2,240
+2022,S1,IQP,Estudiante,1er grado,BAHORUCO,1,0.6,1
+2022,S1,IQP,Estudiante,1er grado,BARAHONA,1,14.9,8
+2022,S1,IQP,Estudiante,1er grado,COTUI,2,15.5,9
+2022,S1,IQP,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,1,0.0,1
+2022,S1,IQP,Estudiante,1er grado,SANTIAGO,1,0.1,1
+2022,S1,IQP,Estudiante,1er grado,SANTO DOMINGO,11,147.7,71
+2022,S1,IQP,Estudiante,1er grado,Sin ubicación,13,16.1,27
+2022,S1,IQP,Estudiante,2do grado,AZUA,1,24.3,9
+2022,S1,IQP,Estudiante,2do grado,COTUI,2,4.4,3
+2022,S1,IQP,Estudiante,2do grado,LA VEGA,1,0.3,4
+2022,S1,IQP,Estudiante,2do grado,NAGUA,3,15.7,4
+2022,S1,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,1,0.5,1
+2022,S1,IQP,Estudiante,2do grado,SANTIAGO,1,0.4,1
+2022,S1,IQP,Estudiante,2do grado,SANTO DOMINGO,8,24.7,10
+2022,S1,IQP,Estudiante,2do grado,Sin ubicación,3,157.4,30
+2022,S1,IQP,Estudiante,3er grado,BAHORUCO,2,9.7,3
+2022,S1,IQP,Estudiante,3er grado,COTUI,4,43.3,16
+2022,S1,IQP,Estudiante,3er grado,LA VEGA,6,30.5,16
+2022,S1,IQP,Estudiante,3er grado,MAO,9,50.5,12
+2022,S1,IQP,Estudiante,3er grado,NAGUA,3,0.7,3
+2022,S1,IQP,Estudiante,3er grado,PUERTO PLATA,1,9.1,1
+2022,S1,IQP,Estudiante,3er grado,SAN CRISTOBAL,1,5.2,4
+2022,S1,IQP,Estudiante,3er grado,SANTIAGO,18,99.6,31
+2022,S1,IQP,Estudiante,3er grado,SANTO DOMINGO,75,831.3,267
+2022,S1,IQP,Estudiante,3er grado,Sin ubicación,65,735.5,227
+2022,S1,IQP,Estudiante,4to grado,PUERTO PLATA,1,1.6,6
+2022,S1,IQP,Estudiante,4to grado,SANTO DOMINGO,11,69.8,56
+2022,S1,IQP,Estudiante,4to grado,Sin ubicación,7,143.8,40
+2022,S1,IQP,Estudiante,5to grado,AZUA,1,37.0,9
+2022,S1,IQP,Estudiante,5to grado,BAHORUCO,1,2.1,8
+2022,S1,IQP,Estudiante,5to grado,BARAHONA,1,25.2,13
+2022,S1,IQP,Estudiante,5to grado,LA VEGA,1,7.4,1
+2022,S1,IQP,Estudiante,5to grado,NAGUA,2,1.2,2
+2022,S1,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1,1.9,1
+2022,S1,IQP,Estudiante,5to grado,SANTO DOMINGO,8,14.9,14
+2022,S1,IQP,Estudiante,5to grado,Sin ubicación,5,12.7,8
+2022,S1,IQP,Estudiante,6to grado,AZUA,1,0.3,1
+2022,S1,IQP,Estudiante,6to grado,BAHORUCO,11,116.7,28
+2022,S1,IQP,Estudiante,6to grado,COTUI,2,4.0,3
+2022,S1,IQP,Estudiante,6to grado,HIGUEY,15,50.6,23
+2022,S1,IQP,Estudiante,6to grado,LA VEGA,19,78.9,32
+2022,S1,IQP,Estudiante,6to grado,MAO,6,7.5,6
+2022,S1,IQP,Estudiante,6to grado,MONTE CRISTI,2,0.5,2
+2022,S1,IQP,Estudiante,6to grado,NAGUA,7,149.5,43
+2022,S1,IQP,Estudiante,6to grado,PUERTO PLATA,1,4.7,1
+2022,S1,IQP,Estudiante,6to grado,SAN CRISTOBAL,2,2.2,2
+2022,S1,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1,2.3,4
+2022,S1,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,1,4.2,2
+2022,S1,IQP,Estudiante,6to grado,SANTIAGO,34,420.9,114
+2022,S1,IQP,Estudiante,6to grado,SANTO DOMINGO,160,780.6,301
+2022,S1,IQP,Estudiante,6to grado,Sin ubicación,184,1612.7,527
+2022,S1,IQP,Estudiante,No especificado,Sin ubicación,1,0.1,1
+2022,S1,IQP,Parent,No especificado,Sin ubicación,10,21.0,25
+2022,S1,IQP,Sin rol,No especificado,Sin ubicación,2,886.9,106
+2022,S2,IQ512,Admin,No especificado,Sin ubicación,3,18.9,9
+2022,S2,IQ512,Editor,No especificado,Sin ubicación,1,651.7,38
+2022,S2,IQ512,Estudiante,No especificado,AZUA,304,1136.2,320
+2022,S2,IQ512,Estudiante,No especificado,BAHORUCO,24,132.5,29
+2022,S2,IQ512,Estudiante,No especificado,BARAHONA,198,271.5,209
+2022,S2,IQ512,Estudiante,No especificado,COTUI,47,454.3,58
+2022,S2,IQ512,Estudiante,No especificado,HIGUEY,232,1109.4,239
+2022,S2,IQ512,Estudiante,No especificado,LA VEGA,508,2113.0,535
+2022,S2,IQ512,Estudiante,No especificado,MAO,56,275.9,58
+2022,S2,IQ512,Estudiante,No especificado,MONTE CRISTI,59,322.0,68
+2022,S2,IQ512,Estudiante,No especificado,MONTE PLATA,21,30.5,24
+2022,S2,IQ512,Estudiante,No especificado,NAGUA,58,154.6,62
+2022,S2,IQ512,Estudiante,No especificado,PUERTO PLATA,188,565.5,197
+2022,S2,IQ512,Estudiante,No especificado,SAN CRISTOBAL,257,591.4,282
+2022,S2,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,160,307.4,173
+2022,S2,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,111,247.1,118
+2022,S2,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,364,1361.2,379
+2022,S2,IQ512,Estudiante,No especificado,SANTIAGO,489,1338.6,501
+2022,S2,IQ512,Estudiante,No especificado,SANTO DOMINGO,3172,13255.2,3315
+2022,S2,IQ512,Estudiante,No especificado,Sin ubicación,13183,40758.8,13240
+2022,S2,IQ512,Sin rol,No especificado,Sin ubicación,1,0.8,1
+2022,S2,IQP,Admin,No especificado,Sin ubicación,1,114.4,32
+2022,S2,IQP,Docente,3er grado,BARAHONA,1,26.4,1
+2022,S2,IQP,Docente,3er grado,MAO,1,1.2,1
+2022,S2,IQP,Docente,3er grado,SAN PEDRO DE MACORIS,1,3.5,1
+2022,S2,IQP,Docente,3er grado,Sin ubicación,4,30.1,6
+2022,S2,IQP,Docente,4to grado,BARAHONA,1,29.4,8
+2022,S2,IQP,Docente,4to grado,LA VEGA,1,1.0,1
+2022,S2,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,1,24.6,4
+2022,S2,IQP,Docente,4to grado,SANTIAGO,1,18.3,1
+2022,S2,IQP,Docente,4to grado,SANTO DOMINGO,5,22.9,5
+2022,S2,IQP,Docente,4to grado,Sin ubicación,12,42.0,17
+2022,S2,IQP,Docente,6to grado,AZUA,1,5.4,2
+2022,S2,IQP,Docente,6to grado,BARAHONA,3,149.8,34
+2022,S2,IQP,Docente,6to grado,COTUI,1,0.5,1
+2022,S2,IQP,Docente,6to grado,HIGUEY,2,10.8,3
+2022,S2,IQP,Docente,6to grado,LA VEGA,4,2.6,4
+2022,S2,IQP,Docente,6to grado,MAO,18,139.3,50
+2022,S2,IQP,Docente,6to grado,MONTE CRISTI,2,0.7,3
+2022,S2,IQP,Docente,6to grado,NAGUA,3,32.2,6
+2022,S2,IQP,Docente,6to grado,PUERTO PLATA,2,10.7,3
+2022,S2,IQP,Docente,6to grado,SAN CRISTOBAL,4,9.9,5
+2022,S2,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,18.3,2
+2022,S2,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,2,3.4,2
+2022,S2,IQP,Docente,6to grado,SANTO DOMINGO,18,22.7,24
+2022,S2,IQP,Docente,6to grado,Sin ubicación,23,74.6,38
+2022,S2,IQP,Estudiante,1er grado,BARAHONA,2,69.0,23
+2022,S2,IQP,Estudiante,1er grado,HIGUEY,1,12.6,3
+2022,S2,IQP,Estudiante,1er grado,NAGUA,1,0.3,1
+2022,S2,IQP,Estudiante,1er grado,SAN CRISTOBAL,1,0.0,1
+2022,S2,IQP,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,2,8.0,3
+2022,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,10,181.8,54
+2022,S2,IQP,Estudiante,1er grado,Sin ubicación,22,95.7,58
+2022,S2,IQP,Estudiante,2do grado,AZUA,1,29.1,18
+2022,S2,IQP,Estudiante,2do grado,PUERTO PLATA,1,1.6,2
+2022,S2,IQP,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,1,2.7,4
+2022,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,2,2.6,5
+2022,S2,IQP,Estudiante,2do grado,Sin ubicación,12,75.5,41
+2022,S2,IQP,Estudiante,3er grado,MAO,1,0.2,1
+2022,S2,IQP,Estudiante,3er grado,SAN CRISTOBAL,1,1.4,1
+2022,S2,IQP,Estudiante,3er grado,SANTIAGO,1,0.4,1
+2022,S2,IQP,Estudiante,3er grado,SANTO DOMINGO,15,26.6,29
+2022,S2,IQP,Estudiante,3er grado,Sin ubicación,18,181.5,64
+2022,S2,IQP,Estudiante,4to grado,MAO,1,1.8,1
+2022,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,9,57.9,31
+2022,S2,IQP,Estudiante,4to grado,Sin ubicación,13,174.6,48
+2022,S2,IQP,Estudiante,5to grado,AZUA,1,53.2,18
+2022,S2,IQP,Estudiante,5to grado,BARAHONA,1,23.1,21
+2022,S2,IQP,Estudiante,5to grado,LA VEGA,2,19.0,9
+2022,S2,IQP,Estudiante,5to grado,MAO,1,1.5,1
+2022,S2,IQP,Estudiante,5to grado,SANTIAGO,1,0.5,1
+2022,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,7,25.7,13
+2022,S2,IQP,Estudiante,5to grado,Sin ubicación,14,73.0,28
+2022,S2,IQP,Estudiante,6to grado,AZUA,2,2.0,2
+2022,S2,IQP,Estudiante,6to grado,BAHORUCO,2,0.6,2
+2022,S2,IQP,Estudiante,6to grado,BARAHONA,2,23.2,6
+2022,S2,IQP,Estudiante,6to grado,HIGUEY,5,3.6,5
+2022,S2,IQP,Estudiante,6to grado,LA VEGA,1,0.5,2
+2022,S2,IQP,Estudiante,6to grado,MAO,1,15.0,17
+2022,S2,IQP,Estudiante,6to grado,MONTE PLATA,2,3.3,2
+2022,S2,IQP,Estudiante,6to grado,NAGUA,5,64.4,24
+2022,S2,IQP,Estudiante,6to grado,PUERTO PLATA,1,0.0,1
+2022,S2,IQP,Estudiante,6to grado,SAN CRISTOBAL,1,0.3,3
+2022,S2,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1,0.0,1
+2022,S2,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,1,9.5,2
+2022,S2,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,3,9.2,4
+2022,S2,IQP,Estudiante,6to grado,SANTIAGO,4,30.9,14
+2022,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,32,116.7,62
+2022,S2,IQP,Estudiante,6to grado,Sin ubicación,64,292.7,110
+2022,S2,IQP,Parent,1er grado,Sin ubicación,1,0.6,1
+2022,S2,IQP,Parent,No especificado,Sin ubicación,5,14.1,9
+2022,S2,IQP,Sin rol,No especificado,Sin ubicación,1,1466.2,105
+2022,S2,IQS,Admin,No especificado,Sin ubicación,1,77.2,23
+2022,S2,IQS,Docente,1er grado,AZUA,2,1.2,3
+2022,S2,IQS,Docente,1er grado,BAHORUCO,1,0.7,1
+2022,S2,IQS,Docente,1er grado,HIGUEY,1,0.3,1
+2022,S2,IQS,Docente,1er grado,MONTE CRISTI,1,0.9,1
+2022,S2,IQS,Docente,1er grado,NAGUA,1,7.3,2
+2022,S2,IQS,Docente,1er grado,PUERTO PLATA,1,0.1,1
+2022,S2,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,1,7.3,2
+2022,S2,IQS,Docente,1er grado,SAN PEDRO DE MACORIS,2,11.6,2
+2022,S2,IQS,Docente,1er grado,SANTIAGO,5,26.9,8
+2022,S2,IQS,Docente,1er grado,SANTO DOMINGO,12,26.2,19
+2022,S2,IQS,Docente,1er grado,Sin ubicación,17,103.9,34
+2022,S2,IQS,Docente,3er grado,Sin ubicación,1,0.5,1
+2022,S2,IQS,Docente,4to grado,AZUA,1,33.9,7
+2022,S2,IQS,Docente,6to grado,AZUA,2,4.4,3
+2022,S2,IQS,Docente,6to grado,BAHORUCO,1,7.5,2
+2022,S2,IQS,Docente,6to grado,COTUI,2,11.8,4
+2022,S2,IQS,Docente,6to grado,LA VEGA,1,0.3,1
+2022,S2,IQS,Docente,6to grado,MONTE CRISTI,2,0.8,2
+2022,S2,IQS,Docente,6to grado,MONTE PLATA,2,0.5,2
+2022,S2,IQS,Docente,6to grado,NAGUA,2,49.6,10
+2022,S2,IQS,Docente,6to grado,PUERTO PLATA,1,1.0,1
+2022,S2,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,17.2,5
+2022,S2,IQS,Docente,6to grado,SAN JUAN DE LA MAGUANA,1,14.5,1
+2022,S2,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,4,25.5,6
+2022,S2,IQS,Docente,6to grado,SANTIAGO,1,7.9,2
+2022,S2,IQS,Docente,6to grado,SANTO DOMINGO,33,553.2,95
+2022,S2,IQS,Docente,6to grado,Sin ubicación,10,154.4,32
+2022,S2,IQS,Editor,No especificado,SANTIAGO,1,1370.4,70
+2022,S2,IQS,Estudiante,1er grado,NAGUA,4,145.1,28
+2022,S2,IQS,Estudiante,1er grado,SANTIAGO,1,0.1,1
+2022,S2,IQS,Estudiante,1er grado,SANTO DOMINGO,14,152.9,45
+2022,S2,IQS,Estudiante,1er grado,Sin ubicación,20,157.5,43
+2022,S2,IQS,Estudiante,2do grado,BARAHONA,1,0.4,1
+2022,S2,IQS,Estudiante,2do grado,NAGUA,4,110.1,18
+2022,S2,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,2,0.4,4
+2022,S2,IQS,Estudiante,2do grado,SANTO DOMINGO,19,137.4,51
+2022,S2,IQS,Estudiante,2do grado,Sin ubicación,13,130.4,23
+2022,S2,IQS,Estudiante,3er grado,BARAHONA,1,4.6,2
+2022,S2,IQS,Estudiante,3er grado,LA VEGA,3,8.5,5
+2022,S2,IQS,Estudiante,3er grado,MONTE PLATA,1,5.5,2
+2022,S2,IQS,Estudiante,3er grado,NAGUA,4,213.9,31
+2022,S2,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,1,14.4,5
+2022,S2,IQS,Estudiante,3er grado,SANTIAGO,14,26.3,17
+2022,S2,IQS,Estudiante,3er grado,SANTO DOMINGO,22,67.8,38
+2022,S2,IQS,Estudiante,3er grado,Sin ubicación,15,150.3,33
+2022,S2,IQS,Estudiante,4to grado,BARAHONA,1,2.3,1
+2022,S2,IQS,Estudiante,4to grado,HIGUEY,1,6.6,1
+2022,S2,IQS,Estudiante,4to grado,LA VEGA,2,11.4,2
+2022,S2,IQS,Estudiante,4to grado,MAO,2,5.5,3
+2022,S2,IQS,Estudiante,4to grado,NAGUA,2,126.2,18
+2022,S2,IQS,Estudiante,4to grado,SAN CRISTOBAL,1,1.8,1
+2022,S2,IQS,Estudiante,4to grado,SANTIAGO,16,40.8,28
+2022,S2,IQS,Estudiante,4to grado,SANTO DOMINGO,52,528.1,103
+2022,S2,IQS,Estudiante,4to grado,Sin ubicación,25,80.5,40
+2022,S2,IQS,Estudiante,5to grado,AZUA,1,2.7,1
+2022,S2,IQS,Estudiante,5to grado,BAHORUCO,1,2.8,2
+2022,S2,IQS,Estudiante,5to grado,BARAHONA,1,1.3,1
+2022,S2,IQS,Estudiante,5to grado,HIGUEY,1,0.4,1
+2022,S2,IQS,Estudiante,5to grado,LA VEGA,3,20.5,3
+2022,S2,IQS,Estudiante,5to grado,MONTE PLATA,1,6.2,3
+2022,S2,IQS,Estudiante,5to grado,SANTIAGO,22,158.4,48
+2022,S2,IQS,Estudiante,5to grado,SANTO DOMINGO,50,367.7,80
+2022,S2,IQS,Estudiante,5to grado,Sin ubicación,22,193.3,48
+2022,S2,IQS,Estudiante,6to grado,AZUA,9,19.0,19
+2022,S2,IQS,Estudiante,6to grado,BAHORUCO,4,4.7,4
+2022,S2,IQS,Estudiante,6to grado,BARAHONA,6,45.4,9
+2022,S2,IQS,Estudiante,6to grado,COTUI,1,0.3,1
+2022,S2,IQS,Estudiante,6to grado,HIGUEY,13,30.4,15
+2022,S2,IQS,Estudiante,6to grado,LA VEGA,31,155.2,52
+2022,S2,IQS,Estudiante,6to grado,MONTE CRISTI,1,4.6,3
+2022,S2,IQS,Estudiante,6to grado,MONTE PLATA,3,11.3,3
+2022,S2,IQS,Estudiante,6to grado,NAGUA,8,194.2,25
+2022,S2,IQS,Estudiante,6to grado,PUERTO PLATA,8,60.8,10
+2022,S2,IQS,Estudiante,6to grado,SAN CRISTOBAL,16,36.7,22
+2022,S2,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,15,58.0,15
+2022,S2,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,7,17.1,10
+2022,S2,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,11,57.7,14
+2022,S2,IQS,Estudiante,6to grado,SANTIAGO,67,875.3,212
+2022,S2,IQS,Estudiante,6to grado,SANTO DOMINGO,196,960.9,355
+2022,S2,IQS,Estudiante,6to grado,Sin ubicación,57,272.8,100
+2022,S2,IQS,Estudiante,No especificado,Sin ubicación,4,2.5,6
+2022,S2,IQS,Invitado,1er grado,Sin ubicación,1,4.6,2
+2022,S2,IQS,Invitado,2do grado,Sin ubicación,1,11.9,2
+2022,S2,IQS,Invitado,6to grado,SANTO DOMINGO,3,4.1,4
+2022,S2,IQS,Invitado,6to grado,Sin ubicación,47,353.3,80
+2023,S1,IQ512,Admin,No especificado,Sin ubicación,4,238.0,28
+2023,S1,IQ512,Editor,No especificado,Sin ubicación,1,1065.4,82
+2023,S1,IQ512,Estudiante,No especificado,AZUA,61,15223.6,1609
+2023,S1,IQ512,Estudiante,No especificado,BAHORUCO,26,7832.9,944
+2023,S1,IQ512,Estudiante,No especificado,BARAHONA,62,17000.5,1917
+2023,S1,IQ512,Estudiante,No especificado,COTUI,51,16329.5,1624
+2023,S1,IQ512,Estudiante,No especificado,HIGUEY,28,5732.2,551
+2023,S1,IQ512,Estudiante,No especificado,LA VEGA,87,20361.0,2211
+2023,S1,IQ512,Estudiante,No especificado,MAO,16,5288.0,606
+2023,S1,IQ512,Estudiante,No especificado,MONTE CRISTI,24,6295.8,704
+2023,S1,IQ512,Estudiante,No especificado,MONTE PLATA,24,5485.6,551
+2023,S1,IQ512,Estudiante,No especificado,NAGUA,25,9292.3,907
+2023,S1,IQ512,Estudiante,No especificado,PUERTO PLATA,20,7322.4,770
+2023,S1,IQ512,Estudiante,No especificado,SAN CRISTOBAL,77,19965.8,2181
+2023,S1,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,33,9751.0,1070
+2023,S1,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,31,7962.6,808
+2023,S1,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,35,9477.7,1031
+2023,S1,IQ512,Estudiante,No especificado,SANTIAGO,66,13268.3,1451
+2023,S1,IQ512,Estudiante,No especificado,SANTO DOMINGO,337,78427.7,7920
+2023,S1,IQ512,Estudiante,No especificado,Sin ubicación,3101,763998.6,81096
+2023,S1,IQ512,Sin rol,No especificado,Sin ubicación,1,4.4,1
+2023,S1,IQP,Admin,No especificado,Sin ubicación,2,46.1,15
+2023,S1,IQP,Docente,1er grado,Sin ubicación,2,825.3,89
+2023,S1,IQP,Docente,3er grado,AZUA,1,6.8,1
+2023,S1,IQP,Docente,3er grado,BARAHONA,2,2.0,2
+2023,S1,IQP,Docente,3er grado,MAO,1,1.1,2
+2023,S1,IQP,Docente,3er grado,SAN CRISTOBAL,1,0.5,2
+2023,S1,IQP,Docente,3er grado,SANTIAGO,2,36.4,3
+2023,S1,IQP,Docente,3er grado,SANTO DOMINGO,1,0.3,1
+2023,S1,IQP,Docente,3er grado,Sin ubicación,12,37.4,15
+2023,S1,IQP,Docente,4to grado,AZUA,21,31.2,28
+2023,S1,IQP,Docente,4to grado,BAHORUCO,6,24.8,8
+2023,S1,IQP,Docente,4to grado,BARAHONA,14,91.2,25
+2023,S1,IQP,Docente,4to grado,COTUI,15,64.2,24
+2023,S1,IQP,Docente,4to grado,HIGUEY,20,205.8,43
+2023,S1,IQP,Docente,4to grado,LA VEGA,37,202.1,70
+2023,S1,IQP,Docente,4to grado,MAO,11,11.7,14
+2023,S1,IQP,Docente,4to grado,MONTE CRISTI,35,256.0,63
+2023,S1,IQP,Docente,4to grado,MONTE PLATA,16,31.1,20
+2023,S1,IQP,Docente,4to grado,NAGUA,10,33.5,15
+2023,S1,IQP,Docente,4to grado,PUERTO PLATA,22,99.5,50
+2023,S1,IQP,Docente,4to grado,SAN CRISTOBAL,20,67.4,33
+2023,S1,IQP,Docente,4to grado,SAN FRANCISCO DE MACORIS,25,118.1,37
+2023,S1,IQP,Docente,4to grado,SAN JUAN DE LA MAGUANA,10,27.0,12
+2023,S1,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,34,144.0,55
+2023,S1,IQP,Docente,4to grado,SANTIAGO,68,351.1,110
+2023,S1,IQP,Docente,4to grado,SANTO DOMINGO,229,1206.1,373
+2023,S1,IQP,Docente,4to grado,Sin ubicación,483,1784.1,708
+2023,S1,IQP,Docente,6to grado,AZUA,1,0.4,1
+2023,S1,IQP,Docente,6to grado,BAHORUCO,3,17.5,3
+2023,S1,IQP,Docente,6to grado,BARAHONA,2,23.2,10
+2023,S1,IQP,Docente,6to grado,COTUI,1,13.3,5
+2023,S1,IQP,Docente,6to grado,HIGUEY,1,0.1,1
+2023,S1,IQP,Docente,6to grado,LA VEGA,8,68.1,12
+2023,S1,IQP,Docente,6to grado,MAO,7,126.8,27
+2023,S1,IQP,Docente,6to grado,MONTE CRISTI,4,15.1,8
+2023,S1,IQP,Docente,6to grado,NAGUA,2,2.5,2
+2023,S1,IQP,Docente,6to grado,PUERTO PLATA,6,24.1,12
+2023,S1,IQP,Docente,6to grado,SAN CRISTOBAL,5,10.6,6
+2023,S1,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,2.1,2
+2023,S1,IQP,Docente,6to grado,SAN JUAN DE LA MAGUANA,2,2.6,4
+2023,S1,IQP,Docente,6to grado,SANTIAGO,9,49.7,12
+2023,S1,IQP,Docente,6to grado,SANTO DOMINGO,49,150.2,75
+2023,S1,IQP,Docente,6to grado,Sin ubicación,60,226.2,86
+2023,S1,IQP,Docente,No especificado,COTUI,2,1.3,2
+2023,S1,IQP,Docente,No especificado,LA VEGA,4,6.9,4
+2023,S1,IQP,Docente,No especificado,MAO,4,25.5,11
+2023,S1,IQP,Docente,No especificado,NAGUA,3,3.8,3
+2023,S1,IQP,Docente,No especificado,SAN CRISTOBAL,2,6.7,3
+2023,S1,IQP,Docente,No especificado,SAN JUAN DE LA MAGUANA,1,0.9,1
+2023,S1,IQP,Docente,No especificado,SAN PEDRO DE MACORIS,3,0.5,3
+2023,S1,IQP,Docente,No especificado,SANTIAGO,5,4.5,9
+2023,S1,IQP,Docente,No especificado,SANTO DOMINGO,16,36.6,20
+2023,S1,IQP,Docente,No especificado,Sin ubicación,39,280.5,65
+2023,S1,IQP,Estudiante,1er grado,BARAHONA,1,0.1,3
+2023,S1,IQP,Estudiante,1er grado,COTUI,1,1.3,1
+2023,S1,IQP,Estudiante,1er grado,HIGUEY,1,1.1,1
+2023,S1,IQP,Estudiante,1er grado,LA VEGA,1,0.5,1
+2023,S1,IQP,Estudiante,1er grado,SAN CRISTOBAL,2,1.0,2
+2023,S1,IQP,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,1,0.2,1
+2023,S1,IQP,Estudiante,1er grado,SAN PEDRO DE MACORIS,2,2.3,2
+2023,S1,IQP,Estudiante,1er grado,SANTIAGO,2,30.3,7
+2023,S1,IQP,Estudiante,1er grado,SANTO DOMINGO,21,68.8,36
+2023,S1,IQP,Estudiante,1er grado,Sin ubicación,25,336.4,102
+2023,S1,IQP,Estudiante,2do grado,AZUA,1,0.1,2
+2023,S1,IQP,Estudiante,2do grado,MONTE CRISTI,1,5.1,1
+2023,S1,IQP,Estudiante,2do grado,MONTE PLATA,1,0.1,1
+2023,S1,IQP,Estudiante,2do grado,NAGUA,4,10.3,8
+2023,S1,IQP,Estudiante,2do grado,PUERTO PLATA,1,21.9,9
+2023,S1,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2023,S1,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,1,11.2,3
+2023,S1,IQP,Estudiante,2do grado,SANTIAGO,1,0.3,1
+2023,S1,IQP,Estudiante,2do grado,SANTO DOMINGO,16,34.1,23
+2023,S1,IQP,Estudiante,2do grado,Sin ubicación,18,46.5,26
+2023,S1,IQP,Estudiante,3er grado,AZUA,5,15.5,7
+2023,S1,IQP,Estudiante,3er grado,BARAHONA,35,326.9,140
+2023,S1,IQP,Estudiante,3er grado,COTUI,1,4.0,2
+2023,S1,IQP,Estudiante,3er grado,HIGUEY,48,492.2,143
+2023,S1,IQP,Estudiante,3er grado,LA VEGA,7,85.0,23
+2023,S1,IQP,Estudiante,3er grado,MAO,7,9.0,9
+2023,S1,IQP,Estudiante,3er grado,MONTE CRISTI,6,77.3,14
+2023,S1,IQP,Estudiante,3er grado,MONTE PLATA,2,6.5,3
+2023,S1,IQP,Estudiante,3er grado,NAGUA,14,80.1,36
+2023,S1,IQP,Estudiante,3er grado,PUERTO PLATA,83,610.3,278
+2023,S1,IQP,Estudiante,3er grado,SAN CRISTOBAL,2,21.1,5
+2023,S1,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,2,6.3,3
+2023,S1,IQP,Estudiante,3er grado,SANTIAGO,126,1395.9,405
+2023,S1,IQP,Estudiante,3er grado,SANTO DOMINGO,189,1647.7,472
+2023,S1,IQP,Estudiante,3er grado,Sin ubicación,226,1808.0,611
+2023,S1,IQP,Estudiante,4to grado,AZUA,3,4.3,4
+2023,S1,IQP,Estudiante,4to grado,BAHORUCO,1,0.4,1
+2023,S1,IQP,Estudiante,4to grado,BARAHONA,1,0.2,1
+2023,S1,IQP,Estudiante,4to grado,HIGUEY,8,48.0,10
+2023,S1,IQP,Estudiante,4to grado,LA VEGA,3,9.7,4
+2023,S1,IQP,Estudiante,4to grado,MAO,2,3.5,5
+2023,S1,IQP,Estudiante,4to grado,MONTE PLATA,2,1.8,2
+2023,S1,IQP,Estudiante,4to grado,PUERTO PLATA,6,24.1,11
+2023,S1,IQP,Estudiante,4to grado,SAN CRISTOBAL,2,6.0,2
+2023,S1,IQP,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,1,0.8,1
+2023,S1,IQP,Estudiante,4to grado,SAN PEDRO DE MACORIS,5,12.8,6
+2023,S1,IQP,Estudiante,4to grado,SANTIAGO,9,37.5,12
+2023,S1,IQP,Estudiante,4to grado,SANTO DOMINGO,72,206.0,92
+2023,S1,IQP,Estudiante,4to grado,Sin ubicación,105,303.8,137
+2023,S1,IQP,Estudiante,5to grado,AZUA,2,18.2,5
+2023,S1,IQP,Estudiante,5to grado,BARAHONA,1,28.4,5
+2023,S1,IQP,Estudiante,5to grado,HIGUEY,17,103.3,41
+2023,S1,IQP,Estudiante,5to grado,MAO,2,0.6,2
+2023,S1,IQP,Estudiante,5to grado,MONTE CRISTI,1,0.4,1
+2023,S1,IQP,Estudiante,5to grado,PUERTO PLATA,3,2.2,4
+2023,S1,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1,1.2,1
+2023,S1,IQP,Estudiante,5to grado,SAN PEDRO DE MACORIS,1,0.1,1
+2023,S1,IQP,Estudiante,5to grado,SANTIAGO,2,2.9,4
+2023,S1,IQP,Estudiante,5to grado,SANTO DOMINGO,27,194.2,50
+2023,S1,IQP,Estudiante,5to grado,Sin ubicación,24,41.0,28
+2023,S1,IQP,Estudiante,6to grado,AZUA,14,26.5,17
+2023,S1,IQP,Estudiante,6to grado,BAHORUCO,18,11.9,20
+2023,S1,IQP,Estudiante,6to grado,BARAHONA,8,8.6,9
+2023,S1,IQP,Estudiante,6to grado,COTUI,26,52.4,27
+2023,S1,IQP,Estudiante,6to grado,HIGUEY,63,576.5,219
+2023,S1,IQP,Estudiante,6to grado,LA VEGA,40,75.1,57
+2023,S1,IQP,Estudiante,6to grado,MAO,15,17.2,18
+2023,S1,IQP,Estudiante,6to grado,MONTE CRISTI,5,22.9,6
+2023,S1,IQP,Estudiante,6to grado,MONTE PLATA,11,9.1,11
+2023,S1,IQP,Estudiante,6to grado,NAGUA,6,9.5,7
+2023,S1,IQP,Estudiante,6to grado,PUERTO PLATA,124,515.0,281
+2023,S1,IQP,Estudiante,6to grado,SAN CRISTOBAL,30,85.8,36
+2023,S1,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,15,35.2,18
+2023,S1,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,8,52.5,15
+2023,S1,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,51,55.8,57
+2023,S1,IQP,Estudiante,6to grado,SANTIAGO,67,220.4,102
+2023,S1,IQP,Estudiante,6to grado,SANTO DOMINGO,853,1644.0,1121
+2023,S1,IQP,Estudiante,6to grado,Sin ubicación,1316,2452.8,1588
+2023,S1,IQP,Estudiante,No especificado,AZUA,1,1.0,1
+2023,S1,IQP,Estudiante,No especificado,BAHORUCO,2,2.9,2
+2023,S1,IQP,Estudiante,No especificado,HIGUEY,2,3.6,2
+2023,S1,IQP,Estudiante,No especificado,LA VEGA,3,21.9,3
+2023,S1,IQP,Estudiante,No especificado,MAO,1,0.6,1
+2023,S1,IQP,Estudiante,No especificado,PUERTO PLATA,2,4.8,2
+2023,S1,IQP,Estudiante,No especificado,SAN CRISTOBAL,2,5.0,2
+2023,S1,IQP,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,1,2.0,1
+2023,S1,IQP,Estudiante,No especificado,SAN PEDRO DE MACORIS,1,0.4,1
+2023,S1,IQP,Estudiante,No especificado,SANTIAGO,2,1.0,2
+2023,S1,IQP,Estudiante,No especificado,SANTO DOMINGO,30,28.5,30
+2023,S1,IQP,Estudiante,No especificado,Sin ubicación,69,89.6,71
+2023,S1,IQP,Parent,No especificado,Sin ubicación,8,14.9,16
+2023,S1,IQP,Sin rol,No especificado,Sin ubicación,1,2146.6,104
+2023,S1,IQS,Admin,No especificado,Sin ubicación,1,70.7,18
+2023,S1,IQS,Docente,1er grado,AZUA,14,25.3,19
+2023,S1,IQS,Docente,1er grado,BAHORUCO,3,38.9,7
+2023,S1,IQS,Docente,1er grado,BARAHONA,2,2.5,3
+2023,S1,IQS,Docente,1er grado,COTUI,8,20.6,12
+2023,S1,IQS,Docente,1er grado,HIGUEY,14,200.6,58
+2023,S1,IQS,Docente,1er grado,LA VEGA,21,739.7,86
+2023,S1,IQS,Docente,1er grado,MAO,6,86.2,17
+2023,S1,IQS,Docente,1er grado,MONTE CRISTI,18,238.9,75
+2023,S1,IQS,Docente,1er grado,MONTE PLATA,9,70.1,15
+2023,S1,IQS,Docente,1er grado,NAGUA,3,7.4,5
+2023,S1,IQS,Docente,1er grado,PUERTO PLATA,15,159.3,41
+2023,S1,IQS,Docente,1er grado,SAN CRISTOBAL,6,107.2,24
+2023,S1,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,23,238.6,76
+2023,S1,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,5,22.7,12
+2023,S1,IQS,Docente,1er grado,SAN PEDRO DE MACORIS,13,134.2,28
+2023,S1,IQS,Docente,1er grado,SANTIAGO,44,304.9,101
+2023,S1,IQS,Docente,1er grado,SANTO DOMINGO,193,983.4,344
+2023,S1,IQS,Docente,1er grado,Sin ubicación,176,1526.5,440
+2023,S1,IQS,Docente,2do grado,SANTO DOMINGO,1,33.2,3
+2023,S1,IQS,Docente,4to grado,AZUA,98,846.9,262
+2023,S1,IQS,Docente,4to grado,BAHORUCO,28,72.3,36
+2023,S1,IQS,Docente,4to grado,BARAHONA,34,285.0,76
+2023,S1,IQS,Docente,4to grado,COTUI,117,934.5,308
+2023,S1,IQS,Docente,4to grado,HIGUEY,83,632.9,179
+2023,S1,IQS,Docente,4to grado,LA VEGA,158,1119.2,351
+2023,S1,IQS,Docente,4to grado,MAO,63,520.9,172
+2023,S1,IQS,Docente,4to grado,MONTE CRISTI,65,645.4,176
+2023,S1,IQS,Docente,4to grado,MONTE PLATA,81,795.3,224
+2023,S1,IQS,Docente,4to grado,NAGUA,46,479.6,116
+2023,S1,IQS,Docente,4to grado,PUERTO PLATA,135,1293.4,353
+2023,S1,IQS,Docente,4to grado,SAN CRISTOBAL,100,463.6,207
+2023,S1,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,111,950.3,259
+2023,S1,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,51,219.1,90
+2023,S1,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,205,1612.4,489
+2023,S1,IQS,Docente,4to grado,SANTIAGO,207,1672.6,476
+2023,S1,IQS,Docente,4to grado,SANTO DOMINGO,775,5150.0,1644
+2023,S1,IQS,Docente,4to grado,Sin ubicación,564,4049.7,1245
+2023,S1,IQS,Docente,6to grado,AZUA,9,86.2,31
+2023,S1,IQS,Docente,6to grado,BAHORUCO,3,16.7,4
+2023,S1,IQS,Docente,6to grado,BARAHONA,6,16.9,7
+2023,S1,IQS,Docente,6to grado,COTUI,16,100.8,43
+2023,S1,IQS,Docente,6to grado,HIGUEY,11,58.3,26
+2023,S1,IQS,Docente,6to grado,LA VEGA,18,134.7,56
+2023,S1,IQS,Docente,6to grado,MAO,3,14.9,3
+2023,S1,IQS,Docente,6to grado,MONTE CRISTI,7,147.9,20
+2023,S1,IQS,Docente,6to grado,MONTE PLATA,10,90.8,20
+2023,S1,IQS,Docente,6to grado,NAGUA,6,27.4,12
+2023,S1,IQS,Docente,6to grado,PUERTO PLATA,22,126.1,37
+2023,S1,IQS,Docente,6to grado,SAN CRISTOBAL,13,76.4,23
+2023,S1,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,10,111.4,29
+2023,S1,IQS,Docente,6to grado,SAN JUAN DE LA MAGUANA,5,6.8,6
+2023,S1,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,11,24.1,14
+2023,S1,IQS,Docente,6to grado,SANTIAGO,49,442.8,118
+2023,S1,IQS,Docente,6to grado,SANTO DOMINGO,131,815.3,237
+2023,S1,IQS,Docente,6to grado,Sin ubicación,128,499.4,199
+2023,S1,IQS,Docente,No especificado,AZUA,1,1.0,1
+2023,S1,IQS,Docente,No especificado,BARAHONA,1,1.4,2
+2023,S1,IQS,Docente,No especificado,COTUI,2,10.9,3
+2023,S1,IQS,Docente,No especificado,HIGUEY,2,49.7,14
+2023,S1,IQS,Docente,No especificado,LA VEGA,4,9.6,4
+2023,S1,IQS,Docente,No especificado,MAO,1,0.8,1
+2023,S1,IQS,Docente,No especificado,MONTE CRISTI,1,33.8,4
+2023,S1,IQS,Docente,No especificado,MONTE PLATA,2,3.2,2
+2023,S1,IQS,Docente,No especificado,NAGUA,2,5.4,3
+2023,S1,IQS,Docente,No especificado,PUERTO PLATA,3,23.9,3
+2023,S1,IQS,Docente,No especificado,SAN CRISTOBAL,3,10.0,5
+2023,S1,IQS,Docente,No especificado,SAN FRANCISCO DE MACORIS,7,68.4,19
+2023,S1,IQS,Docente,No especificado,SAN JUAN DE LA MAGUANA,2,5.8,2
+2023,S1,IQS,Docente,No especificado,SAN PEDRO DE MACORIS,8,36.3,21
+2023,S1,IQS,Docente,No especificado,SANTIAGO,14,50.2,23
+2023,S1,IQS,Docente,No especificado,SANTO DOMINGO,33,89.1,42
+2023,S1,IQS,Docente,No especificado,Sin ubicación,23,228.1,74
+2023,S1,IQS,Editor,No especificado,SANTIAGO,1,1052.4,58
+2023,S1,IQS,Estudiante,1er grado,AZUA,2,2.0,3
+2023,S1,IQS,Estudiante,1er grado,BAHORUCO,3,2.2,4
+2023,S1,IQS,Estudiante,1er grado,BARAHONA,6,12.5,6
+2023,S1,IQS,Estudiante,1er grado,COTUI,3,12.7,16
+2023,S1,IQS,Estudiante,1er grado,HIGUEY,10,17.6,21
+2023,S1,IQS,Estudiante,1er grado,LA VEGA,9,24.7,16
+2023,S1,IQS,Estudiante,1er grado,MAO,2,4.9,2
+2023,S1,IQS,Estudiante,1er grado,MONTE PLATA,5,12.5,7
+2023,S1,IQS,Estudiante,1er grado,NAGUA,3,8.2,4
+2023,S1,IQS,Estudiante,1er grado,PUERTO PLATA,9,5.1,22
+2023,S1,IQS,Estudiante,1er grado,SAN CRISTOBAL,22,29.1,43
+2023,S1,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,4,9.8,6
+2023,S1,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,3,3.0,4
+2023,S1,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,10,5.8,14
+2023,S1,IQS,Estudiante,1er grado,SANTIAGO,32,66.8,77
+2023,S1,IQS,Estudiante,1er grado,SANTO DOMINGO,129,307.8,233
+2023,S1,IQS,Estudiante,1er grado,Sin ubicación,107,240.6,221
+2023,S1,IQS,Estudiante,2do grado,AZUA,9,32.6,22
+2023,S1,IQS,Estudiante,2do grado,BAHORUCO,6,12.1,7
+2023,S1,IQS,Estudiante,2do grado,BARAHONA,4,12.4,9
+2023,S1,IQS,Estudiante,2do grado,COTUI,3,19.5,9
+2023,S1,IQS,Estudiante,2do grado,HIGUEY,9,16.8,14
+2023,S1,IQS,Estudiante,2do grado,LA VEGA,11,15.4,14
+2023,S1,IQS,Estudiante,2do grado,MAO,3,5.7,5
+2023,S1,IQS,Estudiante,2do grado,MONTE CRISTI,9,27.4,14
+2023,S1,IQS,Estudiante,2do grado,MONTE PLATA,11,35.4,16
+2023,S1,IQS,Estudiante,2do grado,NAGUA,6,14.8,8
+2023,S1,IQS,Estudiante,2do grado,PUERTO PLATA,5,7.1,7
+2023,S1,IQS,Estudiante,2do grado,SAN CRISTOBAL,18,39.2,30
+2023,S1,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,4,6.4,6
+2023,S1,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,5,21.2,13
+2023,S1,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,20,18.9,27
+2023,S1,IQS,Estudiante,2do grado,SANTIAGO,29,53.0,52
+2023,S1,IQS,Estudiante,2do grado,SANTO DOMINGO,206,682.5,314
+2023,S1,IQS,Estudiante,2do grado,Sin ubicación,104,320.0,160
+2023,S1,IQS,Estudiante,3er grado,AZUA,10,12.2,12
+2023,S1,IQS,Estudiante,3er grado,BARAHONA,4,8.9,5
+2023,S1,IQS,Estudiante,3er grado,COTUI,1,1.1,1
+2023,S1,IQS,Estudiante,3er grado,HIGUEY,2,1.2,2
+2023,S1,IQS,Estudiante,3er grado,LA VEGA,5,8.3,6
+2023,S1,IQS,Estudiante,3er grado,MAO,3,8.0,4
+2023,S1,IQS,Estudiante,3er grado,MONTE CRISTI,5,14.7,10
+2023,S1,IQS,Estudiante,3er grado,MONTE PLATA,21,57.7,29
+2023,S1,IQS,Estudiante,3er grado,PUERTO PLATA,4,9.3,6
+2023,S1,IQS,Estudiante,3er grado,SAN CRISTOBAL,15,49.5,23
+2023,S1,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,1,2.2,1
+2023,S1,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,2,0.1,2
+2023,S1,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,17,56.3,23
+2023,S1,IQS,Estudiante,3er grado,SANTIAGO,96,285.0,151
+2023,S1,IQS,Estudiante,3er grado,SANTO DOMINGO,183,678.5,245
+2023,S1,IQS,Estudiante,3er grado,Sin ubicación,143,599.5,236
+2023,S1,IQS,Estudiante,4to grado,AZUA,47,366.4,104
+2023,S1,IQS,Estudiante,4to grado,BAHORUCO,16,67.5,44
+2023,S1,IQS,Estudiante,4to grado,BARAHONA,29,110.0,54
+2023,S1,IQS,Estudiante,4to grado,COTUI,42,330.2,105
+2023,S1,IQS,Estudiante,4to grado,HIGUEY,60,499.4,156
+2023,S1,IQS,Estudiante,4to grado,LA VEGA,69,577.3,152
+2023,S1,IQS,Estudiante,4to grado,MAO,12,115.4,26
+2023,S1,IQS,Estudiante,4to grado,MONTE CRISTI,27,361.9,74
+2023,S1,IQS,Estudiante,4to grado,MONTE PLATA,20,95.7,43
+2023,S1,IQS,Estudiante,4to grado,NAGUA,27,152.8,52
+2023,S1,IQS,Estudiante,4to grado,PUERTO PLATA,33,248.4,95
+2023,S1,IQS,Estudiante,4to grado,SAN CRISTOBAL,59,548.5,133
+2023,S1,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,68,610.4,192
+2023,S1,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,14,63.9,24
+2023,S1,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,66,730.9,164
+2023,S1,IQS,Estudiante,4to grado,SANTIAGO,179,1924.2,502
+2023,S1,IQS,Estudiante,4to grado,SANTO DOMINGO,818,6972.4,1856
+2023,S1,IQS,Estudiante,4to grado,Sin ubicación,479,3825.0,1052
+2023,S1,IQS,Estudiante,5to grado,AZUA,18,110.6,31
+2023,S1,IQS,Estudiante,5to grado,BAHORUCO,2,17.4,3
+2023,S1,IQS,Estudiante,5to grado,BARAHONA,3,23.4,6
+2023,S1,IQS,Estudiante,5to grado,COTUI,11,39.4,18
+2023,S1,IQS,Estudiante,5to grado,HIGUEY,27,130.7,65
+2023,S1,IQS,Estudiante,5to grado,LA VEGA,21,174.9,42
+2023,S1,IQS,Estudiante,5to grado,MAO,5,52.3,10
+2023,S1,IQS,Estudiante,5to grado,MONTE CRISTI,8,80.7,17
+2023,S1,IQS,Estudiante,5to grado,MONTE PLATA,27,47.7,30
+2023,S1,IQS,Estudiante,5to grado,NAGUA,1,1.4,1
+2023,S1,IQS,Estudiante,5to grado,PUERTO PLATA,12,41.0,19
+2023,S1,IQS,Estudiante,5to grado,SAN CRISTOBAL,19,73.5,34
+2023,S1,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,9,14.4,21
+2023,S1,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,5,16.2,11
+2023,S1,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,28,84.1,56
+2023,S1,IQS,Estudiante,5to grado,SANTIAGO,62,834.1,168
+2023,S1,IQS,Estudiante,5to grado,SANTO DOMINGO,340,1748.6,644
+2023,S1,IQS,Estudiante,5to grado,Sin ubicación,157,768.7,301
+2023,S1,IQS,Estudiante,6to grado,AZUA,867,7127.6,2554
+2023,S1,IQS,Estudiante,6to grado,BAHORUCO,247,960.7,492
+2023,S1,IQS,Estudiante,6to grado,BARAHONA,461,2787.1,1093
+2023,S1,IQS,Estudiante,6to grado,COTUI,1157,9004.8,3245
+2023,S1,IQS,Estudiante,6to grado,HIGUEY,1151,8467.2,3085
+2023,S1,IQS,Estudiante,6to grado,LA VEGA,2037,18379.0,5618
+2023,S1,IQS,Estudiante,6to grado,MAO,571,4131.9,1434
+2023,S1,IQS,Estudiante,6to grado,MONTE CRISTI,653,5030.2,1629
+2023,S1,IQS,Estudiante,6to grado,MONTE PLATA,645,3589.2,1442
+2023,S1,IQS,Estudiante,6to grado,NAGUA,475,2656.3,1070
+2023,S1,IQS,Estudiante,6to grado,PUERTO PLATA,1074,8538.0,3004
+2023,S1,IQS,Estudiante,6to grado,SAN CRISTOBAL,1527,13082.4,4192
+2023,S1,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1300,8941.7,3331
+2023,S1,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,367,2704.8,975
+2023,S1,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,1920,15113.9,4867
+2023,S1,IQS,Estudiante,6to grado,SANTIAGO,3465,32105.6,9967
+2023,S1,IQS,Estudiante,6to grado,SANTO DOMINGO,13237,119047.6,34709
+2023,S1,IQS,Estudiante,6to grado,Sin ubicación,10805,89899.6,28049
+2023,S1,IQS,Estudiante,No especificado,AZUA,28,59.1,41
+2023,S1,IQS,Estudiante,No especificado,BAHORUCO,8,4.8,8
+2023,S1,IQS,Estudiante,No especificado,BARAHONA,3,2.1,5
+2023,S1,IQS,Estudiante,No especificado,COTUI,28,23.0,35
+2023,S1,IQS,Estudiante,No especificado,HIGUEY,30,80.7,48
+2023,S1,IQS,Estudiante,No especificado,LA VEGA,53,86.2,72
+2023,S1,IQS,Estudiante,No especificado,MAO,11,15.3,18
+2023,S1,IQS,Estudiante,No especificado,MONTE CRISTI,11,11.0,11
+2023,S1,IQS,Estudiante,No especificado,MONTE PLATA,20,26.3,21
+2023,S1,IQS,Estudiante,No especificado,NAGUA,12,24.2,14
+2023,S1,IQS,Estudiante,No especificado,PUERTO PLATA,24,41.5,33
+2023,S1,IQS,Estudiante,No especificado,SAN CRISTOBAL,18,24.8,20
+2023,S1,IQS,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,33,44.3,43
+2023,S1,IQS,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,6,5.3,7
+2023,S1,IQS,Estudiante,No especificado,SAN PEDRO DE MACORIS,35,39.5,50
+2023,S1,IQS,Estudiante,No especificado,SANTIAGO,82,221.1,124
+2023,S1,IQS,Estudiante,No especificado,SANTO DOMINGO,289,560.9,422
+2023,S1,IQS,Estudiante,No especificado,Sin ubicación,183,461.7,281
+2023,S1,IQS,Invitado,6to grado,BARAHONA,1,4.5,1
+2023,S1,IQS,Invitado,6to grado,HIGUEY,4,12.5,7
+2023,S1,IQS,Invitado,6to grado,LA VEGA,1,0.5,2
+2023,S1,IQS,Invitado,6to grado,MONTE PLATA,1,1.4,1
+2023,S1,IQS,Invitado,6to grado,SAN CRISTOBAL,3,56.5,15
+2023,S1,IQS,Invitado,6to grado,SAN PEDRO DE MACORIS,1,0.6,1
+2023,S1,IQS,Invitado,6to grado,SANTIAGO,4,6.2,4
+2023,S1,IQS,Invitado,6to grado,SANTO DOMINGO,13,143.9,31
+2023,S1,IQS,Invitado,6to grado,Sin ubicación,1703,11357.8,3395
+2023,S1,IQS,Invitado,No especificado,SANTO DOMINGO,1,0.5,1
+2023,S1,IQS,Invitado,No especificado,Sin ubicación,31,160.8,35
+2023,S2,IQ512,Admin,No especificado,Sin ubicación,2,144.3,32
+2023,S2,IQ512,Aliado de la Alianza,No especificado,Sin ubicación,1,5.8,2
+2023,S2,IQ512,Docente,No especificado,Sin ubicación,2,16.6,3
+2023,S2,IQ512,Editor,No especificado,Sin ubicación,1,144.0,30
+2023,S2,IQ512,Estudiante,No especificado,AZUA,47,3835.6,542
+2023,S2,IQ512,Estudiante,No especificado,BAHORUCO,25,1201.9,212
+2023,S2,IQ512,Estudiante,No especificado,BARAHONA,48,1961.2,403
+2023,S2,IQ512,Estudiante,No especificado,COTUI,35,1440.3,270
+2023,S2,IQ512,Estudiante,No especificado,HIGUEY,18,667.8,100
+2023,S2,IQ512,Estudiante,No especificado,LA VEGA,81,4245.2,637
+2023,S2,IQ512,Estudiante,No especificado,MAO,14,1428.9,225
+2023,S2,IQ512,Estudiante,No especificado,MONTE CRISTI,22,829.1,182
+2023,S2,IQ512,Estudiante,No especificado,MONTE PLATA,19,786.2,114
+2023,S2,IQ512,Estudiante,No especificado,NAGUA,20,1509.2,216
+2023,S2,IQ512,Estudiante,No especificado,PUERTO PLATA,23,780.3,139
+2023,S2,IQ512,Estudiante,No especificado,SAN CRISTOBAL,70,4273.2,584
+2023,S2,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,26,1809.4,319
+2023,S2,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,34,1206.8,192
+2023,S2,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,25,1063.2,190
+2023,S2,IQ512,Estudiante,No especificado,SANTIAGO,56,2664.6,384
+2023,S2,IQ512,Estudiante,No especificado,SANTO DOMINGO,294,17447.3,2576
+2023,S2,IQ512,Estudiante,No especificado,Sin ubicación,2719,176404.4,24504
+2023,S2,IQP,Admin,No especificado,Sin ubicación,1,33.7,22
+2023,S2,IQP,Docente,1er grado,Sin ubicación,2,1419.4,141
+2023,S2,IQP,Docente,2do grado,BAHORUCO,1,11.6,2
+2023,S2,IQP,Docente,2do grado,COTUI,4,94.3,20
+2023,S2,IQP,Docente,2do grado,HIGUEY,2,8.7,2
+2023,S2,IQP,Docente,2do grado,LA VEGA,8,111.4,17
+2023,S2,IQP,Docente,2do grado,NAGUA,1,49.3,4
+2023,S2,IQP,Docente,2do grado,PUERTO PLATA,1,11.0,2
+2023,S2,IQP,Docente,2do grado,SAN CRISTOBAL,3,43.2,8
+2023,S2,IQP,Docente,2do grado,SAN FRANCISCO DE MACORIS,1,9.3,2
+2023,S2,IQP,Docente,2do grado,SAN PEDRO DE MACORIS,2,38.9,5
+2023,S2,IQP,Docente,2do grado,SANTIAGO,10,396.1,66
+2023,S2,IQP,Docente,2do grado,SANTO DOMINGO,5,10.2,7
+2023,S2,IQP,Docente,2do grado,Sin ubicación,3,39.0,10
+2023,S2,IQP,Docente,3er grado,BARAHONA,1,0.2,1
+2023,S2,IQP,Docente,3er grado,SANTIAGO,2,42.4,8
+2023,S2,IQP,Docente,3er grado,Sin ubicación,3,13.1,3
+2023,S2,IQP,Docente,4to grado,AZUA,1,96.2,8
+2023,S2,IQP,Docente,4to grado,BARAHONA,1,0.0,1
+2023,S2,IQP,Docente,4to grado,COTUI,2,7.9,2
+2023,S2,IQP,Docente,4to grado,HIGUEY,1,18.9,12
+2023,S2,IQP,Docente,4to grado,LA VEGA,14,91.1,30
+2023,S2,IQP,Docente,4to grado,MAO,1,0.7,1
+2023,S2,IQP,Docente,4to grado,MONTE CRISTI,8,57.2,16
+2023,S2,IQP,Docente,4to grado,NAGUA,1,0.4,1
+2023,S2,IQP,Docente,4to grado,PUERTO PLATA,3,40.9,9
+2023,S2,IQP,Docente,4to grado,SAN CRISTOBAL,6,33.8,14
+2023,S2,IQP,Docente,4to grado,SAN FRANCISCO DE MACORIS,4,82.0,10
+2023,S2,IQP,Docente,4to grado,SAN JUAN DE LA MAGUANA,2,6.7,4
+2023,S2,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,7,41.8,16
+2023,S2,IQP,Docente,4to grado,SANTIAGO,14,317.1,43
+2023,S2,IQP,Docente,4to grado,SANTO DOMINGO,37,598.0,149
+2023,S2,IQP,Docente,4to grado,Sin ubicación,59,419.4,133
+2023,S2,IQP,Docente,5to grado,AZUA,60,804.8,187
+2023,S2,IQP,Docente,5to grado,BAHORUCO,48,246.4,96
+2023,S2,IQP,Docente,5to grado,BARAHONA,9,20.8,11
+2023,S2,IQP,Docente,5to grado,COTUI,82,940.7,215
+2023,S2,IQP,Docente,5to grado,HIGUEY,233,2684.3,828
+2023,S2,IQP,Docente,5to grado,LA VEGA,91,906.8,186
+2023,S2,IQP,Docente,5to grado,MAO,27,86.7,50
+2023,S2,IQP,Docente,5to grado,MONTE CRISTI,39,216.8,74
+2023,S2,IQP,Docente,5to grado,MONTE PLATA,12,19.9,15
+2023,S2,IQP,Docente,5to grado,NAGUA,40,555.5,134
+2023,S2,IQP,Docente,5to grado,PUERTO PLATA,50,686.2,186
+2023,S2,IQP,Docente,5to grado,SAN CRISTOBAL,192,1760.8,417
+2023,S2,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,67,585.7,184
+2023,S2,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,58,168.3,105
+2023,S2,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,342,4476.8,1065
+2023,S2,IQP,Docente,5to grado,SANTIAGO,353,4700.9,1081
+2023,S2,IQP,Docente,5to grado,SANTO DOMINGO,976,9455.3,2608
+2023,S2,IQP,Docente,5to grado,Sin ubicación,514,2766.4,953
+2023,S2,IQP,Docente,6to grado,AZUA,6,23.0,9
+2023,S2,IQP,Docente,6to grado,BAHORUCO,2,2.8,3
+2023,S2,IQP,Docente,6to grado,BARAHONA,6,7.6,8
+2023,S2,IQP,Docente,6to grado,COTUI,38,780.4,129
+2023,S2,IQP,Docente,6to grado,HIGUEY,28,624.3,128
+2023,S2,IQP,Docente,6to grado,LA VEGA,101,1162.9,263
+2023,S2,IQP,Docente,6to grado,MAO,17,323.8,76
+2023,S2,IQP,Docente,6to grado,MONTE CRISTI,8,27.8,12
+2023,S2,IQP,Docente,6to grado,MONTE PLATA,28,256.2,62
+2023,S2,IQP,Docente,6to grado,NAGUA,31,635.0,110
+2023,S2,IQP,Docente,6to grado,PUERTO PLATA,42,502.9,132
+2023,S2,IQP,Docente,6to grado,SAN CRISTOBAL,139,2371.3,561
+2023,S2,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,90,933.9,261
+2023,S2,IQP,Docente,6to grado,SAN JUAN DE LA MAGUANA,6,20.2,13
+2023,S2,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,47,944.9,168
+2023,S2,IQP,Docente,6to grado,SANTIAGO,79,1579.9,356
+2023,S2,IQP,Docente,6to grado,SANTO DOMINGO,288,2621.9,737
+2023,S2,IQP,Docente,6to grado,Sin ubicación,336,2039.7,675
+2023,S2,IQP,Docente,No especificado,AZUA,1,0.2,1
+2023,S2,IQP,Docente,No especificado,COTUI,2,31.6,5
+2023,S2,IQP,Docente,No especificado,HIGUEY,1,7.8,2
+2023,S2,IQP,Docente,No especificado,LA VEGA,7,80.6,20
+2023,S2,IQP,Docente,No especificado,MAO,1,3.0,1
+2023,S2,IQP,Docente,No especificado,PUERTO PLATA,1,45.9,6
+2023,S2,IQP,Docente,No especificado,SAN CRISTOBAL,7,66.5,16
+2023,S2,IQP,Docente,No especificado,SAN FRANCISCO DE MACORIS,3,7.1,8
+2023,S2,IQP,Docente,No especificado,SAN PEDRO DE MACORIS,4,26.3,7
+2023,S2,IQP,Docente,No especificado,SANTIAGO,7,52.0,15
+2023,S2,IQP,Docente,No especificado,SANTO DOMINGO,26,162.1,61
+2023,S2,IQP,Docente,No especificado,Sin ubicación,17,101.3,31
+2023,S2,IQP,Estudiante,1er grado,AZUA,2,2.1,2
+2023,S2,IQP,Estudiante,1er grado,BAHORUCO,1,0.8,1
+2023,S2,IQP,Estudiante,1er grado,COTUI,3,3.5,3
+2023,S2,IQP,Estudiante,1er grado,HIGUEY,2,5.9,2
+2023,S2,IQP,Estudiante,1er grado,LA VEGA,1,0.2,1
+2023,S2,IQP,Estudiante,1er grado,MAO,1,0.3,1
+2023,S2,IQP,Estudiante,1er grado,MONTE CRISTI,1,1.9,2
+2023,S2,IQP,Estudiante,1er grado,NAGUA,1,1.6,1
+2023,S2,IQP,Estudiante,1er grado,SAN CRISTOBAL,5,2.1,5
+2023,S2,IQP,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,1,0.8,1
+2023,S2,IQP,Estudiante,1er grado,SAN PEDRO DE MACORIS,3,3.5,3
+2023,S2,IQP,Estudiante,1er grado,SANTIAGO,8,8.4,8
+2023,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,52,238.7,94
+2023,S2,IQP,Estudiante,1er grado,Sin ubicación,35,188.1,85
+2023,S2,IQP,Estudiante,2do grado,AZUA,20,23.5,24
+2023,S2,IQP,Estudiante,2do grado,BAHORUCO,10,23.4,11
+2023,S2,IQP,Estudiante,2do grado,BARAHONA,25,24.7,30
+2023,S2,IQP,Estudiante,2do grado,COTUI,22,36.8,24
+2023,S2,IQP,Estudiante,2do grado,HIGUEY,43,87.9,50
+2023,S2,IQP,Estudiante,2do grado,LA VEGA,58,238.5,86
+2023,S2,IQP,Estudiante,2do grado,MAO,4,14.5,5
+2023,S2,IQP,Estudiante,2do grado,MONTE CRISTI,31,87.5,39
+2023,S2,IQP,Estudiante,2do grado,MONTE PLATA,22,55.5,25
+2023,S2,IQP,Estudiante,2do grado,NAGUA,13,20.7,15
+2023,S2,IQP,Estudiante,2do grado,PUERTO PLATA,7,20.1,7
+2023,S2,IQP,Estudiante,2do grado,SAN CRISTOBAL,127,307.3,179
+2023,S2,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,26,66.0,30
+2023,S2,IQP,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,26,44.4,26
+2023,S2,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,192,457.0,216
+2023,S2,IQP,Estudiante,2do grado,SANTIAGO,144,179.6,176
+2023,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,850,1676.9,943
+2023,S2,IQP,Estudiante,2do grado,Sin ubicación,710,1444.1,863
+2023,S2,IQP,Estudiante,3er grado,AZUA,2,23.2,6
+2023,S2,IQP,Estudiante,3er grado,BARAHONA,2,2.6,2
+2023,S2,IQP,Estudiante,3er grado,COTUI,1,0.3,1
+2023,S2,IQP,Estudiante,3er grado,HIGUEY,7,36.9,15
+2023,S2,IQP,Estudiante,3er grado,LA VEGA,2,3.4,2
+2023,S2,IQP,Estudiante,3er grado,MONTE CRISTI,3,7.4,4
+2023,S2,IQP,Estudiante,3er grado,PUERTO PLATA,1,0.2,1
+2023,S2,IQP,Estudiante,3er grado,SAN CRISTOBAL,5,28.4,6
+2023,S2,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,5,25.9,14
+2023,S2,IQP,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,1,1.1,1
+2023,S2,IQP,Estudiante,3er grado,SAN PEDRO DE MACORIS,5,19.8,8
+2023,S2,IQP,Estudiante,3er grado,SANTIAGO,3,2.5,3
+2023,S2,IQP,Estudiante,3er grado,SANTO DOMINGO,59,211.8,80
+2023,S2,IQP,Estudiante,3er grado,Sin ubicación,48,127.5,79
+2023,S2,IQP,Estudiante,4to grado,AZUA,5,48.1,13
+2023,S2,IQP,Estudiante,4to grado,COTUI,5,10.4,5
+2023,S2,IQP,Estudiante,4to grado,HIGUEY,31,54.5,37
+2023,S2,IQP,Estudiante,4to grado,LA VEGA,3,4.0,3
+2023,S2,IQP,Estudiante,4to grado,MAO,2,3.3,6
+2023,S2,IQP,Estudiante,4to grado,MONTE CRISTI,1,1.4,1
+2023,S2,IQP,Estudiante,4to grado,NAGUA,1,3.7,2
+2023,S2,IQP,Estudiante,4to grado,PUERTO PLATA,1,0.7,1
+2023,S2,IQP,Estudiante,4to grado,SAN CRISTOBAL,4,23.2,13
+2023,S2,IQP,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,5,11.4,10
+2023,S2,IQP,Estudiante,4to grado,SAN PEDRO DE MACORIS,8,12.1,13
+2023,S2,IQP,Estudiante,4to grado,SANTIAGO,62,176.1,95
+2023,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,86,311.2,124
+2023,S2,IQP,Estudiante,4to grado,Sin ubicación,39,150.7,82
+2023,S2,IQP,Estudiante,5to grado,AZUA,467,2813.0,773
+2023,S2,IQP,Estudiante,5to grado,BAHORUCO,202,788.5,370
+2023,S2,IQP,Estudiante,5to grado,BARAHONA,8,21.1,17
+2023,S2,IQP,Estudiante,5to grado,COTUI,803,5442.9,1466
+2023,S2,IQP,Estudiante,5to grado,HIGUEY,4206,20431.2,7543
+2023,S2,IQP,Estudiante,5to grado,LA VEGA,1204,8453.9,2289
+2023,S2,IQP,Estudiante,5to grado,MAO,185,739.1,308
+2023,S2,IQP,Estudiante,5to grado,MONTE CRISTI,295,1679.2,489
+2023,S2,IQP,Estudiante,5to grado,MONTE PLATA,57,163.5,66
+2023,S2,IQP,Estudiante,5to grado,NAGUA,530,4137.5,1006
+2023,S2,IQP,Estudiante,5to grado,PUERTO PLATA,708,6288.4,1510
+2023,S2,IQP,Estudiante,5to grado,SAN CRISTOBAL,4107,27099.2,8036
+2023,S2,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1072,8670.3,2235
+2023,S2,IQP,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,317,1950.8,550
+2023,S2,IQP,Estudiante,5to grado,SAN PEDRO DE MACORIS,5891,35820.3,11564
+2023,S2,IQP,Estudiante,5to grado,SANTIAGO,6109,36585.0,11963
+2023,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,13841,76226.7,25975
+2023,S2,IQP,Estudiante,5to grado,Sin ubicación,3502,18571.7,6404
+2023,S2,IQP,Estudiante,6to grado,AZUA,98,218.3,194
+2023,S2,IQP,Estudiante,6to grado,BAHORUCO,5,2.0,5
+2023,S2,IQP,Estudiante,6to grado,BARAHONA,2,1.2,2
+2023,S2,IQP,Estudiante,6to grado,COTUI,8,27.9,12
+2023,S2,IQP,Estudiante,6to grado,HIGUEY,22,60.1,35
+2023,S2,IQP,Estudiante,6to grado,LA VEGA,3,18.7,6
+2023,S2,IQP,Estudiante,6to grado,MAO,9,22.3,15
+2023,S2,IQP,Estudiante,6to grado,MONTE CRISTI,2,9.2,3
+2023,S2,IQP,Estudiante,6to grado,NAGUA,4,10.0,7
+2023,S2,IQP,Estudiante,6to grado,PUERTO PLATA,7,58.6,12
+2023,S2,IQP,Estudiante,6to grado,SAN CRISTOBAL,12,14.6,12
+2023,S2,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,6,4.9,6
+2023,S2,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,2,0.9,2
+2023,S2,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,82,222.5,123
+2023,S2,IQP,Estudiante,6to grado,SANTIAGO,425,1344.2,637
+2023,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,207,466.5,297
+2023,S2,IQP,Estudiante,6to grado,Sin ubicación,160,420.8,227
+2023,S2,IQP,Estudiante,No especificado,Sin ubicación,2,18.7,7
+2023,S2,IQP,Parent,No especificado,PUERTO PLATA,1,0.5,1
+2023,S2,IQP,Parent,No especificado,Sin ubicación,41,71.8,59
+2023,S2,IQP,Sin rol,No especificado,Sin ubicación,1,1067.4,98
+2023,S2,IQS,Admin,No especificado,Sin ubicación,1,98.7,23
+2023,S2,IQS,Docente,1er grado,AZUA,6,25.6,21
+2023,S2,IQS,Docente,1er grado,BAHORUCO,4,24.5,7
+2023,S2,IQS,Docente,1er grado,BARAHONA,1,0.5,4
+2023,S2,IQS,Docente,1er grado,COTUI,3,13.8,5
+2023,S2,IQS,Docente,1er grado,HIGUEY,4,45.0,8
+2023,S2,IQS,Docente,1er grado,LA VEGA,12,72.9,29
+2023,S2,IQS,Docente,1er grado,MAO,3,5.5,6
+2023,S2,IQS,Docente,1er grado,MONTE CRISTI,5,23.7,11
+2023,S2,IQS,Docente,1er grado,MONTE PLATA,5,42.0,10
+2023,S2,IQS,Docente,1er grado,NAGUA,2,1.3,3
+2023,S2,IQS,Docente,1er grado,PUERTO PLATA,6,66.7,23
+2023,S2,IQS,Docente,1er grado,SAN CRISTOBAL,5,186.2,34
+2023,S2,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,11,36.8,21
+2023,S2,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,2,1.4,3
+2023,S2,IQS,Docente,1er grado,SAN PEDRO DE MACORIS,5,34.4,14
+2023,S2,IQS,Docente,1er grado,SANTIAGO,17,245.7,67
+2023,S2,IQS,Docente,1er grado,SANTO DOMINGO,46,536.9,147
+2023,S2,IQS,Docente,1er grado,Sin ubicación,59,278.3,104
+2023,S2,IQS,Docente,4to grado,AZUA,70,507.4,191
+2023,S2,IQS,Docente,4to grado,BAHORUCO,37,232.6,92
+2023,S2,IQS,Docente,4to grado,BARAHONA,17,85.9,30
+2023,S2,IQS,Docente,4to grado,COTUI,81,619.1,182
+2023,S2,IQS,Docente,4to grado,HIGUEY,124,1699.0,401
+2023,S2,IQS,Docente,4to grado,LA VEGA,150,1959.9,421
+2023,S2,IQS,Docente,4to grado,MAO,23,166.4,56
+2023,S2,IQS,Docente,4to grado,MONTE CRISTI,59,626.0,181
+2023,S2,IQS,Docente,4to grado,MONTE PLATA,27,81.5,40
+2023,S2,IQS,Docente,4to grado,NAGUA,57,426.0,150
+2023,S2,IQS,Docente,4to grado,PUERTO PLATA,72,691.9,214
+2023,S2,IQS,Docente,4to grado,SAN CRISTOBAL,205,1833.2,533
+2023,S2,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,85,640.3,194
+2023,S2,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,40,178.6,83
+2023,S2,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,343,3860.4,1042
+2023,S2,IQS,Docente,4to grado,SANTIAGO,374,2588.9,970
+2023,S2,IQS,Docente,4to grado,SANTO DOMINGO,1067,9323.1,2937
+2023,S2,IQS,Docente,4to grado,Sin ubicación,651,3529.9,1449
+2023,S2,IQS,Docente,5to grado,LA VEGA,1,1.9,2
+2023,S2,IQS,Docente,5to grado,NAGUA,1,2.3,1
+2023,S2,IQS,Docente,5to grado,PUERTO PLATA,1,7.3,6
+2023,S2,IQS,Docente,5to grado,SAN FRANCISCO DE MACORIS,1,6.8,1
+2023,S2,IQS,Docente,5to grado,SAN PEDRO DE MACORIS,1,0.1,3
+2023,S2,IQS,Docente,6to grado,AZUA,6,13.7,10
+2023,S2,IQS,Docente,6to grado,BARAHONA,2,0.8,3
+2023,S2,IQS,Docente,6to grado,COTUI,54,516.7,169
+2023,S2,IQS,Docente,6to grado,HIGUEY,8,85.5,26
+2023,S2,IQS,Docente,6to grado,LA VEGA,54,793.2,187
+2023,S2,IQS,Docente,6to grado,MAO,5,43.7,11
+2023,S2,IQS,Docente,6to grado,MONTE CRISTI,8,31.3,13
+2023,S2,IQS,Docente,6to grado,MONTE PLATA,32,177.4,51
+2023,S2,IQS,Docente,6to grado,NAGUA,5,132.2,21
+2023,S2,IQS,Docente,6to grado,PUERTO PLATA,36,442.9,97
+2023,S2,IQS,Docente,6to grado,SAN CRISTOBAL,94,1546.2,351
+2023,S2,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,37,308.7,95
+2023,S2,IQS,Docente,6to grado,SAN JUAN DE LA MAGUANA,7,108.9,23
+2023,S2,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,93,1179.1,326
+2023,S2,IQS,Docente,6to grado,SANTIAGO,86,1200.0,283
+2023,S2,IQS,Docente,6to grado,SANTO DOMINGO,219,2230.0,637
+2023,S2,IQS,Docente,6to grado,Sin ubicación,286,2302.7,769
+2023,S2,IQS,Docente,No especificado,AZUA,1,0.6,1
+2023,S2,IQS,Docente,No especificado,BARAHONA,1,1.9,1
+2023,S2,IQS,Docente,No especificado,HIGUEY,1,1.8,1
+2023,S2,IQS,Docente,No especificado,LA VEGA,3,94.2,11
+2023,S2,IQS,Docente,No especificado,MAO,1,0.3,1
+2023,S2,IQS,Docente,No especificado,MONTE CRISTI,1,0.4,1
+2023,S2,IQS,Docente,No especificado,MONTE PLATA,3,1.1,3
+2023,S2,IQS,Docente,No especificado,NAGUA,3,16.7,8
+2023,S2,IQS,Docente,No especificado,SAN CRISTOBAL,2,3.7,2
+2023,S2,IQS,Docente,No especificado,SAN FRANCISCO DE MACORIS,1,0.9,2
+2023,S2,IQS,Docente,No especificado,SAN PEDRO DE MACORIS,8,171.7,33
+2023,S2,IQS,Docente,No especificado,SANTIAGO,4,21.0,7
+2023,S2,IQS,Docente,No especificado,SANTO DOMINGO,18,179.6,61
+2023,S2,IQS,Docente,No especificado,Sin ubicación,15,61.5,31
+2023,S2,IQS,Editor,No especificado,SANTIAGO,1,649.0,72
+2023,S2,IQS,Estudiante,1er grado,AZUA,17,35.8,28
+2023,S2,IQS,Estudiante,1er grado,BAHORUCO,2,2.3,5
+2023,S2,IQS,Estudiante,1er grado,BARAHONA,10,5.0,15
+2023,S2,IQS,Estudiante,1er grado,COTUI,11,5.6,19
+2023,S2,IQS,Estudiante,1er grado,HIGUEY,21,29.6,44
+2023,S2,IQS,Estudiante,1er grado,LA VEGA,23,53.5,44
+2023,S2,IQS,Estudiante,1er grado,MAO,4,6.0,8
+2023,S2,IQS,Estudiante,1er grado,MONTE CRISTI,14,69.2,53
+2023,S2,IQS,Estudiante,1er grado,MONTE PLATA,2,44.6,37
+2023,S2,IQS,Estudiante,1er grado,NAGUA,29,37.0,83
+2023,S2,IQS,Estudiante,1er grado,PUERTO PLATA,23,36.1,51
+2023,S2,IQS,Estudiante,1er grado,SAN CRISTOBAL,90,304.5,177
+2023,S2,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,16,36.6,38
+2023,S2,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,2,7.6,2
+2023,S2,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,48,97.5,103
+2023,S2,IQS,Estudiante,1er grado,SANTIAGO,69,277.5,167
+2023,S2,IQS,Estudiante,1er grado,SANTO DOMINGO,425,1423.9,1110
+2023,S2,IQS,Estudiante,1er grado,Sin ubicación,243,391.9,574
+2023,S2,IQS,Estudiante,2do grado,AZUA,587,3249.2,1220
+2023,S2,IQS,Estudiante,2do grado,BAHORUCO,377,2379.5,533
+2023,S2,IQS,Estudiante,2do grado,BARAHONA,46,142.6,67
+2023,S2,IQS,Estudiante,2do grado,COTUI,1096,9005.8,2531
+2023,S2,IQS,Estudiante,2do grado,HIGUEY,2110,10217.0,4554
+2023,S2,IQS,Estudiante,2do grado,LA VEGA,2251,18384.4,5110
+2023,S2,IQS,Estudiante,2do grado,MAO,125,536.1,234
+2023,S2,IQS,Estudiante,2do grado,MONTE CRISTI,873,6284.3,2212
+2023,S2,IQS,Estudiante,2do grado,MONTE PLATA,287,2041.3,482
+2023,S2,IQS,Estudiante,2do grado,NAGUA,484,1614.0,1073
+2023,S2,IQS,Estudiante,2do grado,PUERTO PLATA,791,7072.0,1851
+2023,S2,IQS,Estudiante,2do grado,SAN CRISTOBAL,4414,32575.6,10025
+2023,S2,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,629,4651.0,1663
+2023,S2,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,440,2002.5,758
+2023,S2,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,4867,37238.9,11704
+2023,S2,IQS,Estudiante,2do grado,SANTIAGO,6936,30911.2,14176
+2023,S2,IQS,Estudiante,2do grado,SANTO DOMINGO,20289,121488.4,45863
+2023,S2,IQS,Estudiante,2do grado,Sin ubicación,8946,52744.2,19459
+2023,S2,IQS,Estudiante,3er grado,AZUA,10,18.5,31
+2023,S2,IQS,Estudiante,3er grado,BARAHONA,1,0.2,2
+2023,S2,IQS,Estudiante,3er grado,COTUI,5,12.0,7
+2023,S2,IQS,Estudiante,3er grado,HIGUEY,39,178.2,45
+2023,S2,IQS,Estudiante,3er grado,LA VEGA,11,16.7,15
+2023,S2,IQS,Estudiante,3er grado,MAO,2,2.4,5
+2023,S2,IQS,Estudiante,3er grado,MONTE CRISTI,2,7.7,3
+2023,S2,IQS,Estudiante,3er grado,MONTE PLATA,6,17.2,7
+2023,S2,IQS,Estudiante,3er grado,NAGUA,11,8.1,18
+2023,S2,IQS,Estudiante,3er grado,PUERTO PLATA,5,13.3,8
+2023,S2,IQS,Estudiante,3er grado,SAN CRISTOBAL,22,56.1,36
+2023,S2,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,3,2.8,3
+2023,S2,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,1,1.2,2
+2023,S2,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,9,24.3,13
+2023,S2,IQS,Estudiante,3er grado,SANTIAGO,22,39.6,29
+2023,S2,IQS,Estudiante,3er grado,SANTO DOMINGO,139,597.3,309
+2023,S2,IQS,Estudiante,3er grado,Sin ubicación,76,121.0,125
+2023,S2,IQS,Estudiante,4to grado,AZUA,14,26.3,28
+2023,S2,IQS,Estudiante,4to grado,BAHORUCO,2,0.8,3
+2023,S2,IQS,Estudiante,4to grado,BARAHONA,6,12.7,10
+2023,S2,IQS,Estudiante,4to grado,COTUI,5,6.3,8
+2023,S2,IQS,Estudiante,4to grado,HIGUEY,9,26.9,18
+2023,S2,IQS,Estudiante,4to grado,LA VEGA,11,8.6,15
+2023,S2,IQS,Estudiante,4to grado,MAO,1,0.5,1
+2023,S2,IQS,Estudiante,4to grado,MONTE CRISTI,4,2.2,7
+2023,S2,IQS,Estudiante,4to grado,MONTE PLATA,2,3.8,3
+2023,S2,IQS,Estudiante,4to grado,NAGUA,3,9.4,8
+2023,S2,IQS,Estudiante,4to grado,PUERTO PLATA,3,1.4,3
+2023,S2,IQS,Estudiante,4to grado,SAN CRISTOBAL,9,13.6,16
+2023,S2,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,4,27.1,11
+2023,S2,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,2,2.7,3
+2023,S2,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,18,115.1,50
+2023,S2,IQS,Estudiante,4to grado,SANTIAGO,46,84.2,69
+2023,S2,IQS,Estudiante,4to grado,SANTO DOMINGO,170,604.7,332
+2023,S2,IQS,Estudiante,4to grado,Sin ubicación,136,687.8,241
+2023,S2,IQS,Estudiante,5to grado,AZUA,13,41.7,20
+2023,S2,IQS,Estudiante,5to grado,BAHORUCO,1,1.2,4
+2023,S2,IQS,Estudiante,5to grado,BARAHONA,2,1.8,2
+2023,S2,IQS,Estudiante,5to grado,COTUI,3,9.7,7
+2023,S2,IQS,Estudiante,5to grado,HIGUEY,32,43.6,58
+2023,S2,IQS,Estudiante,5to grado,LA VEGA,19,47.2,29
+2023,S2,IQS,Estudiante,5to grado,MAO,5,20.8,14
+2023,S2,IQS,Estudiante,5to grado,MONTE CRISTI,3,1.5,4
+2023,S2,IQS,Estudiante,5to grado,MONTE PLATA,8,21.1,20
+2023,S2,IQS,Estudiante,5to grado,NAGUA,15,20.1,23
+2023,S2,IQS,Estudiante,5to grado,PUERTO PLATA,11,22.0,21
+2023,S2,IQS,Estudiante,5to grado,SAN CRISTOBAL,325,2642.2,915
+2023,S2,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,7,3.3,9
+2023,S2,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,1,0.1,2
+2023,S2,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,49,129.3,74
+2023,S2,IQS,Estudiante,5to grado,SANTIAGO,80,124.3,124
+2023,S2,IQS,Estudiante,5to grado,SANTO DOMINGO,306,816.3,553
+2023,S2,IQS,Estudiante,5to grado,Sin ubicación,302,1063.3,583
+2023,S2,IQS,Estudiante,6to grado,AZUA,239,809.1,642
+2023,S2,IQS,Estudiante,6to grado,BAHORUCO,9,12.0,29
+2023,S2,IQS,Estudiante,6to grado,BARAHONA,32,39.8,79
+2023,S2,IQS,Estudiante,6to grado,COTUI,114,460.4,248
+2023,S2,IQS,Estudiante,6to grado,HIGUEY,125,261.4,268
+2023,S2,IQS,Estudiante,6to grado,LA VEGA,213,577.0,405
+2023,S2,IQS,Estudiante,6to grado,MAO,27,226.6,69
+2023,S2,IQS,Estudiante,6to grado,MONTE CRISTI,34,131.2,61
+2023,S2,IQS,Estudiante,6to grado,MONTE PLATA,39,101.4,77
+2023,S2,IQS,Estudiante,6to grado,NAGUA,80,103.6,196
+2023,S2,IQS,Estudiante,6to grado,PUERTO PLATA,60,252.7,120
+2023,S2,IQS,Estudiante,6to grado,SAN CRISTOBAL,171,388.5,317
+2023,S2,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,111,249.2,247
+2023,S2,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,41,82.5,89
+2023,S2,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,321,3899.1,1213
+2023,S2,IQS,Estudiante,6to grado,SANTIAGO,502,1326.2,1086
+2023,S2,IQS,Estudiante,6to grado,SANTO DOMINGO,1680,5621.2,3505
+2023,S2,IQS,Estudiante,6to grado,Sin ubicación,1120,4085.7,2556
+2023,S2,IQS,Estudiante,No especificado,BAHORUCO,3,7.0,4
+2023,S2,IQS,Estudiante,No especificado,BARAHONA,2,3.2,4
+2023,S2,IQS,Estudiante,No especificado,COTUI,10,23.0,14
+2023,S2,IQS,Estudiante,No especificado,HIGUEY,19,77.1,59
+2023,S2,IQS,Estudiante,No especificado,LA VEGA,35,178.5,56
+2023,S2,IQS,Estudiante,No especificado,MAO,4,8.6,14
+2023,S2,IQS,Estudiante,No especificado,MONTE CRISTI,2,16.0,4
+2023,S2,IQS,Estudiante,No especificado,MONTE PLATA,1,7.7,1
+2023,S2,IQS,Estudiante,No especificado,PUERTO PLATA,12,116.1,41
+2023,S2,IQS,Estudiante,No especificado,SAN CRISTOBAL,35,258.4,98
+2023,S2,IQS,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,14,139.9,50
+2023,S2,IQS,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,2,1.6,4
+2023,S2,IQS,Estudiante,No especificado,SAN PEDRO DE MACORIS,25,183.1,53
+2023,S2,IQS,Estudiante,No especificado,SANTIAGO,49,247.4,118
+2023,S2,IQS,Estudiante,No especificado,SANTO DOMINGO,157,809.9,329
+2023,S2,IQS,Estudiante,No especificado,Sin ubicación,82,558.0,218
+2023,S2,IQS,Invitado,4to grado,SAN CRISTOBAL,2,9.8,4
+2023,S2,IQS,Invitado,4to grado,SANTIAGO,1,3.5,2
+2023,S2,IQS,Invitado,4to grado,Sin ubicación,74,468.6,168
+2023,S2,IQS,Invitado,6to grado,COTUI,1,2.4,2
+2023,S2,IQS,Invitado,6to grado,HIGUEY,2,9.7,4
+2023,S2,IQS,Invitado,6to grado,LA VEGA,3,5.6,5
+2023,S2,IQS,Invitado,6to grado,MONTE CRISTI,2,2.1,3
+2023,S2,IQS,Invitado,6to grado,SAN CRISTOBAL,2,1.4,2
+2023,S2,IQS,Invitado,6to grado,SAN PEDRO DE MACORIS,1,18.3,4
+2023,S2,IQS,Invitado,6to grado,SANTIAGO,6,10.8,9
+2023,S2,IQS,Invitado,6to grado,SANTO DOMINGO,17,73.2,34
+2023,S2,IQS,Invitado,6to grado,Sin ubicación,965,3797.3,1660
+2023,S2,IQS,Invitado,No especificado,SANTO DOMINGO,1,0.7,1
+2023,S2,IQS,Invitado,No especificado,Sin ubicación,15,33.2,27
+2024,S1,IQ512,Admin,No especificado,Sin ubicación,2,2.0,8
+2024,S1,IQ512,Coordinador,No especificado,Sin ubicación,1,1.5,3
+2024,S1,IQ512,Editor,No especificado,Sin ubicación,1,67.2,24
+2024,S1,IQ512,Estudiante,No especificado,AZUA,27,54.7,84
+2024,S1,IQ512,Estudiante,No especificado,BAHORUCO,8,16.6,32
+2024,S1,IQ512,Estudiante,No especificado,BARAHONA,27,48.2,105
+2024,S1,IQ512,Estudiante,No especificado,COTUI,19,29.4,49
+2024,S1,IQ512,Estudiante,No especificado,HIGUEY,12,15.1,29
+2024,S1,IQ512,Estudiante,No especificado,LA VEGA,40,39.5,66
+2024,S1,IQ512,Estudiante,No especificado,MAO,12,22.6,46
+2024,S1,IQ512,Estudiante,No especificado,MONTE CRISTI,9,14.3,32
+2024,S1,IQ512,Estudiante,No especificado,MONTE PLATA,9,7.3,15
+2024,S1,IQ512,Estudiante,No especificado,NAGUA,17,23.9,45
+2024,S1,IQ512,Estudiante,No especificado,PUERTO PLATA,11,14.6,29
+2024,S1,IQ512,Estudiante,No especificado,SAN CRISTOBAL,23,29.8,60
+2024,S1,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,22,54.4,97
+2024,S1,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,19,22.1,38
+2024,S1,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,19,42.3,61
+2024,S1,IQ512,Estudiante,No especificado,SANTIAGO,25,21.8,45
+2024,S1,IQ512,Estudiante,No especificado,SANTO DOMINGO,141,220.2,362
+2024,S1,IQ512,Estudiante,No especificado,Sin ubicación,941,1576.8,2270
+2024,S1,IQP,Admin,No especificado,Sin ubicación,2,1.4,10
+2024,S1,IQP,Coordinador,6to grado,Sin ubicación,1,0.0,2
+2024,S1,IQP,Docente,1er grado,Sin ubicación,2,156.6,113
+2024,S1,IQP,Docente,2do grado,COTUI,1,0.9,1
+2024,S1,IQP,Docente,2do grado,LA VEGA,1,0.9,1
+2024,S1,IQP,Docente,2do grado,SAN CRISTOBAL,1,0.6,1
+2024,S1,IQP,Docente,2do grado,SAN FRANCISCO DE MACORIS,1,0.2,1
+2024,S1,IQP,Docente,2do grado,SAN PEDRO DE MACORIS,1,1.0,1
+2024,S1,IQP,Docente,2do grado,SANTIAGO,5,17.2,22
+2024,S1,IQP,Docente,3er grado,BARAHONA,1,0.1,1
+2024,S1,IQP,Docente,3er grado,MAO,1,1.6,2
+2024,S1,IQP,Docente,3er grado,Sin ubicación,1,0.1,1
+2024,S1,IQP,Docente,4to grado,AZUA,2,1.6,4
+2024,S1,IQP,Docente,4to grado,COTUI,1,0.0,1
+2024,S1,IQP,Docente,4to grado,HIGUEY,2,9.1,7
+2024,S1,IQP,Docente,4to grado,LA VEGA,2,10.2,5
+2024,S1,IQP,Docente,4to grado,MONTE CRISTI,4,3.6,7
+2024,S1,IQP,Docente,4to grado,PUERTO PLATA,1,0.8,1
+2024,S1,IQP,Docente,4to grado,SAN CRISTOBAL,1,0.0,1
+2024,S1,IQP,Docente,4to grado,SAN FRANCISCO DE MACORIS,3,2.2,6
+2024,S1,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,2,1.1,3
+2024,S1,IQP,Docente,4to grado,SANTIAGO,5,8.9,14
+2024,S1,IQP,Docente,4to grado,SANTO DOMINGO,15,14.3,24
+2024,S1,IQP,Docente,4to grado,Sin ubicación,28,37.1,63
+2024,S1,IQP,Docente,5to grado,AZUA,25,22.9,38
+2024,S1,IQP,Docente,5to grado,BAHORUCO,6,4.2,9
+2024,S1,IQP,Docente,5to grado,BARAHONA,8,4.4,8
+2024,S1,IQP,Docente,5to grado,COTUI,22,45.6,60
+2024,S1,IQP,Docente,5to grado,HIGUEY,105,215.0,258
+2024,S1,IQP,Docente,5to grado,LA VEGA,23,25.5,40
+2024,S1,IQP,Docente,5to grado,MAO,12,12.3,25
+2024,S1,IQP,Docente,5to grado,MONTE CRISTI,19,16.0,23
+2024,S1,IQP,Docente,5to grado,MONTE PLATA,17,17.1,19
+2024,S1,IQP,Docente,5to grado,NAGUA,18,23.3,26
+2024,S1,IQP,Docente,5to grado,PUERTO PLATA,20,35.8,49
+2024,S1,IQP,Docente,5to grado,SAN CRISTOBAL,29,24.8,41
+2024,S1,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,32,46.4,73
+2024,S1,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,12,5.3,14
+2024,S1,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,59,57.3,82
+2024,S1,IQP,Docente,5to grado,SANTIAGO,99,201.9,270
+2024,S1,IQP,Docente,5to grado,SANTO DOMINGO,289,438.9,548
+2024,S1,IQP,Docente,5to grado,Sin ubicación,351,434.8,615
+2024,S1,IQP,Docente,6to grado,BAHORUCO,1,0.2,1
+2024,S1,IQP,Docente,6to grado,COTUI,6,23.0,30
+2024,S1,IQP,Docente,6to grado,HIGUEY,13,50.7,58
+2024,S1,IQP,Docente,6to grado,LA VEGA,8,45.7,54
+2024,S1,IQP,Docente,6to grado,MAO,5,8.1,14
+2024,S1,IQP,Docente,6to grado,MONTE CRISTI,2,2.9,5
+2024,S1,IQP,Docente,6to grado,MONTE PLATA,5,7.0,12
+2024,S1,IQP,Docente,6to grado,NAGUA,11,22.8,20
+2024,S1,IQP,Docente,6to grado,PUERTO PLATA,3,8.4,11
+2024,S1,IQP,Docente,6to grado,SAN CRISTOBAL,46,96.9,123
+2024,S1,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,22,33.3,39
+2024,S1,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,5,4.2,6
+2024,S1,IQP,Docente,6to grado,SANTIAGO,22,61.5,73
+2024,S1,IQP,Docente,6to grado,SANTO DOMINGO,28,50.1,71
+2024,S1,IQP,Docente,6to grado,Sin ubicación,51,65.4,103
+2024,S1,IQP,Docente,No especificado,MONTE PLATA,1,0.8,2
+2024,S1,IQP,Docente,No especificado,SAN CRISTOBAL,1,0.2,1
+2024,S1,IQP,Docente,No especificado,SAN FRANCISCO DE MACORIS,1,0.6,1
+2024,S1,IQP,Docente,No especificado,SANTIAGO,1,2.1,1
+2024,S1,IQP,Docente,No especificado,Sin ubicación,3,2.4,4
+2024,S1,IQP,Estudiante,1er grado,AZUA,1,0.6,1
+2024,S1,IQP,Estudiante,1er grado,BAHORUCO,2,1.0,2
+2024,S1,IQP,Estudiante,1er grado,COTUI,3,3.3,4
+2024,S1,IQP,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,3,8.2,9
+2024,S1,IQP,Estudiante,1er grado,SAN PEDRO DE MACORIS,2,2.5,3
+2024,S1,IQP,Estudiante,1er grado,SANTIAGO,2,0.7,2
+2024,S1,IQP,Estudiante,1er grado,SANTO DOMINGO,17,38.7,42
+2024,S1,IQP,Estudiante,1er grado,Sin ubicación,31,35.3,58
+2024,S1,IQP,Estudiante,2do grado,AZUA,3,2.1,3
+2024,S1,IQP,Estudiante,2do grado,BAHORUCO,2,1.0,2
+2024,S1,IQP,Estudiante,2do grado,COTUI,2,2.8,2
+2024,S1,IQP,Estudiante,2do grado,HIGUEY,3,1.8,3
+2024,S1,IQP,Estudiante,2do grado,LA VEGA,4,1.7,4
+2024,S1,IQP,Estudiante,2do grado,MONTE CRISTI,2,1.4,3
+2024,S1,IQP,Estudiante,2do grado,MONTE PLATA,1,0.2,1
+2024,S1,IQP,Estudiante,2do grado,PUERTO PLATA,2,0.3,2
+2024,S1,IQP,Estudiante,2do grado,SAN CRISTOBAL,11,5.6,14
+2024,S1,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,17,17.8,37
+2024,S1,IQP,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,1,1.6,1
+2024,S1,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,4,2.0,4
+2024,S1,IQP,Estudiante,2do grado,SANTIAGO,4,6.4,10
+2024,S1,IQP,Estudiante,2do grado,SANTO DOMINGO,56,31.4,58
+2024,S1,IQP,Estudiante,2do grado,Sin ubicación,99,65.8,121
+2024,S1,IQP,Estudiante,3er grado,AZUA,3,2.2,4
+2024,S1,IQP,Estudiante,3er grado,BAHORUCO,2,0.8,2
+2024,S1,IQP,Estudiante,3er grado,BARAHONA,1,0.2,1
+2024,S1,IQP,Estudiante,3er grado,HIGUEY,3,3.0,4
+2024,S1,IQP,Estudiante,3er grado,LA VEGA,1,0.2,1
+2024,S1,IQP,Estudiante,3er grado,MONTE CRISTI,2,0.9,2
+2024,S1,IQP,Estudiante,3er grado,MONTE PLATA,1,0.4,1
+2024,S1,IQP,Estudiante,3er grado,NAGUA,1,0.5,1
+2024,S1,IQP,Estudiante,3er grado,PUERTO PLATA,1,0.5,1
+2024,S1,IQP,Estudiante,3er grado,SAN CRISTOBAL,4,2.6,4
+2024,S1,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,1,0.2,1
+2024,S1,IQP,Estudiante,3er grado,SANTIAGO,8,4.8,9
+2024,S1,IQP,Estudiante,3er grado,SANTO DOMINGO,15,13.7,18
+2024,S1,IQP,Estudiante,3er grado,Sin ubicación,29,25.3,56
+2024,S1,IQP,Estudiante,4to grado,AZUA,8,7.9,11
+2024,S1,IQP,Estudiante,4to grado,BAHORUCO,1,0.2,1
+2024,S1,IQP,Estudiante,4to grado,BARAHONA,2,2.6,3
+2024,S1,IQP,Estudiante,4to grado,COTUI,2,1.1,2
+2024,S1,IQP,Estudiante,4to grado,HIGUEY,3,0.6,3
+2024,S1,IQP,Estudiante,4to grado,LA VEGA,3,2.1,4
+2024,S1,IQP,Estudiante,4to grado,MAO,2,2.1,3
+2024,S1,IQP,Estudiante,4to grado,MONTE CRISTI,1,3.4,4
+2024,S1,IQP,Estudiante,4to grado,MONTE PLATA,3,1.2,3
+2024,S1,IQP,Estudiante,4to grado,PUERTO PLATA,3,1.5,4
+2024,S1,IQP,Estudiante,4to grado,SAN CRISTOBAL,2,0.7,2
+2024,S1,IQP,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,2,0.7,2
+2024,S1,IQP,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,2,0.7,2
+2024,S1,IQP,Estudiante,4to grado,SAN PEDRO DE MACORIS,7,3.5,9
+2024,S1,IQP,Estudiante,4to grado,SANTIAGO,5,3.4,7
+2024,S1,IQP,Estudiante,4to grado,SANTO DOMINGO,40,78.0,88
+2024,S1,IQP,Estudiante,4to grado,Sin ubicación,48,25.4,62
+2024,S1,IQP,Estudiante,5to grado,AZUA,29,44.7,40
+2024,S1,IQP,Estudiante,5to grado,BAHORUCO,5,4.2,6
+2024,S1,IQP,Estudiante,5to grado,BARAHONA,10,8.7,11
+2024,S1,IQP,Estudiante,5to grado,COTUI,35,49.3,51
+2024,S1,IQP,Estudiante,5to grado,HIGUEY,775,1234.7,1356
+2024,S1,IQP,Estudiante,5to grado,LA VEGA,95,114.5,136
+2024,S1,IQP,Estudiante,5to grado,MAO,10,7.5,15
+2024,S1,IQP,Estudiante,5to grado,MONTE CRISTI,4,2.0,4
+2024,S1,IQP,Estudiante,5to grado,MONTE PLATA,37,19.5,37
+2024,S1,IQP,Estudiante,5to grado,NAGUA,121,202.4,156
+2024,S1,IQP,Estudiante,5to grado,PUERTO PLATA,152,192.3,217
+2024,S1,IQP,Estudiante,5to grado,SAN CRISTOBAL,863,1389.1,1391
+2024,S1,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,282,334.9,383
+2024,S1,IQP,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,8,9.2,13
+2024,S1,IQP,Estudiante,5to grado,SAN PEDRO DE MACORIS,33,22.0,35
+2024,S1,IQP,Estudiante,5to grado,SANTIAGO,562,937.2,1012
+2024,S1,IQP,Estudiante,5to grado,SANTO DOMINGO,1981,2994.1,3408
+2024,S1,IQP,Estudiante,5to grado,Sin ubicación,710,787.6,1073
+2024,S1,IQP,Estudiante,6to grado,AZUA,48,37.5,58
+2024,S1,IQP,Estudiante,6to grado,BAHORUCO,13,7.7,16
+2024,S1,IQP,Estudiante,6to grado,BARAHONA,23,21.1,33
+2024,S1,IQP,Estudiante,6to grado,COTUI,37,31.2,53
+2024,S1,IQP,Estudiante,6to grado,HIGUEY,227,840.3,883
+2024,S1,IQP,Estudiante,6to grado,LA VEGA,44,27.6,48
+2024,S1,IQP,Estudiante,6to grado,MAO,17,6.7,17
+2024,S1,IQP,Estudiante,6to grado,MONTE CRISTI,20,18.6,26
+2024,S1,IQP,Estudiante,6to grado,MONTE PLATA,14,8.9,17
+2024,S1,IQP,Estudiante,6to grado,NAGUA,17,26.4,38
+2024,S1,IQP,Estudiante,6to grado,PUERTO PLATA,17,8.5,18
+2024,S1,IQP,Estudiante,6to grado,SAN CRISTOBAL,60,33.0,66
+2024,S1,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,41,20.2,45
+2024,S1,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,35,19.1,38
+2024,S1,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,111,76.0,125
+2024,S1,IQP,Estudiante,6to grado,SANTIAGO,724,1266.9,1802
+2024,S1,IQP,Estudiante,6to grado,SANTO DOMINGO,889,1330.5,1686
+2024,S1,IQP,Estudiante,6to grado,Sin ubicación,1558,2111.7,2953
+2024,S1,IQP,Estudiante,No especificado,Sin ubicación,5,1.8,7
+2024,S1,IQP,Parent,6to grado,Sin ubicación,6,3.6,13
+2024,S1,IQP,Parent,No especificado,Sin ubicación,3,0.7,3
+2024,S1,IQP,Sin rol,No especificado,Sin ubicación,1,59.4,59
+2024,S1,IQS,Admin,6to grado,Sin ubicación,1,1.7,3
+2024,S1,IQS,Admin,No especificado,Sin ubicación,1,3.8,15
+2024,S1,IQS,Docente,1er grado,AZUA,9,17.2,31
+2024,S1,IQS,Docente,1er grado,BAHORUCO,4,6.9,12
+2024,S1,IQS,Docente,1er grado,BARAHONA,1,3.7,4
+2024,S1,IQS,Docente,1er grado,COTUI,5,12.1,26
+2024,S1,IQS,Docente,1er grado,HIGUEY,7,32.1,53
+2024,S1,IQS,Docente,1er grado,LA VEGA,10,19.0,22
+2024,S1,IQS,Docente,1er grado,MAO,5,9.4,16
+2024,S1,IQS,Docente,1er grado,MONTE CRISTI,11,36.8,46
+2024,S1,IQS,Docente,1er grado,MONTE PLATA,1,0.3,2
+2024,S1,IQS,Docente,1er grado,PUERTO PLATA,7,34.1,50
+2024,S1,IQS,Docente,1er grado,SAN CRISTOBAL,5,17.2,27
+2024,S1,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,8,21.9,32
+2024,S1,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,5,4.7,13
+2024,S1,IQS,Docente,1er grado,SAN PEDRO DE MACORIS,4,3.5,8
+2024,S1,IQS,Docente,1er grado,SANTIAGO,12,69.4,72
+2024,S1,IQS,Docente,1er grado,SANTO DOMINGO,47,96.2,142
+2024,S1,IQS,Docente,1er grado,Sin ubicación,60,114.3,164
+2024,S1,IQS,Docente,2do grado,SANTO DOMINGO,1,9.3,10
+2024,S1,IQS,Docente,4to grado,AZUA,142,326.2,433
+2024,S1,IQS,Docente,4to grado,BAHORUCO,29,53.9,58
+2024,S1,IQS,Docente,4to grado,BARAHONA,58,120.0,163
+2024,S1,IQS,Docente,4to grado,COTUI,158,297.0,386
+2024,S1,IQS,Docente,4to grado,HIGUEY,195,430.8,608
+2024,S1,IQS,Docente,4to grado,LA VEGA,196,411.0,500
+2024,S1,IQS,Docente,4to grado,MAO,70,162.2,198
+2024,S1,IQS,Docente,4to grado,MONTE CRISTI,156,494.8,573
+2024,S1,IQS,Docente,4to grado,MONTE PLATA,108,196.8,263
+2024,S1,IQS,Docente,4to grado,NAGUA,101,261.8,316
+2024,S1,IQS,Docente,4to grado,PUERTO PLATA,132,312.6,408
+2024,S1,IQS,Docente,4to grado,SAN CRISTOBAL,241,550.9,676
+2024,S1,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,189,402.3,476
+2024,S1,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,108,211.6,337
+2024,S1,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,271,582.5,711
+2024,S1,IQS,Docente,4to grado,SANTIAGO,336,767.0,877
+2024,S1,IQS,Docente,4to grado,SANTO DOMINGO,1098,2323.3,2809
+2024,S1,IQS,Docente,4to grado,Sin ubicación,943,1490.5,2222
+2024,S1,IQS,Docente,5to grado,SAN PEDRO DE MACORIS,1,0.2,2
+2024,S1,IQS,Docente,6to grado,AZUA,5,10.0,19
+2024,S1,IQS,Docente,6to grado,BAHORUCO,2,1.3,4
+2024,S1,IQS,Docente,6to grado,BARAHONA,1,0.6,1
+2024,S1,IQS,Docente,6to grado,COTUI,11,16.1,21
+2024,S1,IQS,Docente,6to grado,HIGUEY,6,32.5,27
+2024,S1,IQS,Docente,6to grado,LA VEGA,12,34.9,40
+2024,S1,IQS,Docente,6to grado,MAO,2,7.4,9
+2024,S1,IQS,Docente,6to grado,MONTE CRISTI,4,15.2,16
+2024,S1,IQS,Docente,6to grado,MONTE PLATA,3,9.5,11
+2024,S1,IQS,Docente,6to grado,NAGUA,4,9.0,15
+2024,S1,IQS,Docente,6to grado,PUERTO PLATA,7,9.0,15
+2024,S1,IQS,Docente,6to grado,SAN CRISTOBAL,26,32.9,49
+2024,S1,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,8,22.4,19
+2024,S1,IQS,Docente,6to grado,SAN JUAN DE LA MAGUANA,2,4.0,7
+2024,S1,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,15,29.9,39
+2024,S1,IQS,Docente,6to grado,SANTIAGO,27,50.6,73
+2024,S1,IQS,Docente,6to grado,SANTO DOMINGO,52,115.7,121
+2024,S1,IQS,Docente,6to grado,Sin ubicación,60,65.1,127
+2024,S1,IQS,Docente,No especificado,AZUA,1,0.8,1
+2024,S1,IQS,Docente,No especificado,COTUI,1,5.6,4
+2024,S1,IQS,Docente,No especificado,HIGUEY,1,1.2,2
+2024,S1,IQS,Docente,No especificado,MONTE CRISTI,2,16.8,18
+2024,S1,IQS,Docente,No especificado,NAGUA,1,2.9,1
+2024,S1,IQS,Docente,No especificado,PUERTO PLATA,1,0.6,4
+2024,S1,IQS,Docente,No especificado,SAN CRISTOBAL,1,0.7,2
+2024,S1,IQS,Docente,No especificado,SAN JUAN DE LA MAGUANA,1,1.1,2
+2024,S1,IQS,Docente,No especificado,SAN PEDRO DE MACORIS,3,3.4,6
+2024,S1,IQS,Docente,No especificado,SANTIAGO,5,6.4,8
+2024,S1,IQS,Docente,No especificado,SANTO DOMINGO,7,13.6,17
+2024,S1,IQS,Docente,No especificado,Sin ubicación,15,22.5,45
+2024,S1,IQS,Editor,No especificado,SANTIAGO,1,296.1,99
+2024,S1,IQS,Estudiante,1er grado,AZUA,47,60.8,183
+2024,S1,IQS,Estudiante,1er grado,BAHORUCO,9,5.3,15
+2024,S1,IQS,Estudiante,1er grado,BARAHONA,39,39.5,111
+2024,S1,IQS,Estudiante,1er grado,COTUI,31,37.4,109
+2024,S1,IQS,Estudiante,1er grado,HIGUEY,32,39.4,115
+2024,S1,IQS,Estudiante,1er grado,LA VEGA,43,53.8,135
+2024,S1,IQS,Estudiante,1er grado,MAO,8,4.4,18
+2024,S1,IQS,Estudiante,1er grado,MONTE CRISTI,34,31.5,102
+2024,S1,IQS,Estudiante,1er grado,MONTE PLATA,21,23.5,79
+2024,S1,IQS,Estudiante,1er grado,NAGUA,26,29.2,96
+2024,S1,IQS,Estudiante,1er grado,PUERTO PLATA,38,44.4,148
+2024,S1,IQS,Estudiante,1er grado,SAN CRISTOBAL,116,115.1,381
+2024,S1,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,31,62.8,135
+2024,S1,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,22,17.6,79
+2024,S1,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,44,63.9,138
+2024,S1,IQS,Estudiante,1er grado,SANTIAGO,162,134.1,441
+2024,S1,IQS,Estudiante,1er grado,SANTO DOMINGO,356,488.4,1292
+2024,S1,IQS,Estudiante,1er grado,Sin ubicación,403,422.1,1220
+2024,S1,IQS,Estudiante,2do grado,AZUA,148,224.4,407
+2024,S1,IQS,Estudiante,2do grado,BAHORUCO,36,42.5,76
+2024,S1,IQS,Estudiante,2do grado,BARAHONA,19,24.9,57
+2024,S1,IQS,Estudiante,2do grado,COTUI,140,316.5,319
+2024,S1,IQS,Estudiante,2do grado,HIGUEY,308,406.4,406
+2024,S1,IQS,Estudiante,2do grado,LA VEGA,327,458.7,573
+2024,S1,IQS,Estudiante,2do grado,MAO,18,18.3,31
+2024,S1,IQS,Estudiante,2do grado,MONTE CRISTI,193,399.2,626
+2024,S1,IQS,Estudiante,2do grado,MONTE PLATA,46,62.3,64
+2024,S1,IQS,Estudiante,2do grado,NAGUA,46,71.3,87
+2024,S1,IQS,Estudiante,2do grado,PUERTO PLATA,162,374.9,400
+2024,S1,IQS,Estudiante,2do grado,SAN CRISTOBAL,1262,2284.2,2741
+2024,S1,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,552,1078.0,1362
+2024,S1,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,46,48.2,90
+2024,S1,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,126,162.2,272
+2024,S1,IQS,Estudiante,2do grado,SANTIAGO,800,1577.8,1916
+2024,S1,IQS,Estudiante,2do grado,SANTO DOMINGO,1840,2869.0,3692
+2024,S1,IQS,Estudiante,2do grado,Sin ubicación,1511,2508.3,3107
+2024,S1,IQS,Estudiante,3er grado,AZUA,12,14.1,20
+2024,S1,IQS,Estudiante,3er grado,BAHORUCO,46,32.9,63
+2024,S1,IQS,Estudiante,3er grado,BARAHONA,4,4.9,8
+2024,S1,IQS,Estudiante,3er grado,COTUI,8,13.5,16
+2024,S1,IQS,Estudiante,3er grado,HIGUEY,96,65.8,112
+2024,S1,IQS,Estudiante,3er grado,LA VEGA,12,29.2,40
+2024,S1,IQS,Estudiante,3er grado,MAO,3,0.5,4
+2024,S1,IQS,Estudiante,3er grado,MONTE CRISTI,4,16.0,10
+2024,S1,IQS,Estudiante,3er grado,MONTE PLATA,4,3.6,7
+2024,S1,IQS,Estudiante,3er grado,NAGUA,7,9.3,14
+2024,S1,IQS,Estudiante,3er grado,PUERTO PLATA,16,10.4,36
+2024,S1,IQS,Estudiante,3er grado,SAN CRISTOBAL,10,12.3,17
+2024,S1,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,16,16.4,26
+2024,S1,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,4,1.8,6
+2024,S1,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,15,12.3,30
+2024,S1,IQS,Estudiante,3er grado,SANTIAGO,142,352.7,552
+2024,S1,IQS,Estudiante,3er grado,SANTO DOMINGO,96,177.9,232
+2024,S1,IQS,Estudiante,3er grado,Sin ubicación,235,366.9,543
+2024,S1,IQS,Estudiante,4to grado,AZUA,101,176.9,237
+2024,S1,IQS,Estudiante,4to grado,BAHORUCO,12,15.9,23
+2024,S1,IQS,Estudiante,4to grado,BARAHONA,12,7.8,18
+2024,S1,IQS,Estudiante,4to grado,COTUI,47,49.9,110
+2024,S1,IQS,Estudiante,4to grado,HIGUEY,62,154.0,256
+2024,S1,IQS,Estudiante,4to grado,LA VEGA,44,80.5,115
+2024,S1,IQS,Estudiante,4to grado,MAO,11,13.6,21
+2024,S1,IQS,Estudiante,4to grado,MONTE CRISTI,15,35.3,55
+2024,S1,IQS,Estudiante,4to grado,MONTE PLATA,16,17.7,44
+2024,S1,IQS,Estudiante,4to grado,NAGUA,61,82.6,121
+2024,S1,IQS,Estudiante,4to grado,PUERTO PLATA,24,26.2,43
+2024,S1,IQS,Estudiante,4to grado,SAN CRISTOBAL,43,52.4,105
+2024,S1,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,67,55.5,107
+2024,S1,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,29,37.4,72
+2024,S1,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,76,104.2,227
+2024,S1,IQS,Estudiante,4to grado,SANTIAGO,152,315.7,448
+2024,S1,IQS,Estudiante,4to grado,SANTO DOMINGO,392,802.9,1052
+2024,S1,IQS,Estudiante,4to grado,Sin ubicación,366,629.4,1097
+2024,S1,IQS,Estudiante,5to grado,AZUA,39,53.5,79
+2024,S1,IQS,Estudiante,5to grado,BAHORUCO,7,8.9,14
+2024,S1,IQS,Estudiante,5to grado,BARAHONA,14,42.9,38
+2024,S1,IQS,Estudiante,5to grado,COTUI,12,12.7,25
+2024,S1,IQS,Estudiante,5to grado,HIGUEY,27,60.8,117
+2024,S1,IQS,Estudiante,5to grado,LA VEGA,20,55.0,75
+2024,S1,IQS,Estudiante,5to grado,MAO,5,19.1,12
+2024,S1,IQS,Estudiante,5to grado,MONTE CRISTI,7,24.8,39
+2024,S1,IQS,Estudiante,5to grado,MONTE PLATA,8,14.9,13
+2024,S1,IQS,Estudiante,5to grado,NAGUA,8,11.9,36
+2024,S1,IQS,Estudiante,5to grado,PUERTO PLATA,14,21.6,31
+2024,S1,IQS,Estudiante,5to grado,SAN CRISTOBAL,18,16.6,23
+2024,S1,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,10,13.0,21
+2024,S1,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,18,27.1,72
+2024,S1,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,45,47.0,87
+2024,S1,IQS,Estudiante,5to grado,SANTIAGO,53,77.4,124
+2024,S1,IQS,Estudiante,5to grado,SANTO DOMINGO,266,469.9,688
+2024,S1,IQS,Estudiante,5to grado,Sin ubicación,158,329.9,517
+2024,S1,IQS,Estudiante,6to grado,AZUA,1704,3600.4,5935
+2024,S1,IQS,Estudiante,6to grado,BAHORUCO,367,753.3,1267
+2024,S1,IQS,Estudiante,6to grado,BARAHONA,763,1347.6,2491
+2024,S1,IQS,Estudiante,6to grado,COTUI,1571,3215.7,5813
+2024,S1,IQS,Estudiante,6to grado,HIGUEY,2111,5697.8,8528
+2024,S1,IQS,Estudiante,6to grado,LA VEGA,1872,3909.4,6123
+2024,S1,IQS,Estudiante,6to grado,MAO,686,1239.6,2085
+2024,S1,IQS,Estudiante,6to grado,MONTE CRISTI,1091,3765.2,5304
+2024,S1,IQS,Estudiante,6to grado,MONTE PLATA,649,958.8,1957
+2024,S1,IQS,Estudiante,6to grado,NAGUA,1053,2048.6,3360
+2024,S1,IQS,Estudiante,6to grado,PUERTO PLATA,1324,2924.2,5130
+2024,S1,IQS,Estudiante,6to grado,SAN CRISTOBAL,2431,5230.0,8544
+2024,S1,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1979,4351.2,6623
+2024,S1,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,951,1904.2,3468
+2024,S1,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,2574,6771.0,9765
+2024,S1,IQS,Estudiante,6to grado,SANTIAGO,4446,9956.1,16444
+2024,S1,IQS,Estudiante,6to grado,SANTO DOMINGO,13904,36183.8,48544
+2024,S1,IQS,Estudiante,6to grado,Sin ubicación,10805,21992.5,37034
+2024,S1,IQS,Estudiante,No especificado,COTUI,2,6.1,10
+2024,S1,IQS,Estudiante,No especificado,LA VEGA,2,0.9,2
+2024,S1,IQS,Estudiante,No especificado,MONTE PLATA,1,0.4,1
+2024,S1,IQS,Estudiante,No especificado,SAN CRISTOBAL,11,17.4,30
+2024,S1,IQS,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,2,0.9,2
+2024,S1,IQS,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,2,3.2,4
+2024,S1,IQS,Estudiante,No especificado,SANTIAGO,12,16.4,23
+2024,S1,IQS,Estudiante,No especificado,SANTO DOMINGO,21,36.9,64
+2024,S1,IQS,Estudiante,No especificado,Sin ubicación,11,19.3,19
+2024,S1,IQS,Invitado,4to grado,SAN CRISTOBAL,2,2.5,3
+2024,S1,IQS,Invitado,4to grado,Sin ubicación,5,7.7,14
+2024,S1,IQS,Invitado,6to grado,BARAHONA,8,14.2,28
+2024,S1,IQS,Invitado,6to grado,COTUI,1,3.4,5
+2024,S1,IQS,Invitado,6to grado,HIGUEY,2,5.3,7
+2024,S1,IQS,Invitado,6to grado,LA VEGA,1,3.1,1
+2024,S1,IQS,Invitado,6to grado,MAO,1,1.5,4
+2024,S1,IQS,Invitado,6to grado,MONTE CRISTI,5,31.6,43
+2024,S1,IQS,Invitado,6to grado,MONTE PLATA,1,1.9,3
+2024,S1,IQS,Invitado,6to grado,PUERTO PLATA,2,16.9,15
+2024,S1,IQS,Invitado,6to grado,SAN CRISTOBAL,2,5.8,5
+2024,S1,IQS,Invitado,6to grado,SAN FRANCISCO DE MACORIS,1,1.4,1
+2024,S1,IQS,Invitado,6to grado,SAN JUAN DE LA MAGUANA,3,8.9,11
+2024,S1,IQS,Invitado,6to grado,SAN PEDRO DE MACORIS,1,11.3,7
+2024,S1,IQS,Invitado,6to grado,SANTIAGO,19,60.4,62
+2024,S1,IQS,Invitado,6to grado,SANTO DOMINGO,38,196.1,164
+2024,S1,IQS,Invitado,6to grado,Sin ubicación,2343,3664.4,5049
+2024,S1,IQS,Invitado,No especificado,Sin ubicación,2,0.9,4
+2024,S2,IQ512,Admin,No especificado,Sin ubicación,2,1.7,3
+2024,S2,IQ512,Coordinador,No especificado,Sin ubicación,1,88.0,45
+2024,S2,IQ512,Docente,No especificado,Sin ubicación,1,0.6,1
+2024,S2,IQ512,Editor,No especificado,Sin ubicación,1,63.0,39
+2024,S2,IQ512,Estudiante,No especificado,AZUA,39,509.3,504
+2024,S2,IQ512,Estudiante,No especificado,BAHORUCO,21,213.2,204
+2024,S2,IQ512,Estudiante,No especificado,BARAHONA,35,357.1,439
+2024,S2,IQ512,Estudiante,No especificado,COTUI,23,334.2,249
+2024,S2,IQ512,Estudiante,No especificado,HIGUEY,28,264.9,212
+2024,S2,IQ512,Estudiante,No especificado,LA VEGA,58,686.0,555
+2024,S2,IQ512,Estudiante,No especificado,MAO,15,179.1,158
+2024,S2,IQ512,Estudiante,No especificado,MONTE CRISTI,14,97.5,123
+2024,S2,IQ512,Estudiante,No especificado,MONTE PLATA,11,93.2,85
+2024,S2,IQ512,Estudiante,No especificado,NAGUA,19,169.3,186
+2024,S2,IQ512,Estudiante,No especificado,PUERTO PLATA,13,180.5,158
+2024,S2,IQ512,Estudiante,No especificado,SAN CRISTOBAL,39,450.0,409
+2024,S2,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,27,316.4,359
+2024,S2,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,26,433.9,366
+2024,S2,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,18,96.6,110
+2024,S2,IQ512,Estudiante,No especificado,SANTIAGO,43,373.8,404
+2024,S2,IQ512,Estudiante,No especificado,SANTO DOMINGO,271,3369.5,3009
+2024,S2,IQ512,Estudiante,No especificado,Sin ubicación,2249,26855.9,22126
+2024,S2,IQP,Admin,No especificado,Sin ubicación,1,0.0,2
+2024,S2,IQP,Coordinador,6to grado,Sin ubicación,1,0.0,1
+2024,S2,IQP,Docente,1er grado,Sin ubicación,2,86.5,58
+2024,S2,IQP,Docente,4to grado,AZUA,2,0.6,2
+2024,S2,IQP,Docente,4to grado,HIGUEY,1,0.4,1
+2024,S2,IQP,Docente,4to grado,LA VEGA,4,4.7,8
+2024,S2,IQP,Docente,4to grado,MAO,1,0.3,1
+2024,S2,IQP,Docente,4to grado,MONTE CRISTI,2,1.0,2
+2024,S2,IQP,Docente,4to grado,PUERTO PLATA,1,0.5,1
+2024,S2,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,1,16.4,16
+2024,S2,IQP,Docente,4to grado,SANTIAGO,1,4.8,4
+2024,S2,IQP,Docente,4to grado,SANTO DOMINGO,3,0.7,3
+2024,S2,IQP,Docente,4to grado,Sin ubicación,10,26.0,41
+2024,S2,IQP,Docente,5to grado,AZUA,5,2.5,5
+2024,S2,IQP,Docente,5to grado,BAHORUCO,1,0.2,1
+2024,S2,IQP,Docente,5to grado,BARAHONA,1,0.2,1
+2024,S2,IQP,Docente,5to grado,COTUI,4,3.6,5
+2024,S2,IQP,Docente,5to grado,HIGUEY,14,28.0,28
+2024,S2,IQP,Docente,5to grado,LA VEGA,10,13.5,17
+2024,S2,IQP,Docente,5to grado,MAO,5,16.6,20
+2024,S2,IQP,Docente,5to grado,MONTE CRISTI,15,22.6,26
+2024,S2,IQP,Docente,5to grado,MONTE PLATA,1,0.4,1
+2024,S2,IQP,Docente,5to grado,NAGUA,8,8.7,14
+2024,S2,IQP,Docente,5to grado,PUERTO PLATA,4,16.7,21
+2024,S2,IQP,Docente,5to grado,SAN CRISTOBAL,11,26.1,35
+2024,S2,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,7,4.9,10
+2024,S2,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,5,2.4,5
+2024,S2,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,22,16.0,26
+2024,S2,IQP,Docente,5to grado,SANTIAGO,27,56.8,66
+2024,S2,IQP,Docente,5to grado,SANTO DOMINGO,45,58.4,79
+2024,S2,IQP,Docente,5to grado,Sin ubicación,33,31.2,45
+2024,S2,IQP,Docente,6to grado,BARAHONA,1,7.1,4
+2024,S2,IQP,Docente,6to grado,COTUI,4,3.7,5
+2024,S2,IQP,Docente,6to grado,HIGUEY,2,0.4,2
+2024,S2,IQP,Docente,6to grado,MAO,1,1.3,3
+2024,S2,IQP,Docente,6to grado,MONTE CRISTI,1,1.1,3
+2024,S2,IQP,Docente,6to grado,MONTE PLATA,1,15.0,14
+2024,S2,IQP,Docente,6to grado,NAGUA,1,5.8,13
+2024,S2,IQP,Docente,6to grado,PUERTO PLATA,1,0.3,1
+2024,S2,IQP,Docente,6to grado,SAN CRISTOBAL,3,7.0,4
+2024,S2,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2024,S2,IQP,Docente,6to grado,SAN JUAN DE LA MAGUANA,2,1.1,2
+2024,S2,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,2,1.0,2
+2024,S2,IQP,Docente,6to grado,SANTIAGO,2,0.3,2
+2024,S2,IQP,Docente,6to grado,SANTO DOMINGO,8,11.4,18
+2024,S2,IQP,Docente,6to grado,Sin ubicación,11,24.5,31
+2024,S2,IQP,Docente,No especificado,Sin ubicación,2,2.1,3
+2024,S2,IQP,Estudiante,1er grado,HIGUEY,1,0.4,1
+2024,S2,IQP,Estudiante,1er grado,SANTIAGO,1,0.2,1
+2024,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,2,1.0,3
+2024,S2,IQP,Estudiante,1er grado,Sin ubicación,10,22.2,31
+2024,S2,IQP,Estudiante,2do grado,AZUA,1,2.1,3
+2024,S2,IQP,Estudiante,2do grado,MAO,1,0.4,1
+2024,S2,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,3,3.8,6
+2024,S2,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,1,0.5,1
+2024,S2,IQP,Estudiante,2do grado,SANTIAGO,1,0.8,2
+2024,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,2,0.7,2
+2024,S2,IQP,Estudiante,2do grado,Sin ubicación,5,11.3,11
+2024,S2,IQP,Estudiante,3er grado,MONTE CRISTI,1,3.0,4
+2024,S2,IQP,Estudiante,3er grado,SANTIAGO,1,0.4,1
+2024,S2,IQP,Estudiante,3er grado,SANTO DOMINGO,5,4.1,5
+2024,S2,IQP,Estudiante,3er grado,Sin ubicación,9,6.3,13
+2024,S2,IQP,Estudiante,4to grado,AZUA,2,1.9,3
+2024,S2,IQP,Estudiante,4to grado,BAHORUCO,1,1.1,1
+2024,S2,IQP,Estudiante,4to grado,LA VEGA,1,0.2,1
+2024,S2,IQP,Estudiante,4to grado,MONTE CRISTI,1,0.3,1
+2024,S2,IQP,Estudiante,4to grado,SAN CRISTOBAL,1,0.4,1
+2024,S2,IQP,Estudiante,4to grado,SAN PEDRO DE MACORIS,1,0.3,1
+2024,S2,IQP,Estudiante,4to grado,SANTIAGO,1,2.1,4
+2024,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,9,12.0,16
+2024,S2,IQP,Estudiante,4to grado,Sin ubicación,11,5.1,16
+2024,S2,IQP,Estudiante,5to grado,AZUA,1,0.1,1
+2024,S2,IQP,Estudiante,5to grado,COTUI,1,0.7,1
+2024,S2,IQP,Estudiante,5to grado,HIGUEY,8,4.2,10
+2024,S2,IQP,Estudiante,5to grado,LA VEGA,1,0.5,2
+2024,S2,IQP,Estudiante,5to grado,MAO,2,0.7,2
+2024,S2,IQP,Estudiante,5to grado,SAN CRISTOBAL,11,4.2,14
+2024,S2,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1,0.4,1
+2024,S2,IQP,Estudiante,5to grado,SAN PEDRO DE MACORIS,10,13.6,19
+2024,S2,IQP,Estudiante,5to grado,SANTIAGO,10,4.2,10
+2024,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,31,40.4,49
+2024,S2,IQP,Estudiante,5to grado,Sin ubicación,8,9.9,25
+2024,S2,IQP,Estudiante,6to grado,AZUA,4,22.5,29
+2024,S2,IQP,Estudiante,6to grado,BAHORUCO,2,1.8,2
+2024,S2,IQP,Estudiante,6to grado,COTUI,3,2.0,3
+2024,S2,IQP,Estudiante,6to grado,HIGUEY,1,0.3,2
+2024,S2,IQP,Estudiante,6to grado,MAO,2,25.4,12
+2024,S2,IQP,Estudiante,6to grado,MONTE CRISTI,2,1.6,6
+2024,S2,IQP,Estudiante,6to grado,MONTE PLATA,1,0.9,1
+2024,S2,IQP,Estudiante,6to grado,PUERTO PLATA,1,0.6,1
+2024,S2,IQP,Estudiante,6to grado,SAN CRISTOBAL,4,2.1,5
+2024,S2,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,7,6.6,12
+2024,S2,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,2,1.0,2
+2024,S2,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,13,7.4,15
+2024,S2,IQP,Estudiante,6to grado,SANTIAGO,11,7.3,14
+2024,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,48,41.6,65
+2024,S2,IQP,Estudiante,6to grado,Sin ubicación,52,44.0,74
+2024,S2,IQP,Estudiante,No especificado,Sin ubicación,1,4.6,7
+2024,S2,IQP,Sin rol,No especificado,Sin ubicación,1,49.4,45
+2024,S2,IQS,Admin,6to grado,Sin ubicación,1,4.2,10
+2024,S2,IQS,Admin,No especificado,Sin ubicación,1,0.5,4
+2024,S2,IQS,Docente,1er grado,AZUA,2,3.1,2
+2024,S2,IQS,Docente,1er grado,HIGUEY,3,31.1,31
+2024,S2,IQS,Docente,1er grado,LA VEGA,2,4.0,3
+2024,S2,IQS,Docente,1er grado,MONTE CRISTI,2,3.7,3
+2024,S2,IQS,Docente,1er grado,PUERTO PLATA,3,7.9,11
+2024,S2,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,2,3.4,4
+2024,S2,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,1,0.1,2
+2024,S2,IQS,Docente,1er grado,SANTIAGO,2,3.4,7
+2024,S2,IQS,Docente,1er grado,SANTO DOMINGO,12,16.1,26
+2024,S2,IQS,Docente,1er grado,Sin ubicación,10,14.3,20
+2024,S2,IQS,Docente,4to grado,AZUA,22,20.2,34
+2024,S2,IQS,Docente,4to grado,BAHORUCO,6,11.0,15
+2024,S2,IQS,Docente,4to grado,BARAHONA,11,6.2,19
+2024,S2,IQS,Docente,4to grado,COTUI,21,12.5,27
+2024,S2,IQS,Docente,4to grado,HIGUEY,42,46.6,85
+2024,S2,IQS,Docente,4to grado,LA VEGA,43,30.9,63
+2024,S2,IQS,Docente,4to grado,MAO,6,4.5,7
+2024,S2,IQS,Docente,4to grado,MONTE CRISTI,28,36.3,60
+2024,S2,IQS,Docente,4to grado,MONTE PLATA,13,7.7,15
+2024,S2,IQS,Docente,4to grado,NAGUA,20,26.8,39
+2024,S2,IQS,Docente,4to grado,PUERTO PLATA,31,23.9,45
+2024,S2,IQS,Docente,4to grado,SAN CRISTOBAL,24,18.1,41
+2024,S2,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,61,71.5,114
+2024,S2,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,16,10.3,19
+2024,S2,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,68,86.7,148
+2024,S2,IQS,Docente,4to grado,SANTIAGO,49,55.8,78
+2024,S2,IQS,Docente,4to grado,SANTO DOMINGO,149,148.0,234
+2024,S2,IQS,Docente,4to grado,Sin ubicación,112,106.6,215
+2024,S2,IQS,Docente,6to grado,BAHORUCO,1,0.4,1
+2024,S2,IQS,Docente,6to grado,HIGUEY,2,10.2,12
+2024,S2,IQS,Docente,6to grado,MONTE CRISTI,3,5.8,4
+2024,S2,IQS,Docente,6to grado,NAGUA,1,0.1,1
+2024,S2,IQS,Docente,6to grado,PUERTO PLATA,3,2.0,9
+2024,S2,IQS,Docente,6to grado,SAN CRISTOBAL,2,1.1,2
+2024,S2,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,1,0.2,1
+2024,S2,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,8,6.5,10
+2024,S2,IQS,Docente,6to grado,SANTIAGO,6,8.1,9
+2024,S2,IQS,Docente,6to grado,SANTO DOMINGO,10,14.9,20
+2024,S2,IQS,Docente,6to grado,Sin ubicación,14,15.8,19
+2024,S2,IQS,Docente,No especificado,MONTE CRISTI,1,0.0,1
+2024,S2,IQS,Docente,No especificado,SAN FRANCISCO DE MACORIS,1,0.2,1
+2024,S2,IQS,Docente,No especificado,SAN JUAN DE LA MAGUANA,1,1.0,2
+2024,S2,IQS,Docente,No especificado,SANTIAGO,1,0.1,1
+2024,S2,IQS,Docente,No especificado,Sin ubicación,1,0.5,2
+2024,S2,IQS,Editor,No especificado,SANTIAGO,1,109.1,47
+2024,S2,IQS,Estudiante,1er grado,AZUA,5,1.9,14
+2024,S2,IQS,Estudiante,1er grado,BAHORUCO,1,0.4,1
+2024,S2,IQS,Estudiante,1er grado,BARAHONA,1,0.4,2
+2024,S2,IQS,Estudiante,1er grado,COTUI,1,0.5,2
+2024,S2,IQS,Estudiante,1er grado,HIGUEY,8,4.0,18
+2024,S2,IQS,Estudiante,1er grado,LA VEGA,4,0.6,7
+2024,S2,IQS,Estudiante,1er grado,MAO,1,0.1,2
+2024,S2,IQS,Estudiante,1er grado,MONTE CRISTI,2,0.5,3
+2024,S2,IQS,Estudiante,1er grado,MONTE PLATA,1,1.2,6
+2024,S2,IQS,Estudiante,1er grado,NAGUA,3,4.3,6
+2024,S2,IQS,Estudiante,1er grado,PUERTO PLATA,3,3.6,11
+2024,S2,IQS,Estudiante,1er grado,SAN CRISTOBAL,4,1.9,6
+2024,S2,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,4,6.1,12
+2024,S2,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,3,1.2,8
+2024,S2,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,6,6.0,10
+2024,S2,IQS,Estudiante,1er grado,SANTIAGO,16,13.3,41
+2024,S2,IQS,Estudiante,1er grado,SANTO DOMINGO,41,37.0,97
+2024,S2,IQS,Estudiante,1er grado,Sin ubicación,29,24.3,76
+2024,S2,IQS,Estudiante,2do grado,AZUA,2,0.8,2
+2024,S2,IQS,Estudiante,2do grado,BAHORUCO,1,2.2,5
+2024,S2,IQS,Estudiante,2do grado,BARAHONA,1,1.7,1
+2024,S2,IQS,Estudiante,2do grado,COTUI,2,0.7,2
+2024,S2,IQS,Estudiante,2do grado,HIGUEY,6,3.3,13
+2024,S2,IQS,Estudiante,2do grado,LA VEGA,4,1.8,5
+2024,S2,IQS,Estudiante,2do grado,MONTE CRISTI,15,7.6,27
+2024,S2,IQS,Estudiante,2do grado,MONTE PLATA,1,0.5,2
+2024,S2,IQS,Estudiante,2do grado,NAGUA,5,5.9,15
+2024,S2,IQS,Estudiante,2do grado,PUERTO PLATA,3,15.2,6
+2024,S2,IQS,Estudiante,2do grado,SAN CRISTOBAL,2,0.3,2
+2024,S2,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,12,7.9,16
+2024,S2,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,3,1.6,4
+2024,S2,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,10,12.9,19
+2024,S2,IQS,Estudiante,2do grado,SANTIAGO,10,9.6,26
+2024,S2,IQS,Estudiante,2do grado,SANTO DOMINGO,44,42.2,91
+2024,S2,IQS,Estudiante,2do grado,Sin ubicación,27,15.8,54
+2024,S2,IQS,Estudiante,3er grado,AZUA,1,0.7,1
+2024,S2,IQS,Estudiante,3er grado,BARAHONA,1,0.2,2
+2024,S2,IQS,Estudiante,3er grado,HIGUEY,5,2.4,5
+2024,S2,IQS,Estudiante,3er grado,MAO,1,0.3,2
+2024,S2,IQS,Estudiante,3er grado,MONTE CRISTI,4,2.6,5
+2024,S2,IQS,Estudiante,3er grado,MONTE PLATA,1,0.4,2
+2024,S2,IQS,Estudiante,3er grado,NAGUA,5,3.5,12
+2024,S2,IQS,Estudiante,3er grado,PUERTO PLATA,10,7.1,15
+2024,S2,IQS,Estudiante,3er grado,SAN CRISTOBAL,1,0.4,2
+2024,S2,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,13,8.4,16
+2024,S2,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,6,7.5,12
+2024,S2,IQS,Estudiante,3er grado,SANTIAGO,23,19.3,31
+2024,S2,IQS,Estudiante,3er grado,SANTO DOMINGO,37,34.5,74
+2024,S2,IQS,Estudiante,3er grado,Sin ubicación,38,64.7,82
+2024,S2,IQS,Estudiante,4to grado,AZUA,4,8.3,9
+2024,S2,IQS,Estudiante,4to grado,BAHORUCO,2,4.8,6
+2024,S2,IQS,Estudiante,4to grado,COTUI,4,1.9,12
+2024,S2,IQS,Estudiante,4to grado,HIGUEY,4,7.8,17
+2024,S2,IQS,Estudiante,4to grado,MAO,1,0.0,1
+2024,S2,IQS,Estudiante,4to grado,MONTE CRISTI,4,1.0,4
+2024,S2,IQS,Estudiante,4to grado,MONTE PLATA,2,6.7,8
+2024,S2,IQS,Estudiante,4to grado,NAGUA,4,2.3,5
+2024,S2,IQS,Estudiante,4to grado,PUERTO PLATA,49,37.3,57
+2024,S2,IQS,Estudiante,4to grado,SAN CRISTOBAL,6,6.8,10
+2024,S2,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,70,44.8,99
+2024,S2,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,3,3.0,6
+2024,S2,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,14,22.8,40
+2024,S2,IQS,Estudiante,4to grado,SANTIAGO,19,28.7,42
+2024,S2,IQS,Estudiante,4to grado,SANTO DOMINGO,61,169.3,162
+2024,S2,IQS,Estudiante,4to grado,Sin ubicación,33,93.9,68
+2024,S2,IQS,Estudiante,5to grado,AZUA,3,1.5,4
+2024,S2,IQS,Estudiante,5to grado,BAHORUCO,1,1.4,1
+2024,S2,IQS,Estudiante,5to grado,BARAHONA,2,0.5,2
+2024,S2,IQS,Estudiante,5to grado,COTUI,4,2.3,5
+2024,S2,IQS,Estudiante,5to grado,HIGUEY,3,5.7,10
+2024,S2,IQS,Estudiante,5to grado,LA VEGA,2,0.7,2
+2024,S2,IQS,Estudiante,5to grado,MAO,1,0.5,1
+2024,S2,IQS,Estudiante,5to grado,MONTE CRISTI,1,0.4,2
+2024,S2,IQS,Estudiante,5to grado,NAGUA,1,0.6,1
+2024,S2,IQS,Estudiante,5to grado,PUERTO PLATA,2,2.7,4
+2024,S2,IQS,Estudiante,5to grado,SAN CRISTOBAL,1,1.3,2
+2024,S2,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,62,44.3,98
+2024,S2,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,2,1.3,9
+2024,S2,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,7,5.4,9
+2024,S2,IQS,Estudiante,5to grado,SANTIAGO,12,14.1,20
+2024,S2,IQS,Estudiante,5to grado,SANTO DOMINGO,61,89.9,144
+2024,S2,IQS,Estudiante,5to grado,Sin ubicación,34,34.1,65
+2024,S2,IQS,Estudiante,6to grado,AZUA,70,51.4,130
+2024,S2,IQS,Estudiante,6to grado,BAHORUCO,13,12.0,32
+2024,S2,IQS,Estudiante,6to grado,BARAHONA,38,38.8,87
+2024,S2,IQS,Estudiante,6to grado,COTUI,96,88.0,239
+2024,S2,IQS,Estudiante,6to grado,HIGUEY,193,380.1,541
+2024,S2,IQS,Estudiante,6to grado,LA VEGA,139,138.4,298
+2024,S2,IQS,Estudiante,6to grado,MAO,36,92.0,117
+2024,S2,IQS,Estudiante,6to grado,MONTE CRISTI,113,66.8,194
+2024,S2,IQS,Estudiante,6to grado,MONTE PLATA,31,31.1,65
+2024,S2,IQS,Estudiante,6to grado,NAGUA,44,41.3,123
+2024,S2,IQS,Estudiante,6to grado,PUERTO PLATA,132,210.4,310
+2024,S2,IQS,Estudiante,6to grado,SAN CRISTOBAL,110,136.2,240
+2024,S2,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,171,179.9,350
+2024,S2,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,132,166.2,335
+2024,S2,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,149,184.7,352
+2024,S2,IQS,Estudiante,6to grado,SANTIAGO,457,666.0,1190
+2024,S2,IQS,Estudiante,6to grado,SANTO DOMINGO,927,1548.5,2360
+2024,S2,IQS,Estudiante,6to grado,Sin ubicación,619,935.4,1519
+2024,S2,IQS,Estudiante,No especificado,COTUI,2,1.0,6
+2024,S2,IQS,Estudiante,No especificado,LA VEGA,1,0.7,2
+2024,S2,IQS,Estudiante,No especificado,SAN CRISTOBAL,1,0.5,1
+2024,S2,IQS,Estudiante,No especificado,SANTO DOMINGO,2,1.7,3
+2024,S2,IQS,Invitado,4to grado,Sin ubicación,1,0.4,1
+2024,S2,IQS,Invitado,6to grado,HIGUEY,1,1.7,6
+2024,S2,IQS,Invitado,6to grado,MONTE CRISTI,3,2.4,5
+2024,S2,IQS,Invitado,6to grado,MONTE PLATA,1,4.7,4
+2024,S2,IQS,Invitado,6to grado,PUERTO PLATA,1,0.6,1
+2024,S2,IQS,Invitado,6to grado,SAN JUAN DE LA MAGUANA,1,1.7,2
+2024,S2,IQS,Invitado,6to grado,SANTIAGO,5,4.4,7
+2024,S2,IQS,Invitado,6to grado,SANTO DOMINGO,6,6.7,10
+2024,S2,IQS,Invitado,6to grado,Sin ubicación,449,566.9,805
+2025,S1,IQ512,Aliado de la Alianza,No especificado,Sin ubicación,1,13.7,12
+2025,S1,IQ512,Coordinador,No especificado,Sin ubicación,1,14.0,19
+2025,S1,IQ512,Editor,No especificado,Sin ubicación,1,5.7,6
+2025,S1,IQ512,Estudiante,No especificado,AZUA,30,39.4,99
+2025,S1,IQ512,Estudiante,No especificado,BAHORUCO,9,8.1,19
+2025,S1,IQ512,Estudiante,No especificado,BARAHONA,17,22.5,66
+2025,S1,IQ512,Estudiante,No especificado,COTUI,10,18.2,34
+2025,S1,IQ512,Estudiante,No especificado,HIGUEY,1,0.1,1
+2025,S1,IQ512,Estudiante,No especificado,LA VEGA,24,38.7,49
+2025,S1,IQ512,Estudiante,No especificado,MAO,9,23.3,31
+2025,S1,IQ512,Estudiante,No especificado,MONTE CRISTI,4,0.8,5
+2025,S1,IQ512,Estudiante,No especificado,MONTE PLATA,2,2.1,4
+2025,S1,IQ512,Estudiante,No especificado,NAGUA,9,11.0,15
+2025,S1,IQ512,Estudiante,No especificado,PUERTO PLATA,4,3.7,7
+2025,S1,IQ512,Estudiante,No especificado,SAN CRISTOBAL,20,23.0,40
+2025,S1,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,7,12.9,24
+2025,S1,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,45,67.1,173
+2025,S1,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,8,16.9,21
+2025,S1,IQ512,Estudiante,No especificado,SANTIAGO,20,22.1,31
+2025,S1,IQ512,Estudiante,No especificado,SANTO DOMINGO,112,232.5,316
+2025,S1,IQ512,Estudiante,No especificado,Sin ubicación,676,1102.9,1628
+2025,S1,IQP,Coordinador,6to grado,Sin ubicación,1,1.4,3
+2025,S1,IQP,Docente,1er grado,Sin ubicación,2,69.5,61
+2025,S1,IQP,Docente,4to grado,BARAHONA,1,0.2,1
+2025,S1,IQP,Docente,4to grado,LA VEGA,1,0.4,1
+2025,S1,IQP,Docente,4to grado,SAN CRISTOBAL,1,0.2,1
+2025,S1,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,2,18.9,14
+2025,S1,IQP,Docente,4to grado,SANTIAGO,4,6.0,11
+2025,S1,IQP,Docente,4to grado,SANTO DOMINGO,3,29.1,21
+2025,S1,IQP,Docente,4to grado,Sin ubicación,14,20.2,31
+2025,S1,IQP,Docente,5to grado,AZUA,18,19.1,22
+2025,S1,IQP,Docente,5to grado,BAHORUCO,6,3.3,6
+2025,S1,IQP,Docente,5to grado,BARAHONA,14,6.0,15
+2025,S1,IQP,Docente,5to grado,COTUI,9,8.8,13
+2025,S1,IQP,Docente,5to grado,HIGUEY,15,18.8,27
+2025,S1,IQP,Docente,5to grado,LA VEGA,34,30.6,49
+2025,S1,IQP,Docente,5to grado,MAO,26,35.2,52
+2025,S1,IQP,Docente,5to grado,MONTE CRISTI,9,5.4,11
+2025,S1,IQP,Docente,5to grado,MONTE PLATA,5,2.0,5
+2025,S1,IQP,Docente,5to grado,NAGUA,9,6.2,12
+2025,S1,IQP,Docente,5to grado,PUERTO PLATA,8,36.5,38
+2025,S1,IQP,Docente,5to grado,SAN CRISTOBAL,21,50.5,60
+2025,S1,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,20,28.6,30
+2025,S1,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,13,10.3,14
+2025,S1,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,28,35.4,43
+2025,S1,IQP,Docente,5to grado,SANTIAGO,26,16.9,36
+2025,S1,IQP,Docente,5to grado,SANTO DOMINGO,84,84.7,117
+2025,S1,IQP,Docente,5to grado,Sin ubicación,83,85.6,128
+2025,S1,IQP,Docente,6to grado,BARAHONA,1,21.1,21
+2025,S1,IQP,Docente,6to grado,COTUI,2,8.7,7
+2025,S1,IQP,Docente,6to grado,LA VEGA,5,15.7,23
+2025,S1,IQP,Docente,6to grado,MAO,2,1.8,3
+2025,S1,IQP,Docente,6to grado,MONTE PLATA,1,12.8,19
+2025,S1,IQP,Docente,6to grado,NAGUA,3,17.1,17
+2025,S1,IQP,Docente,6to grado,PUERTO PLATA,1,0.9,1
+2025,S1,IQP,Docente,6to grado,SAN CRISTOBAL,3,1.6,4
+2025,S1,IQP,Docente,6to grado,SAN PEDRO DE MACORIS,2,1.9,2
+2025,S1,IQP,Docente,6to grado,SANTIAGO,3,5.1,6
+2025,S1,IQP,Docente,6to grado,SANTO DOMINGO,11,11.2,18
+2025,S1,IQP,Docente,6to grado,Sin ubicación,9,43.1,24
+2025,S1,IQP,Docente,No especificado,SANTO DOMINGO,2,0.2,2
+2025,S1,IQP,Docente,No especificado,Sin ubicación,2,2.7,6
+2025,S1,IQP,Estudiante,1er grado,AZUA,9,6.0,9
+2025,S1,IQP,Estudiante,1er grado,BARAHONA,1,2.5,3
+2025,S1,IQP,Estudiante,1er grado,MONTE CRISTI,1,0.6,1
+2025,S1,IQP,Estudiante,1er grado,SAN CRISTOBAL,1,0.4,1
+2025,S1,IQP,Estudiante,1er grado,SAN PEDRO DE MACORIS,1,0.4,1
+2025,S1,IQP,Estudiante,1er grado,SANTIAGO,3,1.3,3
+2025,S1,IQP,Estudiante,1er grado,SANTO DOMINGO,4,2.2,6
+2025,S1,IQP,Estudiante,1er grado,Sin ubicación,9,21.3,21
+2025,S1,IQP,Estudiante,2do grado,AZUA,2,15.3,19
+2025,S1,IQP,Estudiante,2do grado,BAHORUCO,1,1.2,1
+2025,S1,IQP,Estudiante,2do grado,BARAHONA,2,0.4,2
+2025,S1,IQP,Estudiante,2do grado,COTUI,3,1.6,3
+2025,S1,IQP,Estudiante,2do grado,NAGUA,1,0.8,1
+2025,S1,IQP,Estudiante,2do grado,SAN CRISTOBAL,3,2.5,3
+2025,S1,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2025,S1,IQP,Estudiante,2do grado,SAN PEDRO DE MACORIS,1,1.2,1
+2025,S1,IQP,Estudiante,2do grado,SANTIAGO,2,2.7,6
+2025,S1,IQP,Estudiante,2do grado,SANTO DOMINGO,7,6.0,7
+2025,S1,IQP,Estudiante,2do grado,Sin ubicación,8,26.3,17
+2025,S1,IQP,Estudiante,3er grado,AZUA,3,2.7,4
+2025,S1,IQP,Estudiante,3er grado,BAHORUCO,1,0.9,1
+2025,S1,IQP,Estudiante,3er grado,BARAHONA,3,1.4,3
+2025,S1,IQP,Estudiante,3er grado,HIGUEY,3,1.6,3
+2025,S1,IQP,Estudiante,3er grado,MAO,2,1.0,2
+2025,S1,IQP,Estudiante,3er grado,MONTE CRISTI,2,1.2,3
+2025,S1,IQP,Estudiante,3er grado,MONTE PLATA,1,0.4,1
+2025,S1,IQP,Estudiante,3er grado,NAGUA,1,0.3,1
+2025,S1,IQP,Estudiante,3er grado,SAN CRISTOBAL,3,2.2,3
+2025,S1,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,36,101.3,100
+2025,S1,IQP,Estudiante,3er grado,SAN PEDRO DE MACORIS,4,7.3,7
+2025,S1,IQP,Estudiante,3er grado,SANTIAGO,58,67.8,99
+2025,S1,IQP,Estudiante,3er grado,SANTO DOMINGO,6,4.3,6
+2025,S1,IQP,Estudiante,3er grado,Sin ubicación,44,32.3,58
+2025,S1,IQP,Estudiante,4to grado,AZUA,6,14.1,6
+2025,S1,IQP,Estudiante,4to grado,BAHORUCO,1,0.2,1
+2025,S1,IQP,Estudiante,4to grado,BARAHONA,4,1.4,4
+2025,S1,IQP,Estudiante,4to grado,COTUI,3,1.2,3
+2025,S1,IQP,Estudiante,4to grado,HIGUEY,1,0.3,1
+2025,S1,IQP,Estudiante,4to grado,LA VEGA,3,2.1,3
+2025,S1,IQP,Estudiante,4to grado,MAO,1,0.5,1
+2025,S1,IQP,Estudiante,4to grado,MONTE CRISTI,1,1.0,1
+2025,S1,IQP,Estudiante,4to grado,MONTE PLATA,1,26.5,23
+2025,S1,IQP,Estudiante,4to grado,NAGUA,1,0.5,1
+2025,S1,IQP,Estudiante,4to grado,SAN CRISTOBAL,3,2.8,3
+2025,S1,IQP,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,1,0.1,1
+2025,S1,IQP,Estudiante,4to grado,SANTIAGO,5,3.2,8
+2025,S1,IQP,Estudiante,4to grado,SANTO DOMINGO,16,10.4,17
+2025,S1,IQP,Estudiante,4to grado,Sin ubicación,12,5.9,15
+2025,S1,IQP,Estudiante,5to grado,AZUA,5,5.0,5
+2025,S1,IQP,Estudiante,5to grado,BAHORUCO,1,0.1,1
+2025,S1,IQP,Estudiante,5to grado,BARAHONA,1,0.6,1
+2025,S1,IQP,Estudiante,5to grado,COTUI,1,0.2,1
+2025,S1,IQP,Estudiante,5to grado,HIGUEY,4,1.2,4
+2025,S1,IQP,Estudiante,5to grado,LA VEGA,19,10.4,19
+2025,S1,IQP,Estudiante,5to grado,MAO,1,0.6,1
+2025,S1,IQP,Estudiante,5to grado,MONTE PLATA,2,1.0,3
+2025,S1,IQP,Estudiante,5to grado,NAGUA,2,1.2,2
+2025,S1,IQP,Estudiante,5to grado,PUERTO PLATA,2,1.3,3
+2025,S1,IQP,Estudiante,5to grado,SAN CRISTOBAL,4,3.0,4
+2025,S1,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,2,1.0,2
+2025,S1,IQP,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,1,0.4,1
+2025,S1,IQP,Estudiante,5to grado,SAN PEDRO DE MACORIS,5,3.1,5
+2025,S1,IQP,Estudiante,5to grado,SANTIAGO,2,0.4,2
+2025,S1,IQP,Estudiante,5to grado,SANTO DOMINGO,23,21.3,29
+2025,S1,IQP,Estudiante,5to grado,Sin ubicación,12,30.8,28
+2025,S1,IQP,Estudiante,6to grado,AZUA,15,14.6,25
+2025,S1,IQP,Estudiante,6to grado,BAHORUCO,5,2.1,6
+2025,S1,IQP,Estudiante,6to grado,BARAHONA,26,16.7,29
+2025,S1,IQP,Estudiante,6to grado,COTUI,8,5.0,9
+2025,S1,IQP,Estudiante,6to grado,HIGUEY,22,31.6,42
+2025,S1,IQP,Estudiante,6to grado,LA VEGA,34,37.6,58
+2025,S1,IQP,Estudiante,6to grado,MONTE CRISTI,3,5.2,8
+2025,S1,IQP,Estudiante,6to grado,MONTE PLATA,8,7.0,11
+2025,S1,IQP,Estudiante,6to grado,NAGUA,4,1.4,4
+2025,S1,IQP,Estudiante,6to grado,PUERTO PLATA,10,4.7,10
+2025,S1,IQP,Estudiante,6to grado,SAN CRISTOBAL,18,7.8,20
+2025,S1,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,6,3.2,6
+2025,S1,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,12,4.7,12
+2025,S1,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,32,17.4,35
+2025,S1,IQP,Estudiante,6to grado,SANTIAGO,47,23.8,55
+2025,S1,IQP,Estudiante,6to grado,SANTO DOMINGO,132,93.1,147
+2025,S1,IQP,Estudiante,6to grado,Sin ubicación,237,161.5,291
+2025,S1,IQP,Estudiante,No especificado,Sin ubicación,1,1.3,4
+2025,S1,IQP,Parent,6to grado,Sin ubicación,2,0.5,3
+2025,S1,IQP,Parent,No especificado,Sin ubicación,1,0.7,1
+2025,S1,IQP,Sin rol,No especificado,Sin ubicación,1,36.5,39
+2025,S1,IQS,Admin,6to grado,Sin ubicación,1,1.6,5
+2025,S1,IQS,Admin,No especificado,Sin ubicación,1,0.9,3
+2025,S1,IQS,Docente,1er grado,AZUA,5,11.4,20
+2025,S1,IQS,Docente,1er grado,BAHORUCO,1,6.7,5
+2025,S1,IQS,Docente,1er grado,BARAHONA,1,0.2,2
+2025,S1,IQS,Docente,1er grado,COTUI,2,3.5,8
+2025,S1,IQS,Docente,1er grado,HIGUEY,4,25.0,28
+2025,S1,IQS,Docente,1er grado,LA VEGA,9,11.8,15
+2025,S1,IQS,Docente,1er grado,MAO,2,7.1,11
+2025,S1,IQS,Docente,1er grado,MONTE CRISTI,5,18.3,21
+2025,S1,IQS,Docente,1er grado,PUERTO PLATA,5,12.5,20
+2025,S1,IQS,Docente,1er grado,SAN CRISTOBAL,2,1.6,4
+2025,S1,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,4,3.4,5
+2025,S1,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,2,43.3,46
+2025,S1,IQS,Docente,1er grado,SANTIAGO,11,60.0,56
+2025,S1,IQS,Docente,1er grado,SANTO DOMINGO,33,68.7,102
+2025,S1,IQS,Docente,1er grado,Sin ubicación,40,52.2,87
+2025,S1,IQS,Docente,2do grado,SANTO DOMINGO,1,0.2,1
+2025,S1,IQS,Docente,4to grado,AZUA,89,195.1,249
+2025,S1,IQS,Docente,4to grado,BAHORUCO,30,50.0,58
+2025,S1,IQS,Docente,4to grado,BARAHONA,89,148.8,216
+2025,S1,IQS,Docente,4to grado,COTUI,120,205.1,284
+2025,S1,IQS,Docente,4to grado,HIGUEY,89,206.7,242
+2025,S1,IQS,Docente,4to grado,LA VEGA,207,379.2,482
+2025,S1,IQS,Docente,4to grado,MAO,46,91.1,104
+2025,S1,IQS,Docente,4to grado,MONTE CRISTI,81,226.6,286
+2025,S1,IQS,Docente,4to grado,MONTE PLATA,48,51.4,73
+2025,S1,IQS,Docente,4to grado,NAGUA,66,127.5,160
+2025,S1,IQS,Docente,4to grado,PUERTO PLATA,98,164.4,243
+2025,S1,IQS,Docente,4to grado,SAN CRISTOBAL,106,213.4,238
+2025,S1,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,164,251.4,376
+2025,S1,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,50,102.7,134
+2025,S1,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,172,317.6,417
+2025,S1,IQS,Docente,4to grado,SANTIAGO,360,833.6,1048
+2025,S1,IQS,Docente,4to grado,SANTO DOMINGO,548,1185.6,1472
+2025,S1,IQS,Docente,4to grado,Sin ubicación,652,796.0,1305
+2025,S1,IQS,Docente,6to grado,AZUA,2,9.4,7
+2025,S1,IQS,Docente,6to grado,BAHORUCO,1,0.0,1
+2025,S1,IQS,Docente,6to grado,COTUI,6,2.8,9
+2025,S1,IQS,Docente,6to grado,HIGUEY,5,7.5,11
+2025,S1,IQS,Docente,6to grado,LA VEGA,7,28.5,23
+2025,S1,IQS,Docente,6to grado,MAO,1,1.9,2
+2025,S1,IQS,Docente,6to grado,MONTE CRISTI,5,24.0,26
+2025,S1,IQS,Docente,6to grado,MONTE PLATA,5,12.6,13
+2025,S1,IQS,Docente,6to grado,NAGUA,3,2.3,4
+2025,S1,IQS,Docente,6to grado,PUERTO PLATA,3,1.9,5
+2025,S1,IQS,Docente,6to grado,SAN CRISTOBAL,3,3.0,3
+2025,S1,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,10,19.1,23
+2025,S1,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,4,11.1,14
+2025,S1,IQS,Docente,6to grado,SANTIAGO,16,11.8,24
+2025,S1,IQS,Docente,6to grado,SANTO DOMINGO,25,102.2,89
+2025,S1,IQS,Docente,6to grado,Sin ubicación,29,38.1,56
+2025,S1,IQS,Docente,No especificado,BARAHONA,1,1.3,3
+2025,S1,IQS,Docente,No especificado,SAN PEDRO DE MACORIS,1,13.3,6
+2025,S1,IQS,Docente,No especificado,SANTIAGO,4,5.4,11
+2025,S1,IQS,Docente,No especificado,SANTO DOMINGO,3,2.8,4
+2025,S1,IQS,Docente,No especificado,Sin ubicación,6,3.9,12
+2025,S1,IQS,Editor,No especificado,SANTIAGO,1,240.2,67
+2025,S1,IQS,Estudiante,1er grado,AZUA,20,16.8,59
+2025,S1,IQS,Estudiante,1er grado,BAHORUCO,6,6.3,21
+2025,S1,IQS,Estudiante,1er grado,BARAHONA,29,39.6,110
+2025,S1,IQS,Estudiante,1er grado,COTUI,21,23.9,79
+2025,S1,IQS,Estudiante,1er grado,HIGUEY,33,38.3,116
+2025,S1,IQS,Estudiante,1er grado,LA VEGA,31,35.0,127
+2025,S1,IQS,Estudiante,1er grado,MAO,9,6.0,19
+2025,S1,IQS,Estudiante,1er grado,MONTE CRISTI,11,24.8,41
+2025,S1,IQS,Estudiante,1er grado,MONTE PLATA,11,12.8,29
+2025,S1,IQS,Estudiante,1er grado,NAGUA,15,26.1,51
+2025,S1,IQS,Estudiante,1er grado,PUERTO PLATA,8,12.6,32
+2025,S1,IQS,Estudiante,1er grado,SAN CRISTOBAL,33,27.3,86
+2025,S1,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,40,52.2,140
+2025,S1,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,20,24.8,63
+2025,S1,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,35,31.1,88
+2025,S1,IQS,Estudiante,1er grado,SANTIAGO,75,100.0,220
+2025,S1,IQS,Estudiante,1er grado,SANTO DOMINGO,240,290.6,698
+2025,S1,IQS,Estudiante,1er grado,Sin ubicación,214,215.2,633
+2025,S1,IQS,Estudiante,2do grado,AZUA,26,21.8,46
+2025,S1,IQS,Estudiante,2do grado,BAHORUCO,12,10.5,31
+2025,S1,IQS,Estudiante,2do grado,BARAHONA,18,19.4,43
+2025,S1,IQS,Estudiante,2do grado,COTUI,25,31.7,54
+2025,S1,IQS,Estudiante,2do grado,HIGUEY,9,10.9,25
+2025,S1,IQS,Estudiante,2do grado,LA VEGA,22,35.1,58
+2025,S1,IQS,Estudiante,2do grado,MAO,3,5.6,10
+2025,S1,IQS,Estudiante,2do grado,MONTE CRISTI,33,51.8,98
+2025,S1,IQS,Estudiante,2do grado,MONTE PLATA,11,10.4,25
+2025,S1,IQS,Estudiante,2do grado,NAGUA,17,26.9,64
+2025,S1,IQS,Estudiante,2do grado,PUERTO PLATA,14,12.9,32
+2025,S1,IQS,Estudiante,2do grado,SAN CRISTOBAL,35,38.5,80
+2025,S1,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,51,56.1,111
+2025,S1,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,14,16.3,26
+2025,S1,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,37,48.4,92
+2025,S1,IQS,Estudiante,2do grado,SANTIAGO,151,227.4,375
+2025,S1,IQS,Estudiante,2do grado,SANTO DOMINGO,210,243.0,465
+2025,S1,IQS,Estudiante,2do grado,Sin ubicación,245,252.4,447
+2025,S1,IQS,Estudiante,3er grado,AZUA,25,31.1,51
+2025,S1,IQS,Estudiante,3er grado,BAHORUCO,11,5.6,14
+2025,S1,IQS,Estudiante,3er grado,BARAHONA,57,42.4,91
+2025,S1,IQS,Estudiante,3er grado,COTUI,63,264.4,375
+2025,S1,IQS,Estudiante,3er grado,HIGUEY,196,344.4,408
+2025,S1,IQS,Estudiante,3er grado,LA VEGA,49,59.2,96
+2025,S1,IQS,Estudiante,3er grado,MAO,64,40.6,76
+2025,S1,IQS,Estudiante,3er grado,MONTE CRISTI,126,190.3,317
+2025,S1,IQS,Estudiante,3er grado,MONTE PLATA,47,44.4,73
+2025,S1,IQS,Estudiante,3er grado,NAGUA,41,45.5,93
+2025,S1,IQS,Estudiante,3er grado,PUERTO PLATA,54,48.9,83
+2025,S1,IQS,Estudiante,3er grado,SAN CRISTOBAL,51,64.4,104
+2025,S1,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,200,297.3,405
+2025,S1,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,50,54.5,82
+2025,S1,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,120,170.6,279
+2025,S1,IQS,Estudiante,3er grado,SANTIAGO,1206,3431.4,3630
+2025,S1,IQS,Estudiante,3er grado,SANTO DOMINGO,472,885.9,1168
+2025,S1,IQS,Estudiante,3er grado,Sin ubicación,941,1326.2,1930
+2025,S1,IQS,Estudiante,4to grado,AZUA,79,118.9,186
+2025,S1,IQS,Estudiante,4to grado,BAHORUCO,32,38.6,68
+2025,S1,IQS,Estudiante,4to grado,BARAHONA,43,66.4,93
+2025,S1,IQS,Estudiante,4to grado,COTUI,72,100.5,194
+2025,S1,IQS,Estudiante,4to grado,HIGUEY,80,109.7,169
+2025,S1,IQS,Estudiante,4to grado,LA VEGA,142,329.8,478
+2025,S1,IQS,Estudiante,4to grado,MAO,16,28.9,38
+2025,S1,IQS,Estudiante,4to grado,MONTE CRISTI,22,38.0,50
+2025,S1,IQS,Estudiante,4to grado,MONTE PLATA,44,38.0,67
+2025,S1,IQS,Estudiante,4to grado,NAGUA,92,182.3,252
+2025,S1,IQS,Estudiante,4to grado,PUERTO PLATA,27,28.8,65
+2025,S1,IQS,Estudiante,4to grado,SAN CRISTOBAL,46,55.1,116
+2025,S1,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,162,228.9,399
+2025,S1,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,94,147.1,226
+2025,S1,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,96,149.4,200
+2025,S1,IQS,Estudiante,4to grado,SANTIAGO,197,300.7,515
+2025,S1,IQS,Estudiante,4to grado,SANTO DOMINGO,431,709.2,1040
+2025,S1,IQS,Estudiante,4to grado,Sin ubicación,579,879.2,1347
+2025,S1,IQS,Estudiante,5to grado,AZUA,13,19.9,60
+2025,S1,IQS,Estudiante,5to grado,BAHORUCO,3,2.0,5
+2025,S1,IQS,Estudiante,5to grado,BARAHONA,23,34.0,62
+2025,S1,IQS,Estudiante,5to grado,COTUI,6,3.3,9
+2025,S1,IQS,Estudiante,5to grado,HIGUEY,16,14.7,32
+2025,S1,IQS,Estudiante,5to grado,LA VEGA,10,14.3,26
+2025,S1,IQS,Estudiante,5to grado,MONTE CRISTI,1,5.7,7
+2025,S1,IQS,Estudiante,5to grado,MONTE PLATA,7,6.7,11
+2025,S1,IQS,Estudiante,5to grado,NAGUA,21,21.6,31
+2025,S1,IQS,Estudiante,5to grado,PUERTO PLATA,12,12.2,40
+2025,S1,IQS,Estudiante,5to grado,SAN CRISTOBAL,42,40.5,83
+2025,S1,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,49,60.6,103
+2025,S1,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,23,27.0,45
+2025,S1,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,22,30.0,40
+2025,S1,IQS,Estudiante,5to grado,SANTIAGO,40,64.0,90
+2025,S1,IQS,Estudiante,5to grado,SANTO DOMINGO,126,183.7,304
+2025,S1,IQS,Estudiante,5to grado,Sin ubicación,159,192.6,346
+2025,S1,IQS,Estudiante,6to grado,AZUA,1247,2235.5,3706
+2025,S1,IQS,Estudiante,6to grado,BAHORUCO,349,458.1,921
+2025,S1,IQS,Estudiante,6to grado,BARAHONA,845,1325.8,2485
+2025,S1,IQS,Estudiante,6to grado,COTUI,1092,1639.4,3285
+2025,S1,IQS,Estudiante,6to grado,HIGUEY,1304,3052.7,4453
+2025,S1,IQS,Estudiante,6to grado,LA VEGA,1883,4102.4,6297
+2025,S1,IQS,Estudiante,6to grado,MAO,504,984.3,1626
+2025,S1,IQS,Estudiante,6to grado,MONTE CRISTI,726,1693.5,2654
+2025,S1,IQS,Estudiante,6to grado,MONTE PLATA,486,643.0,1271
+2025,S1,IQS,Estudiante,6to grado,NAGUA,652,1128.5,2163
+2025,S1,IQS,Estudiante,6to grado,PUERTO PLATA,960,1616.7,3252
+2025,S1,IQS,Estudiante,6to grado,SAN CRISTOBAL,1276,2260.9,3977
+2025,S1,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1825,2909.4,5065
+2025,S1,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,867,3108.4,4181
+2025,S1,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,1792,4398.7,5993
+2025,S1,IQS,Estudiante,6to grado,SANTIAGO,4282,9152.3,14715
+2025,S1,IQS,Estudiante,6to grado,SANTO DOMINGO,8175,16975.1,27171
+2025,S1,IQS,Estudiante,6to grado,Sin ubicación,9942,16255.1,30455
+2025,S1,IQS,Estudiante,No especificado,SAN CRISTOBAL,2,3.4,8
+2025,S1,IQS,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,1,3.1,3
+2025,S1,IQS,Estudiante,No especificado,SANTIAGO,3,4.9,3
+2025,S1,IQS,Estudiante,No especificado,SANTO DOMINGO,4,2.6,4
+2025,S1,IQS,Estudiante,No especificado,Sin ubicación,1,0.4,1
+2025,S1,IQS,Invitado,6to grado,AZUA,1,1.5,7
+2025,S1,IQS,Invitado,6to grado,BARAHONA,1,1.5,2
+2025,S1,IQS,Invitado,6to grado,LA VEGA,1,20.5,16
+2025,S1,IQS,Invitado,6to grado,MONTE CRISTI,1,1.4,6
+2025,S1,IQS,Invitado,6to grado,NAGUA,2,7.0,6
+2025,S1,IQS,Invitado,6to grado,SAN PEDRO DE MACORIS,1,1.8,4
+2025,S1,IQS,Invitado,6to grado,SANTIAGO,5,52.2,44
+2025,S1,IQS,Invitado,6to grado,SANTO DOMINGO,21,58.6,85
+2025,S1,IQS,Invitado,6to grado,Sin ubicación,1360,2167.6,3134
+2025,S1,IQS,Invitado,No especificado,Sin ubicación,1,1.0,3
+2025,S1,IQS,Sin rol,No especificado,Sin ubicación,21,29.7,36
+2025,S2,IQ512,Coordinador,No especificado,Sin ubicación,1,0.2,1
+2025,S2,IQ512,Editor,No especificado,Sin ubicación,1,6.3,4
+2025,S2,IQ512,Estudiante,No especificado,AZUA,6,2.9,6
+2025,S2,IQ512,Estudiante,No especificado,BAHORUCO,1,0.1,1
+2025,S2,IQ512,Estudiante,No especificado,BARAHONA,4,3.3,10
+2025,S2,IQ512,Estudiante,No especificado,COTUI,3,1.4,4
+2025,S2,IQ512,Estudiante,No especificado,HIGUEY,1,0.3,1
+2025,S2,IQ512,Estudiante,No especificado,LA VEGA,7,6.8,8
+2025,S2,IQ512,Estudiante,No especificado,MAO,5,12.6,14
+2025,S2,IQ512,Estudiante,No especificado,MONTE CRISTI,1,0.9,3
+2025,S2,IQ512,Estudiante,No especificado,MONTE PLATA,1,1.0,2
+2025,S2,IQ512,Estudiante,No especificado,NAGUA,1,0.8,1
+2025,S2,IQ512,Estudiante,No especificado,PUERTO PLATA,2,0.6,2
+2025,S2,IQ512,Estudiante,No especificado,SAN CRISTOBAL,7,15.0,11
+2025,S2,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,3,2.1,5
+2025,S2,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,3,2.1,4
+2025,S2,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,2,0.8,2
+2025,S2,IQ512,Estudiante,No especificado,SANTIAGO,5,2.3,6
+2025,S2,IQ512,Estudiante,No especificado,SANTO DOMINGO,33,59.4,59
+2025,S2,IQ512,Estudiante,No especificado,Sin ubicación,198,201.3,306
+2025,S2,IQP,Coordinador,6to grado,Sin ubicación,1,1.8,5
+2025,S2,IQP,Docente,1er grado,Sin ubicación,2,80.9,74
+2025,S2,IQP,Docente,3er grado,Sin ubicación,1,0.4,1
+2025,S2,IQP,Docente,4to grado,MONTE PLATA,1,0.4,1
+2025,S2,IQP,Docente,4to grado,SAN PEDRO DE MACORIS,1,0.2,1
+2025,S2,IQP,Docente,4to grado,SANTIAGO,1,2.2,6
+2025,S2,IQP,Docente,4to grado,SANTO DOMINGO,1,1.4,1
+2025,S2,IQP,Docente,4to grado,Sin ubicación,1,2.6,4
+2025,S2,IQP,Docente,5to grado,AZUA,2,0.4,2
+2025,S2,IQP,Docente,5to grado,BAHORUCO,1,0.5,1
+2025,S2,IQP,Docente,5to grado,BARAHONA,1,0.1,1
+2025,S2,IQP,Docente,5to grado,COTUI,5,5.4,7
+2025,S2,IQP,Docente,5to grado,HIGUEY,6,4.2,7
+2025,S2,IQP,Docente,5to grado,LA VEGA,5,4.3,6
+2025,S2,IQP,Docente,5to grado,MAO,6,3.5,8
+2025,S2,IQP,Docente,5to grado,MONTE CRISTI,3,1.9,3
+2025,S2,IQP,Docente,5to grado,NAGUA,2,1.3,4
+2025,S2,IQP,Docente,5to grado,PUERTO PLATA,7,36.2,48
+2025,S2,IQP,Docente,5to grado,SAN CRISTOBAL,4,14.7,21
+2025,S2,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,3,3.3,5
+2025,S2,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,1,0.5,1
+2025,S2,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,3,3.6,4
+2025,S2,IQP,Docente,5to grado,SANTIAGO,14,18.4,27
+2025,S2,IQP,Docente,5to grado,SANTO DOMINGO,29,25.5,50
+2025,S2,IQP,Docente,5to grado,Sin ubicación,10,19.1,24
+2025,S2,IQP,Docente,6to grado,BARAHONA,1,0.8,1
+2025,S2,IQP,Docente,6to grado,COTUI,2,4.6,5
+2025,S2,IQP,Docente,6to grado,MAO,2,0.8,2
+2025,S2,IQP,Docente,6to grado,MONTE PLATA,1,3.5,3
+2025,S2,IQP,Docente,6to grado,NAGUA,1,12.0,12
+2025,S2,IQP,Docente,6to grado,SAN CRISTOBAL,1,0.4,1
+2025,S2,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,1.1,3
+2025,S2,IQP,Docente,6to grado,SANTIAGO,2,1.4,3
+2025,S2,IQP,Docente,6to grado,SANTO DOMINGO,8,13.7,16
+2025,S2,IQP,Docente,6to grado,Sin ubicación,3,1.0,3
+2025,S2,IQP,Docente,No especificado,Sin ubicación,1,0.2,1
+2025,S2,IQP,Estudiante,1er grado,AZUA,4,3.6,5
+2025,S2,IQP,Estudiante,1er grado,BAHORUCO,1,0.2,1
+2025,S2,IQP,Estudiante,1er grado,SAN CRISTOBAL,1,1.9,1
+2025,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,2,1.2,2
+2025,S2,IQP,Estudiante,1er grado,Sin ubicación,6,8.5,15
+2025,S2,IQP,Estudiante,2do grado,AZUA,1,0.4,1
+2025,S2,IQP,Estudiante,2do grado,BARAHONA,1,0.1,1
+2025,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,3,0.8,3
+2025,S2,IQP,Estudiante,2do grado,Sin ubicación,4,2.6,5
+2025,S2,IQP,Estudiante,3er grado,AZUA,1,0.1,1
+2025,S2,IQP,Estudiante,3er grado,PUERTO PLATA,1,0.4,1
+2025,S2,IQP,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,5,12.5,14
+2025,S2,IQP,Estudiante,3er grado,SANTIAGO,1,0.1,1
+2025,S2,IQP,Estudiante,3er grado,SANTO DOMINGO,1,0.5,1
+2025,S2,IQP,Estudiante,3er grado,Sin ubicación,5,3.1,5
+2025,S2,IQP,Estudiante,4to grado,AZUA,1,0.3,1
+2025,S2,IQP,Estudiante,4to grado,MAO,2,0.4,2
+2025,S2,IQP,Estudiante,4to grado,MONTE PLATA,1,17.0,13
+2025,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,3,1.5,3
+2025,S2,IQP,Estudiante,4to grado,Sin ubicación,1,0.5,1
+2025,S2,IQP,Estudiante,5to grado,AZUA,1,0.6,1
+2025,S2,IQP,Estudiante,5to grado,COTUI,1,0.2,1
+2025,S2,IQP,Estudiante,5to grado,HIGUEY,1,0.5,1
+2025,S2,IQP,Estudiante,5to grado,PUERTO PLATA,2,1.3,4
+2025,S2,IQP,Estudiante,5to grado,SANTIAGO,1,0.4,1
+2025,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,28,29.5,42
+2025,S2,IQP,Estudiante,5to grado,Sin ubicación,2,3.6,10
+2025,S2,IQP,Estudiante,6to grado,AZUA,1,1.5,2
+2025,S2,IQP,Estudiante,6to grado,BARAHONA,2,0.8,2
+2025,S2,IQP,Estudiante,6to grado,COTUI,1,0.5,1
+2025,S2,IQP,Estudiante,6to grado,HIGUEY,1,0.5,1
+2025,S2,IQP,Estudiante,6to grado,MAO,1,0.3,1
+2025,S2,IQP,Estudiante,6to grado,MONTE PLATA,1,0.1,1
+2025,S2,IQP,Estudiante,6to grado,SAN CRISTOBAL,1,0.2,1
+2025,S2,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,2,0.6,2
+2025,S2,IQP,Estudiante,6to grado,SANTIAGO,2,0.7,2
+2025,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,12,6.9,15
+2025,S2,IQP,Estudiante,6to grado,Sin ubicación,5,12.0,16
+2025,S2,IQP,Parent,1er grado,Sin ubicación,1,0.4,1
+2025,S2,IQP,Parent,6to grado,Sin ubicación,1,0.3,1
+2025,S2,IQP,Sin rol,No especificado,Sin ubicación,1,123.5,76
+2025,S2,IQS,Docente,1er grado,AZUA,3,9.1,7
+2025,S2,IQS,Docente,1er grado,BAHORUCO,1,0.3,2
+2025,S2,IQS,Docente,1er grado,LA VEGA,1,0.4,1
+2025,S2,IQS,Docente,1er grado,MONTE CRISTI,3,2.0,5
+2025,S2,IQS,Docente,1er grado,PUERTO PLATA,1,5.3,7
+2025,S2,IQS,Docente,1er grado,SAN CRISTOBAL,1,0.1,1
+2025,S2,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,1,3.1,8
+2025,S2,IQS,Docente,1er grado,SANTIAGO,2,1.8,2
+2025,S2,IQS,Docente,1er grado,SANTO DOMINGO,3,6.0,11
+2025,S2,IQS,Docente,1er grado,Sin ubicación,5,4.2,9
+2025,S2,IQS,Docente,3er grado,Sin ubicación,1,0.6,1
+2025,S2,IQS,Docente,4to grado,AZUA,17,18.7,30
+2025,S2,IQS,Docente,4to grado,BAHORUCO,2,0.9,2
+2025,S2,IQS,Docente,4to grado,BARAHONA,10,6.5,14
+2025,S2,IQS,Docente,4to grado,COTUI,12,7.7,19
+2025,S2,IQS,Docente,4to grado,HIGUEY,7,14.6,19
+2025,S2,IQS,Docente,4to grado,LA VEGA,32,39.4,54
+2025,S2,IQS,Docente,4to grado,MAO,9,3.3,12
+2025,S2,IQS,Docente,4to grado,MONTE CRISTI,26,51.4,72
+2025,S2,IQS,Docente,4to grado,MONTE PLATA,4,2.2,4
+2025,S2,IQS,Docente,4to grado,NAGUA,15,12.7,25
+2025,S2,IQS,Docente,4to grado,PUERTO PLATA,14,40.6,35
+2025,S2,IQS,Docente,4to grado,SAN CRISTOBAL,16,30.4,29
+2025,S2,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,30,25.9,60
+2025,S2,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,9,6.1,14
+2025,S2,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,26,21.7,54
+2025,S2,IQS,Docente,4to grado,SANTIAGO,41,33.6,65
+2025,S2,IQS,Docente,4to grado,SANTO DOMINGO,87,79.9,144
+2025,S2,IQS,Docente,4to grado,Sin ubicación,109,60.8,158
+2025,S2,IQS,Docente,5to grado,SAN PEDRO DE MACORIS,1,0.1,1
+2025,S2,IQS,Docente,6to grado,AZUA,1,0.2,2
+2025,S2,IQS,Docente,6to grado,HIGUEY,1,1.6,1
+2025,S2,IQS,Docente,6to grado,SANTIAGO,1,0.5,2
+2025,S2,IQS,Docente,6to grado,SANTO DOMINGO,4,2.9,8
+2025,S2,IQS,Docente,6to grado,Sin ubicación,7,6.2,14
+2025,S2,IQS,Docente,No especificado,SANTIAGO,1,1.7,2
+2025,S2,IQS,Docente,No especificado,SANTO DOMINGO,2,3.3,9
+2025,S2,IQS,Docente,No especificado,Sin ubicación,1,0.4,2
+2025,S2,IQS,Editor,No especificado,SANTIAGO,1,65.3,45
+2025,S2,IQS,Estudiante,1er grado,BARAHONA,6,5.4,9
+2025,S2,IQS,Estudiante,1er grado,LA VEGA,3,1.0,5
+2025,S2,IQS,Estudiante,1er grado,MAO,1,0.5,2
+2025,S2,IQS,Estudiante,1er grado,MONTE CRISTI,3,2.4,7
+2025,S2,IQS,Estudiante,1er grado,MONTE PLATA,2,5.0,6
+2025,S2,IQS,Estudiante,1er grado,NAGUA,1,1.0,2
+2025,S2,IQS,Estudiante,1er grado,PUERTO PLATA,2,6.2,6
+2025,S2,IQS,Estudiante,1er grado,SAN CRISTOBAL,3,0.9,6
+2025,S2,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,3,2.7,7
+2025,S2,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,4,7.3,19
+2025,S2,IQS,Estudiante,1er grado,SANTIAGO,13,7.7,16
+2025,S2,IQS,Estudiante,1er grado,SANTO DOMINGO,123,99.9,270
+2025,S2,IQS,Estudiante,1er grado,Sin ubicación,34,22.6,65
+2025,S2,IQS,Estudiante,2do grado,AZUA,3,1.7,3
+2025,S2,IQS,Estudiante,2do grado,BAHORUCO,1,0.5,2
+2025,S2,IQS,Estudiante,2do grado,BARAHONA,2,1.2,3
+2025,S2,IQS,Estudiante,2do grado,COTUI,1,0.1,1
+2025,S2,IQS,Estudiante,2do grado,HIGUEY,21,41.8,57
+2025,S2,IQS,Estudiante,2do grado,LA VEGA,9,4.9,17
+2025,S2,IQS,Estudiante,2do grado,MONTE CRISTI,2,1.4,4
+2025,S2,IQS,Estudiante,2do grado,NAGUA,2,0.6,2
+2025,S2,IQS,Estudiante,2do grado,PUERTO PLATA,1,0.2,2
+2025,S2,IQS,Estudiante,2do grado,SAN CRISTOBAL,1,0.4,2
+2025,S2,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,16,21.3,28
+2025,S2,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,2,0.7,2
+2025,S2,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,6,3.9,10
+2025,S2,IQS,Estudiante,2do grado,SANTIAGO,12,7.6,17
+2025,S2,IQS,Estudiante,2do grado,SANTO DOMINGO,84,45.5,138
+2025,S2,IQS,Estudiante,2do grado,Sin ubicación,16,10.8,21
+2025,S2,IQS,Estudiante,3er grado,AZUA,1,1.6,3
+2025,S2,IQS,Estudiante,3er grado,HIGUEY,2,7.6,7
+2025,S2,IQS,Estudiante,3er grado,LA VEGA,1,0.2,1
+2025,S2,IQS,Estudiante,3er grado,PUERTO PLATA,15,13.4,27
+2025,S2,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,70,41.6,80
+2025,S2,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,3,1.1,3
+2025,S2,IQS,Estudiante,3er grado,SANTIAGO,57,41.9,85
+2025,S2,IQS,Estudiante,3er grado,SANTO DOMINGO,81,57.7,134
+2025,S2,IQS,Estudiante,3er grado,Sin ubicación,45,19.3,63
+2025,S2,IQS,Estudiante,4to grado,AZUA,4,3.8,8
+2025,S2,IQS,Estudiante,4to grado,BAHORUCO,3,1.2,4
+2025,S2,IQS,Estudiante,4to grado,BARAHONA,1,0.2,1
+2025,S2,IQS,Estudiante,4to grado,COTUI,7,5.3,9
+2025,S2,IQS,Estudiante,4to grado,HIGUEY,7,4.8,10
+2025,S2,IQS,Estudiante,4to grado,LA VEGA,5,3.5,8
+2025,S2,IQS,Estudiante,4to grado,MAO,2,0.6,2
+2025,S2,IQS,Estudiante,4to grado,MONTE CRISTI,5,1.3,5
+2025,S2,IQS,Estudiante,4to grado,MONTE PLATA,1,1.1,5
+2025,S2,IQS,Estudiante,4to grado,NAGUA,5,2.2,7
+2025,S2,IQS,Estudiante,4to grado,PUERTO PLATA,3,2.7,6
+2025,S2,IQS,Estudiante,4to grado,SAN CRISTOBAL,5,3.4,6
+2025,S2,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,114,61.7,120
+2025,S2,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,11,5.4,12
+2025,S2,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,9,7.9,15
+2025,S2,IQS,Estudiante,4to grado,SANTIAGO,29,18.0,35
+2025,S2,IQS,Estudiante,4to grado,SANTO DOMINGO,52,48.7,90
+2025,S2,IQS,Estudiante,4to grado,Sin ubicación,47,49.0,124
+2025,S2,IQS,Estudiante,5to grado,AZUA,3,4.3,4
+2025,S2,IQS,Estudiante,5to grado,COTUI,1,1.8,4
+2025,S2,IQS,Estudiante,5to grado,HIGUEY,2,0.8,3
+2025,S2,IQS,Estudiante,5to grado,LA VEGA,22,16.4,66
+2025,S2,IQS,Estudiante,5to grado,MONTE CRISTI,4,1.0,5
+2025,S2,IQS,Estudiante,5to grado,PUERTO PLATA,40,57.9,104
+2025,S2,IQS,Estudiante,5to grado,SAN CRISTOBAL,2,0.8,2
+2025,S2,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,28,14.1,32
+2025,S2,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,1,0.3,2
+2025,S2,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,1,6.0,7
+2025,S2,IQS,Estudiante,5to grado,SANTIAGO,9,6.8,12
+2025,S2,IQS,Estudiante,5to grado,SANTO DOMINGO,36,23.2,54
+2025,S2,IQS,Estudiante,5to grado,Sin ubicación,49,25.4,62
+2025,S2,IQS,Estudiante,6to grado,AZUA,120,215.4,349
+2025,S2,IQS,Estudiante,6to grado,BAHORUCO,12,4.7,21
+2025,S2,IQS,Estudiante,6to grado,BARAHONA,21,13.9,52
+2025,S2,IQS,Estudiante,6to grado,COTUI,50,41.7,82
+2025,S2,IQS,Estudiante,6to grado,HIGUEY,132,96.5,222
+2025,S2,IQS,Estudiante,6to grado,LA VEGA,279,296.7,546
+2025,S2,IQS,Estudiante,6to grado,MAO,55,32.7,76
+2025,S2,IQS,Estudiante,6to grado,MONTE CRISTI,178,186.8,343
+2025,S2,IQS,Estudiante,6to grado,MONTE PLATA,14,7.0,31
+2025,S2,IQS,Estudiante,6to grado,NAGUA,49,28.4,79
+2025,S2,IQS,Estudiante,6to grado,PUERTO PLATA,49,76.3,134
+2025,S2,IQS,Estudiante,6to grado,SAN CRISTOBAL,176,119.3,262
+2025,S2,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,202,179.6,386
+2025,S2,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,100,54.5,166
+2025,S2,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,217,230.4,586
+2025,S2,IQS,Estudiante,6to grado,SANTIAGO,398,337.4,692
+2025,S2,IQS,Estudiante,6to grado,SANTO DOMINGO,871,821.4,1788
+2025,S2,IQS,Estudiante,6to grado,Sin ubicación,656,695.7,1408
+2025,S2,IQS,Estudiante,No especificado,SANTIAGO,1,1.1,1
+2025,S2,IQS,Estudiante,No especificado,SANTO DOMINGO,1,1.0,2
+2025,S2,IQS,Estudiante,No especificado,Sin ubicación,1,0.4,2
+2025,S2,IQS,Invitado,6to grado,BARAHONA,3,1.7,3
+2025,S2,IQS,Invitado,6to grado,SANTIAGO,1,7.4,6
+2025,S2,IQS,Invitado,6to grado,SANTO DOMINGO,10,12.4,17
+2025,S2,IQS,Invitado,6to grado,Sin ubicación,291,392.8,597
+2025,S2,IQS,Sin rol,No especificado,Sin ubicación,1,0.7,3
+2026,S1,IQ512,Coordinador,No especificado,Sin ubicación,1,1.0,4
+2026,S1,IQ512,Editor,No especificado,Sin ubicación,1,5.3,9
+2026,S1,IQ512,Estudiante,No especificado,AZUA,32,157.1,155
+2026,S1,IQ512,Estudiante,No especificado,BAHORUCO,21,89.6,117
+2026,S1,IQ512,Estudiante,No especificado,BARAHONA,95,504.9,531
+2026,S1,IQ512,Estudiante,No especificado,COTUI,33,274.5,238
+2026,S1,IQ512,Estudiante,No especificado,HIGUEY,3,16.0,12
+2026,S1,IQ512,Estudiante,No especificado,LA VEGA,21,157.5,147
+2026,S1,IQ512,Estudiante,No especificado,MAO,4,5.7,11
+2026,S1,IQ512,Estudiante,No especificado,MONTE CRISTI,2,8.7,9
+2026,S1,IQ512,Estudiante,No especificado,MONTE PLATA,2,0.3,2
+2026,S1,IQ512,Estudiante,No especificado,NAGUA,24,124.2,122
+2026,S1,IQ512,Estudiante,No especificado,PUERTO PLATA,7,16.9,28
+2026,S1,IQ512,Estudiante,No especificado,SAN CRISTOBAL,19,59.6,71
+2026,S1,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,4,12.3,17
+2026,S1,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,31,243.1,217
+2026,S1,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,38,203.3,220
+2026,S1,IQ512,Estudiante,No especificado,SANTIAGO,12,37.7,52
+2026,S1,IQ512,Estudiante,No especificado,SANTO DOMINGO,73,338.2,323
+2026,S1,IQ512,Estudiante,No especificado,Sin ubicación,330,808.4,997
+2026,S1,IQP,Coordinador,6to grado,Sin ubicación,1,0.5,1
+2026,S1,IQP,Docente,1er grado,Sin ubicación,2,120.7,107
+2026,S1,IQP,Docente,4to grado,AZUA,1,0.8,1
+2026,S1,IQP,Docente,4to grado,MAO,1,0.8,1
+2026,S1,IQP,Docente,4to grado,PUERTO PLATA,1,0.4,1
+2026,S1,IQP,Docente,4to grado,SAN FRANCISCO DE MACORIS,3,0.8,3
+2026,S1,IQP,Docente,4to grado,SANTIAGO,2,6.1,9
+2026,S1,IQP,Docente,4to grado,SANTO DOMINGO,3,0.7,3
+2026,S1,IQP,Docente,4to grado,Sin ubicación,10,11.8,14
+2026,S1,IQP,Docente,5to grado,AZUA,4,5.5,5
+2026,S1,IQP,Docente,5to grado,BAHORUCO,2,2.4,2
+2026,S1,IQP,Docente,5to grado,BARAHONA,1,0.2,1
+2026,S1,IQP,Docente,5to grado,COTUI,7,4.6,8
+2026,S1,IQP,Docente,5to grado,HIGUEY,4,3.2,5
+2026,S1,IQP,Docente,5to grado,LA VEGA,15,23.6,35
+2026,S1,IQP,Docente,5to grado,MAO,2,1.3,2
+2026,S1,IQP,Docente,5to grado,MONTE CRISTI,8,30.3,29
+2026,S1,IQP,Docente,5to grado,MONTE PLATA,2,0.4,2
+2026,S1,IQP,Docente,5to grado,NAGUA,1,0.3,1
+2026,S1,IQP,Docente,5to grado,PUERTO PLATA,6,31.4,31
+2026,S1,IQP,Docente,5to grado,SAN CRISTOBAL,9,20.7,34
+2026,S1,IQP,Docente,5to grado,SAN FRANCISCO DE MACORIS,6,5.8,13
+2026,S1,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,3,1.8,3
+2026,S1,IQP,Docente,5to grado,SAN PEDRO DE MACORIS,4,3.1,4
+2026,S1,IQP,Docente,5to grado,SANTIAGO,6,18.2,19
+2026,S1,IQP,Docente,5to grado,SANTO DOMINGO,47,31.9,55
+2026,S1,IQP,Docente,5to grado,Sin ubicación,21,12.0,24
+2026,S1,IQP,Docente,6to grado,BARAHONA,1,0.9,1
+2026,S1,IQP,Docente,6to grado,COTUI,1,0.6,1
+2026,S1,IQP,Docente,6to grado,LA VEGA,1,0.3,1
+2026,S1,IQP,Docente,6to grado,MAO,1,0.3,1
+2026,S1,IQP,Docente,6to grado,MONTE PLATA,1,0.5,1
+2026,S1,IQP,Docente,6to grado,NAGUA,1,9.1,11
+2026,S1,IQP,Docente,6to grado,SAN CRISTOBAL,2,1.3,2
+2026,S1,IQP,Docente,6to grado,SANTIAGO,1,0.6,1
+2026,S1,IQP,Docente,6to grado,SANTO DOMINGO,7,6.2,8
+2026,S1,IQP,Docente,6to grado,Sin ubicación,5,2.0,7
+2026,S1,IQP,Docente,No especificado,SANTO DOMINGO,2,1.9,2
+2026,S1,IQP,Docente,No especificado,Sin ubicación,2,1.8,2
+2026,S1,IQP,Estudiante,1er grado,SANTO DOMINGO,3,1.3,3
+2026,S1,IQP,Estudiante,1er grado,Sin ubicación,4,2.0,4
+2026,S1,IQP,Estudiante,2do grado,AZUA,1,0.8,2
+2026,S1,IQP,Estudiante,2do grado,NAGUA,1,0.4,1
+2026,S1,IQP,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,1,1.1,1
+2026,S1,IQP,Estudiante,2do grado,SANTIAGO,1,0.2,1
+2026,S1,IQP,Estudiante,2do grado,SANTO DOMINGO,2,1.4,2
+2026,S1,IQP,Estudiante,2do grado,Sin ubicación,1,0.3,1
+2026,S1,IQP,Estudiante,3er grado,AZUA,1,1.1,1
+2026,S1,IQP,Estudiante,3er grado,COTUI,1,0.3,1
+2026,S1,IQP,Estudiante,3er grado,HIGUEY,1,1.8,1
+2026,S1,IQP,Estudiante,3er grado,LA VEGA,2,1.0,2
+2026,S1,IQP,Estudiante,3er grado,MONTE CRISTI,1,0.5,1
+2026,S1,IQP,Estudiante,3er grado,SAN PEDRO DE MACORIS,1,0.7,1
+2026,S1,IQP,Estudiante,3er grado,SANTIAGO,3,0.8,3
+2026,S1,IQP,Estudiante,3er grado,SANTO DOMINGO,15,13.3,19
+2026,S1,IQP,Estudiante,3er grado,Sin ubicación,14,10.0,16
+2026,S1,IQP,Estudiante,4to grado,COTUI,1,0.5,1
+2026,S1,IQP,Estudiante,4to grado,HIGUEY,1,0.2,1
+2026,S1,IQP,Estudiante,4to grado,LA VEGA,2,0.8,2
+2026,S1,IQP,Estudiante,4to grado,MONTE CRISTI,2,0.6,2
+2026,S1,IQP,Estudiante,4to grado,MONTE PLATA,1,1.3,3
+2026,S1,IQP,Estudiante,4to grado,PUERTO PLATA,11,5.5,12
+2026,S1,IQP,Estudiante,4to grado,SAN CRISTOBAL,1,0.2,1
+2026,S1,IQP,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,2,1.0,2
+2026,S1,IQP,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,1,0.3,2
+2026,S1,IQP,Estudiante,4to grado,SANTIAGO,1,0.3,1
+2026,S1,IQP,Estudiante,4to grado,SANTO DOMINGO,9,8.8,15
+2026,S1,IQP,Estudiante,5to grado,AZUA,3,0.9,3
+2026,S1,IQP,Estudiante,5to grado,HIGUEY,2,1.3,2
+2026,S1,IQP,Estudiante,5to grado,LA VEGA,2,0.9,3
+2026,S1,IQP,Estudiante,5to grado,MAO,1,0.5,1
+2026,S1,IQP,Estudiante,5to grado,PUERTO PLATA,1,0.8,1
+2026,S1,IQP,Estudiante,5to grado,SAN CRISTOBAL,1,0.2,1
+2026,S1,IQP,Estudiante,5to grado,SANTIAGO,2,0.6,2
+2026,S1,IQP,Estudiante,5to grado,SANTO DOMINGO,19,21.7,34
+2026,S1,IQP,Estudiante,5to grado,Sin ubicación,1,1.8,2
+2026,S1,IQP,Estudiante,6to grado,AZUA,5,2.3,5
+2026,S1,IQP,Estudiante,6to grado,BAHORUCO,2,1.1,2
+2026,S1,IQP,Estudiante,6to grado,BARAHONA,3,1.2,3
+2026,S1,IQP,Estudiante,6to grado,COTUI,5,2.4,5
+2026,S1,IQP,Estudiante,6to grado,HIGUEY,2,0.9,2
+2026,S1,IQP,Estudiante,6to grado,LA VEGA,2,0.9,2
+2026,S1,IQP,Estudiante,6to grado,MAO,1,0.3,1
+2026,S1,IQP,Estudiante,6to grado,MONTE CRISTI,2,1.1,2
+2026,S1,IQP,Estudiante,6to grado,MONTE PLATA,1,0.2,1
+2026,S1,IQP,Estudiante,6to grado,NAGUA,4,2.0,5
+2026,S1,IQP,Estudiante,6to grado,PUERTO PLATA,3,2.0,5
+2026,S1,IQP,Estudiante,6to grado,SAN CRISTOBAL,5,2.2,6
+2026,S1,IQP,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,6,3.5,6
+2026,S1,IQP,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,4,2.4,4
+2026,S1,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,6,4.8,6
+2026,S1,IQP,Estudiante,6to grado,SANTIAGO,6,2.5,6
+2026,S1,IQP,Estudiante,6to grado,SANTO DOMINGO,48,23.1,53
+2026,S1,IQP,Estudiante,6to grado,Sin ubicación,12,8.1,14
+2026,S1,IQP,Parent,No especificado,Sin ubicación,2,6.6,9
+2026,S1,IQP,Sin rol,No especificado,Sin ubicación,1,41.9,53
+2026,S1,IQS,Admin,6to grado,Sin ubicación,1,1.5,4
+2026,S1,IQS,Docente,1er grado,AZUA,2,12.7,10
+2026,S1,IQS,Docente,1er grado,BAHORUCO,1,0.3,1
+2026,S1,IQS,Docente,1er grado,BARAHONA,2,2.1,4
+2026,S1,IQS,Docente,1er grado,HIGUEY,3,10.2,14
+2026,S1,IQS,Docente,1er grado,LA VEGA,4,11.7,18
+2026,S1,IQS,Docente,1er grado,MAO,1,1.5,2
+2026,S1,IQS,Docente,1er grado,MONTE CRISTI,6,20.4,27
+2026,S1,IQS,Docente,1er grado,PUERTO PLATA,3,1.5,5
+2026,S1,IQS,Docente,1er grado,SAN CRISTOBAL,1,2.7,6
+2026,S1,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,2,0.9,3
+2026,S1,IQS,Docente,1er grado,SAN JUAN DE LA MAGUANA,1,32.4,29
+2026,S1,IQS,Docente,1er grado,SANTIAGO,7,30.9,34
+2026,S1,IQS,Docente,1er grado,SANTO DOMINGO,22,87.6,117
+2026,S1,IQS,Docente,1er grado,Sin ubicación,15,17.2,31
+2026,S1,IQS,Docente,3er grado,Sin ubicación,1,2.5,3
+2026,S1,IQS,Docente,4to grado,AZUA,93,197.5,242
+2026,S1,IQS,Docente,4to grado,BAHORUCO,49,69.6,85
+2026,S1,IQS,Docente,4to grado,BARAHONA,47,51.9,93
+2026,S1,IQS,Docente,4to grado,COTUI,75,96.3,187
+2026,S1,IQS,Docente,4to grado,HIGUEY,130,183.8,286
+2026,S1,IQS,Docente,4to grado,LA VEGA,165,216.2,314
+2026,S1,IQS,Docente,4to grado,MAO,53,47.9,75
+2026,S1,IQS,Docente,4to grado,MONTE CRISTI,83,239.2,282
+2026,S1,IQS,Docente,4to grado,MONTE PLATA,43,41.2,65
+2026,S1,IQS,Docente,4to grado,NAGUA,60,79.5,123
+2026,S1,IQS,Docente,4to grado,PUERTO PLATA,63,80.7,116
+2026,S1,IQS,Docente,4to grado,SAN CRISTOBAL,147,173.7,257
+2026,S1,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,107,120.4,208
+2026,S1,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,42,47.6,74
+2026,S1,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,162,339.4,436
+2026,S1,IQS,Docente,4to grado,SANTIAGO,338,534.6,764
+2026,S1,IQS,Docente,4to grado,SANTO DOMINGO,692,1265.5,1552
+2026,S1,IQS,Docente,4to grado,Sin ubicación,667,683.7,1203
+2026,S1,IQS,Docente,6to grado,AZUA,3,3.9,9
+2026,S1,IQS,Docente,6to grado,HIGUEY,3,1.7,3
+2026,S1,IQS,Docente,6to grado,LA VEGA,5,31.1,26
+2026,S1,IQS,Docente,6to grado,MAO,1,0.5,2
+2026,S1,IQS,Docente,6to grado,MONTE CRISTI,3,2.1,7
+2026,S1,IQS,Docente,6to grado,NAGUA,2,9.0,10
+2026,S1,IQS,Docente,6to grado,PUERTO PLATA,2,7.0,6
+2026,S1,IQS,Docente,6to grado,SAN CRISTOBAL,3,4.1,6
+2026,S1,IQS,Docente,6to grado,SAN FRANCISCO DE MACORIS,2,4.2,13
+2026,S1,IQS,Docente,6to grado,SAN PEDRO DE MACORIS,2,0.8,3
+2026,S1,IQS,Docente,6to grado,SANTIAGO,4,12.3,15
+2026,S1,IQS,Docente,6to grado,SANTO DOMINGO,17,37.0,41
+2026,S1,IQS,Docente,6to grado,Sin ubicación,13,13.0,28
+2026,S1,IQS,Docente,No especificado,AZUA,1,0.1,2
+2026,S1,IQS,Docente,No especificado,BARAHONA,3,1.0,3
+2026,S1,IQS,Docente,No especificado,COTUI,1,0.7,1
+2026,S1,IQS,Docente,No especificado,HIGUEY,2,0.6,2
+2026,S1,IQS,Docente,No especificado,LA VEGA,5,8.2,15
+2026,S1,IQS,Docente,No especificado,MAO,1,0.5,1
+2026,S1,IQS,Docente,No especificado,MONTE CRISTI,1,3.4,3
+2026,S1,IQS,Docente,No especificado,MONTE PLATA,1,0.8,1
+2026,S1,IQS,Docente,No especificado,SAN CRISTOBAL,5,6.1,10
+2026,S1,IQS,Docente,No especificado,SAN FRANCISCO DE MACORIS,3,4.4,7
+2026,S1,IQS,Docente,No especificado,SAN PEDRO DE MACORIS,4,3.2,4
+2026,S1,IQS,Docente,No especificado,SANTIAGO,9,6.7,14
+2026,S1,IQS,Docente,No especificado,SANTO DOMINGO,10,7.9,17
+2026,S1,IQS,Docente,No especificado,Sin ubicación,12,7.1,14
+2026,S1,IQS,Editor,No especificado,SANTIAGO,1,87.2,37
+2026,S1,IQS,Estudiante,1er grado,AZUA,24,51.0,100
+2026,S1,IQS,Estudiante,1er grado,BAHORUCO,5,6.1,16
+2026,S1,IQS,Estudiante,1er grado,BARAHONA,19,23.0,65
+2026,S1,IQS,Estudiante,1er grado,COTUI,21,15.3,58
+2026,S1,IQS,Estudiante,1er grado,HIGUEY,33,33.5,114
+2026,S1,IQS,Estudiante,1er grado,LA VEGA,28,25.7,78
+2026,S1,IQS,Estudiante,1er grado,MAO,1,0.8,2
+2026,S1,IQS,Estudiante,1er grado,MONTE CRISTI,14,19.5,49
+2026,S1,IQS,Estudiante,1er grado,MONTE PLATA,11,13.1,36
+2026,S1,IQS,Estudiante,1er grado,NAGUA,12,18.4,48
+2026,S1,IQS,Estudiante,1er grado,PUERTO PLATA,22,16.2,63
+2026,S1,IQS,Estudiante,1er grado,SAN CRISTOBAL,21,14.7,50
+2026,S1,IQS,Estudiante,1er grado,SAN FRANCISCO DE MACORIS,20,19.2,61
+2026,S1,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,12,10.4,38
+2026,S1,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,41,41.7,127
+2026,S1,IQS,Estudiante,1er grado,SANTIAGO,90,87.6,248
+2026,S1,IQS,Estudiante,1er grado,SANTO DOMINGO,210,223.2,608
+2026,S1,IQS,Estudiante,1er grado,Sin ubicación,185,235.5,676
+2026,S1,IQS,Estudiante,2do grado,AZUA,33,30.0,60
+2026,S1,IQS,Estudiante,2do grado,BAHORUCO,13,14.7,28
+2026,S1,IQS,Estudiante,2do grado,BARAHONA,11,23.1,30
+2026,S1,IQS,Estudiante,2do grado,COTUI,18,14.3,31
+2026,S1,IQS,Estudiante,2do grado,HIGUEY,19,12.5,34
+2026,S1,IQS,Estudiante,2do grado,LA VEGA,22,29.0,43
+2026,S1,IQS,Estudiante,2do grado,MAO,8,5.5,15
+2026,S1,IQS,Estudiante,2do grado,MONTE CRISTI,24,19.0,36
+2026,S1,IQS,Estudiante,2do grado,MONTE PLATA,8,9.7,20
+2026,S1,IQS,Estudiante,2do grado,NAGUA,8,10.5,22
+2026,S1,IQS,Estudiante,2do grado,PUERTO PLATA,11,10.7,22
+2026,S1,IQS,Estudiante,2do grado,SAN CRISTOBAL,24,25.6,43
+2026,S1,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,20,22.6,47
+2026,S1,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,16,12.0,23
+2026,S1,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,32,26.1,49
+2026,S1,IQS,Estudiante,2do grado,SANTIAGO,66,63.6,142
+2026,S1,IQS,Estudiante,2do grado,SANTO DOMINGO,252,433.5,738
+2026,S1,IQS,Estudiante,2do grado,Sin ubicación,311,391.1,736
+2026,S1,IQS,Estudiante,3er grado,AZUA,10,9.4,20
+2026,S1,IQS,Estudiante,3er grado,BAHORUCO,3,0.9,3
+2026,S1,IQS,Estudiante,3er grado,BARAHONA,6,5.6,9
+2026,S1,IQS,Estudiante,3er grado,COTUI,3,2.0,4
+2026,S1,IQS,Estudiante,3er grado,HIGUEY,4,2.6,5
+2026,S1,IQS,Estudiante,3er grado,LA VEGA,7,5.7,14
+2026,S1,IQS,Estudiante,3er grado,MAO,2,1.2,4
+2026,S1,IQS,Estudiante,3er grado,MONTE CRISTI,10,10.9,23
+2026,S1,IQS,Estudiante,3er grado,MONTE PLATA,6,8.8,11
+2026,S1,IQS,Estudiante,3er grado,NAGUA,1,0.3,1
+2026,S1,IQS,Estudiante,3er grado,PUERTO PLATA,3,1.5,7
+2026,S1,IQS,Estudiante,3er grado,SAN CRISTOBAL,11,12.4,19
+2026,S1,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,8,5.3,11
+2026,S1,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,6,3.0,7
+2026,S1,IQS,Estudiante,3er grado,SAN PEDRO DE MACORIS,8,14.3,22
+2026,S1,IQS,Estudiante,3er grado,SANTIAGO,37,57.4,86
+2026,S1,IQS,Estudiante,3er grado,SANTO DOMINGO,142,138.9,259
+2026,S1,IQS,Estudiante,3er grado,Sin ubicación,123,173.3,316
+2026,S1,IQS,Estudiante,4to grado,AZUA,50,51.9,87
+2026,S1,IQS,Estudiante,4to grado,BAHORUCO,15,9.4,19
+2026,S1,IQS,Estudiante,4to grado,BARAHONA,30,29.2,45
+2026,S1,IQS,Estudiante,4to grado,COTUI,70,89.5,133
+2026,S1,IQS,Estudiante,4to grado,HIGUEY,71,114.1,141
+2026,S1,IQS,Estudiante,4to grado,LA VEGA,97,88.2,138
+2026,S1,IQS,Estudiante,4to grado,MAO,20,14.6,28
+2026,S1,IQS,Estudiante,4to grado,MONTE CRISTI,30,31.2,72
+2026,S1,IQS,Estudiante,4to grado,MONTE PLATA,24,18.9,36
+2026,S1,IQS,Estudiante,4to grado,NAGUA,50,33.0,71
+2026,S1,IQS,Estudiante,4to grado,PUERTO PLATA,29,20.8,47
+2026,S1,IQS,Estudiante,4to grado,SAN CRISTOBAL,116,62.0,158
+2026,S1,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,71,73.2,139
+2026,S1,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,35,66.3,84
+2026,S1,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,75,121.4,175
+2026,S1,IQS,Estudiante,4to grado,SANTIAGO,301,265.8,498
+2026,S1,IQS,Estudiante,4to grado,SANTO DOMINGO,556,616.2,980
+2026,S1,IQS,Estudiante,4to grado,Sin ubicación,566,571.4,1082
+2026,S1,IQS,Estudiante,5to grado,AZUA,18,17.7,33
+2026,S1,IQS,Estudiante,5to grado,BAHORUCO,11,8.6,17
+2026,S1,IQS,Estudiante,5to grado,BARAHONA,12,13.3,32
+2026,S1,IQS,Estudiante,5to grado,COTUI,9,8.7,15
+2026,S1,IQS,Estudiante,5to grado,HIGUEY,15,18.0,31
+2026,S1,IQS,Estudiante,5to grado,LA VEGA,29,18.0,44
+2026,S1,IQS,Estudiante,5to grado,MAO,3,1.1,4
+2026,S1,IQS,Estudiante,5to grado,MONTE CRISTI,11,18.3,38
+2026,S1,IQS,Estudiante,5to grado,MONTE PLATA,20,25.7,35
+2026,S1,IQS,Estudiante,5to grado,NAGUA,12,7.9,16
+2026,S1,IQS,Estudiante,5to grado,PUERTO PLATA,10,12.2,21
+2026,S1,IQS,Estudiante,5to grado,SAN CRISTOBAL,49,48.7,73
+2026,S1,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,24,32.4,56
+2026,S1,IQS,Estudiante,5to grado,SAN JUAN DE LA MAGUANA,11,10.0,20
+2026,S1,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,41,37.0,72
+2026,S1,IQS,Estudiante,5to grado,SANTIAGO,89,74.1,158
+2026,S1,IQS,Estudiante,5to grado,SANTO DOMINGO,224,262.7,413
+2026,S1,IQS,Estudiante,5to grado,Sin ubicación,208,196.8,344
+2026,S1,IQS,Estudiante,6to grado,AZUA,1625,2762.7,4408
+2026,S1,IQS,Estudiante,6to grado,BAHORUCO,726,754.9,1378
+2026,S1,IQS,Estudiante,6to grado,BARAHONA,883,1108.1,2015
+2026,S1,IQS,Estudiante,6to grado,COTUI,1254,1344.7,2763
+2026,S1,IQS,Estudiante,6to grado,HIGUEY,2009,3687.1,5792
+2026,S1,IQS,Estudiante,6to grado,LA VEGA,2542,3381.4,6095
+2026,S1,IQS,Estudiante,6to grado,MAO,686,859.7,1627
+2026,S1,IQS,Estudiante,6to grado,MONTE CRISTI,1103,2534.2,3598
+2026,S1,IQS,Estudiante,6to grado,MONTE PLATA,587,655.7,1299
+2026,S1,IQS,Estudiante,6to grado,NAGUA,743,701.6,1448
+2026,S1,IQS,Estudiante,6to grado,PUERTO PLATA,1083,1384.0,2570
+2026,S1,IQS,Estudiante,6to grado,SAN CRISTOBAL,2645,3505.9,5790
+2026,S1,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,1407,1783.6,3291
+2026,S1,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,1166,2644.0,3612
+2026,S1,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,2556,5070.5,7930
+2026,S1,IQS,Estudiante,6to grado,SANTIAGO,6246,10303.3,16610
+2026,S1,IQS,Estudiante,6to grado,SANTO DOMINGO,15494,24109.5,37011
+2026,S1,IQS,Estudiante,6to grado,Sin ubicación,11396,13514.8,27393
+2026,S1,IQS,Estudiante,No especificado,AZUA,9,14.7,26
+2026,S1,IQS,Estudiante,No especificado,BAHORUCO,7,6.6,15
+2026,S1,IQS,Estudiante,No especificado,BARAHONA,12,13.6,35
+2026,S1,IQS,Estudiante,No especificado,COTUI,2,0.7,2
+2026,S1,IQS,Estudiante,No especificado,HIGUEY,31,50.7,108
+2026,S1,IQS,Estudiante,No especificado,LA VEGA,20,25.7,59
+2026,S1,IQS,Estudiante,No especificado,MAO,14,14.2,31
+2026,S1,IQS,Estudiante,No especificado,MONTE CRISTI,11,18.2,35
+2026,S1,IQS,Estudiante,No especificado,MONTE PLATA,2,1.7,5
+2026,S1,IQS,Estudiante,No especificado,NAGUA,6,9.4,9
+2026,S1,IQS,Estudiante,No especificado,PUERTO PLATA,10,9.8,18
+2026,S1,IQS,Estudiante,No especificado,SAN CRISTOBAL,29,34.1,57
+2026,S1,IQS,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,12,14.3,31
+2026,S1,IQS,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,4,1.7,7
+2026,S1,IQS,Estudiante,No especificado,SAN PEDRO DE MACORIS,39,41.1,68
+2026,S1,IQS,Estudiante,No especificado,SANTIAGO,50,69.0,137
+2026,S1,IQS,Estudiante,No especificado,SANTO DOMINGO,112,113.1,224
+2026,S1,IQS,Estudiante,No especificado,Sin ubicación,80,88.7,209
+2026,S1,IQS,Invitado,6to grado,AZUA,1,5.2,7
+2026,S1,IQS,Invitado,6to grado,BAHORUCO,2,2.8,3
+2026,S1,IQS,Invitado,6to grado,BARAHONA,2,2.4,2
+2026,S1,IQS,Invitado,6to grado,COTUI,1,0.7,1
+2026,S1,IQS,Invitado,6to grado,LA VEGA,3,3.7,7
+2026,S1,IQS,Invitado,6to grado,MONTE CRISTI,2,3.8,5
+2026,S1,IQS,Invitado,6to grado,MONTE PLATA,3,2.5,5
+2026,S1,IQS,Invitado,6to grado,NAGUA,1,0.3,1
+2026,S1,IQS,Invitado,6to grado,PUERTO PLATA,2,3.4,4
+2026,S1,IQS,Invitado,6to grado,SAN CRISTOBAL,4,2.9,5
+2026,S1,IQS,Invitado,6to grado,SAN FRANCISCO DE MACORIS,1,0.5,1
+2026,S1,IQS,Invitado,6to grado,SAN JUAN DE LA MAGUANA,1,0.6,1
+2026,S1,IQS,Invitado,6to grado,SAN PEDRO DE MACORIS,6,7.9,14
+2026,S1,IQS,Invitado,6to grado,SANTIAGO,5,21.0,29
+2026,S1,IQS,Invitado,6to grado,SANTO DOMINGO,35,65.4,93
+2026,S1,IQS,Invitado,6to grado,Sin ubicación,1324,1493.3,2221
+2026,S1,IQS,Invitado,No especificado,BAHORUCO,1,0.3,1
+2026,S1,IQS,Invitado,No especificado,Sin ubicación,4,2.3,5
+2026,S1,IQS,Sin rol,No especificado,HIGUEY,1,0.8,5
+2026,S1,IQS,Sin rol,No especificado,SANTIAGO,3,0.9,3
+2026,S1,IQS,Sin rol,No especificado,Sin ubicación,14,11.2,15
+2026,S2,IQ512,Coordinador,No especificado,Sin ubicación,1,1.0,2
+2026,S2,IQ512,Editor,No especificado,Sin ubicación,1,0.5,1
+2026,S2,IQ512,Estudiante,No especificado,AZUA,1,0.5,1
+2026,S2,IQ512,Estudiante,No especificado,BAHORUCO,2,1.6,3
+2026,S2,IQ512,Estudiante,No especificado,BARAHONA,8,3.9,8
+2026,S2,IQ512,Estudiante,No especificado,COTUI,2,0.6,2
+2026,S2,IQ512,Estudiante,No especificado,HIGUEY,1,0.4,1
+2026,S2,IQ512,Estudiante,No especificado,LA VEGA,4,3.5,4
+2026,S2,IQ512,Estudiante,No especificado,SAN CRISTOBAL,1,2.8,1
+2026,S2,IQ512,Estudiante,No especificado,SAN FRANCISCO DE MACORIS,1,0.5,1
+2026,S2,IQ512,Estudiante,No especificado,SAN JUAN DE LA MAGUANA,2,3.5,3
+2026,S2,IQ512,Estudiante,No especificado,SAN PEDRO DE MACORIS,6,6.8,7
+2026,S2,IQ512,Estudiante,No especificado,SANTIAGO,1,0.2,1
+2026,S2,IQ512,Estudiante,No especificado,SANTO DOMINGO,12,6.1,14
+2026,S2,IQ512,Estudiante,No especificado,Sin ubicación,55,44.2,80
+2026,S2,IQP,Docente,1er grado,Sin ubicación,1,14.5,51
+2026,S2,IQP,Docente,4to grado,LA VEGA,1,0.1,1
+2026,S2,IQP,Docente,4to grado,Sin ubicación,1,0.1,1
+2026,S2,IQP,Docente,5to grado,BARAHONA,3,0.2,3
+2026,S2,IQP,Docente,5to grado,LA VEGA,1,0.1,1
+2026,S2,IQP,Docente,5to grado,MONTE CRISTI,1,0.1,2
+2026,S2,IQP,Docente,5to grado,PUERTO PLATA,3,0.6,5
+2026,S2,IQP,Docente,5to grado,SAN CRISTOBAL,2,1.8,13
+2026,S2,IQP,Docente,5to grado,SAN JUAN DE LA MAGUANA,1,0.0,1
+2026,S2,IQP,Docente,5to grado,SANTIAGO,2,0.2,2
+2026,S2,IQP,Docente,5to grado,SANTO DOMINGO,7,1.2,11
+2026,S2,IQP,Docente,5to grado,Sin ubicación,3,0.2,3
+2026,S2,IQP,Docente,6to grado,NAGUA,1,1.1,5
+2026,S2,IQP,Docente,6to grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2026,S2,IQP,Docente,6to grado,SANTO DOMINGO,2,0.3,3
+2026,S2,IQP,Docente,6to grado,Sin ubicación,2,0.2,2
+2026,S2,IQP,Estudiante,1er grado,SANTO DOMINGO,2,0.2,2
+2026,S2,IQP,Estudiante,1er grado,Sin ubicación,3,1.7,7
+2026,S2,IQP,Estudiante,2do grado,SANTO DOMINGO,2,0.1,3
+2026,S2,IQP,Estudiante,2do grado,Sin ubicación,1,0.1,1
+2026,S2,IQP,Estudiante,4to grado,LA VEGA,1,0.1,1
+2026,S2,IQP,Estudiante,4to grado,MONTE CRISTI,1,0.1,1
+2026,S2,IQP,Estudiante,4to grado,MONTE PLATA,1,1.4,5
+2026,S2,IQP,Estudiante,4to grado,SANTO DOMINGO,1,0.1,1
+2026,S2,IQP,Estudiante,5to grado,HIGUEY,4,0.6,4
+2026,S2,IQP,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2026,S2,IQP,Estudiante,5to grado,SANTO DOMINGO,2,0.2,2
+2026,S2,IQP,Estudiante,6to grado,BAHORUCO,1,0.0,1
+2026,S2,IQP,Estudiante,6to grado,MONTE PLATA,1,0.1,1
+2026,S2,IQP,Estudiante,6to grado,NAGUA,2,1.5,4
+2026,S2,IQP,Estudiante,6to grado,SAN CRISTOBAL,1,0.0,1
+2026,S2,IQP,Estudiante,6to grado,SAN PEDRO DE MACORIS,1,0.2,1
+2026,S2,IQP,Estudiante,6to grado,SANTIAGO,1,0.2,1
+2026,S2,IQP,Estudiante,6to grado,SANTO DOMINGO,2,0.1,2
+2026,S2,IQP,Estudiante,6to grado,Sin ubicación,3,0.4,3
+2026,S2,IQP,Estudiante,No especificado,Sin ubicación,1,0.0,1
+2026,S2,IQP,Sin rol,No especificado,SAN CRISTOBAL,1,0.2,1
+2026,S2,IQP,Sin rol,No especificado,Sin ubicación,1,6.9,21
+2026,S2,IQS,Admin,No especificado,Sin ubicación,1,0.0,1
+2026,S2,IQS,Docente,1er grado,SAN FRANCISCO DE MACORIS,1,0.1,1
+2026,S2,IQS,Docente,1er grado,SANTO DOMINGO,2,0.4,5
+2026,S2,IQS,Docente,1er grado,Sin ubicación,1,0.0,1
+2026,S2,IQS,Docente,4to grado,AZUA,6,0.7,9
+2026,S2,IQS,Docente,4to grado,BAHORUCO,1,0.1,1
+2026,S2,IQS,Docente,4to grado,BARAHONA,3,0.2,4
+2026,S2,IQS,Docente,4to grado,COTUI,1,0.0,1
+2026,S2,IQS,Docente,4to grado,HIGUEY,7,0.7,10
+2026,S2,IQS,Docente,4to grado,LA VEGA,4,3.4,16
+2026,S2,IQS,Docente,4to grado,MAO,1,0.2,1
+2026,S2,IQS,Docente,4to grado,MONTE CRISTI,5,2.1,17
+2026,S2,IQS,Docente,4to grado,MONTE PLATA,1,0.1,1
+2026,S2,IQS,Docente,4to grado,NAGUA,3,1.0,5
+2026,S2,IQS,Docente,4to grado,PUERTO PLATA,1,0.0,1
+2026,S2,IQS,Docente,4to grado,SAN CRISTOBAL,6,1.7,9
+2026,S2,IQS,Docente,4to grado,SAN FRANCISCO DE MACORIS,1,0.0,1
+2026,S2,IQS,Docente,4to grado,SAN JUAN DE LA MAGUANA,1,0.1,1
+2026,S2,IQS,Docente,4to grado,SAN PEDRO DE MACORIS,5,1.1,11
+2026,S2,IQS,Docente,4to grado,SANTIAGO,7,0.9,9
+2026,S2,IQS,Docente,4to grado,SANTO DOMINGO,27,5.5,46
+2026,S2,IQS,Docente,4to grado,Sin ubicación,23,3.2,39
+2026,S2,IQS,Docente,6to grado,HIGUEY,1,0.2,1
+2026,S2,IQS,Docente,6to grado,SANTIAGO,1,0.1,1
+2026,S2,IQS,Docente,6to grado,Sin ubicación,2,0.3,2
+2026,S2,IQS,Docente,No especificado,Sin ubicación,2,0.1,2
+2026,S2,IQS,Editor,No especificado,SANTIAGO,1,15.3,27
+2026,S2,IQS,Estudiante,1er grado,AZUA,2,0.6,8
+2026,S2,IQS,Estudiante,1er grado,HIGUEY,4,0.5,13
+2026,S2,IQS,Estudiante,1er grado,LA VEGA,2,0.1,3
+2026,S2,IQS,Estudiante,1er grado,MONTE CRISTI,1,0.1,2
+2026,S2,IQS,Estudiante,1er grado,MONTE PLATA,1,0.0,1
+2026,S2,IQS,Estudiante,1er grado,SAN CRISTOBAL,4,1.6,9
+2026,S2,IQS,Estudiante,1er grado,SAN JUAN DE LA MAGUANA,1,0.1,2
+2026,S2,IQS,Estudiante,1er grado,SAN PEDRO DE MACORIS,1,0.1,2
+2026,S2,IQS,Estudiante,1er grado,SANTIAGO,7,0.9,14
+2026,S2,IQS,Estudiante,1er grado,SANTO DOMINGO,10,3.8,28
+2026,S2,IQS,Estudiante,1er grado,Sin ubicación,8,2.0,22
+2026,S2,IQS,Estudiante,2do grado,AZUA,1,0.1,2
+2026,S2,IQS,Estudiante,2do grado,COTUI,1,0.0,2
+2026,S2,IQS,Estudiante,2do grado,HIGUEY,3,0.3,3
+2026,S2,IQS,Estudiante,2do grado,LA VEGA,5,0.9,6
+2026,S2,IQS,Estudiante,2do grado,MAO,1,4.1,4
+2026,S2,IQS,Estudiante,2do grado,MONTE CRISTI,1,0.3,1
+2026,S2,IQS,Estudiante,2do grado,MONTE PLATA,1,2.1,1
+2026,S2,IQS,Estudiante,2do grado,NAGUA,1,0.0,1
+2026,S2,IQS,Estudiante,2do grado,PUERTO PLATA,1,0.7,1
+2026,S2,IQS,Estudiante,2do grado,SAN CRISTOBAL,17,6.2,21
+2026,S2,IQS,Estudiante,2do grado,SAN FRANCISCO DE MACORIS,1,0.1,2
+2026,S2,IQS,Estudiante,2do grado,SAN JUAN DE LA MAGUANA,1,0.1,1
+2026,S2,IQS,Estudiante,2do grado,SAN PEDRO DE MACORIS,1,0.3,1
+2026,S2,IQS,Estudiante,2do grado,SANTIAGO,10,3.6,17
+2026,S2,IQS,Estudiante,2do grado,SANTO DOMINGO,40,19.9,102
+2026,S2,IQS,Estudiante,2do grado,Sin ubicación,55,19.5,117
+2026,S2,IQS,Estudiante,3er grado,AZUA,1,0.1,1
+2026,S2,IQS,Estudiante,3er grado,LA VEGA,1,0.5,1
+2026,S2,IQS,Estudiante,3er grado,PUERTO PLATA,1,0.0,2
+2026,S2,IQS,Estudiante,3er grado,SAN CRISTOBAL,1,0.5,1
+2026,S2,IQS,Estudiante,3er grado,SAN FRANCISCO DE MACORIS,1,0.2,2
+2026,S2,IQS,Estudiante,3er grado,SAN JUAN DE LA MAGUANA,2,0.0,2
+2026,S2,IQS,Estudiante,3er grado,SANTIAGO,9,3.8,10
+2026,S2,IQS,Estudiante,3er grado,SANTO DOMINGO,12,8.2,65
+2026,S2,IQS,Estudiante,3er grado,Sin ubicación,9,3.6,17
+2026,S2,IQS,Estudiante,4to grado,AZUA,2,5.1,7
+2026,S2,IQS,Estudiante,4to grado,BARAHONA,1,0.3,1
+2026,S2,IQS,Estudiante,4to grado,COTUI,2,0.3,2
+2026,S2,IQS,Estudiante,4to grado,HIGUEY,1,0.3,2
+2026,S2,IQS,Estudiante,4to grado,LA VEGA,2,1.8,3
+2026,S2,IQS,Estudiante,4to grado,PUERTO PLATA,2,0.2,4
+2026,S2,IQS,Estudiante,4to grado,SAN CRISTOBAL,2,2.8,3
+2026,S2,IQS,Estudiante,4to grado,SAN FRANCISCO DE MACORIS,1,0.5,1
+2026,S2,IQS,Estudiante,4to grado,SAN JUAN DE LA MAGUANA,6,4.3,9
+2026,S2,IQS,Estudiante,4to grado,SAN PEDRO DE MACORIS,4,0.5,5
+2026,S2,IQS,Estudiante,4to grado,SANTIAGO,15,18.5,35
+2026,S2,IQS,Estudiante,4to grado,SANTO DOMINGO,12,35.9,44
+2026,S2,IQS,Estudiante,4to grado,Sin ubicación,26,10.1,41
+2026,S2,IQS,Estudiante,5to grado,AZUA,5,0.7,6
+2026,S2,IQS,Estudiante,5to grado,COTUI,1,0.2,1
+2026,S2,IQS,Estudiante,5to grado,HIGUEY,1,0.1,4
+2026,S2,IQS,Estudiante,5to grado,LA VEGA,3,0.5,6
+2026,S2,IQS,Estudiante,5to grado,SAN CRISTOBAL,2,0.9,2
+2026,S2,IQS,Estudiante,5to grado,SAN FRANCISCO DE MACORIS,1,0.3,1
+2026,S2,IQS,Estudiante,5to grado,SAN PEDRO DE MACORIS,1,0.0,1
+2026,S2,IQS,Estudiante,5to grado,SANTIAGO,6,1.8,11
+2026,S2,IQS,Estudiante,5to grado,SANTO DOMINGO,10,2.8,13
+2026,S2,IQS,Estudiante,5to grado,Sin ubicación,9,1.8,17
+2026,S2,IQS,Estudiante,6to grado,AZUA,41,25.8,89
+2026,S2,IQS,Estudiante,6to grado,BAHORUCO,5,0.3,7
+2026,S2,IQS,Estudiante,6to grado,BARAHONA,20,21.5,49
+2026,S2,IQS,Estudiante,6to grado,COTUI,23,6.6,44
+2026,S2,IQS,Estudiante,6to grado,HIGUEY,56,24.3,111
+2026,S2,IQS,Estudiante,6to grado,LA VEGA,71,33.0,142
+2026,S2,IQS,Estudiante,6to grado,MAO,15,8.3,33
+2026,S2,IQS,Estudiante,6to grado,MONTE CRISTI,38,49.1,58
+2026,S2,IQS,Estudiante,6to grado,MONTE PLATA,15,4.4,32
+2026,S2,IQS,Estudiante,6to grado,NAGUA,10,1.7,20
+2026,S2,IQS,Estudiante,6to grado,PUERTO PLATA,21,7.9,41
+2026,S2,IQS,Estudiante,6to grado,SAN CRISTOBAL,133,105.6,221
+2026,S2,IQS,Estudiante,6to grado,SAN FRANCISCO DE MACORIS,31,14.5,46
+2026,S2,IQS,Estudiante,6to grado,SAN JUAN DE LA MAGUANA,24,14.3,46
+2026,S2,IQS,Estudiante,6to grado,SAN PEDRO DE MACORIS,186,83.8,372
+2026,S2,IQS,Estudiante,6to grado,SANTIAGO,112,63.3,198
+2026,S2,IQS,Estudiante,6to grado,SANTO DOMINGO,415,288.0,910
+2026,S2,IQS,Estudiante,6to grado,Sin ubicación,301,129.7,608
+2026,S2,IQS,Estudiante,No especificado,AZUA,1,0.2,1
+2026,S2,IQS,Estudiante,No especificado,LA VEGA,1,0.2,1
+2026,S2,IQS,Estudiante,No especificado,PUERTO PLATA,1,0.3,1
+2026,S2,IQS,Estudiante,No especificado,SAN CRISTOBAL,1,0.1,2
+2026,S2,IQS,Estudiante,No especificado,SANTIAGO,7,2.2,15
+2026,S2,IQS,Estudiante,No especificado,SANTO DOMINGO,1,0.0,2
+2026,S2,IQS,Estudiante,No especificado,Sin ubicación,3,0.7,3
+2026,S2,IQS,Invitado,6to grado,HIGUEY,2,0.4,2
+2026,S2,IQS,Invitado,6to grado,SAN JUAN DE LA MAGUANA,1,0.0,1
+2026,S2,IQS,Invitado,6to grado,SANTIAGO,2,0.2,2
+2026,S2,IQS,Invitado,6to grado,SANTO DOMINGO,3,0.6,8
+2026,S2,IQS,Invitado,6to grado,Sin ubicación,182,56.4,374
+2026,S2,IQS,Sin rol,No especificado,Sin ubicación,1,0.8,1

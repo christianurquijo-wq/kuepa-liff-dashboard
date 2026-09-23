@@ -34,14 +34,22 @@ st.set_page_config(
 
 inicio = st.Page("pages/0_Inicio.py", title="Inicio", default=True)
 liff_data = st.Page("pages/1_LIFF_Data.py", title="LIFF Data")
-eco_overview = st.Page("pages/ecolombia/1_Overview.py", title="Overview")
+eco_overview = st.Page("pages/ecolombia/overview.py", title="Overview")
 eco_academico = st.Page("pages/ecolombia/2_Academico.py", title="Académico")
 eco_seleccion = st.Page("pages/ecolombia/3_Seleccion_Matricula.py", title="Selección y Matrícula")
+eco_empleabilidad = st.Page("pages/ecolombia/4_Pool_Empleabilidad.py", title="Pool de Empleabilidad")
+eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacción")
+iq_overview = st.Page("pages/iq/1_Overview.py", title="Overview")
+iq_historico = st.Page("pages/iq/2_Historico.py", title="Histórico")
+iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo")
+iq_cobertura = st.Page("pages/iq/4_Cobertura.py", title="Cobertura")
+iq_sheets = st.Page("pages/2_IQ.py", title="Usuarios y lecciones (Sheets)")
 
 PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data],
-    "Ecolombia": [eco_overview, eco_academico, eco_seleccion],
+    "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
+    "IQ": [iq_overview, iq_historico, iq_detalle, iq_cobertura, iq_sheets],
 }
 
 pg = st.navigation(PROYECTOS)

@@ -1,26 +1,4 @@
-"""
-Ecolombia -- Selección y Matrícula.
 
-Fuente: CONVOCATORIA (queries/ecolombia/convocatoria.py) -- el embudo
-completo de candidatos (preinscripción -> entrevista -> matrícula), la
-misma tabla que ya usa Overview para "Seleccionados"/"Pendientes por
-ingresar". Toda la lógica de negocio (qué cuenta como "Cumple
-requisitos", "Seleccionado", los sub-estados de matrícula, y las
-fórmulas de las metas) vive en utils/ecolombia_seleccion_metrics.py --
-revisa ese archivo primero si un número no cuadra contra Looker.
-
-"Retención" y el gauge de ritmo del pantallazo original quedan
-PENDIENTES a propósito (ver docstring del módulo de métricas) -- se
-muestran como tarjetas "Pendiente", no como un número inventado.
-
-Clic-para-filtrar: fuera de alcance en esta página -- el Sankey y la
-tabla de Aliado-Referido no son gráficas de categoría simple (mismo
-criterio que excluyó el gantt de Overview y el Sankey de Académico).
-
-La meta de matrículas efectivas (400 por defecto) es un INPUT editable,
-no una constante -- cambia de convocatoria a convocatoria, así que
-Christian la ajusta aquí mismo sin tocar código.
-"""
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
