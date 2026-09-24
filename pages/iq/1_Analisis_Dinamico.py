@@ -8,7 +8,10 @@ combinables).
 
 Qué hace cada sección (de arriba a abajo):
 1. Controles: granularidad (Mes/Trimestre/Semestre/Año), filtros de
-   Alianza/Rol/Grado/Región, y período puntual a analizar.
+   Alianza/Rol/Grado/Región, y período puntual a analizar. Con
+   granularidad Mes aparece además un deslizable de intervalo (ej. abr-2026
+   a jul-2026) que acota TODO lo de abajo excepto (3) y (4), que siempre
+   muestran el histórico completo por diseño.
 2. KPI de cabecera: usuarios activos y horas totales del período elegido,
    con las 2 comparaciones lado a lado -- vs período inmediatamente
    anterior y vs mismo período del año anterior.
@@ -102,7 +105,32 @@ if serie_df.empty:
     st.stop()
 
 total_df = serie_total(grano, alianzas_sel, rol_sel, grado_sel, region_sel)
+# Comparaciones (vs período anterior / vs mismo período año anterior) se
+# calculan ANTES de acotar por el intervalo de abajo -- así el primer mes
+# visible sigue mostrando su variación aunque el mes anterior a él haya
+# quedado fuera del rango elegido.
 total_df = agregar_comparaciones(total_df, grano)
+
+# ============================================================================
+# 1.4) Intervalo de tiempo (solo con granularidad Mes)
+# ============================================================================
+if grano == "mensual":
+    meses_ordenados = total_df.sort_values("_orden")["_label"].tolist()
+    if len(meses_ordenados) > 1:
+        mes_desde, mes_hasta = st.select_slider(
+            "Intervalo de tiempo",
+            options=meses_ordenados,
+            value=(meses_ordenados[0], meses_ordenados[-1]),
+            help=(
+                "Acota Real vs. facturado, Tendencia histórica y la tabla de períodos a este "
+                "rango de meses. La comparativa trimestral y la distribución mensual por año "
+                "(más abajo) siempre muestran el histórico completo, sin importar este control."
+            ),
+        )
+        orden_ini = total_df.loc[total_df["_label"] == mes_desde, "_orden"].iloc[0]
+        orden_fin = total_df.loc[total_df["_label"] == mes_hasta, "_orden"].iloc[0]
+        total_df = total_df[(total_df["_orden"] >= orden_ini) & (total_df["_orden"] <= orden_fin)]
+        serie_df = serie_df[(serie_df["_orden"] >= orden_ini) & (serie_df["_orden"] <= orden_fin)]
 
 # ============================================================================
 # 1.5) Real vs. facturado (Excel "Usuarios activos LMS - Proyectos Inicia")
