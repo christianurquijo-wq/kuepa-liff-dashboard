@@ -26,11 +26,14 @@ misma dimensión (ej. 2 grados a la vez) con filtros activos.
 """
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
+from plotly.subplots import make_subplots
 
 from utils.iq_usage_hours import (
     COLOR_PROGRAMA,
     GRANOS,
+    PERIOD_COLS,
     agregar_comparaciones,
     alianzas_disponibles,
     hay_filtro_dimensional,
@@ -38,6 +41,7 @@ from utils.iq_usage_hours import (
     load_cobertura_huecos,
     rango_fechas_periodo,
     serie,
+    serie_facturado,
     serie_total,
     usage_hours_actualizado_al,
     valores_dimension,
@@ -99,6 +103,85 @@ if serie_df.empty:
 
 total_df = serie_total(grano, alianzas_sel, rol_sel, grado_sel, region_sel)
 total_df = agregar_comparaciones(total_df, grano)
+
+# ============================================================================
+# 1.5) Real vs. facturado (Excel "Usuarios activos LMS - Proyectos Inicia")
+# ============================================================================
+st.divider()
+st.markdown("##### Real vs. facturado")
+st.caption(
+    "Compara lo que arroja `active_usage_hours` (en vivo) contra el Excel de facturación de "
+    "Christian, que es ESTÁTICO -- se actualiza a mano y por ahora llega hasta agosto 2026."
+)
+
+facturado_df = serie_facturado(grano, alianzas_sel)
+if facturado_df.empty:
+    st.info(
+        "No hay datos facturados para esta combinación de Alianza en este período -- el Excel "
+        "de facturación no cubre esta selección."
+    )
+else:
+    if hay_filtro_dimensional(rol_sel, grado_sel, region_sel):
+        st.caption(
+            "ℹ️ El Excel de facturación no tiene desglose por Rol/Grado/Región -- la línea "
+            "facturada siempre muestra el total del programa completo, aunque los filtros de "
+            "arriba acoten lo real. No son comparables 1 a 1 mientras estos filtros estén activos."
+        )
+
+    ver_sel = st.radio(
+        "Ver", ["Horas y usuarios", "Solo horas", "Solo usuarios"],
+        horizontal=True, key="iqad_ver_comparativo",
+    )
+    mostrar_horas = ver_sel in ("Horas y usuarios", "Solo horas")
+    mostrar_usuarios = ver_sel in ("Horas y usuarios", "Solo usuarios")
+
+    cols_join = PERIOD_COLS[grano]
+    comp = total_df[cols_join + ["_orden", "_label", "usuarios_activos", "horas_totales"]].merge(
+        facturado_df[cols_join + ["usuarios_facturados", "horas_facturados"]],
+        on=cols_join, how="left",
+    ).sort_values("_orden")
+
+    fig_comp = make_subplots(specs=[[{"secondary_y": True}]])
+    if mostrar_horas:
+        fig_comp.add_trace(
+            go.Scatter(x=comp["_label"], y=comp["horas_totales"], name="Horas reales",
+                       mode="lines+markers", line=dict(color="#FD531E")),
+            secondary_y=False,
+        )
+        fig_comp.add_trace(
+            go.Scatter(x=comp["_label"], y=comp["horas_facturados"], name="Horas facturadas",
+                       mode="lines+markers", line=dict(color="#FD531E", dash="dot")),
+            secondary_y=False,
+        )
+    if mostrar_usuarios:
+        fig_comp.add_trace(
+            go.Scatter(x=comp["_label"], y=comp["usuarios_activos"], name="Usuarios reales",
+                       mode="lines+markers", line=dict(color="#29B6F6")),
+            secondary_y=mostrar_horas,
+        )
+        fig_comp.add_trace(
+            go.Scatter(x=comp["_label"], y=comp["usuarios_facturados"], name="Usuarios facturados",
+                       mode="lines+markers", line=dict(color="#29B6F6", dash="dot")),
+            secondary_y=mostrar_horas,
+        )
+    if mostrar_horas:
+        fig_comp.update_yaxes(title_text="Horas", secondary_y=False)
+    if mostrar_usuarios:
+        fig_comp.update_yaxes(title_text="Usuarios", secondary_y=mostrar_horas)
+    fig_comp.update_layout(xaxis_title=None)
+    st.plotly_chart(dark(fig_comp), width="stretch", key="iqad_chart_comparativo")
+
+    with st.expander("Ver tabla real vs. facturado"):
+        tabla_comp = comp[
+            ["_label", "usuarios_activos", "usuarios_facturados", "horas_totales", "horas_facturados"]
+        ].rename(columns={
+            "_label": "Período",
+            "usuarios_activos": "Usuarios reales",
+            "usuarios_facturados": "Usuarios facturados",
+            "horas_totales": "Horas reales",
+            "horas_facturados": "Horas facturadas",
+        })
+        st.dataframe(tabla_comp, width="stretch", hide_index=True)
 
 periodos_labels = total_df["_label"].tolist()
 periodo_sel_label = st.selectbox("Período a analizar (para el KPI de cabecera)", periodos_labels, index=len(periodos_labels) - 1)

@@ -49,7 +49,10 @@ eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacc
 # combinables). Ver docstring de pages/iq/1_Analisis_Dinamico.py.
 iq_analisis = st.Page("pages/iq/1_Analisis_Dinamico.py", title="Análisis dinámico", url_path="iq-analisis")
 iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo", url_path="iq-detalle-consumo")
-iq_cobertura = st.Page("pages/iq/4_Cobertura.py", title="Cobertura", url_path="iq-cobertura")
+# oct-2026 (3): Cobertura se saca del menú a pedido de Christian ("no me
+# da información importante"). pages/iq/4_Cobertura.py sigue en el repo
+# por si hace falta recuperarla -- ver mismo criterio que pages/2_IQ.py
+# más abajo.
 # oct-2026: Christian pidió de vuelta "la hoja inicial de recencia y
 # conectividad por usuario" (histograma de recencia + mapa de calor
 # recencia x tiempo de uso) como página ADICIONAL. Ver docstring de
@@ -65,7 +68,7 @@ PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
-    "IQ": [iq_analisis, iq_detalle, iq_cobertura, iq_recencia],
+    "IQ": [iq_analisis, iq_detalle, iq_recencia],
 }
 
 pg = st.navigation(PROYECTOS)

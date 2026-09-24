@@ -44,6 +44,7 @@ import pandas as pd
 import streamlit as st
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "iq" / "usage_hours"
+FACTURADO_DIR = Path(__file__).resolve().parent.parent / "data" / "iq" / "facturado"
 
 ALIANZA_A_SIGLA = {"IQ Primaria": "IQP", "IQ Secundaria": "IQS", "512": "IQ512"}
 COLOR_PROGRAMA = {"IQP": "#29B6F6", "IQS": "#FD531E", "IQ512": "#2ECC71"}
@@ -317,3 +318,55 @@ def huecos_en_rango(fecha_inicio, fecha_fin) -> pd.DataFrame:
     h["desde"] = pd.to_datetime(h["desde"])
     h["hasta"] = pd.to_datetime(h["hasta"])
     return h[(h["desde"] <= fecha_fin) & (h["hasta"] >= fecha_inicio)]
+
+
+# ---------------------------------------------------------------------------
+# C) Facturado (Excel "Usuarios activos LMS - Proyectos Inicia.xlsx") --
+#    Análisis dinámico, sección "Real vs. facturado"
+# ---------------------------------------------------------------------------
+@st.cache_data(ttl=3600)
+def load_facturado() -> pd.DataFrame:
+    """Datos ESTÁTICOS de usuarios/horas facturados, extraídos a mano
+    (oct-2026) de la hoja 'Global' del Excel de Christian ("Usuarios
+    activos LMS - Proyectos Inicia.xlsx"), sumando las filas INDIVIDUALES
+    por programa (IQP / IQS / i512, filas 4-6 = Activos y 10-12 = Horas),
+    NO las filas agregadas 'TOTAL ACTIVOS' / 'TOTAL USO + ACTIVOS' -- esas
+    agregadas vienen mal calculadas en el Excel (para varios meses dan
+    justo la mitad de la suma de las 3 filas por programa; confirmado con
+    Christian: el dato real de usuarios es la suma por programa, ej. marzo
+    2026 = 53 (IQP) + 3818 (IQS) + 47 (i512) = 3918).
+
+    Cobertura: 2024-03 a 2026-08 -- antes de marzo 2024 el Excel no tiene
+    horas, y de septiembre 2026 en adelante los meses todavía no estaban
+    llenados (0 en el Excel = sin dato, no un cero real), así que se
+    excluyen en vez de graficarse como una caída a cero.
+
+    No hay conexión en vivo a este Excel (es un archivo que Christian
+    mantiene a mano) -- actualizar estos números es repetir la extracción
+    manual, igual que con active_usage_hours (ver clase A arriba)."""
+    path = FACTURADO_DIR / "facturado_mensual.csv"
+    if not path.exists():
+        return pd.DataFrame()
+    return pd.read_csv(path)
+
+
+def serie_facturado(grano: str, alianzas: list) -> pd.DataFrame:
+    """Igual forma de salida que serie_total() (Anio + columna de
+    sub-período + _orden/_label), pero sobre los datos facturados. Ya
+    viene sumado a un solo total (no hay Rol/Grado/Región en el Excel,
+    solo Programa) -- por eso no existe una versión 'serie_facturado' con
+    desglose por Programa, análoga a serie()."""
+    df = load_facturado()
+    if df.empty or not alianzas:
+        return pd.DataFrame()
+    df = df[df["Programa"].isin(alianzas)].copy()
+    if df.empty:
+        return df
+    df["Trimestre"] = "Q" + (((df["Mes"] - 1) // 3) + 1).astype(str)
+    df["Semestre"] = "S" + (((df["Mes"] - 1) // 6) + 1).astype(str)
+    cols = PERIOD_COLS[grano]
+    g = df.groupby(cols, dropna=False).agg(
+        usuarios_facturados=("usuarios_facturados", "sum"),
+        horas_facturados=("horas_facturados", "sum"),
+    ).reset_index()
+    return etiquetar(g, grano)
