@@ -21,6 +21,10 @@ contra el dashboard viejo de Looker, empieza a revisar por aquí:
 4. Nota promedio: SOLO sobre módulos con nota publicada (los no
    publicados llegan con NOTA=0 por el COALESCE de la query en BigQuery,
    incluirlos arrastraría el promedio hacia 0).
+   BUG corregido oct-2026: NOTA llega como texto con coma decimal
+   ("4,6") -- to_float() no la reconocía y cada nota con coma caía
+   silenciosamente en 0.0, arrastrando el promedio real (~3.4) a ~0.3.
+   Ver to_float() más abajo.
 5. Corte de técnicos (oct-2026, confirmado con Christian, FIJO -- sin
    toggle en la página): solo se analizan registros de estudiantes que
    ingresaron a los programas técnicos desde el 1 de agosto de 2026 en
@@ -114,9 +118,17 @@ def to_bool(value) -> bool:
 
 
 def to_float(value, default: float = 0.0) -> float:
+    """oct-2026: NOTA llega desde Sheets como texto con COMA decimal
+    (formato es-CO, ej. "4,6") -- float("4,6") revienta ValueError y esto
+    caía en `default` (0.0) SIN avisar. Con 2 dígitos antes de la coma en
+    notas normales (0-5) el bug era casi invisible fila por fila, pero
+    arrastraba el promedio publicado de ~3.4 real a ~0.3 (Christian lo
+    detectó). Se normaliza coma -> punto antes de castear."""
     try:
         if value in (None, ""):
             return default
+        if isinstance(value, str):
+            value = value.strip().replace(",", ".")
         return float(value)
     except (TypeError, ValueError):
         return default
