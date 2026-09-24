@@ -344,7 +344,13 @@ def academico_resumen_por_dimension_poblacion(
                     "pct_estudiantes": (estudiantes / total_pob * 100) if total_pob else 0.0,
                 }
             )
-    out = pd.DataFrame(filas)
+    # oct-2026: si `filas` queda vacia (ninguna poblacion tiene datos para
+    # `columna` con los filtros actuales) `pd.DataFrame([])` no tiene
+    # columnas -- pages/1_LIFF_Data.py accede a df_ep["pct_estudiantes"]
+    # sin chequear antes y eso revento con KeyError en produccion. Se fija
+    # el esquema explicitamente para que el DataFrame vacio siga teniendo
+    # las columnas esperadas.
+    out = pd.DataFrame(filas, columns=[columna, "poblacion", "pct_aprobacion", "estudiantes", "pct_estudiantes"])
     if out.empty:
         return out
     top_valores = out.groupby(columna)["estudiantes"].sum().sort_values(ascending=False).head(top).index
@@ -426,7 +432,10 @@ def estado_academico_pct_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -
             cantidad = int(counts.get(categoria, 0))
             pct = (cantidad / total * 100) if total else 0.0
             filas.append({"poblacion": poblacion, "estado": categoria, "porcentaje": pct, "cantidad": cantidad})
-    return pd.DataFrame(filas)
+    # Mismo riesgo que academico_resumen_por_dimension_poblacion(): si no
+    # hay ESTADO en ninguna poblacion, `categorias` queda vacio y `filas`
+    # tambien -- se fija el esquema para no perder las columnas.
+    return pd.DataFrame(filas, columns=["poblacion", "estado", "porcentaje", "cantidad"])
 
 
 def aprobacion_pct_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:

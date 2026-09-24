@@ -363,14 +363,17 @@ with tab_academico:
             g1, g2, g3 = st.columns(3)
             with g1, st.container(border=True):
                 df_ea = estado_academico_pct_poblacion(df_ext, df_nac)
-                fig = px.bar(
-                    df_ea, x="estado", y="porcentaje", color="poblacion", barmode="group",
-                    title="Estado Académico (%)",
-                    color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
-                    text=df_ea["porcentaje"].round(1).astype(str) + "%",
-                )
-                fig.update_layout(xaxis_title=None, yaxis_title="% del total", legend_title=None)
-                st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_4")
+                if df_ea.empty:
+                    st.caption("No hay datos de Estado Académico para la selección actual.")
+                else:
+                    fig = px.bar(
+                        df_ea, x="estado", y="porcentaje", color="poblacion", barmode="group",
+                        title="Estado Académico (%)",
+                        color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
+                        text=df_ea["porcentaje"].round(1).astype(str) + "%",
+                    )
+                    fig.update_layout(xaxis_title=None, yaxis_title="% del total", legend_title=None)
+                    st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_4")
 
             with g2, st.container(border=True):
                 df_em = modulos_por_estado_pct_comparativo(df_ext, df_nac)
@@ -406,16 +409,19 @@ with tab_academico:
                 # "estudiantes" absoluto va en el hover para quien lo
                 # necesite.
                 df_ep = academico_resumen_por_dimension_poblacion(df_ext, df_nac, "PROGRAMA")
-                fig = px.bar(
-                    df_ep, x="pct_estudiantes", y="PROGRAMA", color="poblacion", orientation="h", barmode="group",
-                    title="Estudiantes por Programa (% de cada población)",
-                    color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
-                    text=df_ep["pct_estudiantes"].round(1).astype(str) + "%",
-                    custom_data=["estudiantes"],
-                )
-                fig.update_traces(hovertemplate="%{y}: %{x:.1f}% (%{customdata[0]} estudiantes)<extra>%{fullData.name}</extra>")
-                fig.update_layout(yaxis_title=None, xaxis_title="% de la población", legend_title=None)
-                st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_7")
+                if df_ep.empty:
+                    st.caption("No hay datos de Programa para la selección actual.")
+                else:
+                    fig = px.bar(
+                        df_ep, x="pct_estudiantes", y="PROGRAMA", color="poblacion", orientation="h", barmode="group",
+                        title="Estudiantes por Programa (% de cada población)",
+                        color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
+                        text=df_ep["pct_estudiantes"].round(1).astype(str) + "%",
+                        custom_data=["estudiantes"],
+                    )
+                    fig.update_traces(hovertemplate="%{y}: %{x:.1f}% (%{customdata[0]} estudiantes)<extra>%{fullData.name}</extra>")
+                    fig.update_layout(yaxis_title=None, xaxis_title="% de la población", legend_title=None)
+                    st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_7")
             with g5, st.container(border=True):
                 df_np = nota_promedio_por_programa_poblacion(df_ext, df_nac)
                 fig = px.bar(
