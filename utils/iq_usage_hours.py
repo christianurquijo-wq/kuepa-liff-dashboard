@@ -50,6 +50,25 @@ ALIANZA_A_SIGLA = {"IQ Primaria": "IQP", "IQ Secundaria": "IQS", "512": "IQ512"}
 COLOR_PROGRAMA = {"IQP": "#29B6F6", "IQS": "#FD531E", "IQ512": "#2ECC71"}
 ORDEN_PROGRAMA = ["IQP", "IQS", "IQ512"]
 
+# oct-2026: el código interno del tercer programa sigue siendo "IQ512" --
+# es el valor que ya viene así en los CSV que exporta Christian a mano
+# (totales_*.csv/detalle_*.csv) y en la hoja de Sheets en vivo de
+# utils/iq_data.py, así que tocar ese código obligaría a regenerar todo
+# eso. Lo único que cambia es el nombre que VE el usuario: Christian
+# aclaró que el programa en realidad se llama solo "512" (el "IQ" del
+# código es un invento de una versión anterior del dashboard -- de hecho
+# ALIANZA_A_SIGLA de arriba ya traduce el nombre real "512" a la sigla
+# "IQ512"). PROGRAMA_LABEL se usa SOLO al mostrar algo en pantalla
+# (multiselects, leyendas, tablas) -- nunca para filtrar/unir datos.
+PROGRAMA_LABEL = {"IQP": "IQP", "IQS": "IQS", "IQ512": "512"}
+COLOR_PROGRAMA_DISPLAY = {PROGRAMA_LABEL[k]: v for k, v in COLOR_PROGRAMA.items()}
+ORDEN_PROGRAMA_DISPLAY = [PROGRAMA_LABEL[p] for p in ORDEN_PROGRAMA]
+
+
+def etiqueta_programa(codigo: str) -> str:
+    """Nombre para mostrar al usuario -- ver nota de PROGRAMA_LABEL arriba."""
+    return PROGRAMA_LABEL.get(codigo, codigo)
+
 MESES_ES = [
     "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",

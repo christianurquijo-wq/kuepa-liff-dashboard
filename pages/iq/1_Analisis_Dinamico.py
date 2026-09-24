@@ -15,10 +15,15 @@ Qué hace cada sección (de arriba a abajo):
 2. KPI de cabecera: usuarios activos y horas totales del período elegido,
    con las 2 comparaciones lado a lado -- vs período inmediatamente
    anterior y vs mismo período del año anterior.
-3. Comparativa trimestral año contra año (Q1..Q4, una barra por año) --
-   siempre visible, sin importar la granularidad elegida en (1).
-4. Distribución mensual por año (cuartiles estadísticos: caja = P25-P75,
-   línea = mediana) -- para ver dispersión y crecimiento entre años.
+3. Comparativa año contra año -- granularidad (Mes/Trimestre/Semestre/Año)
+   y deslizable de intervalo PROPIOS, independientes de (1) -- por diseño
+   esta sección es la vista "ancla" de la página y no se mueve sola cuando
+   cambias los controles de arriba.
+4. Distribución entre años (cuartiles estadísticos: caja = P25-P75,
+   línea = mediana) -- granularidad y deslizable PROPIOS, igual que (3).
+   Eje X = sub-período (Mes/Trimestre/Semestre); cada caja resume los años
+   disponibles para ese sub-período -- para ver dispersión y crecimiento
+   entre años, mes a mes (o trimestre/semestre a semestre).
 5. Tendencia histórica en la granularidad elegida, con los huecos de
    exportación sombreados (igual criterio que la vieja página Histórico).
 6. Tabla de períodos con variación %, descargable.
@@ -34,11 +39,13 @@ import streamlit as st
 from plotly.subplots import make_subplots
 
 from utils.iq_usage_hours import (
-    COLOR_PROGRAMA,
+    COLOR_PROGRAMA_DISPLAY,
     GRANOS,
+    MESES_ES,
     PERIOD_COLS,
     agregar_comparaciones,
     alianzas_disponibles,
+    etiqueta_programa,
     hay_filtro_dimensional,
     huecos_en_rango,
     load_cobertura_huecos,
@@ -73,7 +80,9 @@ with c1:
     grano_label = st.selectbox("Granularidad", list(GRANOS.keys()), index=0)
 grano = GRANOS[grano_label]
 with c2:
-    alianzas_sel = st.multiselect("Alianza", alianzas_todas, default=alianzas_todas)
+    alianzas_sel = st.multiselect(
+        "Alianza", alianzas_todas, default=alianzas_todas, format_func=etiqueta_programa
+    )
 
 fc1, fc2, fc3 = st.columns(3)
 with fc1:
@@ -260,50 +269,153 @@ kpi_row(
 )
 
 # ============================================================================
-# 3) Comparativa trimestral año contra año (fija, no depende de (1))
+# 3) Comparativa año contra año -- granularidad y deslizable PROPIOS,
+#    independientes de la sección 1 (esta sección es la vista "ancla")
 # ============================================================================
-st.markdown("##### Comparativa trimestral, año contra año")
-tri = serie_total("trimestral", alianzas_sel, rol_sel, grado_sel, region_sel)
-tri["Trimestre_label"] = "T" + tri["Trimestre"].str[1]
-tri["Año"] = tri["Anio"].astype(str)
+st.markdown("##### Comparativa año contra año")
 
-tc1, tc2 = st.columns(2)
-with tc1:
-    fig = px.bar(
-        tri.sort_values(["Trimestre_label", "Anio"]),
-        x="Trimestre_label", y="usuarios_activos", color="Año", barmode="group",
-        title="Usuarios activos por trimestre",
+c3_1, c3_2 = st.columns([1, 3])
+with c3_1:
+    grano3_label = st.selectbox(
+        "Granularidad", list(GRANOS.keys()), index=1, key="iqad_grano3",
+        help="Selector propio de esta sección -- no depende del de Controles, arriba.",
     )
-    fig.update_layout(xaxis_title="")
-    st.plotly_chart(dark(fig), width="stretch")
-with tc2:
-    fig = px.bar(
-        tri.sort_values(["Trimestre_label", "Anio"]),
-        x="Trimestre_label", y="horas_totales", color="Año", barmode="group",
-        title="Horas totales por trimestre",
-    )
-    fig.update_layout(xaxis_title="")
-    st.plotly_chart(dark(fig), width="stretch")
+grano3 = GRANOS[grano3_label]
+
+tri = serie_total(grano3, alianzas_sel, rol_sel, grado_sel, region_sel)
+
+if tri.empty:
+    st.info("No hay datos para esta combinación de filtros y granularidad.")
+else:
+    # -- deslizable de intervalo, en las 4 granularidades -----------------
+    periodos3 = tri.sort_values("_orden")["_label"].tolist()
+    if len(periodos3) > 1:
+        with c3_2:
+            p3_desde, p3_hasta = st.select_slider(
+                "Intervalo",
+                options=periodos3,
+                value=(periodos3[0], periodos3[-1]),
+                key="iqad_slider3",
+                help="Acota qué años/períodos entran en esta comparación.",
+            )
+        orden3_ini = tri.loc[tri["_label"] == p3_desde, "_orden"].iloc[0]
+        orden3_fin = tri.loc[tri["_label"] == p3_hasta, "_orden"].iloc[0]
+        tri = tri[(tri["_orden"] >= orden3_ini) & (tri["_orden"] <= orden3_fin)]
+
+    tri = tri.copy()
+    tri["Año"] = tri["Anio"].astype(str)
+
+    # -- etiqueta de sub-período dentro del año, en orden cronológico -----
+    # (en "Año" no hay sub-período -- una sola barra por año, ver más abajo)
+    if grano3 == "mensual":
+        tri["_sub"] = tri["Mes"].astype(int).apply(lambda m: MESES_ES[m - 1][:3])
+        orden_x = [MESES_ES[i][:3] for i in range(12)]
+    elif grano3 == "trimestral":
+        tri["_sub"] = "T" + tri["Trimestre"].str[1]
+        orden_x = ["T1", "T2", "T3", "T4"]
+    elif grano3 == "semestral":
+        tri["_sub"] = "S" + tri["Semestre"].str[1]
+        orden_x = ["S1", "S2"]
+    else:
+        orden_x = None
+
+    def _grafico_yoy(y_col: str, y_titulo: str, color_solido: str):
+        """Un gráfico por debajo del otro (antes iban lado a lado) para
+        dejar espacio a estos controles propios y a comparaciones futuras."""
+        if grano3 == "anual":
+            # Sin sub-período -- una barra por año, sin agrupar ni leyenda.
+            fig = px.bar(tri.sort_values("_orden"), x="Año", y=y_col, title=f"{y_titulo} por año")
+            fig.update_traces(marker_color=color_solido)
+            fig.update_layout(showlegend=False)
+        else:
+            fig = px.bar(
+                tri.sort_values("_orden"), x="_sub", y=y_col, color="Año", barmode="group",
+                title=f"{y_titulo} por {grano3_label.lower()}",
+            )
+            fig.update_xaxes(categoryorder="array", categoryarray=orden_x)
+        fig.update_layout(xaxis_title="")
+        fig.update_yaxes(title_text=y_titulo)
+        return fig
+
+    st.plotly_chart(dark(_grafico_yoy("usuarios_activos", "Usuarios activos", "#29B6F6")), width="stretch")
+    st.plotly_chart(dark(_grafico_yoy("horas_totales", "Horas totales", "#FD531E")), width="stretch")
 
 # ============================================================================
-# 4) Distribución mensual por año (cuartiles estadísticos)
+# 4) Distribución entre años -- granularidad y deslizable PROPIOS (mismo
+#    patrón que la sección 3). oct-2026: se invirtió el eje X (antes era
+#    Año con cajas de valores mensuales dentro de ese año; el hover de los
+#    puntos atípicos entonces mostraba el Año -- el mismo dato que el eje X
+#    -- y nunca decía a qué mes correspondía cada punto). Ahora el eje X es
+#    el sub-período (Ene..Dic / T1..T4 / S1..S2) y cada caja resume los
+#    AÑOS disponibles para ese sub-período, así el hover de cada punto
+#    atípico sí puede mostrar su Año (el dato que faltaba).
 # ============================================================================
-st.markdown("##### Distribución mensual por año")
+st.markdown("##### Distribución entre años")
 st.caption(
-    "Cada caja resume los 12 (o menos) valores mensuales de ese año: la caja va del percentil 25 "
-    "al 75, la línea del medio es la mediana, y los puntos son meses atípicos -- útil para ver si "
-    "un año creció/se dispersó más que otro, más allá del total acumulado."
+    "Cada caja resume, para un mismo mes/trimestre/semestre, los valores de los distintos años "
+    "disponibles: la caja va del percentil 25 al 75, la línea del medio es la mediana, y los "
+    "puntos son años atípicos -- pasa el cursor sobre un punto para ver a qué año corresponde."
 )
-mensual_tot = serie_total("mensual", alianzas_sel, rol_sel, grado_sel, region_sel)
-mensual_tot["Año"] = mensual_tot["Anio"].astype(str)
 
-qc1, qc2 = st.columns(2)
-with qc1:
-    fig = px.box(mensual_tot, x="Año", y="usuarios_activos", points="all", title="Usuarios activos (mensual) por año")
-    st.plotly_chart(dark(fig), width="stretch")
-with qc2:
-    fig = px.box(mensual_tot, x="Año", y="horas_totales", points="all", title="Horas totales (mensual) por año")
-    st.plotly_chart(dark(fig), width="stretch")
+c4_1, c4_2 = st.columns([1, 3])
+with c4_1:
+    grano4_label = st.selectbox(
+        "Granularidad", ["Mes", "Trimestre", "Semestre"], index=0, key="iqad_grano4",
+        help=(
+            "Selector propio de esta sección -- no depende del de Controles, arriba. No incluye "
+            "'Año' porque cada caja necesita varios puntos (años) por sub-período, y en 'Año' solo "
+            "habría un valor por año -- no hay nada que distribuir."
+        ),
+    )
+grano4 = GRANOS[grano4_label]
+
+dist_df = serie_total(grano4, alianzas_sel, rol_sel, grado_sel, region_sel)
+
+if dist_df.empty:
+    st.info("No hay datos para esta combinación de filtros y granularidad.")
+else:
+    periodos4 = dist_df.sort_values("_orden")["_label"].tolist()
+    if len(periodos4) > 1:
+        with c4_2:
+            p4_desde, p4_hasta = st.select_slider(
+                "Intervalo",
+                options=periodos4,
+                value=(periodos4[0], periodos4[-1]),
+                key="iqad_slider4",
+                help="Acota qué años/períodos entran en esta distribución.",
+            )
+        orden4_ini = dist_df.loc[dist_df["_label"] == p4_desde, "_orden"].iloc[0]
+        orden4_fin = dist_df.loc[dist_df["_label"] == p4_hasta, "_orden"].iloc[0]
+        dist_df = dist_df[(dist_df["_orden"] >= orden4_ini) & (dist_df["_orden"] <= orden4_fin)]
+
+    dist_df = dist_df.copy()
+    dist_df["Año"] = dist_df["Anio"].astype(str)
+
+    if grano4 == "mensual":
+        dist_df["_sub"] = dist_df["Mes"].astype(int).apply(lambda m: MESES_ES[m - 1][:3])
+        orden_x4 = [MESES_ES[i][:3] for i in range(12)]
+    elif grano4 == "trimestral":
+        dist_df["_sub"] = "T" + dist_df["Trimestre"].str[1]
+        orden_x4 = ["T1", "T2", "T3", "T4"]
+    else:  # semestral
+        dist_df["_sub"] = "S" + dist_df["Semestre"].str[1]
+        orden_x4 = ["S1", "S2"]
+
+    def _grafico_dist(y_col: str, y_titulo: str):
+        """Un gráfico por debajo del otro (antes iban lado a lado) --
+        mismo criterio que la sección 3, deja más espacio a los controles
+        propios y a las etiquetas del eje X."""
+        fig = px.box(
+            dist_df.sort_values("_orden"), x="_sub", y=y_col, points="all",
+            hover_data={"Año": True, "_sub": False},
+            title=f"{y_titulo} ({grano4_label.lower()}) -- distribución entre años",
+        )
+        fig.update_xaxes(categoryorder="array", categoryarray=orden_x4, title="")
+        fig.update_yaxes(title_text=y_titulo)
+        return fig
+
+    st.plotly_chart(dark(_grafico_dist("usuarios_activos", "Usuarios activos")), width="stretch")
+    st.plotly_chart(dark(_grafico_dist("horas_totales", "Horas totales")), width="stretch")
 
 # ============================================================================
 # 5) Tendencia histórica en la granularidad elegida
@@ -311,11 +423,6 @@ with qc2:
 st.markdown(f"##### Tendencia histórica ({grano_label.lower()})")
 
 huecos = load_cobertura_huecos()
-if not huecos.empty:
-    st.info(
-        "🔲 Las franjas grises marcan huecos confirmados de exportación (ningún archivo fuente "
-        "cubre esas fechas) -- no son caídas reales de actividad. Detalle en la página **Cobertura**."
-    )
 
 
 def _fecha_inicio(row):
@@ -325,6 +432,7 @@ def _fecha_inicio(row):
 
 
 serie_df["fecha_inicio"] = serie_df.apply(_fecha_inicio, axis=1)
+serie_df["Programa"] = serie_df["Programa"].map(etiqueta_programa)  # solo para mostrar -- ver nota en iq_usage_hours.py
 
 
 def _agregar_huecos(fig):
@@ -335,14 +443,14 @@ def _agregar_huecos(fig):
 
 fig = px.line(
     serie_df.sort_values("fecha_inicio"), x="fecha_inicio", y="usuarios_activos", color="Programa",
-    color_discrete_map=COLOR_PROGRAMA, markers=True, title="Usuarios activos",
+    color_discrete_map=COLOR_PROGRAMA_DISPLAY, markers=True, title="Usuarios activos",
 )
 fig.update_layout(xaxis_title="")
 st.plotly_chart(dark(_agregar_huecos(fig)), width="stretch")
 
 fig = px.line(
     serie_df.sort_values("fecha_inicio"), x="fecha_inicio", y="horas_totales", color="Programa",
-    color_discrete_map=COLOR_PROGRAMA, markers=True, title="Horas totales de logueo",
+    color_discrete_map=COLOR_PROGRAMA_DISPLAY, markers=True, title="Horas totales de logueo",
 )
 fig.update_layout(xaxis_title="")
 st.plotly_chart(dark(_agregar_huecos(fig)), width="stretch")

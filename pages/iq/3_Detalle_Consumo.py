@@ -6,7 +6,8 @@ import streamlit as st
 from utils.iq_data import load_iq_lecciones, load_iq_usuarios
 from utils.iq_metrics import cobertura_lecciones, enrich_usuarios, horas_por_area, top_componentes
 from utils.iq_usage_hours import (
-    COLOR_PROGRAMA,
+    COLOR_PROGRAMA_DISPLAY,
+    etiqueta_programa,
     load_mensual_alianza_app,
     load_mensual_alianza_grado,
     load_mensual_alianza_region,
@@ -33,7 +34,9 @@ if df_grado.empty:
     st.stop()
 
 alianzas_disp = sorted(df_grado["Programa"].unique())
-alianzas_sel = st.multiselect("Alianza", alianzas_disp, default=alianzas_disp, key="detalle_alianza")
+alianzas_sel = st.multiselect(
+    "Alianza", alianzas_disp, default=alianzas_disp, key="detalle_alianza", format_func=etiqueta_programa
+)
 
 tab_grado, tab_rol, tab_zona, tab_plataforma, tab_recurso = st.tabs(
     ["Por Grado", "Por Rol", "Zona geográfica", "Plataforma", "Por Recurso (lecciones)"]
@@ -43,9 +46,10 @@ with tab_grado:
     f = df_grado[df_grado["Programa"].isin(alianzas_sel)].groupby(["Programa", "Grado"], observed=True).agg(
         usuarios_activos=("usuarios_activos", "sum"), horas_totales=("horas_totales", "sum")
     ).reset_index()
+    f["Programa"] = f["Programa"].map(etiqueta_programa)
     fig = px.bar(
         f, x="Grado", y="usuarios_activos", color="Programa", barmode="group",
-        color_discrete_map=COLOR_PROGRAMA, title="Usuarios activos por Grado",
+        color_discrete_map=COLOR_PROGRAMA_DISPLAY, title="Usuarios activos por Grado",
     )
     st.plotly_chart(dark(fig), width="stretch")
     with st.expander("Ver tabla"):
@@ -55,11 +59,12 @@ with tab_rol:
     f = df_rol[df_rol["Programa"].isin(alianzas_sel)].groupby(["Programa", "roles_string"], observed=True).agg(
         usuarios_activos=("usuarios_activos", "sum"), horas_totales=("horas_totales", "sum")
     ).reset_index()
+    f["Programa"] = f["Programa"].map(etiqueta_programa)
     c1, c2 = st.columns(2)
     with c1:
         fig = px.bar(
             f, x="roles_string", y="usuarios_activos", color="Programa", barmode="group",
-            color_discrete_map=COLOR_PROGRAMA, title="Usuarios activos por Rol",
+            color_discrete_map=COLOR_PROGRAMA_DISPLAY, title="Usuarios activos por Rol",
         )
         st.plotly_chart(dark(fig), width="stretch")
     with c2:
@@ -108,6 +113,7 @@ with tab_plataforma:
     f = df_app[df_app["Programa"].isin(alianzas_sel)].groupby(["Programa", "app"], observed=True).agg(
         usuarios_activos=("usuarios_activos", "sum"), horas_totales=("horas_totales", "sum")
     ).reset_index()
+    f["Programa"] = f["Programa"].map(etiqueta_programa)
     fig = px.bar(
         f, x="Programa", y="usuarios_activos", color="app", barmode="group",
         title="Usuarios activos por Plataforma (LMS vs App móvil)",
@@ -140,13 +146,15 @@ with tab_recurso:
         c1, c2 = st.columns(2)
         with c1:
             ha = horas_por_area(df_lecciones)
+            ha["Programa"] = ha["Programa"].map(etiqueta_programa)
             fig = px.bar(ha.head(15), x="Area_Conocimiento", y="Horas", color="Programa",
-                         color_discrete_map=COLOR_PROGRAMA, title="Horas por Área de conocimiento (top 15)")
+                         color_discrete_map=COLOR_PROGRAMA_DISPLAY, title="Horas por Área de conocimiento (top 15)")
             st.plotly_chart(dark(fig), width="stretch")
         with c2:
             tc = top_componentes(df_lecciones, n=15)
+            tc["Programa"] = tc["Programa"].map(etiqueta_programa)
             fig = px.bar(tc, x="Componente_academico", y="Filas", color="Programa",
-                         color_discrete_map=COLOR_PROGRAMA, title="Top 15 componentes académicos (por # de lecciones)")
+                         color_discrete_map=COLOR_PROGRAMA_DISPLAY, title="Top 15 componentes académicos (por # de lecciones)")
             st.plotly_chart(dark(fig), width="stretch")
         with st.expander("Ver tabla de recursos"):
-            st.dataframe(df_lecciones, width="stretch")
+            st.dataframe(df_lecciones.assign(Programa=df_lecciones["Programa"].map(etiqueta_programa)), width="stretch")
