@@ -311,23 +311,37 @@ def academico_resumen_por_dimension_poblacion(
     SALES_ADVISOR_FULL_NAME), separado Extranjeros vs Nacionales -- para
     los cruces de la pestaña Comparativo. `top` limita a las categorías
     con más estudiantes en total (evita gráficas ilegibles con muchos
-    asesores)."""
+    asesores).
+    oct-2026: se agrega `pct_estudiantes` -- % que representa esa
+    categoría SOBRE EL TOTAL DE ESA POBLACIÓN (no sobre el total
+    combinado). Cuando una población es mucho más chica que la otra
+    (típico Extranjero vs Nacional), comparar "estudiantes" en absoluto
+    hace invisible a la población chica en la gráfica -- `pct_estudiantes`
+    compara composición, no volumen. `estudiantes` se conserva para
+    mostrar el dato crudo en el hover/tooltip."""
+    total_por_poblacion = {}
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        total_por_poblacion[poblacion] = df["ID_SIS"].nunique() if "ID_SIS" in df.columns else len(df)
+
     filas = []
     for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
         if df.empty or columna not in df.columns:
             continue
         d = df.copy()
         d[columna] = d[columna].fillna("(sin dato)")
+        total_pob = total_por_poblacion[poblacion]
         for valor, g in d.groupby(columna, observed=True):
             publicadas = g[g["_PUBLICADA"]]
             aprobadas = int((publicadas["_APROBACION"] == "Aprobado").sum())
             total_calificadas = len(publicadas)
+            estudiantes = g["ID_SIS"].nunique() if "ID_SIS" in g.columns else len(g)
             filas.append(
                 {
                     columna: valor,
                     "poblacion": poblacion,
                     "pct_aprobacion": (aprobadas / total_calificadas * 100) if total_calificadas else None,
-                    "estudiantes": g["ID_SIS"].nunique() if "ID_SIS" in g.columns else len(g),
+                    "estudiantes": estudiantes,
+                    "pct_estudiantes": (estudiantes / total_pob * 100) if total_pob else 0.0,
                 }
             )
     out = pd.DataFrame(filas)
@@ -340,7 +354,13 @@ def academico_resumen_por_dimension_poblacion(
 def tendencia_mensual_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:
     """Estudiantes distintos por mes de inicio de grupo (_FECHA_INICIO,
     de enrich()), Extranjeros vs Nacionales -- para ver si la composición
-    cambia en el tiempo, no solo el acumulado."""
+    cambia en el tiempo, no solo el acumulado.
+    oct-2026: se agrega `pct` -- estudiantes de ese mes como % del total
+    de ESA población en toda la serie (no del total combinado), mismo
+    motivo que pct_estudiantes en academico_resumen_por_dimension_poblacion:
+    Extranjero y Nacional suelen tener volúmenes muy distintos y la línea
+    de la población chica queda ilegible en la escala de la grande si se
+    grafica en absoluto. `estudiantes` se conserva para el hover."""
     partes = []
     for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
         if df.empty or "_FECHA_INICIO" not in df.columns:
@@ -352,9 +372,11 @@ def tendencia_mensual_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> p
         d["_MES"] = d["_FECHA_INICIO"].dt.to_period("M").dt.to_timestamp()
         por_mes = d.groupby("_MES", observed=True)["ID_SIS"].nunique().reset_index(name="estudiantes")
         por_mes["poblacion"] = poblacion
+        total_pob = d["ID_SIS"].nunique()
+        por_mes["pct"] = (por_mes["estudiantes"] / total_pob * 100) if total_pob else 0.0
         partes.append(por_mes)
     if not partes:
-        return pd.DataFrame(columns=["_MES", "estudiantes", "poblacion"])
+        return pd.DataFrame(columns=["_MES", "estudiantes", "poblacion", "pct"])
     return pd.concat(partes, ignore_index=True)
 
 

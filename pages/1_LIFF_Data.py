@@ -400,13 +400,21 @@ with tab_academico:
             st.subheader("Por programa -- Extranjeros vs Nacionales")
             g4, g5 = st.columns(2)
             with g4, st.container(border=True):
+                # pct_estudiantes (no "estudiantes" en absoluto): cuando una
+                # población es mucho más chica que la otra, comparar
+                # cantidades crudas hace invisible a la chica en la gráfica.
+                # "estudiantes" absoluto va en el hover para quien lo
+                # necesite.
                 df_ep = academico_resumen_por_dimension_poblacion(df_ext, df_nac, "PROGRAMA")
                 fig = px.bar(
-                    df_ep, x="estudiantes", y="PROGRAMA", color="poblacion", orientation="h", barmode="group",
-                    title="Estudiantes por Programa",
+                    df_ep, x="pct_estudiantes", y="PROGRAMA", color="poblacion", orientation="h", barmode="group",
+                    title="Estudiantes por Programa (% de cada población)",
                     color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
+                    text=df_ep["pct_estudiantes"].round(1).astype(str) + "%",
+                    custom_data=["estudiantes"],
                 )
-                fig.update_layout(yaxis_title=None, xaxis_title=None, legend_title=None)
+                fig.update_traces(hovertemplate="%{y}: %{x:.1f}% (%{customdata[0]} estudiantes)<extra>%{fullData.name}</extra>")
+                fig.update_layout(yaxis_title=None, xaxis_title="% de la población", legend_title=None)
                 st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_7")
             with g5, st.container(border=True):
                 df_np = nota_promedio_por_programa_poblacion(df_ext, df_nac)
@@ -487,12 +495,19 @@ with tab_comparativo:
             if tend_pob.empty:
                 st.caption("No hay fechas de inicio de grupo suficientes para armar la tendencia.")
             else:
+                # pct (no "estudiantes" absoluto): mismo motivo que en "Por
+                # programa" -- con volúmenes muy distintos, la línea de la
+                # población chica se aplana contra el eje en escala
+                # absoluta. pct = % del total de ESA población en toda la
+                # serie, así se compara distribución en el tiempo, no volumen.
                 fig = px.line(
-                    tend_pob, x="_MES", y="estudiantes", color="poblacion", markers=True,
-                    title="Estudiantes por mes de inicio de grupo",
+                    tend_pob, x="_MES", y="pct", color="poblacion", markers=True,
+                    title="Estudiantes por mes de inicio de grupo (% de cada población)",
                     color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
+                    custom_data=["estudiantes"],
                 )
-                fig.update_layout(xaxis_title=None, yaxis_title=None)
+                fig.update_traces(hovertemplate="%{x|%b %Y}: %{y:.1f}% (%{customdata[0]} estudiantes)<extra>%{fullData.name}</extra>")
+                fig.update_layout(xaxis_title=None, yaxis_title="% de la población")
                 st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_tendencia_poblacion")
 
         st.write("")
@@ -802,6 +817,8 @@ with tab_satisfaccion:
                 df_car = df_car.drop(columns=["_POBLACION_MATCH"])
 
         hay_poblacion_car = df_car["_POBLACION"].notna().any()
+        n_ext_car = int((df_car["_POBLACION"] == "extranjero").sum())
+        n_nac_car = int((df_car["_POBLACION"] == "nacional").sum())
 
         if not dims_detectadas:
             st.warning(
@@ -810,27 +827,40 @@ with tab_satisfaccion:
                 "preguntas haya cambiado. Revisa el perfil genérico más abajo."
             )
         else:
-            st.caption(
-                "Perfil socioeconómico -- distribución de las respuestas, Extranjeros vs Nacionales "
-                "(quien no cruzó por documento con Académico queda fuera de este reparto)."
-                if hay_poblacion_car
-                else "Perfil socioeconómico -- distribución de las respuestas."
-            )
+            if hay_poblacion_car:
+                st.caption(
+                    "Perfil socioeconómico -- % de respuestas dentro de cada población (quien no "
+                    "cruzó por documento con Académico queda fuera de este reparto). "
+                    f"Base: {n_ext_car} extranjeros vs {n_nac_car} nacionales."
+                )
+            else:
+                st.caption("Perfil socioeconómico -- distribución de las respuestas.")
             cols_grid = st.columns(3)
             for i, (etiqueta, col) in enumerate(dims_detectadas):
                 with cols_grid[i % 3], st.container(border=True):
                     if hay_poblacion_car:
-                        d = df_car[[col, "_POBLACION"]].dropna(subset=["_POBLACION"]).copy()
-                        d[col] = d[col].fillna("(vacío)").astype(str)
-                        top_cats = d[col].value_counts().head(12).index
-                        d = d[d[col].isin(top_cats)]
+                        # % dentro de cada población (no cantidad cruda):
+                        # con 20 extranjeros contra 400 nacionales, las
+                        # barras de extranjeros quedan invisibles si se
+                        # grafica en absoluto.
+                        d_full = df_car[[col, "_POBLACION"]].dropna(subset=["_POBLACION"]).copy()
+                        d_full[col] = d_full[col].fillna("(vacío)").astype(str)
+                        totales_pob = d_full.groupby("_POBLACION", observed=True).size()
+                        top_cats = d_full[col].value_counts().head(12).index
+                        d = d_full[d_full[col].isin(top_cats)]
                         counts = d.groupby([col, "_POBLACION"], observed=True).size().reset_index(name="cantidad")
+                        counts["porcentaje"] = counts.apply(
+                            lambda r: (r["cantidad"] / totales_pob.get(r["_POBLACION"], 0) * 100)
+                            if totales_pob.get(r["_POBLACION"], 0) else 0.0,
+                            axis=1,
+                        )
                         counts["_POBLACION"] = counts["_POBLACION"].map({"extranjero": "Extranjeros", "nacional": "Nacionales"})
                         fig = px.bar(
-                            counts, x=col, y="cantidad", color="_POBLACION", barmode="group", title=etiqueta,
+                            counts, x=col, y="porcentaje", color="_POBLACION", barmode="group", title=etiqueta,
                             color_discrete_map={"Extranjeros": NARANJA, "Nacionales": AZUL},
+                            text=counts["porcentaje"].round(1).astype(str) + "%",
                         )
-                        fig.update_layout(xaxis_title=None, yaxis_title=None, legend_title=None)
+                        fig.update_layout(xaxis_title=None, yaxis_title="% de la población", legend_title=None)
                     else:
                         counts = df_car[col].fillna("(vacío)").astype(str).value_counts().head(12).reset_index()
                         counts.columns = [col, "cantidad"]
