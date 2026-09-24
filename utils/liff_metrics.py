@@ -40,6 +40,25 @@ contra el dashboard viejo de Looker, empieza a revisar por aquí:
      corte pero cuyo grupo arrancó después SÍ entra al funnel, y solo se
      usa la fecha de creación del lead como respaldo cuando no hay otra
      forma de saber si cumple el criterio.
+6. Monto recaudado (oct-2026): se quitó de la VISUAL en las 4 pestañas a
+   pedido de Christian -- comparativo_kpis()/funnel_kpis() lo siguen
+   calculando (otros consumidores podrían necesitarlo), pages/1_LIFF_Data.py
+   simplemente ya no lo muestra en los _kpi_row().
+7. Diferenciación Extranjero/Nacional (oct-2026): se extendió del
+   Comparativo (única pestaña que ya la tenía) a Académico y a
+   Satisfacción/Caracterización.
+   - Académico: _POBLACION ya viene en `aca` (mismo enrich() de siempre),
+     así que ext/nac particiona el total sin pérdida -- ver las nuevas
+     estado_academico_pct_poblacion()/aprobacion_pct_poblacion()/
+     nota_promedio_por_programa_poblacion() abajo, hermanas de
+     modulos_por_estado_pct_comparativo() y
+     academico_resumen_por_dimension_poblacion() que ya existían.
+   - Satisfacción/Caracterización: estas 2 encuestas NO traen _POBLACION
+     propia (son hojas CRM aparte) -- se cruza por documento contra el
+     bloque académico (mismo corte de técnicos) para etiquetar cada fila
+     encuestada. Quien no cruza (no contestó con el mismo documento, o no
+     tiene match académico) queda "Sin clasificar" y se excluye de las
+     comparativas ext/nac, no se inventa una población.
 """
 from datetime import date
 
@@ -351,6 +370,65 @@ def modulos_por_estado_pct_comparativo(
                 }
             )
     return pd.DataFrame(filas)
+
+
+def estado_academico_pct_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:
+    """Distribución de ESTADO académico (a nivel estudiante, no módulo)
+    como % del total de cada población -- hermana de
+    modulos_por_estado_pct_comparativo() pero para estado_academico_counts()."""
+    bloques = {}
+    categorias: set = set()
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        estudiantes = _por_estudiante(df)
+        if estudiantes.empty:
+            bloques[poblacion] = (pd.Series(dtype=int), 0)
+            continue
+        counts = estudiantes["ESTADO"].fillna("Sin estado").value_counts()
+        bloques[poblacion] = (counts, len(estudiantes))
+        categorias.update(counts.index.tolist())
+    filas = []
+    for poblacion, (counts, total) in bloques.items():
+        for categoria in sorted(categorias):
+            cantidad = int(counts.get(categoria, 0))
+            pct = (cantidad / total * 100) if total else 0.0
+            filas.append({"poblacion": poblacion, "estado": categoria, "porcentaje": pct, "cantidad": cantidad})
+    return pd.DataFrame(filas)
+
+
+def aprobacion_pct_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:
+    """Aprobado/No Aprobado/Pendiente de Nota como % del total de módulos
+    de cada población -- mismo criterio que aprobacion_counts() (sobre
+    TODOS los módulos, no solo los publicados: "Pendiente de Nota" ya es
+    una de las 3 categorías)."""
+    filas = []
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        total = len(df)
+        counts = df["_APROBACION"].value_counts() if "_APROBACION" in df.columns else pd.Series(dtype=int)
+        for categoria in ORDEN_APROBACION:
+            cantidad = int(counts.get(categoria, 0))
+            pct = (cantidad / total * 100) if total else 0.0
+            filas.append({"poblacion": poblacion, "categoria": categoria, "porcentaje": pct, "cantidad": cantidad})
+    return pd.DataFrame(filas)
+
+
+def nota_promedio_por_programa_poblacion(df_ext: pd.DataFrame, df_nac: pd.DataFrame) -> pd.DataFrame:
+    """Nota promedio por PROGRAMA (solo módulos con nota publicada),
+    Extranjeros vs Nacionales -- hermana de nota_promedio_por_programa()."""
+    partes = []
+    for poblacion, df in (("Extranjeros", df_ext), ("Nacionales", df_nac)):
+        if df.empty or "PROGRAMA" not in df.columns:
+            continue
+        publicados = df[df["_PUBLICADA"]]
+        if publicados.empty:
+            continue
+        d = publicados.copy()
+        d["PROGRAMA"] = d["PROGRAMA"].fillna("(sin dato)")
+        prom = d.groupby("PROGRAMA", observed=True)["_NOTA_NUM"].mean().reset_index(name="nota_promedio")
+        prom["poblacion"] = poblacion
+        partes.append(prom)
+    if not partes:
+        return pd.DataFrame(columns=["PROGRAMA", "nota_promedio", "poblacion"])
+    return pd.concat(partes, ignore_index=True)
 
 
 # =============================================================================
