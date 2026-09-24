@@ -146,7 +146,7 @@ with tab1:
             ("Usuarios", f"{total_usuarios:,}".replace(",", "."), NARANJA, "Suma de los programas seleccionados"),
             ("Accedieron ≤30 d", f"{pct_30:.2f}%", VERDE, f"sobre {total_base:,} usuarios en la base de recencia".replace(",", ".")),
             ("Accedieron ≤90 d", f"{pct_90:.1f}%", AZUL, ""),
-            ("Nunca ingresó", f"{pct_nunca:.0f}%", ROJO, "Segmento 'Sin acceso', ver regla 4"),
+            ("Nunca ingresó", f"{pct_nunca:.0f}%", ROJO, "Sin registro en base de datos"),
         ]
     )
     st.write("")
@@ -174,7 +174,7 @@ with tab1:
             conteo["%"] = conteo["Usuarios"] / len(dias_validos) * 100
             fig = px.bar(
                 conteo, x="Rango (días)", y="Usuarios",
-                title=f"La mayoría de los accesos quedaron hace mucho -- días desde el último acceso (bins de {ancho} d)",
+                title=f"La mayoría de los accesos quedaron hace mucho - días desde el último acceso",
                 custom_data=["%"], color_discrete_sequence=[NARANJA],
             )
             fig.update_traces(hovertemplate="%{x}: %{y} usuarios (%{customdata[0]:.1f}%)")
@@ -188,7 +188,7 @@ with tab1:
         seg = segmentos_por_programa(df_usuarios_f, excluir_carga_masiva=excluir_carga_masiva)
         fig2 = px.bar(
             seg, x="Programa", y="Porcentaje", color="Segmento", barmode="stack",
-            title="IQ512 tiene la cola de inactividad más larga -- recencia por programa (100%)",
+            title="IQ512 tiene la cola de inactividad más larga - actividad por programa (100%)",
             custom_data=["Usuarios"], color_discrete_map=COLOR_SEGMENTO,
             category_orders={"Segmento": list(COLOR_SEGMENTO.keys())},
         )
@@ -199,7 +199,7 @@ with tab1:
             st.dataframe(seg, width="stretch", hide_index=True)
 
 with tab2:
-    st.caption("TIME_VIEW está en segundos en la fuente -- aquí siempre se muestra en minutos/horas. No es comparable con las horas de lecciones (pestaña siguiente): son fuentes distintas (regla 7).")
+    st.caption("TIME_VIEW está en segundos en la fuente - aquí siempre se muestra en minutos/horas.")
     tiempo = kpis_tiempo_por_programa(df_usuarios_f)
     kpi_row(
         [
@@ -221,7 +221,7 @@ with tab2:
         bt = banda_tiempo_por_programa(df_usuarios_f)
         fig3 = px.bar(
             bt, x="Banda", y="Usuarios", color="Programa", barmode="group",
-            title="IQ512 concentra las sesiones más largas -- usuarios por banda de tiempo",
+            title="IQ512 concentra las sesiones más largas - usuarios por banda de tiempo",
             color_discrete_map=COLOR_PROGRAMA,
         )
         fig3.update_layout(xaxis_title=None, yaxis_title="Usuarios")
@@ -234,8 +234,8 @@ with tab2:
         pivote = matriz.pivot(index="segmento_recencia", columns="banda_tiempo", values="Usuarios").fillna(0)
         fig4 = px.imshow(
             pivote, text_auto=True, aspect="auto", color_continuous_scale="Oranges",
-            title="Cruce de recencia x tiempo de uso (conteo de usuarios)",
-            labels=dict(x="Banda de tiempo", y="Segmento de recencia", color="Usuarios"),
+            title="Cruce de actividad x tiempo de uso (conteo de usuarios)",
+            labels=dict(x="Banda de tiempo", y="Segmento de actividad", color="Usuarios"),
         )
         st.plotly_chart(dark(fig4), width="stretch")
         with st.expander("Ver tabla"):
@@ -359,7 +359,7 @@ with tab3:
 
         with g6, st.container(border=True):
             st.markdown("**Lecciones pero 'Sin acceso'**")
-            st.caption("Usuarios con lecciones registradas pero sin ninguna fecha de acceso en la hoja 1 -- las fechas de acceso no capturan todo el consumo.")
+            st.caption("Usuarios con lecciones registradas pero sin ninguna fecha de acceso en la hoja 1 - las fechas de acceso no capturan todo el consumo.")
             cruce = lecciones_pero_sin_acceso(df_usuarios_f, df_lecciones_f)
             st.dataframe(cruce, width="stretch", hide_index=True)
 
@@ -387,7 +387,7 @@ with tab4:
         LIMITE_DESCARGA = 50_000
         descarga = tabla_filtrada.head(LIMITE_DESCARGA)
         st.download_button(
-            f"⬇️ Descargar CSV ({len(descarga):,} filas{' -- limitado a 50.000' if len(tabla_filtrada) > LIMITE_DESCARGA else ''})".replace(",", "."),
+            f"⬇️ Descargar CSV ({len(descarga):,} filas{' - limitado a 50.000' if len(tabla_filtrada) > LIMITE_DESCARGA else ''})".replace(",", "."),
             data=descarga.to_csv(index=False).encode("utf-8"),
             file_name="iq_usuarios_filtrado.csv",
             mime="text/csv",

@@ -57,6 +57,20 @@ exactamente esa misma selección filtrada.
      a número o no se detecta una columna esperada, se avisa en vez de
      graficar/cruzar algo inventado. El perfilador genérico por columna
      queda como respaldo para lo que no está cubierto arriba.
+
+oct-2026: corte de técnicos FIJO (ver utils/liff_metrics.py, regla 5 y
+FECHA_CORTE_TECNICOS) -- toda la página excluye registros anteriores al
+1 de agosto de 2026. Bloque CRM/funnel: por _FECHA_CORTE_REF (híbrido --
+FECHA_INICIO_GRUPO cuando existe, si no CREATED_AT_DATE), aplicado una
+sola vez sobre `df` justo después de enrich_crm(), así que alcanza
+automáticamente a las 4 pestañas. Bloque académico: por _FECHA_INICIO
+(FECHA_INICIO_GRUPO), aplicado en cada punto donde se deriva el subset
+académico (academico_de() + enrich()) -- es un criterio MÁS estricto que
+el del funnel (ahí nunca hay fallback a CREATED_AT_DATE porque ya hay
+match real), no una alternativa, y por eso se aplican los dos en cadena.
+Sin toggle en la página (a pedido explícito de Christian); si en algún
+momento hace falta ver el histórico completo, hay que pedir un cambio de
+código.
 """
 import io
 
@@ -75,6 +89,7 @@ from utils.liff_crm_data import (
     load_satisfaccion,
 )
 from utils.liff_metrics import (
+    FECHA_CORTE_TECNICOS,
     ORDEN_APROBACION,
     ORDEN_ESTADO_MODULO,
     academico_de,
@@ -88,6 +103,8 @@ from utils.liff_metrics import (
     estado_academico_counts,
     estado_modulo_counts,
     estudiantes_por_programa,
+    filtrar_corte_tecnicos_academico,
+    filtrar_corte_tecnicos_funnel,
     funnel_kpis,
     funnel_por_categoria,
     kpis_overview,
@@ -120,6 +137,10 @@ col_title, col_badge = st.columns([5, 1], vertical_alignment="center")
 col_title.title("LIFF Data")
 col_badge.markdown(_badge("MATRÍCULA + ACADÉMICO"), unsafe_allow_html=True)
 st.caption("Consulta unificada CRM (matriculados/prematriculados) + estado académico detallado (SIS).")
+st.caption(
+    f"📅 Corte fijo: solo se analizan registros desde el {FECHA_CORTE_TECNICOS.strftime('%d/%m/%Y')} "
+    "(ingreso a programas técnicos) en adelante -- ver utils/liff_metrics.py, regla 5."
+)
 
 if es_demo:
     st.warning(
@@ -132,6 +153,10 @@ if df_raw.empty:
     st.stop()
 
 df = enrich_crm(df_raw)
+df = filtrar_corte_tecnicos_funnel(df)
+if df.empty:
+    st.info(f"No hay registros desde el {FECHA_CORTE_TECNICOS.strftime('%d/%m/%Y')} todavía.")
+    st.stop()
 
 # ---------------------------------------------------------------------------
 # Filtros globales -- aplican a las 4 secciones
@@ -273,10 +298,17 @@ with tab_academico:
     if aca_raw.empty:
         st.info(
             "Nadie en la selección actual tiene datos académicos (o son todos prematriculados / "
-            "matriculados sin usuario SIS / grupos iniciados antes del 2026-08-01)."
+            "matriculados sin usuario SIS)."
         )
     else:
-        aca = enrich(aca_raw)
+        aca = filtrar_corte_tecnicos_academico(enrich(aca_raw))
+
+    if not aca_raw.empty and aca.empty:
+        st.info(
+            f"Nadie en la selección actual tiene un grupo iniciado desde el "
+            f"{FECHA_CORTE_TECNICOS.strftime('%d/%m/%Y')} (corte fijo de la página)."
+        )
+    elif not aca_raw.empty:
 
         with st.expander("Filtros adicionales (Académico)", expanded=False):
             fa1, fa2 = st.columns(2)
@@ -384,10 +416,14 @@ with tab_academico:
 # ---------------------------------------------------------------------------
 with tab_comparativo:
     aca_full = academico_de(f)
+    if not aca_full.empty:
+        aca_full = filtrar_corte_tecnicos_academico(enrich(aca_full))
     if aca_full.empty:
-        st.info("No hay datos académicos para comparar en la selección actual.")
+        st.info(
+            f"No hay datos académicos para comparar en la selección actual (con grupo iniciado "
+            f"desde el {FECHA_CORTE_TECNICOS.strftime('%d/%m/%Y')})."
+        )
     else:
-        aca_full = enrich(aca_full)
         df_ext_full = aca_full[aca_full["_POBLACION"] == "extranjero"]
         df_nac_full = aca_full[aca_full["_POBLACION"] == "nacional"]
 
@@ -569,7 +605,8 @@ with tab_satisfaccion:
         if col_doc:
             aca_full = academico_de(enrich_crm(df_raw))
             if not aca_full.empty:
-                aca_full = enrich(aca_full)
+                aca_full = filtrar_corte_tecnicos_academico(enrich(aca_full))
+            if not aca_full.empty:
                 resumen = academico_resumen_por_persona(aca_full)
                 if not resumen.empty:
                     cruce = df_sat.copy()
@@ -684,7 +721,8 @@ with tab_satisfaccion:
         if col_doc_car and dims_detectadas:
             aca_full = academico_de(enrich_crm(df_raw))
             if not aca_full.empty:
-                aca_full = enrich(aca_full)
+                aca_full = filtrar_corte_tecnicos_academico(enrich(aca_full))
+            if not aca_full.empty:
                 resumen_car = academico_resumen_por_persona(aca_full)
                 if not resumen_car.empty:
                     cruce_car = df_car.copy()

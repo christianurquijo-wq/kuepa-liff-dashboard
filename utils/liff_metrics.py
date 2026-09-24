@@ -21,6 +21,25 @@ contra el dashboard viejo de Looker, empieza a revisar por aquí:
 4. Nota promedio: SOLO sobre módulos con nota publicada (los no
    publicados llegan con NOTA=0 por el COALESCE de la query en BigQuery,
    incluirlos arrastraría el promedio hacia 0).
+5. Corte de técnicos (oct-2026, confirmado con Christian, FIJO -- sin
+   toggle en la página): solo se analizan registros de estudiantes que
+   ingresaron a los programas técnicos desde el 1 de agosto de 2026 en
+   adelante. Dos variantes porque no todas las filas tienen la misma
+   fecha disponible -- ver FECHA_CORTE_TECNICOS y
+   filtrar_corte_tecnicos_*() más abajo:
+   - Bloque académico (post-enrich(), con match real SIS): se usa
+     _FECHA_INICIO (FECHA_INICIO_GRUPO) -- fecha real de inicio de
+     cursada en el programa técnico.
+   - Bloque CRM/funnel (post-enrich_crm(), incluye prematriculados y
+     matriculados sin usuario SIS): criterio HÍBRIDO, _FECHA_CORTE_REF --
+     usa FECHA_INICIO_GRUPO cuando existe (quien ya tiene match
+     académico), y solo cae a CREATED_AT_DATE cuando no existe
+     (prematriculados y matriculados sin usuario SIS, que no tienen
+     fecha de inicio de grupo -- viene vacía a propósito, ver
+     utils/liff_crm_data.py). Así alguien cuyo lead se creó antes del
+     corte pero cuyo grupo arrancó después SÍ entra al funnel, y solo se
+     usa la fecha de creación del lead como respaldo cuando no hay otra
+     forma de saber si cumple el criterio.
 """
 from datetime import date
 
@@ -38,6 +57,30 @@ _ESTADOS_NO_RETENIDO = ("retir", "desert", "cancel", "anulad", "inactiv")
 # categorías, en el mismo orden que las gráficas).
 ORDEN_ESTADO_MODULO = ["Cursado", "En Curso", "Próximo"]
 ORDEN_APROBACION = ["Aprobado", "No Aprobado", "Pendiente de Nota"]
+
+# Ver regla 5 arriba. Fecha FIJA a propósito -- no es "últimos N días", es
+# un corte de calendario absoluto que Christian pidió explícitamente.
+FECHA_CORTE_TECNICOS = pd.Timestamp(2026, 8, 1)
+
+
+def filtrar_corte_tecnicos_academico(df: pd.DataFrame) -> pd.DataFrame:
+    """Bloque académico (después de enrich(), con _FECHA_INICIO ya
+    calculada) -- se queda solo con _FECHA_INICIO >= FECHA_CORTE_TECNICOS.
+    Las filas sin fecha (_FECHA_INICIO NaT) se excluyen (no se puede
+    confirmar que cumplan el criterio)."""
+    if "_FECHA_INICIO" not in df.columns:
+        return df
+    return df[df["_FECHA_INICIO"] >= FECHA_CORTE_TECNICOS]
+
+
+def filtrar_corte_tecnicos_funnel(df: pd.DataFrame) -> pd.DataFrame:
+    """Bloque CRM/funnel (después de enrich_crm(), con _FECHA_CORTE_REF ya
+    calculada) -- se queda solo con _FECHA_CORTE_REF >= FECHA_CORTE_TECNICOS.
+    _FECHA_CORTE_REF es FECHA_INICIO_GRUPO cuando existe, si no
+    CREATED_AT_DATE -- ver nota de la regla 5 arriba."""
+    if "_FECHA_CORTE_REF" not in df.columns:
+        return df
+    return df[df["_FECHA_CORTE_REF"] >= FECHA_CORTE_TECNICOS]
 
 
 def to_bool(value) -> bool:
@@ -343,6 +386,18 @@ def enrich_crm(df: pd.DataFrame) -> pd.DataFrame:
     df["_TIENE_MATCH_ACADEMICO"] = df["PROGRAM_ID"].notna() if "PROGRAM_ID" in df.columns else False
     if "CREATED_AT_DATE" in df.columns:
         df["_CREATED_AT"] = pd.to_datetime(df["CREATED_AT_DATE"], errors="coerce")
+    # FECHA_INICIO_GRUPO es una columna del bloque académico (ver
+    # ACADEMICO_COLUMNAS en utils/liff_crm_data.py) que ya viene en esta
+    # misma fila unificada -- NULL para prematriculados/sin match, con
+    # fecha real para quien sí tiene academia. Se parsea acá (no solo en
+    # enrich()) para poder armar _FECHA_CORTE_REF, el criterio híbrido de
+    # la regla 5 (ver filtrar_corte_tecnicos_funnel más abajo).
+    if "FECHA_INICIO_GRUPO" in df.columns:
+        df["_FECHA_INICIO_GRUPO"] = pd.to_datetime(df["FECHA_INICIO_GRUPO"], format="%d/%m/%Y", errors="coerce")
+    if "_FECHA_INICIO_GRUPO" in df.columns or "_CREATED_AT" in df.columns:
+        inicio = df["_FECHA_INICIO_GRUPO"] if "_FECHA_INICIO_GRUPO" in df.columns else pd.Series(pd.NaT, index=df.index)
+        creacion = df["_CREATED_AT"] if "_CREATED_AT" in df.columns else pd.Series(pd.NaT, index=df.index)
+        df["_FECHA_CORTE_REF"] = inicio.fillna(creacion)
     return df
 
 
