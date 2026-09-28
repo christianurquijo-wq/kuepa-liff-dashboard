@@ -217,7 +217,17 @@ else:
             "horas_totales": "Horas reales",
             "horas_facturados": "Horas facturadas",
         })
-        st.dataframe(tabla_comp, width="stretch", hide_index=True)
+        st.dataframe(
+            tabla_comp,
+            width="stretch",
+            hide_index=True,
+            column_config={
+                "Usuarios reales": st.column_config.NumberColumn(format="%.0f"),
+                "Usuarios facturados": st.column_config.NumberColumn(format="%.0f"),
+                "Horas reales": st.column_config.NumberColumn(format="%.0f"),
+                "Horas facturadas": st.column_config.NumberColumn(format="%.0f"),
+            },
+        )
 
 periodos_labels = total_df["_label"].tolist()
 periodo_sel_label = st.selectbox("Período a analizar (para el KPI de cabecera)", periodos_labels, index=len(periodos_labels) - 1)
