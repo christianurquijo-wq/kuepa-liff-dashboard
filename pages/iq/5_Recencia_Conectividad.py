@@ -1,36 +1,4 @@
-"""
-IQ / Recencia y Conectividad por usuario -- oct-2026, a pedido de
-Christian: "la hoja inicial de recencia y conectividad por usuario" con
-los mapas de calor de tiempo de consumo y tiempo desde el último
-logueo, como página ADICIONAL (no reemplaza nada de lo que ya está en
-el menú de IQ).
 
-Qué es esto exactamente: el histograma de recencia, el desglose por
-segmento y el mapa de calor cruzado (recencia x tiempo de uso) YA
-existían -- viven en pages/2_IQ.py ("Usuarios y lecciones (Sheets)"),
-pestañas "Resumen y recencia" y "Uso y tiempo". No se borraron de ahí a
-propósito (Christian pidió una hoja ADICIONAL, no una migración) -- esta
-página los reutiliza tal cual, con toda la lógica de negocio en
-utils/iq_metrics.py (mismas reglas numeradas del diccionario de datos,
-sin duplicar código de cálculo, solo el layout).
-
-Fuente: hojas de Sheets por USER_ID (utils/iq_data.py) -- es la fuente
-"por usuario" (granular), distinta de active_usage_hours (agregada por
-Alianza/mes, la que usan Análisis dinámico/Detalle de consumo/Cobertura).
-Si en algún momento esto y la pestaña equivalente de "Usuarios y
-lecciones (Sheets)" muestran números distintos, es porque uno de los dos
-quedó desactualizado -- ambos llaman a las mismas funciones, así que no
-debería pasar salvo cache viejo (usar el botón "Actualizar datos").
-
-oct-2026 (2): cada sección (KPI, Última conexión, Tiempo de uso, Mapa de
-calor, Análisis de último acceso) tiene su PROPIO selector de Programa,
-independiente de las demás -- todos acotan DENTRO de lo que ya dejó pasar
-el selector de la barra lateral (que sigue siendo el filtro de primer
-nivel, junto con el interruptor de carga masiva). Además, "Análisis de
-último acceso" (antes "Último acceso por mes") ahora tiene su propia
-granularidad (Mes/Trimestre/Semestre/Año) y un deslizable de intervalo
-que solo aparece en Mes.
-"""
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -142,8 +110,8 @@ else:
 corte = fecha_de_corte(df_usuarios_raw)
 if corte:
     st.caption(
-        f"Datos al {corte.strftime('%d/%m/%Y')} -- fecha reconstruida a partir de los "
-        f"registros de acceso, no la fecha de hoy."
+        f"Datos al {corte.strftime('%d/%m/%Y')} - fecha obtenida a partir de los "
+        f"registros de acceso"
     )
 
 st.write("")
@@ -237,7 +205,7 @@ else:
 # ---------------------------------------------------------------------------
 st.divider()
 st.subheader("Tiempo de uso -- minutos y horas conectados")
-st.caption("El tiempo de conexión se registra en segundos en la fuente y aquí siempre se muestra en minutos/horas. No es comparable con las horas de lecciones.")
+st.caption("El tiempo de conexión se registra en segundos en la fuente y aquí siempre se muestra en minutos/horas.")
 prog_tiempo_sel = _selector_programa_seccion("iqrc_prog_tiempo", programas_sel)
 df_tiempo = df_usuarios_f[df_usuarios_f["PROGRAMA"].isin(prog_tiempo_sel)]
 
@@ -367,8 +335,8 @@ with st.container(border=True):
         fig5.update_layout(xaxis_title=None, yaxis_title=f"Usuarios (último acceso, por {grano_ult_label.lower()})")
         st.plotly_chart(dark(fig5), width="stretch", key="iqrc_chart_tendencia")
         st.caption(
-            "Cada barra es cuántos usuarios tuvieron su ÚLTIMO acceso registrado en ese período, no actividad continua. "
-            + ("La carga masiva de 512 (2022-10) está excluida por el interruptor de la barra lateral." if excluir_carga_masiva else "Incluye la carga masiva de 512 (2022-10) -- ese pico no es actividad real.")
+            "Cada barra es cuántos usuarios tuvieron su último acceso registrado en ese período. "
+            + ("La carga masiva de 512 (2022-10) está excluida por el interruptor de la barra lateral." if excluir_carga_masiva else "Incluye la carga masiva de 512 (2022-10) ese pico no es actividad real.")
         )
         with st.expander("Ver tabla"):
             st.dataframe(
