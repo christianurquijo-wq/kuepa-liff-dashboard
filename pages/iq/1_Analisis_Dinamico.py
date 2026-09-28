@@ -217,16 +217,17 @@ else:
             "horas_totales": "Horas reales",
             "horas_facturados": "Horas facturadas",
         })
+        # oct-2026: redondeo el DATO (no solo el formato visual) -- Horas
+        # reales/facturadas vienen de segundos/minutos y casi nunca caen en
+        # un entero. Int64 (con mayúscula) es el tipo nullable de pandas:
+        # permite guardar enteros y a la vez dejar <NA> en los meses sin
+        # facturación (antes de marzo 2024), sin forzar esas celdas a 0.
+        cols_enteras = ["Usuarios reales", "Usuarios facturados", "Horas reales", "Horas facturadas"]
+        tabla_comp[cols_enteras] = tabla_comp[cols_enteras].round(0).astype("Int64")
         st.dataframe(
             tabla_comp,
             width="stretch",
             hide_index=True,
-            column_config={
-                "Usuarios reales": st.column_config.NumberColumn(format="%.0f"),
-                "Usuarios facturados": st.column_config.NumberColumn(format="%.0f"),
-                "Horas reales": st.column_config.NumberColumn(format="%.0f"),
-                "Horas facturadas": st.column_config.NumberColumn(format="%.0f"),
-            },
         )
 
 periodos_labels = total_df["_label"].tolist()
