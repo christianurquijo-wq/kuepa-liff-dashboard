@@ -120,9 +120,8 @@ with tab_plataforma:
     )
     st.plotly_chart(dark(fig), width="stretch")
     st.caption(
-        "La app móvil no tiene registros antes de junio de 2023 en los datos exportados -- "
-        "coincide con el lanzamiento de esa plataforma, no es un hueco de exportación (ver página Cobertura)."
-    )
+        "La app móvil no tiene registros antes de junio de 2023 en los datos exportados "
+        )
     with st.expander("Ver tabla"):
         st.dataframe(f.sort_values(["Programa", "usuarios_activos"], ascending=[True, False]), hide_index=True, width="stretch")
 

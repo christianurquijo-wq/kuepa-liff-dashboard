@@ -147,8 +147,7 @@ if grano == "mensual":
 st.divider()
 st.markdown("##### Real vs. facturado")
 st.caption(
-    "Compara lo que arroja `active_usage_hours` (en vivo) contra el Excel de facturación de "
-    "Christian, que es ESTÁTICO -- se actualiza a mano y por ahora llega hasta agosto 2026."
+    "Compara lo que arroja `active_usage_hours` (en vivo) contra el Excel de facturación del proyecto "
 )
 
 facturado_df = serie_facturado(grano, alianzas_sel)
@@ -354,7 +353,7 @@ st.markdown("##### Distribución entre años")
 st.caption(
     "Cada caja resume, para un mismo mes/trimestre/semestre, los valores de los distintos años "
     "disponibles: la caja va del percentil 25 al 75, la línea del medio es la mediana, y los "
-    "puntos son años atípicos -- pasa el cursor sobre un punto para ver a qué año corresponde."
+    "puntos son años atípicos "
 )
 
 c4_1, c4_2 = st.columns([1, 3])
