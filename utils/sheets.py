@@ -70,3 +70,11 @@ def get_pool_empleabilidad() -> pd.DataFrame:
 
 def get_historico_empleabilidad() -> pd.DataFrame:
     return read_sheet_encabezados_sucios("Histórico", EMPLEABILIDAD_SPREADSHEET_ID)
+
+
+def get_base_postulaciones() -> pd.DataFrame:
+    """oct-2026: pestaña "Base postulaciones" del mismo spreadsheet de
+    Empleabilidad -- dato crudo por estudiante (a diferencia de
+    "TiempoEnPool", que trae menos columnas). La usa la página nueva de
+    Empleabilidad de LIFF (utils/liff_empleabilidad_metrics.py)."""
+    return read_sheet_encabezados_sucios("Base postulaciones", EMPLEABILIDAD_SPREADSHEET_ID)
