@@ -34,6 +34,9 @@ st.set_page_config(
 
 inicio = st.Page("pages/0_Inicio.py", title="Inicio", default=True)
 liff_data = st.Page("pages/1_LIFF_Data.py", title="LIFF Data")
+# oct-2026: página nueva de Empleabilidad para LIFF -- ver docstring de
+# utils/liff_empleabilidad_metrics.py para la auditoría de datos completa.
+liff_empleabilidad = st.Page("pages/LIFF_Empleabilidad.py", title="Empleabilidad", url_path="liff-empleabilidad")
 eco_overview = st.Page("pages/ecolombia/1_Overview.py", title="Overview")
 eco_academico = st.Page("pages/ecolombia/2_Academico.py", title="Académico")
 eco_seleccion = st.Page("pages/ecolombia/3_Seleccion_Matricula.py", title="Selección y Matrícula")
@@ -66,7 +69,7 @@ iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y 
 
 PROYECTOS = {
     "General": [inicio],
-    "LIFF Data": [liff_data],
+    "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
     "IQ": [iq_analisis, iq_detalle, iq_recencia],
 }
