@@ -63,6 +63,19 @@ contra el dashboard viejo de Looker, empieza a revisar por aquí:
      encuestada. Quien no cruza (no contestó con el mismo documento, o no
      tiene match académico) queda "Sin clasificar" y se excluye de las
      comparativas ext/nac, no se inventa una población.
+8. DOCTYPE vacío = PPT (oct-2026, patrón detectado por Christian revisando
+   la página): la query de BigQuery (queries/liff_data.py) clasifica
+   _POBLACION con "CASE WHEN DOCTYPE IN (...) THEN 'extranjero' ELSE
+   'nacional' END" -- un DOCTYPE vacío cae al ELSE y queda como
+   'nacional'. Christian identificó que, en la práctica, los DOCTYPE
+   vacíos corresponden a estudiantes con PPT (Permiso por Protección
+   Temporal) al que no se le registró el tipo de documento -- es decir,
+   son extranjeros mal clasificados como nacionales. enrich() reclasifica
+   estos casos a 'extranjero' (ver _reclasificar_doctype_vacio() abajo)
+   ANTES de que la página separe df_ext/df_nac, así que corrige las 4
+   pestañas (Académico, Comparativo, Satisfacción, Caracterización) de
+   una sola vez. Si este patrón deja de cumplirse (aparecen DOCTYPE
+   vacíos que NO son PPT), avisar para ajustar la regla.
 """
 from datetime import date
 
@@ -142,13 +155,27 @@ def es_retenido(estado) -> bool:
     return not any(kw in estado_low for kw in _ESTADOS_NO_RETENIDO)
 
 
+def _reclasificar_doctype_vacio(df: pd.DataFrame) -> pd.DataFrame:
+    """DOCTYPE vacío -> _POBLACION 'extranjero' (asume PPT) -- ver punto
+    (8) del docstring del módulo. Solo toca filas que la query dejó en
+    'nacional' por el ELSE del CASE WHEN; si _POBLACION ya viene NaN
+    (sin match) o ya es 'extranjero', no se toca."""
+    if "_POBLACION" not in df.columns or "DOCTYPE" not in df.columns:
+        return df
+    doctype_vacio = df["DOCTYPE"].isna() | (df["DOCTYPE"].astype(str).str.strip() == "")
+    df.loc[doctype_vacio & (df["_POBLACION"] == "nacional"), "_POBLACION"] = "extranjero"
+    return df
+
+
 def enrich(df: pd.DataFrame) -> pd.DataFrame:
     """
     Agrega las columnas derivadas (_NOTA_NUM, _PUBLICADA, _APROBADA,
     _FECHA_INICIO, _ESTADO_MODULO, _APROBACION, _RETENIDO) que usan todas
-    las funciones de este módulo. No modifica el DataFrame original.
+    las funciones de este módulo, y reclasifica DOCTYPE vacío como
+    extranjero (ver punto 8). No modifica el DataFrame original.
     """
     df = df.copy()
+    df = _reclasificar_doctype_vacio(df)
     df["_NOTA_NUM"] = df["NOTA"].apply(to_float)
     df["_PUBLICADA"] = df["ESTADO_PUBLICACION"].apply(to_bool)
     df["_APROBADA"] = df["ESTADO_APROBACION"].apply(to_bool)
