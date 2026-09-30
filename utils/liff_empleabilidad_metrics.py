@@ -52,6 +52,21 @@ de abajo:
    algunas filas (ej. "OXXO" y "OXXO " cuentan separado sin strip()) --
    se normalizan con .str.strip().
 
+7) sept-2026 (Christian): la página debe mostrar la MISMA línea de tiempo
+   que el resto del dashboard LIFF Data -- "grupo iniciado >= 2026-08-01"
+   (ver queries/liff_data.py). En "Base postulaciones" hay 2 columnas que
+   podrían servir para esto y NO son intercambiables:
+     - "Cohorte" (mes+año, ej. "agosto 2026") -- mismo concepto que
+       "grupo iniciado" del resto del dash. Confirmado con Christian: se
+       usa esta.
+     - "Mes de ingreso al proceso de empleabilidad" (columna CA) -- solo
+       el nombre del mes, SIN año (ej. "septiembre") -- no se puede
+       filtrar por año de forma confiable con este dato, se descartó.
+   CORTE_COHORTE_DESDE define el corte (2026, 8) -- filas HST con Cohorte
+   anterior a agosto 2026 se excluyen en enrich(). Esto reduce la muestra
+   de 3.510 a ~385 filas HST -- es lo esperado, no un bug: el resto del
+   dashboard tiene el mismo recorte.
+
 NO hay un pantallazo de Looker ni ninguna otra fuente para validar estos
 números número-por-número (a diferencia de
 utils/ecolombia_empleabilidad_metrics.py, que sí lo tiene) -- son
@@ -63,6 +78,13 @@ import pandas as pd
 
 AREA_LIFF = "HST"
 CORTE_DIAS_INVALIDO = 3650  # ver punto (4) -- valores con |x| > esto son basura de fórmula, no días reales
+
+# ver punto (7) -- mismo criterio que "grupo iniciado >= 2026-08-01" del resto de LIFF Data
+_MESES_ES = {
+    "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+    "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+}
+CORTE_COHORTE_DESDE = (2026, 8)  # agosto 2026
 
 DOC_EXTRANJERO = {"PPT", "CE", "PS", "DE"}
 DOC_NACIONAL = {"CC", "TI", "IT"}  # "IT" tratado como "TI" -- ver punto (2)
@@ -103,15 +125,35 @@ def _poblacion(tipo_doc: pd.Series) -> pd.Series:
     return resultado
 
 
+def _cohorte_desde_agosto_2026(serie: pd.Series) -> pd.Series:
+    """True si "Cohorte" ("<mes> <año>", ej. "agosto 2026") es >=
+    CORTE_COHORTE_DESDE -- ver punto (7). Cohorte no reconocible (formato
+    raro, mes no-es o vacío) se descarta (False) en vez de asumir que sí
+    cumple el corte."""
+    partes = serie.astype(str).str.strip().str.lower().str.split(" ", n=1, expand=True)
+    if partes.shape[1] < 2:
+        return pd.Series(False, index=serie.index)
+    mes = partes[0].map(_MESES_ES)
+    anio = pd.to_numeric(partes[1], errors="coerce")
+    anio_mes = anio * 12 + mes
+    corte = CORTE_COHORTE_DESDE[0] * 12 + CORTE_COHORTE_DESDE[1]
+    return anio_mes.fillna(-1) >= corte
+
+
 def enrich(df_raw: pd.DataFrame) -> pd.DataFrame:
-    """Filtra Area == "HST" (ver punto 1) y agrega las columnas derivadas
-    que usan las funciones de abajo. Devuelve DataFrame vacío si faltan
-    columnas clave (la página debe avisar, no reventar)."""
-    requeridas = {"Area", "Tipo de documento", "Estado Patrocinio"}
+    """Filtra Area == "HST" (ver punto 1) y Cohorte >= agosto 2026 (ver
+    punto 7), y agrega las columnas derivadas que usan las funciones de
+    abajo. Devuelve DataFrame vacío si faltan columnas clave (la página
+    debe avisar, no reventar)."""
+    requeridas = {"Area", "Cohorte", "Tipo de documento", "Estado Patrocinio"}
     if df_raw.empty or not requeridas.issubset(df_raw.columns):
         return pd.DataFrame()
 
     df = df_raw[df_raw["Area"] == AREA_LIFF].copy()
+    if df.empty:
+        return df
+
+    df = df[_cohorte_desde_agosto_2026(df["Cohorte"])].copy()
     if df.empty:
         return df
 

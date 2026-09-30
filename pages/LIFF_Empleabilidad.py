@@ -42,9 +42,9 @@ col_title, col_badge = st.columns([5, 1], vertical_alignment="center")
 col_title.title("LIFF -- Empleabilidad")
 col_badge.markdown(badge(f"{len(df)} REGISTROS"), unsafe_allow_html=True)
 st.caption(
-    "Base postulaciones, Area = HST -- proceso de postulación, patrocinio y contratación. "
-    "Comparaciones Extranjeros vs Nacionales en % del total de cada población (no del "
-    "combinado), igual criterio que el resto del dashboard."
+    "Base postulaciones, Area = HST, Cohorte desde agosto 2026 -- misma línea de tiempo que el "
+    "resto de LIFF Data. Comparaciones Extranjeros vs Nacionales en % del total de cada "
+    "población (no del combinado), igual criterio que el resto del dashboard."
 )
 
 if df.empty:
