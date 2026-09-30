@@ -10,14 +10,26 @@ oct-2026: auditoría completa de "Base postulaciones" (4.519 filas x 80
 columnas) hecha para diseñar este módulo. Hallazgos que definen las reglas
 de abajo:
 
-1) La columna "Cohorte" NO separa LIFF de Ecolombia de forma limpia --
+1) La columna "Cohorte" NO separa LIFF de Ecolombia por su VALOR literal --
    trae 3 tipos de valor mezclados: "ECOLOMBIA" (364 filas), "Jovenes a la
    E..." (392 filas, esquema viejo) y nombres de mes tipo "enero 2026"
-   (3.741 filas, esquema vigente). La columna "Area" sí separa limpio:
-   Area="EFE" son las 664 filas de Cohorte=ECOLOMBIA/Jovenes (esquema
-   viejo), Area="HST" son las 3.510 filas del esquema vigente por mes --
-   confirmado con Christian que HST es LIFF. AREA_LIFF abajo filtra por
-   eso, no por Cohorte.
+   (esquema vigente). El FORMATO sí separa limpio: cualquier Cohorte con
+   forma "<mes> <año>" es 100% esquema vigente = LIFF -- verificado sobre
+   TODA la hoja: 0 filas con Cohorte en ese formato tienen Area="EFE", y
+   0 filas sin ese formato tienen Area="HST" (no hay cruce en ningún
+   sentido).
+
+   oct-2026 (2): se probó primero filtrar por la columna "Area" (HST vs
+   EFE) en vez del formato de Cohorte -- se revirtió por un hallazgo de
+   Christian: "Area" tiene un rezago de captura fuerte en el cohorte más
+   reciente. De 204 filas con Cohorte="septiembre 2026", 187 (92%) tienen
+   Area EN BLANCO, no "HST" -- ese campo aparentemente se llena en un
+   paso posterior del proceso, no al matricularse. Filtrar por Area="HST"
+   excluía casi todo el cohorte más nuevo (dejaba ver solo 14 de los 20
+   extranjeros esperados en agosto+). _cohorte_lift_desde_agosto_2026() (que
+   ya parseaba Cohorte para el corte de fecha, ver punto 7) hace las 2
+   cosas a la vez -- identifica LIFF Y aplica el corte -- sin depender de
+   "Area", que ya no se usa para filtrar en este módulo.
 
 2) "Tipo de documento" tiene casing inconsistente (cc/CC/ppt/PPT/it/ce) --
    se normaliza a mayúsculas antes de clasificar. "IT" (23 filas) se trata
@@ -62,10 +74,11 @@ de abajo:
      - "Mes de ingreso al proceso de empleabilidad" (columna CA) -- solo
        el nombre del mes, SIN año (ej. "septiembre") -- no se puede
        filtrar por año de forma confiable con este dato, se descartó.
-   CORTE_COHORTE_DESDE define el corte (2026, 8) -- filas HST con Cohorte
-   anterior a agosto 2026 se excluyen en enrich(). Esto reduce la muestra
-   de 3.510 a ~385 filas HST -- es lo esperado, no un bug: el resto del
-   dashboard tiene el mismo recorte.
+   CORTE_COHORTE_DESDE define el corte (2026, 8) -- filas con Cohorte
+   anterior a agosto 2026 (o que no matchean el formato "<mes> <año>", ver
+   punto 1) se excluyen en enrich(). Muestra resultante: 581 filas -- es
+   lo esperado, no un bug: el resto del dashboard tiene el mismo recorte
+   de fecha.
 
 NO hay un pantallazo de Looker ni ninguna otra fuente para validar estos
 números número-por-número (a diferencia de
@@ -76,7 +89,6 @@ real, referenciar este docstring para saber qué regla ajustar.
 """
 import pandas as pd
 
-AREA_LIFF = "HST"
 CORTE_DIAS_INVALIDO = 3650  # ver punto (4) -- valores con |x| > esto son basura de fórmula, no días reales
 
 # ver punto (7) -- mismo criterio que "grupo iniciado >= 2026-08-01" del resto de LIFF Data
@@ -125,11 +137,12 @@ def _poblacion(tipo_doc: pd.Series) -> pd.Series:
     return resultado
 
 
-def _cohorte_desde_agosto_2026(serie: pd.Series) -> pd.Series:
-    """True si "Cohorte" ("<mes> <año>", ej. "agosto 2026") es >=
-    CORTE_COHORTE_DESDE -- ver punto (7). Cohorte no reconocible (formato
-    raro, mes no-es o vacío) se descarta (False) en vez de asumir que sí
-    cumple el corte."""
+def _cohorte_lift_desde_agosto_2026(serie: pd.Series) -> pd.Series:
+    """True si "Cohorte" tiene formato "<mes> <año>" (= esquema vigente =
+    LIFF, ver punto 1) Y ese mes/año es >= CORTE_COHORTE_DESDE (ver punto
+    7). Hace las 2 cosas en un solo paso porque son el mismo parseo:
+    Cohorte no reconocible (formato viejo tipo "ECOLOMBIA", mes no-es, o
+    vacío) se descarta (False) en vez de asumir que sí cumple."""
     partes = serie.astype(str).str.strip().str.lower().str.split(" ", n=1, expand=True)
     if partes.shape[1] < 2:
         return pd.Series(False, index=serie.index)
@@ -141,19 +154,16 @@ def _cohorte_desde_agosto_2026(serie: pd.Series) -> pd.Series:
 
 
 def enrich(df_raw: pd.DataFrame) -> pd.DataFrame:
-    """Filtra Area == "HST" (ver punto 1) y Cohorte >= agosto 2026 (ver
-    punto 7), y agrega las columnas derivadas que usan las funciones de
-    abajo. Devuelve DataFrame vacío si faltan columnas clave (la página
-    debe avisar, no reventar)."""
-    requeridas = {"Area", "Cohorte", "Tipo de documento", "Estado Patrocinio"}
+    """Filtra a filas LIFF con Cohorte >= agosto 2026 en un solo paso
+    (ver puntos 1 y 7 -- NO se filtra por "Area", tiene rezago de captura
+    fuerte en el cohorte más reciente), y agrega las columnas derivadas
+    que usan las funciones de abajo. Devuelve DataFrame vacío si faltan
+    columnas clave (la página debe avisar, no reventar)."""
+    requeridas = {"Cohorte", "Tipo de documento", "Estado Patrocinio"}
     if df_raw.empty or not requeridas.issubset(df_raw.columns):
         return pd.DataFrame()
 
-    df = df_raw[df_raw["Area"] == AREA_LIFF].copy()
-    if df.empty:
-        return df
-
-    df = df[_cohorte_desde_agosto_2026(df["Cohorte"])].copy()
+    df = df_raw[_cohorte_lift_desde_agosto_2026(df_raw["Cohorte"])].copy()
     if df.empty:
         return df
 

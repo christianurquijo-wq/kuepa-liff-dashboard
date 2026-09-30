@@ -42,13 +42,13 @@ col_title, col_badge = st.columns([5, 1], vertical_alignment="center")
 col_title.title("LIFF -- Empleabilidad")
 col_badge.markdown(badge(f"{len(df)} REGISTROS"), unsafe_allow_html=True)
 st.caption(
-    "Base postulaciones, Area = HST, Cohorte desde agosto 2026 -- misma línea de tiempo que el "
-    "resto de LIFF Data. Comparaciones Extranjeros vs Nacionales en % del total de cada "
-    "población (no del combinado), igual criterio que el resto del dashboard."
+    "Base postulaciones, cohortes desde agosto 2026 -- misma línea de tiempo que el resto de "
+    "LIFF Data. Comparaciones Extranjeros vs Nacionales en % del total de cada población (no "
+    "del combinado), igual criterio que el resto del dashboard."
 )
 
 if df.empty:
-    st.info("No hay filas con Area == 'HST' en 'Base postulaciones'.")
+    st.info("No hay filas de LIFF con Cohorte desde agosto 2026 en 'Base postulaciones'.")
     st.stop()
 
 n_sin_clasificar = int(df["_POBLACION"].isna().sum())
