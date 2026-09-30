@@ -381,7 +381,19 @@ Academico_Detalle AS (
 
   WHERE
     E100010.DELETED IS NOT TRUE
-    AND COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE) IS NOT NULL
+    -- oct-2026: comentado a pedido de Christian. Este filtro excluía de
+    -- Academico_Detalle a CUALQUIER estudiante con DOCTYPE nulo (ni
+    -- E100900.DESCRIPTION ni E100010.PROFILE_DOC_TYPE poblados) -- incluso
+    -- con match académico real (notas/módulos). Christian detectó que esos
+    -- casos corresponden a estudiantes con PPT sin tipo de documento
+    -- registrado, y hoy quedaban fuera de Académico/Comparativo/
+    -- Satisfacción/Caracterización por completo (ni como nacional ni como
+    -- extranjero: la fila ni siquiera llegaba). Al quitar el filtro, esas
+    -- filas entran con DOCTYPE NULL -- la reclasificación DOCTYPE vacío ->
+    -- extranjero ya vive en utils/liff_metrics.py::_reclasificar_doctype_vacio()
+    -- (punto 8 del docstring de ese módulo), así que no hace falta tocar
+    -- el CASE WHEN de _POBLACION de acá.
+    -- AND COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE) IS NOT NULL
     AND REGEXP_EXTRACT(A100100.name, r'^.') = 'T'
     AND primera_fecha.primera_fecha_inicio IS NOT NULL
     AND DATE(primera_fecha.primera_fecha_inicio) >= DATE('2026-08-01')
