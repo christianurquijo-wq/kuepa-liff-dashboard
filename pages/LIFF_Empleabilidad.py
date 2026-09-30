@@ -139,10 +139,6 @@ if not df_salidas.empty:
 # ---------------------------------------------------------------------------
 st.write("")
 st.subheader("Tiempos")
-st.caption(
-    "Se descartan valores de fórmula rota en la hoja fuente antes de promediar -- "
-    "ver docstring de utils/liff_empleabilidad_metrics.py, punto (4)."
-)
 
 df_tiempos = tiempos_poblacion(df)
 if df_tiempos.empty:
