@@ -92,6 +92,7 @@ from utils.liff_crm_data import (
     detectar_columna_documento,
     detectar_columna_grupo,
     detectar_columna_nps,
+    liff_crm_limpiar_cache,
     load_caracterizacion,
     load_liff_crm,
     load_satisfaccion,
@@ -138,9 +139,16 @@ inject_css()
 with st.spinner("Leyendo Matrícula + Académico..."):
     df_raw, es_demo = load_liff_crm()
 
-col_title, col_badge = st.columns([5, 1], vertical_alignment="center")
+col_title, col_badge, col_refresh = st.columns([5, 1, 1.3], vertical_alignment="center")
 col_title.title("LIFF Data")
 col_badge.markdown(_badge("MATRÍCULA + ACADÉMICO"), unsafe_allow_html=True)
+if col_refresh.button(
+    "🔄 Actualizar datos",
+    help="Vuelve a leer la hoja de Google Sheets ahora mismo (el caché normalmente dura hasta 1 hora).",
+    width="stretch",
+):
+    liff_crm_limpiar_cache()
+    st.rerun()
 st.caption("Consulta unificada CRM (matriculados/prematriculados) + estado académico detallado (SIS).")
 st.caption(
     f"📅 Corte fijo: solo se analizan registros desde el {FECHA_CORTE_TECNICOS.strftime('%d/%m/%Y')} "
