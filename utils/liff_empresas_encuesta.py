@@ -15,7 +15,7 @@ rompa con un mensaje claro en vez de mostrar números que no cuadran):
 """
 
 EMPRESAS_ENCUESTADAS = 262   # empresas a las que se les envió la encuesta
-EMPRESAS_RESPONDIERON = 200  # respondieron la pregunta de interés
+EMPRESAS_RESPONDIERON = 18  # respondieron la pregunta de interés
 EMPRESAS_ACEPTAN = 18        # respondieron que SÍ contratarían practicantes extranjeros
 
 # sector -> empresas que aceptan. El orden del dict es el orden de
