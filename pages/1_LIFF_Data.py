@@ -97,6 +97,12 @@ from utils.liff_crm_data import (
     load_liff_crm,
     load_satisfaccion,
 )
+from utils.liff_empresas_encuesta import (
+    EMPRESAS_ACEPTAN,
+    EMPRESAS_ACEPTAN_POR_SECTOR,
+    EMPRESAS_ENCUESTADAS,
+    EMPRESAS_RESPONDIERON,
+)
 from utils.liff_metrics import (
     FECHA_CORTE_TECNICOS,
     ORDEN_APROBACION,
@@ -933,3 +939,83 @@ with tab_satisfaccion:
                 fig.update_layout(xaxis_title=None, yaxis_title=None)
                 st.plotly_chart(_dark(fig), width="stretch", key="liff_chart_16")
             st.dataframe(df_car_raw, width="stretch")
+
+    # -----------------------------------------------------------------------
+    # Encuesta a empresas -- interés en practicantes extranjeros (oct-2026).
+    # Datos fijos en utils/liff_empresas_encuesta.py. Va a nivel de pestaña
+    # (no dentro del else de Caracterización) para que se vea aunque las
+    # hojas de Satisfacción/Caracterización no estén conectadas o vacías.
+    # -----------------------------------------------------------------------
+    st.divider()
+    st.subheader("Empresas interesadas en contratar practicantes extranjeros")
+    st.caption(
+        "Encuesta a empresas aliadas -- pregunta: «¿Está interesado en contratar practicantes "
+        "extranjeros?». Los % son sobre las empresas que respondieron, no sobre el total encuestado."
+    )
+
+    pct_respuesta = EMPRESAS_RESPONDIERON / EMPRESAS_ENCUESTADAS * 100
+    pct_aceptan = EMPRESAS_ACEPTAN / EMPRESAS_RESPONDIERON * 100
+    st.write("")
+    _kpi_row(
+        [
+            (
+                "Empresas encuestadas",
+                f"{EMPRESAS_ENCUESTADAS}",
+                AZUL,
+                "",
+            ),
+            (
+                "Respondieron",
+                f"{EMPRESAS_RESPONDIERON} / {EMPRESAS_ENCUESTADAS}",
+                AMARILLO,
+                f"{pct_respuesta:.1f}% de tasa de respuesta",
+            ),
+            (
+                "Aceptan practicantes extranjeros",
+                f"{EMPRESAS_ACEPTAN} / {EMPRESAS_RESPONDIERON}",
+                VERDE,
+                f"{pct_aceptan:.1f}% de las que respondieron",
+            ),
+            (
+                "Sectores representados",
+                f"{len(EMPRESAS_ACEPTAN_POR_SECTOR)}",
+                NARANJA,
+                "Entre las empresas que aceptan",
+            ),
+        ]
+    )
+
+    st.write("")
+    emp_g1, emp_g2 = st.columns(2)
+    with emp_g1, st.container(border=True):
+        df_funnel_emp = pd.DataFrame(
+            {
+                "etapa": ["Encuestadas", "Respondieron", "Aceptan extranjeros"],
+                "empresas": [EMPRESAS_ENCUESTADAS, EMPRESAS_RESPONDIERON, EMPRESAS_ACEPTAN],
+            }
+        )
+        fig = px.funnel(
+            df_funnel_emp, x="empresas", y="etapa", title="Embudo: encuestadas → respondieron → aceptan",
+            color_discrete_sequence=[NARANJA],
+        )
+        fig.update_layout(xaxis_title=None, yaxis_title=None)
+        st.plotly_chart(_dark(fig), width="stretch", key="liff_emp_funnel")
+
+    with emp_g2, st.container(border=True):
+        df_sector_emp = pd.DataFrame(
+            {
+                "sector": list(EMPRESAS_ACEPTAN_POR_SECTOR.keys()),
+                "empresas": [len(v) for v in EMPRESAS_ACEPTAN_POR_SECTOR.values()],
+            }
+        )
+        fig = px.bar(
+            df_sector_emp, x="empresas", y="sector", orientation="h", text="empresas",
+            title=f"Empresas que aceptan, por sector ({EMPRESAS_ACEPTAN})",
+            color_discrete_sequence=[VERDE],
+        )
+        fig.update_layout(xaxis_title=None, yaxis_title=None, yaxis={"categoryorder": "total ascending"})
+        st.plotly_chart(_dark(fig), width="stretch", key="liff_emp_sector")
+
+    with st.expander("Ver empresas que aceptan, por sector"):
+        for sector, empresas in EMPRESAS_ACEPTAN_POR_SECTOR.items():
+            st.markdown(f"**{sector}** ({len(empresas)}): {', '.join(empresas)}")
