@@ -326,14 +326,23 @@ FECHA_MIN_ESTUDIANTE AS (
 
 Academico_Detalle AS (
   SELECT DISTINCT
+    -- oct-2026: DOCTYPE lleva un 3er valor de respaldo 'PPT Permiso por
+    -- protección temporal' -- Christian confirmó que TODOS los
+    -- estudiantes con match académico real y DOCTYPE nulo (ni
+    -- E100900.DESCRIPTION ni E100010.PROFILE_DOC_TYPE poblados) son PPT.
+    -- Con este respaldo, el CASE de _POBLACION de abajo ya los clasifica
+    -- bien como 'extranjero' sin depender de la reclasificación en Python
+    -- (utils/liff_metrics.py::_reclasificar_doctype_vacio(), punto 8 de
+    -- su docstring, que ahora es solo un respaldo defensivo -- no debería
+    -- tener nada que corregir si este COALESCE está haciendo su trabajo).
     CASE
-      WHEN COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE) IN
+      WHEN COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE, 'PPT Permiso por protección temporal') IN
         ('PPT Permiso por protección temporal', 'PS Pasaporte',
          'CE Cédula de Extranjería', 'DE Documento de identidad extranjera')
         THEN 'extranjero'
       ELSE 'nacional'
     END AS _POBLACION,
-    COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE) AS DOCTYPE,
+    COALESCE(E100900.DESCRIPTION, E100010.PROFILE_DOC_TYPE, 'PPT Permiso por protección temporal') AS DOCTYPE,
     E100010.INCREMENTAL_USER_CODE AS ID_SIS,
     E100010.PROFILE_FULL_NAME AS NOMBRE,
     E100010.PROFILE_DOC_NUMBER AS DOCUMENTO,
