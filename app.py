@@ -67,11 +67,19 @@ iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo"
 # lateral.
 iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y Última Conexión", url_path="iq-actividad-conexion")
 
+# oct-2026: sección Operaciones -- panel para disparar automatizaciones
+# (GitHub Actions + n8n) y análisis de ejecuciones. Requiere login con Google
+# (utils/ops_auth.py); el resto del dashboard sigue público. Ver
+# GUIA_PANEL_OPERACIONES.md.
+ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel")
+ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis")
+
 PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
     "IQ": [iq_analisis, iq_detalle, iq_recencia],
+    "Operaciones": [ops_panel, ops_analisis],
 }
 
 pg = st.navigation(PROYECTOS)

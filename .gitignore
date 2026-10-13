@@ -19,3 +19,6 @@ __pycache__/
 
 # Corrección: el archivo real se llama service_account.json (guion bajo), el patrón de arriba no lo cubre
 service_account.json
+
+.streamlit/*.toml
+!.streamlit/config.toml

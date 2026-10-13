@@ -1,0 +1,191 @@
+"""
+Operaciones -- Panel de control.
+
+Un botón por automatización del CATALOGO (Google Sheet de operaciones).
+GitHub Actions ejecuta los scripts de Python; n8n Cloud los flujos de n8n.
+Cada ejecución queda en LOG_EJECUCIONES (la escribe ops_logger.py en cada
+repo, o el flujo "OPS - Sync n8n") y cada clic en SOLICITUDES.
+
+Acceso: login Google + lista de correos (utils/ops_auth.py). Los botones
+marcados como sensibles piden PIN.
+"""
+from __future__ import annotations
+
+from datetime import datetime
+
+import pandas as pd
+import streamlit as st
+
+from utils.ops_auth import es_admin, pin_valido, requiere_login
+from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar, registrar_solicitud
+from utils.ops_dispatch import (buscar_run, disparar_github, disparar_n8n, nuevo_request_id,
+                                runs_recientes)
+from utils.ops_metrics import preparar, ultimo_lote
+from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, badge, inject_css, kpi_row
+
+inject_css()
+usuario = requiere_login()
+admin = es_admin(usuario)
+
+COLOR_ESTADO = {"EXITOSO": VERDE, "FALLIDO": ROJO, "TIMEOUT": AMARILLO, "EN CURSO": AZUL, "SIN DATOS": GRIS}
+ICONO_ESTADO = {"EXITOSO": "✔", "FALLIDO": "✖", "TIMEOUT": "⏱", "EN CURSO": "⟳", "SIN DATOS": "–"}
+
+col_t, col_b = st.columns([5, 1], vertical_alignment="center")
+col_t.title("Panel de control")
+if col_b.button("↻ Actualizar", use_container_width=True):
+    refrescar()
+    runs_recientes.clear()
+    st.rerun()
+
+catalogo = leer_catalogo()
+if catalogo.empty:
+    st.warning("El CATALOGO está vacío. Corre scripts/ops_setup_sheet.py (ver la guía).")
+    st.stop()
+log = preparar(leer_log(), catalogo)
+ahora = pd.Timestamp(datetime.now(TZ))
+
+# ------------------------------------------------------------------ KPIs
+ult24 = log[log["fecha_inicio"] >= ahora - pd.Timedelta(hours=24)] if len(log) else log
+repos_gh = sorted(catalogo.loc[catalogo["plataforma"].eq("github") & catalogo["activo"], "repo"].unique())
+en_curso = [r for repo in repos_gh for r in runs_recientes(repo) if r["estado"] in ("queued", "in_progress")]
+kpi_row([
+    ("Ejecuciones 24 h", f"{len(ult24)}", NARANJA, "scripts individuales"),
+    ("Fallidas 24 h", f"{int((~ult24['exito']).sum()) if len(ult24) else 0}", ROJO, "incluye timeouts"),
+    ("En curso ahora", f"{len(en_curso)}", AZUL, "GitHub Actions"),
+    ("Automatizaciones activas", f"{int(catalogo['activo'].sum())}", GRIS, f"de {len(catalogo)} en catálogo"),
+])
+
+
+# ------------------------------------------------------------------ En curso / mis solicitudes
+@st.fragment(run_every=20)
+def seguimiento():
+    sol = st.session_state.get("ops_solicitudes", [])
+    if sol:
+        runs_recientes.clear()  # estado fresco de GitHub para las solicitudes de esta sesión
+    curso =[r for repo in repos_gh for r in runs_recientes(repo) if r["estado"] in ("queued", "in_progress")]
+    if not sol and not curso:
+        return
+    with st.container(border=True):
+        st.markdown("**Seguimiento en vivo** · se actualiza cada 20 s")
+        for s in reversed(sol[-8:]):
+            if s["plataforma"] == "github":
+                run =buscar_run(s["repo"], s["request_id"])
+                if run is None:
+                    estado, url = "En cola (GitHub aún no la registra)", ""
+                elif run["estado"] != "completed":
+                    estado, url = "⟳ Ejecutando", run["url"]
+                else:
+                    estado = "✔ Exitosa" if run["conclusion"] == "success" else f"✖ {run['conclusion']}"
+                    url = run["url"]
+            else:
+                estado, url = "Enviada a n8n (el resultado llega en la próxima sincronización)", ""
+            enlace = f" · [ver ejecución]({url})" if url else ""
+            st.markdown(f"- **{s['nombre']}** · {s['hora']} · {estado}{enlace}")
+        otros = [r for r in curso if not any(s["request_id"] in r["titulo"] for s in sol)]
+        for r in otros:
+            st.markdown(f"- {r['repo']} · {r['titulo']} · ⟳ {r['estado']} · [ver]({r['url']})")
+
+
+seguimiento()
+
+
+# ------------------------------------------------------------------ Disparo
+def _disparar(item: dict) -> None:
+    rid = nuevo_request_id()
+    if item["plataforma"] == "n8n":
+        ok, msg = disparar_n8n(item, usuario, rid)
+    else:
+        ok, msg = disparar_github(item, usuario, rid)
+    registrar_solicitud({
+        "request_id": rid, "usuario": usuario, "automatizacion_id": item["automatizacion_id"],
+        "nombre": item["nombre"], "plataforma": item["plataforma"],
+        "resultado": "ENVIADA" if ok else "ERROR", "detalle": msg,
+    })
+    if ok:
+        st.session_state.setdefault("ops_solicitudes", []).append({
+            "request_id": rid, "nombre": item["nombre"], "repo": item["repo"],
+            "plataforma": item["plataforma"], "hora": datetime.now(TZ).strftime("%H:%M"),
+        })
+        st.toast(f"▶ {item['nombre']}: {msg}", icon="✅")
+    else:
+        st.toast(f"{item['nombre']}: {msg}", icon="⚠️")
+
+
+def _ultima(item: pd.Series) -> tuple[str, str]:
+    """Estado y texto de la última ejecución registrada."""
+    script = str(item["script"])
+    if script.startswith("lote:"):
+        info = ultimo_lote(log, script.split(":", 1)[1]) if len(log) else None
+        if not info:
+            return "SIN DATOS", "Sin ejecuciones registradas"
+        est = "EXITOSO" if info["fallidos"] == 0 else "FALLIDO"
+        dur = (info["fin"] - info["inicio"]).total_seconds() / 60
+        return est, (f"{info['inicio']:%d-%b %H:%M} · {info['scripts']} scripts · "
+                     f"{info['fallidos']} fallidos · {dur:.0f} min")
+    sub = log[log["automatizacion_id"].eq(item["automatizacion_id"])] if len(log) else log
+    if sub.empty:
+        return "SIN DATOS", "Sin ejecuciones registradas"
+    u = sub.iloc[-1]
+    return u["estado"], f"{u['fecha_inicio']:%d-%b %H:%M} · {u['duracion_seg']:.0f} s · {u['origen_grupo']}"
+
+
+def tarjeta(item: pd.Series) -> None:
+    estado, detalle = _ultima(item)
+    with st.container(border=True):
+        c1, c2 = st.columns([4, 1.3], vertical_alignment="center")
+        with c1:
+            plataforma = "n8n" if item["plataforma"] == "n8n" else "GitHub"
+            extra = " · 🔒 sensible" if item["sensible"] else ""
+            st.markdown(f"**{item['nombre']}**  \n"
+                        f"<span style='color:#9A9A9A;font-size:0.8rem'>{plataforma} · "
+                        f"{item['frecuencia']}{extra}</span>", unsafe_allow_html=True)
+            st.markdown(badge(f"{ICONO_ESTADO.get(estado, '')} {estado}", COLOR_ESTADO.get(estado, GRIS))
+                        + f"<span style='color:#AAAAAA;font-size:0.78rem;margin-left:8px'>{detalle}</span>",
+                        unsafe_allow_html=True)
+            if item.get("descripcion"):
+                st.caption(item["descripcion"])
+        with c2:
+            clave = f"btn_{item['id']}"
+            if item["sensible"] and not admin:
+                with st.popover("▶ Ejecutar", use_container_width=True):
+                    st.caption("Automatización sensible: confirma con el PIN.")
+                    pin = st.text_input("PIN", type="password", key=f"pin_{item['id']}")
+                    if st.button("Confirmar ejecución", key=clave, type="primary"):
+                        if pin_valido(pin):
+                            _disparar(item.to_dict())
+                        else:
+                            st.error("PIN incorrecto")
+            elif item["sensible"]:
+                with st.popover("▶ Ejecutar", use_container_width=True):
+                    st.caption("Automatización sensible. ¿Confirmas?")
+                    if st.button("Sí, ejecutar", key=clave, type="primary"):
+                        _disparar(item.to_dict())
+            else:
+                if st.button("▶ Ejecutar", key=clave, type="primary", use_container_width=True):
+                    _disparar(item.to_dict())
+
+
+# ------------------------------------------------------------------ Tarjetas por proyecto
+activos = catalogo[catalogo["activo"]]
+busqueda = st.text_input("Buscar automatización", placeholder="ej. JAE, satisfacción, lote…",
+                         label_visibility="collapsed")
+if busqueda:
+    patron = busqueda.strip().lower()
+    activos = activos[activos.apply(lambda r: patron in f"{r['nombre']} {r['script']} {r['proyecto']}".lower(), axis=1)]
+
+proyectos = list(dict.fromkeys(activos["proyecto"]))
+if not proyectos:
+    st.info("No hay automatizaciones activas que coincidan.")
+else:
+    for pestaña, proyecto in zip(st.tabs(proyectos), proyectos):
+        with pestaña:
+            for _, item in activos[activos["proyecto"].eq(proyecto)].iterrows():
+                tarjeta(item)
+
+pendientes = catalogo[~catalogo["activo"]]
+if len(pendientes):
+    with st.expander(f"Pendientes de habilitar ({len(pendientes)})"):
+        st.caption("Están en el catálogo pero sin botón: cada una explica qué falta. "
+                   "Para activarla, corrige lo indicado y cambia 'activo' a SI en la hoja CATALOGO.")
+        st.dataframe(pendientes[["nombre", "proyecto", "repo", "script", "descripcion"]],
+                     hide_index=True, use_container_width=True)
