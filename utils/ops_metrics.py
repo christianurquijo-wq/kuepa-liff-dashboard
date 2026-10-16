@@ -32,7 +32,10 @@ def preparar(log: pd.DataFrame, catalogo: pd.DataFrame) -> pd.DataFrame:
     df["origen_grupo"] = df["origen"].map(ORIGEN_GRUPO).fillna("Manual / otra")
     df["exito"] = df["estado"].eq("EXITOSO")
     if not catalogo.empty:
-        mapa = catalogo.set_index("automatizacion_id")[["nombre", "proyecto"]]
+        # Varias filas del CATALOGO pueden apuntar al mismo workflow (ej. 2 webhooks
+        # de n8n en un flujo): se toma la primera para no duplicar ejecuciones.
+        mapa = (catalogo.drop_duplicates("automatizacion_id")
+                .set_index("automatizacion_id")[["nombre", "proyecto"]])
         df = df.join(mapa, on="automatizacion_id")
     else:
         df["nombre"], df["proyecto"] = np.nan, np.nan
@@ -75,7 +78,8 @@ def salud(df: pd.DataFrame, catalogo: pd.DataFrame, ahora: pd.Timestamp) -> pd.D
     base = catalogo[catalogo["activo"] & ~catalogo["script"].astype(str).str.startswith("lote:")] \
         if not catalogo.empty else pd.DataFrame(columns=["automatizacion_id"])
     ids = list(dict.fromkeys(list(base["automatizacion_id"]) + list(grupos)))
-    cat = catalogo.set_index("automatizacion_id") if not catalogo.empty else pd.DataFrame()
+    cat = (catalogo.drop_duplicates("automatizacion_id").set_index("automatizacion_id")
+           if not catalogo.empty else pd.DataFrame())
     for aid in ids:
         g = grupos.get(aid)
         info = cat.loc[aid] if aid in cat.index else None
