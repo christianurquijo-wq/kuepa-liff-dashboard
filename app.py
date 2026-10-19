@@ -67,6 +67,13 @@ iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo"
 # lateral.
 iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y Última Conexión", url_path="iq-actividad-conexion")
 
+# oct-2026: "Tipos de recurso" -- versión interactiva de la sección 04 del PPTX de
+# la reunión INICIA/MINERD (22/10/2026): consumo por tipo de recurso, grado,
+# programa, regional y mes del año académico, con filtros por periodo/programa/
+# tipo/rol. Lee CSV agregados del repo (sin BigQuery) -- ver docstring de
+# pages/iq/6_Tipos_de_Recurso.py y scripts/build_tipos_recurso.py.
+iq_tipos = st.Page("pages/iq/6_Tipos_de_Recurso.py", title="Tipos de recurso", url_path="iq-tipos-recurso")
+
 # oct-2026: sección Operaciones -- panel para disparar automatizaciones
 # (GitHub Actions + n8n) y análisis de ejecuciones. Requiere login con Google
 # (utils/ops_auth.py); el resto del dashboard sigue público. Ver
@@ -78,7 +85,7 @@ PROYECTOS = {
     "General": [inicio],
     "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
-    "IQ": [iq_analisis, iq_detalle, iq_recencia],
+    "IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],
     "Operaciones": [ops_panel, ops_analisis],
 }
 

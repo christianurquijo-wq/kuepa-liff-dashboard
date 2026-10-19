@@ -22,3 +22,9 @@ service_account.json
 
 .streamlit/*.toml
 !.streamlit/config.toml
+
+# Exportes crudos de "Tipos de recurso" (BigQuery): traen NOMBRE y CORREO de estudiantes.
+# Solo los agregados de data/iq/tipos_recursos/agregados/ van al repo.
+data/iq/tipos_recursos/*.xlsx
+data/iq/tipos_recursos/*.parquet
+data/iq/tipos_recursos/agregados/*.pptx

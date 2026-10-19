@@ -113,3 +113,26 @@ cómo se detectaron (no es "días sin actividad", es "ningún archivo cubre
 ese rango de fechas" -- son cosas distintas, ver el docstring de
 `pages/iq/4_Cobertura.py`). Los datos ahora llegan hasta el 22-sep-2026
 (antes el corte era anterior).
+
+## IQ -- Tipos de recurso (cómo actualizar)
+
+La página **Tipos de recurso** (`pages/iq/6_Tipos_de_Recurso.py`, lógica en
+`utils/iq_tipos_recurso.py`) es la versión interactiva de la sección 04 del
+PPTX de la reunión INICIA/MINERD del 22/10/2026. No usa BigQuery ni Google
+Sheets: lee 3 CSV agregados de `data/iq/tipos_recursos/agregados/`
+(`recursos_cubo.csv`, `recursos_usuarios_unicos.csv`, `recursos_conciliacion.csv`),
+sin datos personales y con costo de infraestructura cero.
+
+Para refrescarlos cuando haya un corte nuevo:
+
+1. Descargar los exportes de "Tipos de recurso" (IQS-*, IQP, ...) a
+   `data/iq/tipos_recursos/`. **Esos xlsx traen nombre y correo de
+   estudiantes: están en `.gitignore` y NUNCA se suben.**
+2. `python scripts/build_tipos_recurso.py` (usa `python-calamine` si está
+   instalado: `pip install python-calamine`, mucho más rápido con xlsx grandes).
+3. Revisar `recursos_conciliacion.csv` (registros brutos -> depurados) y hacer
+   commit SOLO de `data/iq/tipos_recursos/agregados/`.
+
+Definiciones (consumo, base depurada, finalización, puntaje, usuarios únicos)
+en el docstring de `utils/iq_tipos_recurso.py` y en la pestaña **Método** de
+la página.
