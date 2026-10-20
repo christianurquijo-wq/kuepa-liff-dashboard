@@ -14,7 +14,7 @@ rompa con un mensaje claro en vez de mostrar números que no cuadran):
   - EMPRESAS_ACEPTAN <= EMPRESAS_RESPONDIERON <= EMPRESAS_ENCUESTADAS.
 """
 
-EMPRESAS_ENCUESTADAS = 262   # empresas a las que se les envió la encuesta
+EMPRESAS_ENCUESTADAS = 757   # empresas a las que se les envió la encuesta
 EMPRESAS_RESPONDIERON = 18  # respondieron la pregunta de interés
 EMPRESAS_ACEPTAN = 18        # respondieron que SÍ contratarían practicantes extranjeros
 
