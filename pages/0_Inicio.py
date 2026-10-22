@@ -59,3 +59,21 @@ with col3, st.container(border=True):
         icon="➡️",
         use_container_width=True,
     )
+
+# oct-2026: acceso al Manual de automatizaciones (consulta pública).
+st.write("")
+with st.container(border=True):
+    c1, c2 = st.columns([4, 1.3], vertical_alignment="center")
+    with c1:
+        st.markdown("### 📘 Manual de automatizaciones")
+        st.caption(
+            "Qué hace cada automatización de EFE, STC 3.0 y demás proyectos, cuál está "
+            "requiriendo atención y cómo ejecutarla."
+        )
+    with c2:
+        st.page_link(
+            "pages/ops/0_Manual.py",
+            label="Abrir el manual",
+            icon="➡️",
+            use_container_width=True,
+        )

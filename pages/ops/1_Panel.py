@@ -16,11 +16,11 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 
-from utils.ops_auth import es_admin, pin_valido, requiere_login
-from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar, registrar_solicitud
-from utils.ops_dispatch import (buscar_run, disparar_github, disparar_n8n, nuevo_request_id,
-                                runs_recientes)
+from utils.ops_auth import es_admin, requiere_login
+from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar
+from utils.ops_dispatch import buscar_run, runs_recientes
 from utils.ops_metrics import preparar, ultimo_lote
+from utils.ops_ui import boton_ejecutar
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, badge, inject_css, kpi_row
 
 inject_css()
@@ -89,28 +89,6 @@ def seguimiento():
 seguimiento()
 
 
-# ------------------------------------------------------------------ Disparo
-def _disparar(item: dict) -> None:
-    rid = nuevo_request_id()
-    if item["plataforma"] == "n8n":
-        ok, msg = disparar_n8n(item, usuario, rid)
-    else:
-        ok, msg = disparar_github(item, usuario, rid)
-    registrar_solicitud({
-        "request_id": rid, "usuario": usuario, "automatizacion_id": item["automatizacion_id"],
-        "nombre": item["nombre"], "plataforma": item["plataforma"],
-        "resultado": "ENVIADA" if ok else "ERROR", "detalle": msg,
-    })
-    if ok:
-        st.session_state.setdefault("ops_solicitudes", []).append({
-            "request_id": rid, "nombre": item["nombre"], "repo": item["repo"],
-            "plataforma": item["plataforma"], "hora": datetime.now(TZ).strftime("%H:%M"),
-        })
-        st.toast(f"▶ {item['nombre']}: {msg}", icon="✅")
-    else:
-        st.toast(f"{item['nombre']}: {msg}", icon="⚠️")
-
-
 def _ultima(item: pd.Series) -> tuple[str, str]:
     """Estado y texto de la última ejecución registrada."""
     script = str(item["script"])
@@ -145,24 +123,8 @@ def tarjeta(item: pd.Series) -> None:
             if item.get("descripcion"):
                 st.caption(item["descripcion"])
         with c2:
-            clave = f"btn_{item['id']}"
-            if item["sensible"] and not admin:
-                with st.popover("▶ Ejecutar", use_container_width=True):
-                    st.caption("Automatización sensible: confirma con el PIN.")
-                    pin = st.text_input("PIN", type="password", key=f"pin_{item['id']}")
-                    if st.button("Confirmar ejecución", key=clave, type="primary"):
-                        if pin_valido(pin):
-                            _disparar(item.to_dict())
-                        else:
-                            st.error("PIN incorrecto")
-            elif item["sensible"]:
-                with st.popover("▶ Ejecutar", use_container_width=True):
-                    st.caption("Automatización sensible. ¿Confirmas?")
-                    if st.button("Sí, ejecutar", key=clave, type="primary"):
-                        _disparar(item.to_dict())
-            else:
-                if st.button("▶ Ejecutar", key=clave, type="primary", use_container_width=True):
-                    _disparar(item.to_dict())
+            # oct-2026: el botón vive en utils/ops_ui.py (lo comparte el Manual de automatizaciones)
+            boton_ejecutar(item.to_dict(), usuario, admin)
 
 
 # ------------------------------------------------------------------ Tarjetas por proyecto

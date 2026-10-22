@@ -78,11 +78,15 @@ iq_tipos = st.Page("pages/iq/6_Tipos_de_Recurso.py", title="Tipos de recurso", u
 # (GitHub Actions + n8n) y análisis de ejecuciones. Requiere login con Google
 # (utils/ops_auth.py); el resto del dashboard sigue público. Ver
 # GUIA_PANEL_OPERACIONES.md.
+# oct-2026: Manual de automatizaciones -- consulta pública (ejecutar pide login),
+# junto al Inicio. Ver docstring de pages/ops/0_Manual.py.
+ops_manual = st.Page("pages/ops/0_Manual.py", title="Manual de automatizaciones", url_path="manual",
+                     icon="📘")
 ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel")
 ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis")
 
 PROYECTOS = {
-    "General": [inicio],
+    "General": [inicio, ops_manual],
     "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
     "IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],

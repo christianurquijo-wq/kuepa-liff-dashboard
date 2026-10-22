@@ -57,6 +57,21 @@ def requiere_login() -> str:
     return correo
 
 
+def sesion_opcional() -> tuple[str | None, bool]:
+    """Como requiere_login(), pero SIN cortar la página: para páginas de consulta
+    (Manual) que cualquiera puede ver y que solo piden login para ejecutar.
+    Devuelve (correo o None, autorizado)."""
+    if "auth" not in st.secrets or not st.user.is_logged_in:
+        return None, False
+    correo = _correo()
+    cfg = _ops()
+    usuarios = {u.strip().lower() for u in cfg.get("usuarios", [])}
+    admins = {u.strip().lower() for u in cfg.get("admins", [])}
+    dominio = str(cfg.get("dominio", "")).strip().lower()
+    autorizado = correo in usuarios or correo in admins or bool(dominio and correo.endswith("@" + dominio))
+    return correo, autorizado
+
+
 def es_admin(correo: str) -> bool:
     return correo.lower() in {u.strip().lower() for u in _ops().get("admins", [])}
 
