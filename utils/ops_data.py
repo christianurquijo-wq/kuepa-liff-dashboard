@@ -40,7 +40,13 @@ def leer_catalogo() -> pd.DataFrame:
     df = pd.DataFrame(_hoja("CATALOGO").get_all_records())
     if df.empty:
         return df
-    df = df[df["id"].astype(str).str.strip() != ""].copy()
+    # get_all_records() convierte a número las celdas que lo parecen (ej. proyecto "512"):
+    # todo se trata como texto salvo las columnas numéricas, o st.tabs y los filtros fallan.
+    numericas = {"frecuencia_horas", "timeout_min"}
+    for col in df.columns:
+        if col not in numericas:
+            df[col] = df[col].astype(str).str.strip()
+    df = df[df["id"] != ""].copy()
     df["sensible"] = df["sensible"].map(_si)
     df["activo"] = df["activo"].map(_si)
     df["frecuencia_horas"] = pd.to_numeric(df["frecuencia_horas"], errors="coerce").fillna(0)
