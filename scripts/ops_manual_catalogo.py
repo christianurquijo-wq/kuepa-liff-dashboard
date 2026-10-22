@@ -7,6 +7,7 @@ un borrador de cada ficha (redactado a partir del código de cada script).
 Reglas (para no pisar el trabajo del equipo):
   - Si una columna del manual no existe, se agrega al final del encabezado.
   - Solo se escribe en celdas VACÍAS. Lo que alguien ya editó en el Sheet se respeta.
+  - --reescribir=id1,id2 fuerza a reemplazar las fichas de esas filas con el texto de este archivo.
   - Las filas cuyo id no esté en FICHAS se listan al final como "sin ficha".
 
 Columnas del manual (todas texto libre; el manual del dashboard las lee tal cual):
@@ -343,19 +344,159 @@ FICHAS: dict[str, dict] = {
                           "el PDF de evidencia adjunto, y registra el envío.",
         "cuando_usarla": "Cuando el equipo de STC tenga remisiones listas en el Sheet REMISIONES. Envía "
                          "correos reales: confirma antes de ejecutar.",
-        "entrada": "Sheet: REMISIONES; Proceso: servicio de PDF (túnel)",
-        "salida": "Correo: empresas; Sheet: REMISIONES (estado de envío)",
+        "entrada": "Sheet: REMISIONES › Modelo n8n; Proceso: servicio de PDF (túnel)",
+        "salida": "Correo: empresas (cuenta Socios 3.0); Drive: PDF de evidencia del correo; Sheet: REMISIONES › Modelo n8n (fecha y PDF de envío)",
         "si_falla": "Lo más común: el túnel del servicio de PDF está apagado o cambió su URL (actualízala "
                     "en n8n). Si n8n responde 503, el servidor de n8n está caído: avisa al administrador.",
+    },
+    # ------------------------------------------------------------ n8n (redactadas desde los flujos exportados, oct-2026)
+    "data-bq-formacion": {
+        "para_que_sirve": "Trae de BigQuery (plataforma Kuepa/SIS) la actividad de los participantes de formación de "
+                          "STC 3.0: componentes vistos, asistencias, sesiones, accesos, estadísticas por usuario y notas "
+                          "publicadas, y reescribe esas pestañas del Sheet de formación.",
+        "cuando_usarla": "Corre sola todos los días a las 06:00. Dispárala a mano si necesitas el avance de formación "
+                         "al momento (por ejemplo, antes de preparar el entregable de LOGS).",
+        "entrada": "BigQuery: Kuepa SIS (logs, asistencias, sesiones, accesos, notas)",
+        "salida": "Sheet: Seguimiento Formación STC3.0 › LOGS; Sheet: Seguimiento Formación STC3.0 › SESIONES; Sheet: Seguimiento Formación STC3.0 › ASISTENCIAS; Sheet: Seguimiento Formación STC3.0 › LOG_ACCESS; "
+                  "Sheet: Seguimiento Formación STC3.0 › USER_STATISTICS; Sheet: Seguimiento Formación STC3.0 › NOTAS PUBLICADAS",
+        "si_falla": "Cada pestaña se borra y se vuelve a llenar: si falla a mitad, alguna puede quedar vacía; vuelve a "
+                    "ejecutarlo. Si el error es de permisos de Google, revisa la credencial de Google Sheets conectada en n8n.",
+    },
+    "Reporte_CRM": {
+        "para_que_sirve": "Actualiza SOLO la pestaña «Reporte CRM» del Seguimiento General de STC 3.0 con los leads del CRM "
+                          "traídos de BigQuery. Es la versión rápida de «Reportes STC 3.0».",
+        "cuando_usarla": "Cuando el equipo necesita ver leads nuevos del CRM durante el día sin esperar la corrida de "
+                         "las 06:00 ni refrescar todos los reportes.",
+        "entrada": "BigQuery: Kuepa CRM (leads STC 3.0)",
+        "salida": "Sheet: Seguimiento General STC3.0 › Reporte CRM",
+        "si_falla": "La pestaña se borra antes de escribir: si falla, vuelve a ejecutar. n8n 503 = servidor caído; "
+                    "403 = token X-OPS-TOKEN distinto entre el dashboard y n8n.",
+    },
+    "reportes-STC3.0": {
+        "para_que_sirve": "Refresca de una vez todos los reportes CRM y SIS de STC 3.0 desde BigQuery y los reparte en "
+                          "los Sheets de cada equipo: Seguimiento General (Reporte CRM/SIS), Formación (REPORTE CRM/SIS), "
+                          "Verificación (Leads CRM), Anexo 3 FSC (REPORTE CRM/SIS) y una copia de respaldo en Data SIS-CRM.",
+        "cuando_usarla": "Corre sola todos los días a las 06:00. A mano cuando hubo cambios grandes en CRM o SIS y "
+                         "varios equipos necesitan datos frescos.",
+        "entrada": "BigQuery: Kuepa CRM; BigQuery: Kuepa SIS",
+        "salida": "Sheet: Seguimiento General STC3.0 › Reporte CRM / Reporte SIS; Sheet: Seguimiento Formación STC3.0 › REPORTE CRM / REPORTE SIS; "
+                  "Sheet: Seguimiento Verificación STC3.0 › Leads CRM; Sheet: Anexo 3 FSC › REPORTE - CRM / REPORTE SIS; "
+                  "Sheet: Data SIS-CRM STC3.0 (respaldo)",
+        "si_falla": "Primero borra y luego escribe cada pestaña: si falla a mitad, alguna puede quedar vacía; vuelve a "
+                    "ejecutarlo completo. Tarda varios minutos.",
+    },
+    "cierre-formacion-stc3.0": {
+        "para_que_sirve": "Envía el correo de cierre de ruta de formación a los participantes que ya terminaron y aún "
+                          "no lo han recibido, y marca «COMUNICADO FINALIZACIÓN RUTA = ENVIADA» en el consolidado.",
+        "cuando_usarla": "Corre sola una vez al día. A mano después de actualizar estados de formación, cuando quieras "
+                         "que los comunicados salgan de inmediato. Envía correos reales: confirma antes de ejecutar.",
+        "entrada": "Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO",
+        "salida": "Correo: participantes (cuenta Socios 3.0); Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO (marca de envío)",
+        "si_falla": "No reenvía a quien ya tiene la marca ENVIADA, así que es seguro reintentar. Si Gmail rechaza "
+                    "envíos, revisa el límite diario de la cuenta o la credencial de Gmail en n8n.",
+    },
+    "envio-certificados-stc3.0": {
+        "para_que_sirve": "Envía a cada participante CERTIFICADO su certificado en PDF (lo descarga del enlace en el "
+                          "consolidado) y marca el envío para no repetirlo.",
+        "cuando_usarla": "Cuando se carguen certificados nuevos (columna «Link Certificado»). Envía correos reales con "
+                         "adjunto: confirma antes de ejecutar.",
+        "entrada": "Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO; Drive: certificados PDF",
+        "salida": "Correo: participantes con certificado adjunto; Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO (marca de envío)",
+        "si_falla": "Si un enlace de certificado está vacío o sin permisos, ese participante falla: corrige el enlace "
+                    "y reintenta (los ya enviados no se repiten).",
+    },
+    "correo-bienvenida-stc3.0": {
+        "para_que_sirve": "Envía las comunicaciones HTML de STC 3.0 a quien aún no las ha recibido: invitación a la ruta "
+                          "de empleabilidad (básica o especializada), invitación a formación y credenciales de acceso a "
+                          "las sesiones. Marca cada envío en su lista.",
+        "cuando_usarla": "Corre sola de lunes a viernes a las 10:30. A mano cuando cargues una lista nueva de "
+                         "participantes. Envía correos reales: confirma antes de ejecutar.",
+        "entrada": "Sheet: Archivo cargue CRM; Sheet: Asignación atención Cohorte II SDDE; Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO",
+        "salida": "Correo: participantes (cuenta Socios 3.0); Sheet: listas de origen (marca Enviado); "
+                  "Sheet: Seguimiento Formación STC3.0 › SESIONES",
+        "si_falla": ("Solo envía a filas con Enviado = falso, así que reintentar no duplica. Si Gmail rechaza "
+                    "envíos, revisa el límite diario de la cuenta o su credencial en n8n."),
+    },
+    "vrd-fcs-stc3.0": {
+        "para_que_sirve": "Trae de BigQuery el estado de verificación (VRD) y de orientación (FCS) de cada participante "
+                          "en el SIS y lo deja en el Seguimiento General para cruzarlo con la gestión del equipo.",
+        "cuando_usarla": "Corre sola todos los días a las 06:00. A mano después de cargas masivas de orientaciones.",
+        "entrada": "BigQuery: Kuepa SIS (verificación y orientación)",
+        "salida": "Sheet: Seguimiento General STC3.0 › REPORTE VRD/FCS - SIS; Sheet: Consolidado FCS › REPORTE FCS - SIS",
+        "si_falla": "Las pestañas se borran antes de escribir: si falla, vuelve a ejecutarlo para que no queden vacías. "
+                    "Si el error es de permisos, revisa la credencial de Google conectada en n8n.",
+    },
+    "documentos-suba": {
+        "para_que_sirve": "Organiza las evidencias de las obligaciones del contrato Suba es Oportunidad: por cada fila "
+                          "del listado de entregables descarga el documento (PDF de un Sheet/Doc o archivo de Drive) y lo "
+                          "copia en la carpeta de Drive de la obligación correspondiente.",
+        "cuando_usarla": "Antes de un entregable o informe de obligaciones de Suba, cuando el listado tenga documentos nuevos.",
+        "entrada": "Sheet: Entregables_SUBA_PP › Hoja 5; Drive: documentos de evidencia",
+        "salida": "Drive: carpetas de obligaciones Suba; Sheet: Entregables_SUBA_PP › Hoja 5 (marca de procesado)",
+        "si_falla": "Si un documento no se puede descargar, revisa que el enlace sea válido y compartido con la cuenta "
+                    "de Drive conectada en n8n (Google Drive - SUBA).",
+    },
+    "reporte-logs-sdde-formacion-stc3.0": {
+        "para_que_sirve": "Arma el entregable de LOGS para la SDDE: cruza los participantes del consolidado de formación "
+                          "con su actividad en BigQuery, llena la hoja «Entregable LOGS», copia la plantilla a la carpeta "
+                          "de entregables y envía el reporte por correo.",
+        "cuando_usarla": "Al cierre de cada corte de reporte a la SDDE. Conviene correr antes «LOGSSTC3.0-FORMACIÓN».",
+        "entrada": "Sheet: Seguimiento Formación STC3.0 › CONSOLIDADO; BigQuery: Kuepa SIS (logs)",
+        "salida": "Sheet: Entregable LOGS › Hoja 1; Drive: carpeta de entregables (copia de plantilla); "
+                  "Correo: Reporte LOGS - Entrega",
+        "si_falla": ("Si el correo no llega, revisa la credencial de Gmail (Socios 3.0) en n8n. Si falla al copiar "
+                    "la plantilla, verifica que la plantilla y la carpeta de entregables sigan existiendo."),
+    },
+    "actualizar-notas-eco": {
+        "para_que_sirve": "Copia las notas y la asistencia del grupo HyT de Ecolombia+ (Sheet de notas del grupo) a las "
+                          "pestañas de respaldo del Seguimiento ECO+, para que el seguimiento tenga el dato académico al día.",
+        "cuando_usarla": "Corre sola todos los días a las 15:00. A mano cuando los docentes terminen de registrar notas o asistencia.",
+        "entrada": "Sheet: NOTAS Y ASISTENCIA ECOLOMBIA + GRUPO HT_1 › NOTAS; Sheet: NOTAS Y ASISTENCIA ECOLOMBIA + GRUPO HT_1 › ASISTENCIA",
+        "salida": "Sheet: SEGUIMIENTO ECOLOMBIA + › NOTAS BACKUP HyT; Sheet: SEGUIMIENTO ECOLOMBIA + › ASISTENCIA BACKUP HyT",
+        "si_falla": "Si cambian columnas en el Sheet de notas del grupo, el cruce falla: revisa encabezados en ambos Sheets.",
+    },
+    "asistencias-jae": {
+        "para_que_sirve": "Trae de BigQuery las asistencias modulares y las bitácoras de JAE y reescribe esas dos pestañas "
+                          "del Seguimiento JAE. La pestaña Bitacoras es la que luego sube a BigQuery «JAE · Bitácora».",
+        "cuando_usarla": "Corre sola todos los días a las 04:30 (antes del lote de bitácoras de las 09:30). A mano si "
+                         "necesitas asistencias del día.",
+        "entrada": "BigQuery: Kuepa SIS (asistencias y bitácoras JAE)",
+        "salida": "Sheet: SEGUIMIENTO ACADÉMICO TÉCNICOS EFE JAE › BD Asistencias Modulares; "
+                  "Sheet: SEGUIMIENTO ACADÉMICO TÉCNICOS EFE JAE › Bitacoras",
+        "si_falla": "Las pestañas se borran antes de escribir: si falla, vuelve a ejecutarlo para que no queden vacías.",
+    },
+    "notas-modulares-jae": {
+        "para_que_sirve": "Trae de BigQuery los resultados de notas por módulo de los estudiantes de JAE y reescribe la "
+                          "pestaña BD Notas Modulares del Seguimiento JAE (por lotes, para no saturar Google Sheets).",
+        "cuando_usarla": "Corre sola todos los días a las 05:00. A mano cuando se publiquen notas nuevas.",
+        "entrada": "BigQuery: Kuepa SIS (notas modulares JAE)",
+        "salida": "Sheet: SEGUIMIENTO ACADÉMICO TÉCNICOS EFE JAE › BD Notas Modulares",
+        "si_falla": "Si se corta a mitad, la pestaña queda incompleta: vuelve a ejecutarlo completo.",
+    },
+    "consultas-colsubsidio": {
+        "para_que_sirve": "Refresca el control de seguimiento de Colsubsidio TICS 2.0 con los reportes del CRM, del SIS y "
+                          "de asistencia (BigQuery) y agrega a SEGUIMIENTO GENERAL a las personas nuevas que llegan del listado SISE.",
+        "cuando_usarla": "Programado cada 3 horas (en la versión exportada estaba inactivo: confirma en n8n). A mano "
+                         "cuando necesites el seguimiento de Colsubsidio al momento.",
+        "entrada": "BigQuery: Kuepa CRM; BigQuery: Kuepa SIS (asistencia); Sheet: listado SISE",
+        "salida": "Sheet: CONTROL DE SEGUIMIENTO COLSUBSIDIO TICS 2.0 › Reporte CRM / Reporte SIS / AsistenciaSIS; "
+                  "Sheet: CONTROL DE SEGUIMIENTO COLSUBSIDIO TICS 2.0 › SEGUIMIENTO GENERAL",
+        "si_falla": "Las pestañas de reporte se borran antes de escribir: si falla, vuelve a ejecutarlo.",
     },
 }
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
-        sys.exit("Uso: python scripts/ops_manual_catalogo.py <ID_DEL_SHEET> [ruta_service_account.json]")
-    sa = sys.argv[2] if len(sys.argv) > 2 else "service_account.json"
-    ws = gspread.service_account(filename=sa).open_by_key(sys.argv[1]).worksheet("CATALOGO")
+    args = [a for a in sys.argv[1:] if not a.startswith("--reescribir")]
+    reescribir: set[str] = set()
+    for a in sys.argv[1:]:
+        if a.startswith("--reescribir="):
+            reescribir |= {x.strip() for x in a.split("=", 1)[1].split(",") if x.strip()}
+    if not args:
+        sys.exit("Uso: python scripts/ops_manual_catalogo.py <ID_DEL_SHEET> [service_account.json] "
+                 "[--reescribir=id1,id2]")
+    sa = args[1] if len(args) > 1 else "service_account.json"
+    ws = gspread.service_account(filename=sa).open_by_key(args[0]).worksheet("CATALOGO")
     valores = ws.get_all_values()
     if not valores:
         sys.exit("CATALOGO vacío: corre primero scripts/ops_setup_sheet.py")
@@ -379,7 +520,8 @@ def main() -> None:
         if fila[col_id].strip() and not ficha:
             sin_ficha.append(fila[col_id])
         for col in COLUMNAS_MANUAL:
-            if not fila[idx[col]].strip() and ficha.get(col):
+            forzar = fila[col_id].strip() in reescribir
+            if (forzar or not fila[idx[col]].strip()) and ficha.get(col) and fila[idx[col]] != ficha[col]:
                 fila[idx[col]] = ficha[col]
                 llenadas += 1
         bloque.append(fila[primera:ultima + 1])
