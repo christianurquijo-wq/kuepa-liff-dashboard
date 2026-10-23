@@ -58,8 +58,8 @@ def url_ejecucion(workflow_id: str, ejecucion_id: str) -> str:
 
 @st.cache_data(ttl=8, show_spinner=False)
 def ejecuciones(workflow_id: str) -> list[dict]:
-    """Últimas ejecuciones del flujo (incluye las que siguen corriendo, si la versión de n8n las lista)."""
-    return _get("/executions", workflowId=workflow_id, limit=10).get("data", [])
+    """Últimas 50 ejecuciones del flujo (50 para que un clic no quede tapado por las programadas) (incluye las que siguen corriendo, si la versión de n8n las lista)."""
+    return _get("/executions", workflowId=workflow_id, limit=50).get("data", [])
 
 
 @st.cache_data(ttl=600, show_spinner=False)
@@ -72,6 +72,27 @@ def total_nodos(workflow_id: str) -> int:
 @st.cache_data(ttl=8, show_spinner=False)
 def detalle(ejecucion_id: str) -> dict:
     return _get(f"/executions/{ejecucion_id}", includeData="true")
+
+
+_PISTAS = {
+    401: "401: la n8n_api_key no es válida o fue revocada",
+    403: "403: la API pública de n8n está deshabilitada o la key no tiene permiso",
+    404: "404: revisa n8n_api_url (debe terminar en /api/v1) o el ID del flujo en el CATALOGO",
+}
+
+
+def _explicar(exc: requests.RequestException) -> str:
+    """Código HTTP y pista concreta, sin exponer la key."""
+    resp = getattr(exc, "response", None)
+    if resp is None:
+        return f"sin conexión: {type(exc).__name__}"
+    codigo = resp.status_code
+    detalle = ""
+    try:
+        detalle = str(resp.json().get("message", ""))[:120]
+    except ValueError:
+        pass
+    return _PISTAS.get(codigo, f"HTTP {codigo}") + (f" · {detalle}" if detalle else "")
 
 
 # ------------------------------------------------------------------ lógica pura
@@ -137,7 +158,7 @@ def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
         else:
             ej = _elegir(ejecuciones(wf), float(sol.get("ts") or 0), ocupados)
     except requests.RequestException as exc:
-        return {**base, "texto": f"Enviada a n8n · no se pudo consultar su API ({type(exc).__name__})"}
+        return {**base, "texto": f"Enviada a n8n · no se pudo consultar su API ({_explicar(exc)})"}
     if ej is None:
         espera = ahora - float(sol.get("ts") or ahora)
         texto = ("⟳ Iniciando en n8n…" if espera < 90 else
