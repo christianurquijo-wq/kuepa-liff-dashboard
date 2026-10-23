@@ -158,6 +158,42 @@ def por_dia_origen(df: pd.DataFrame) -> pd.DataFrame:
     return df.groupby(["dia", "origen_grupo"]).size().rename("ejecuciones").reset_index()
 
 
+def exito_diario(df: pd.DataFrame, ventana: int = 7) -> pd.DataFrame:
+    """Ejecuciones y % de éxito por día (cada script cuenta, también dentro de los lotes).
+    Incluye los días sin ejecuciones (0 y % vacío) para no unir puntos lejanos.
+    exito_pct_movil: % de las últimas `ventana` jornadas ponderado por volumen
+    (suma de exitosas / suma de ejecuciones), así un día con 2 ejecuciones no domina."""
+    if df.empty:
+        return pd.DataFrame(columns=["dia", "ejecuciones", "exitosas", "fallidas", "exito_pct", "exito_pct_movil"])
+    d = df.groupby("dia").agg(ejecuciones=("exito", "size"), exitosas=("exito", "sum"))
+    d = d.reindex(pd.date_range(d.index.min(), d.index.max(), freq="D", tz=d.index.tz), fill_value=0)
+    d.index.name = "dia"
+    d["exitosas"] = d["exitosas"].astype(int)
+    d["fallidas"] = d["ejecuciones"] - d["exitosas"]
+    d["exito_pct"] = (d["exitosas"] / d["ejecuciones"].where(d["ejecuciones"] > 0) * 100)
+    suma = d[["exitosas", "ejecuciones"]].rolling(ventana, min_periods=1).sum()
+    d["exito_pct_movil"] = suma["exitosas"] / suma["ejecuciones"].where(suma["ejecuciones"] > 0) * 100
+    return d.reset_index()
+
+
+def fallos_por_automatizacion(df: pd.DataFrame, top: int = 10) -> pd.DataFrame:
+    """Automatizaciones con más fallos en el periodo (incluye timeouts)."""
+    d = (df.groupby("nombre").agg(fallidas=("exito", lambda s: int((~s).sum())), total=("exito", "size"))
+         .reset_index())
+    d = d[d["fallidas"] > 0]
+    d["fallo_pct"] = d["fallidas"] / d["total"] * 100
+    return d.sort_values(["fallidas", "fallo_pct"], ascending=False).head(top)
+
+
+def duracion_diaria(df: pd.DataFrame, nombre: str) -> pd.DataFrame:
+    """Duración mediana y máxima por día de una automatización (solo ejecuciones exitosas:
+    las fallidas suelen cortarse antes y distorsionan la tendencia)."""
+    sub = df[df["nombre"].eq(nombre) & df["exito"]]
+    if sub.empty:
+        return pd.DataFrame(columns=["dia", "p50", "maximo", "n"])
+    return (sub.groupby("dia")["duracion_seg"].agg(p50="median", maximo="max", n="count").reset_index())
+
+
 def duraciones(df: pd.DataFrame, top: int = 15) -> pd.DataFrame:
     d = (df.groupby("nombre")["duracion_seg"]
          .agg(p50=lambda s: s.quantile(0.5), p95=lambda s: s.quantile(0.95), n="count")
