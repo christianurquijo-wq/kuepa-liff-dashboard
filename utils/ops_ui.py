@@ -16,14 +16,15 @@ import streamlit as st
 from utils.ops_auth import pin_valido
 from utils.ops_data import TZ, registrar_solicitud
 from utils.ops_dispatch import disparar_github, disparar_n8n, nuevo_request_id
-from utils.ops_n8n import ultimo_id
+from utils.ops_n8n import ultimo_id, ultimo_id_global
 
 
 def disparar(item: dict, usuario: str) -> bool:
     rid = nuevo_request_id()
-    base_id = None
+    base_id = base_global = None
     if item["plataforma"] == "n8n":
         base_id = ultimo_id(str(item.get("script", "")))  # para ubicar la ejecución de este clic
+        base_global = ultimo_id_global()
         ok, msg = disparar_n8n(item, usuario, rid)
     else:
         ok, msg = disparar_github(item, usuario, rid)
@@ -38,6 +39,7 @@ def disparar(item: dict, usuario: str) -> bool:
             "plataforma": item["plataforma"], "hora": datetime.now(TZ).strftime("%H:%M"),
             # n8n: ID del flujo y hora del clic para ubicar su ejecución (utils/ops_n8n.py)
             "workflow_id": str(item.get("script", "")), "ts": time.time(), "base_id": base_id,
+            "base_global": base_global, "timeout_min": item.get("timeout_min"),
         })
         st.toast(f"▶ {item['nombre']}: {msg}", icon="✅")
     else:

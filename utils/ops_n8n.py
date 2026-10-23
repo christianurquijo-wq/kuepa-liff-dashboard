@@ -124,6 +124,41 @@ def ultimo_id(workflow_id: str) -> int | None:
     return _num(datos[0]["id"]) if datos else 0
 
 
+def ultimo_id_global() -> int | None:
+    """ID de la ejecución más reciente de TODO n8n antes del clic (los IDs son globales y crecientes)."""
+    if not configurado():
+        return None
+    try:
+        datos = _get("/executions", limit=1).get("data", [])
+    except requests.RequestException:
+        return None
+    return _num(datos[0]["id"]) if datos else 0
+
+
+@st.cache_data(ttl=8, show_spinner=False)
+def _cabecera(ejecucion_id: int) -> dict | None:
+    """Ejecución por ID (sin datos de nodos). None si aún no existe."""
+    try:
+        return _get(f"/executions/{ejecucion_id}")
+    except requests.HTTPError as exc:
+        if exc.response is not None and exc.response.status_code == 404:
+            return None
+        raise
+
+
+def _sondear(workflow_id: str, base_global: int, ocupados: set[str], max_ids: int = 12) -> dict | None:
+    """El listado de la API pública de n8n NO incluye las ejecuciones que siguen corriendo.
+    Como los IDs son consecutivos en todo n8n, se consultan uno a uno los posteriores al clic
+    hasta dar con la de este flujo (para en el primer ID que aún no existe)."""
+    for eid in range(base_global + 1, base_global + 1 + max_ids):
+        cab = _cabecera(eid)
+        if cab is None:
+            return None
+        if str(cab.get("workflowId")) == workflow_id and str(eid) not in ocupados:
+            return cab
+    return None
+
+
 def _elegir(lista: list[dict], desde_ts: float, ocupados: set[str], base_id: int | None = None) -> dict | None:
     """La primera ejecución por webhook que arrancó después del clic (margen 20 s por reloj)
     y que no se haya asignado ya a otro clic de la misma sesión."""
@@ -184,12 +219,18 @@ def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
         else:
             lista = ejecuciones(wf)
             ej = _elegir(lista, float(sol.get("ts") or 0), ocupados, sol.get("base_id"))
+            if ej is None and sol.get("base_global") is not None:  # aún corriendo: no sale en el listado
+                ej = _sondear(wf, int(sol["base_global"]), ocupados)
     except requests.RequestException as exc:
         return {**base, "texto": f"Enviada a n8n · no se pudo consultar su API ({_explicar(exc)})"}
     if ej is None:
         espera = ahora - float(sol.get("ts") or ahora)
+        limite = max(float(sol.get("timeout_min") or 30), 30) * 60
         if espera < 90:
             texto = "⟳ Iniciando en n8n…"
+        elif espera < limite:  # lo normal en flujos largos: n8n la publica al terminar
+            texto = (f"⟳ En proceso en n8n · {_fmt_dur(espera)} desde el clic "
+                     "(n8n la mostrará con su resultado al terminar)")
         else:  # pista para diagnosticar: qué flujo se consultó y qué tiene guardado
             ultima = max((str(e.get("startedAt", ""))[:16].replace("T", " ") for e in lista), default="ninguna")
             texto = (f"Enviada a n8n · no aparece su ejecución en el flujo {wf} "
