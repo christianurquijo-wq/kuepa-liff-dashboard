@@ -20,6 +20,7 @@ from utils.ops_auth import es_admin, requiere_login
 from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar
 from utils.ops_dispatch import buscar_run, runs_recientes
 from utils.ops_metrics import preparar, ultimo_lote
+from utils.ops_n8n import estado_solicitud
 from utils.ops_ui import boton_ejecutar
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, badge, inject_css, kpi_row
 
@@ -67,6 +68,8 @@ def seguimiento():
         return
     with st.container(border=True):
         st.markdown("**Seguimiento en vivo** · se actualiza cada 20 s")
+        # Ejecuciones de n8n ya asignadas a un clic, para no asignar la misma a dos clics.
+        ocupados = {s["ejecucion_id"] for s in sol if s.get("ejecucion_id")}
         for s in reversed(sol[-8:]):
             if s["plataforma"] == "github":
                 run =buscar_run(s["repo"], s["request_id"])
@@ -78,9 +81,26 @@ def seguimiento():
                     estado = "✔ Exitosa" if run["conclusion"] == "success" else f"✖ {run['conclusion']}"
                     url = run["url"]
             else:
-                estado, url = "Enviada a n8n (el resultado llega en la próxima sincronización)", ""
-            enlace = f" · [ver ejecución]({url})" if url else ""
+                if s.get("final"):  # ya terminó: no se vuelve a consultar n8n
+                    info = s["resultado_n8n"]
+                else:
+                    info = estado_solicitud(s, ocupados - {s.get("ejecucion_id", "")})
+                    if info["ejecucion_id"]:
+                        s["ejecucion_id"] = info["ejecucion_id"]
+                        ocupados.add(info["ejecucion_id"])
+                    if info["final"]:
+                        s["final"], s["resultado_n8n"] = True, info
+                        st.toast(f"{s['nombre']}: {'terminó bien' if info['exito'] else 'falló'}",
+                                 icon="✅" if info["exito"] else "❌")
+                estado, url = info["texto"], info["url"]
+            enlace = f" · [ver en n8n]({url})" if url and s.get("plataforma") == "n8n" else (
+                f" · [ver ejecución]({url})" if url else "")
             st.markdown(f"- **{s['nombre']}** · {s['hora']} · {estado}{enlace}")
+            if s.get("plataforma") == "n8n":
+                if info.get("avance") is not None:
+                    st.progress(info["avance"])
+                if info.get("error"):
+                    st.error(info["error"], icon="✖")
         otros = [r for r in curso if not any(s["request_id"] in r["titulo"] for s in sol)]
         for r in otros:
             st.markdown(f"- {r['repo']} · {r['titulo']} · ⟳ {r['estado']} · [ver]({r['url']})")

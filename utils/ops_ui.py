@@ -8,6 +8,7 @@ registro en SOLICITUDES y mismo seguimiento en vivo del Panel
 """
 from __future__ import annotations
 
+import time
 from datetime import datetime
 
 import streamlit as st
@@ -32,6 +33,8 @@ def disparar(item: dict, usuario: str) -> bool:
         st.session_state.setdefault("ops_solicitudes", []).append({
             "request_id": rid, "nombre": item["nombre"], "repo": item["repo"],
             "plataforma": item["plataforma"], "hora": datetime.now(TZ).strftime("%H:%M"),
+            # n8n: ID del flujo y hora del clic para ubicar su ejecución (utils/ops_n8n.py)
+            "workflow_id": str(item.get("script", "")), "ts": time.time(),
         })
         st.toast(f"▶ {item['nombre']}: {msg}", icon="✅")
     else:
