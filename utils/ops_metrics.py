@@ -22,6 +22,33 @@ ORIGEN_GRUPO = {
     "n8n_programado": "Programada",
 }
 ORDEN_ORIGEN = ["Botón panel", "Programada", "Manual / otra"]
+
+# Nombres de respaldo para flujos de n8n que aún no tienen fila en el CATALOGO (la bitácora
+# de n8n solo trae el ID del flujo). El CATALOGO siempre tiene prioridad: lo correcto es
+# darles su fila allí (plataforma=n8n, script=<ID>). IDs tomados de los flujos exportados (oct-2026).
+NOMBRES_N8N = {
+    "ZQ1F20BxYKLORR13": "Suba · Documentos de obligaciones",
+    "7atG8gnX6spvbSl1": "Suba · Documentos de obligaciones (versión anterior)",
+    "0i1vQyKEYCmmG1qf": "STC 3.0 · Certificación y finalización",
+    "2HGHTB23sOGaUYD2": "Colsubsidio · Consultas generales",
+    "mAzhyVdNbhyfXA4p": "ECO+ · Notas y asistencia (SIS)",
+    "zlXHHNyxDzxaLL0F": "JAE · Asistencias (SIS)",
+    "j24qc9DOSocfgFoE": "STC 3.0 · Entregables logs SDDE",
+    "NMnUtMvRNl9ikgZ9": "STC 3.0 · Remisiones (correo empresarial)",
+    "JujLCQ9Jxv1PiHVK": "STC 3.0 · Logs de formación",
+    "lDoeo7RTTd4nOkEB": "STC 3.0 · Comunicaciones (plantilla HTML)",
+    "cNuhAVEh5H4439v9": "STC 3.0 · Reportes y CRM",
+    "o2vrXEIDnb1lsFR3": "JAE · Resultado de notas modulares",
+    "VOa8YTfjoyipehU3": "STC 3.0 · VRD-FCS orientaciones",
+}
+
+
+def _nombre_respaldo(fila: pd.Series) -> str:
+    """Nombre legible cuando la ejecución no cruza con el CATALOGO."""
+    script = str(fila.get("script", ""))
+    if fila.get("plataforma") == "n8n":
+        return NOMBRES_N8N.get(script, f"Flujo n8n {script[:6]}… (sin ficha)")
+    return script
 ORDEN_ESTADO = ["EXITOSO", "FALLIDO", "TIMEOUT"]
 
 
@@ -39,8 +66,9 @@ def preparar(log: pd.DataFrame, catalogo: pd.DataFrame) -> pd.DataFrame:
         df = df.join(mapa, on="automatizacion_id")
     else:
         df["nombre"], df["proyecto"] = np.nan, np.nan
-    df["nombre"] = df["nombre"].fillna(df["script"])
-    df["proyecto"] = df["proyecto"].fillna("Sin catálogo")
+    sin_nombre = df["nombre"].isna() | df["nombre"].astype(str).str.strip().eq("")
+    df.loc[sin_nombre, "nombre"] = df[sin_nombre].apply(_nombre_respaldo, axis=1)
+    df["proyecto"] = df["proyecto"].fillna("Sin catálogo").replace("", "Sin catálogo")
     df["dia"] = df["fecha_inicio"].dt.floor("D")
     df["hora"] = df["fecha_inicio"].dt.hour
     df["dia_semana"] = df["fecha_inicio"].dt.dayofweek

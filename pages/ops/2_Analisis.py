@@ -99,17 +99,21 @@ with c2:
 c3, c4 = st.columns(2)
 with c3:
     d = duraciones(df).sort_values("p95")
+    # Etiqueta corta en el eje (máx. 34 caracteres); el nombre completo va en el tooltip.
+    d["etiqueta"] = d["nombre"].map(lambda t: t if len(t) <= 34 else t[:33] + "…")
     fig = go.Figure()
-    fig.add_bar(y=d["nombre"], x=d["p50"], orientation="h", name="Mediana (p50)",
-                marker_color=NARANJA, customdata=d[["p95", "n"]],
-                hovertemplate="%{y}<br>p50: %{x:.0f} s · p95: %{customdata[0]:.0f} s"
+    fig.add_bar(y=d["etiqueta"], x=d["p50"], orientation="h", name="Mediana (p50)",
+                marker_color=NARANJA, customdata=d[["p95", "n", "nombre"]],
+                hovertemplate="<b>%{customdata[2]}</b><br>p50: %{x:.0f} s · p95: %{customdata[0]:.0f} s"
                               "<br>%{customdata[1]} ejecuciones<extra></extra>")
-    fig.add_scatter(y=d["nombre"], x=d["p95"], mode="markers", name="p95",
+    fig.add_scatter(y=d["etiqueta"], x=d["p95"], mode="markers", name="p95 (casi siempre por debajo)",
                     marker=dict(color="#FAFAFA", size=9, symbol="line-ns-open", line_width=2),
                     hoverinfo="skip")
-    fig.update_layout(title="Duración por automatización (segundos) · top 15 más lentas",
-                      xaxis_title="", yaxis_title="", legend_orientation="h", legend_y=-0.12)
-    st.plotly_chart(dark(fig, height=440), use_container_width=True)
+    fig.update_layout(title="Duración por automatización · top 15 más lentas",
+                      xaxis_title="segundos", yaxis_title="", yaxis_automargin=True,
+                      legend_orientation="h", legend_y=-0.15)
+    # Sin barra de herramientas: tapaba el título.
+    st.plotly_chart(dark(fig, height=480), use_container_width=True, config={"displayModeBar": False})
 with c4:
     m = mapa_calor(df)
     fig = go.Figure(go.Heatmap(
