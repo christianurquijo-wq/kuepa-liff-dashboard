@@ -17,10 +17,10 @@ import pandas as pd
 import streamlit as st
 
 from utils.ops_auth import es_admin, requiere_login
-from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar
+from utils.ops_data import TZ, leer_catalogo, leer_log, leer_progreso, refrescar
 from utils.ops_dispatch import buscar_run, runs_recientes
 from utils.ops_metrics import preparar, ultimo_lote
-from utils.ops_n8n import estado_solicitud
+from utils.ops_n8n import aplicar_progreso, estado_solicitud
 from utils.ops_ui import boton_ejecutar
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, badge, inject_css, kpi_row
 
@@ -70,6 +70,10 @@ def seguimiento():
         st.markdown("**Seguimiento en vivo** · se actualiza cada 20 s")
         # Ejecuciones de n8n ya asignadas a un clic, para no asignar la misma a dos clics.
         ocupados = {s["ejecucion_id"] for s in sol if s.get("ejecucion_id")}
+        # Opción A: duración típica (mediana de las exitosas) para estimar el avance.
+        tipicas = (log[log["exito"]].groupby("automatizacion_id")["duracion_seg"].median().to_dict()
+                   if len(log) else {})
+        progreso = leer_progreso() if any(x.get("plataforma") == "n8n" and not x.get("final") for x in sol) else {}
         for s in reversed(sol[-8:]):
             if s["plataforma"] == "github":
                 run =buscar_run(s["repo"], s["request_id"])
@@ -84,7 +88,9 @@ def seguimiento():
                 if s.get("final"):  # ya terminó: no se vuelve a consultar n8n
                     info = s["resultado_n8n"]
                 else:
-                    info = estado_solicitud(s, ocupados - {s.get("ejecucion_id", "")})
+                    info = estado_solicitud(s, ocupados - {s.get("ejecucion_id", "")},
+                                            tipicas.get(f"n8n:{s.get('workflow_id', '')}"))
+                    info = aplicar_progreso(info, progreso.get(s["request_id"]))  # opción B
                     if info["ejecucion_id"]:
                         s["ejecucion_id"] = info["ejecucion_id"]
                         ocupados.add(info["ejecucion_id"])

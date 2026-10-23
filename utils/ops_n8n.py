@@ -200,8 +200,37 @@ def _fmt_dur(seg: float | None) -> str:
     return f"{seg // 60} min {seg % 60:02d} s" if seg >= 60 else f"{seg} s"
 
 
+def _estimado(espera: float, tipica: float | None) -> tuple[float | None, str]:
+    """Opción A: avance estimado con la duración típica (mediana de las exitosas en el LOG)."""
+    if not tipica or tipica <= 0:
+        return None, ""
+    if espera > tipica * 1.5:
+        return 0.95, f"más de lo habitual (suele tardar {_fmt_dur(tipica)})"
+    pct = min(espera / tipica, 0.95)
+    return pct, f"≈ {pct * 100:.0f} % · suele tardar {_fmt_dur(tipica)}"
+
+
+def aplicar_progreso(info: dict, prog: dict | None) -> dict:
+    """Opción B: si el flujo reportó su paso en la hoja PROGRESO, reemplaza el estimado por el
+    paso real ("Paso 3 de 9: CRM (Backup)") y la barra exacta. No toca los finales."""
+    if not prog or info.get("final"):
+        return info
+    try:
+        n, total = int(float(prog.get("paso_n") or 0)), int(float(prog.get("total_pasos") or 0))
+    except (TypeError, ValueError):
+        return info
+    if not total:
+        return info
+    base = info["texto"].split(" · ")[0]
+    if base.startswith("⟳ Iniciando"):
+        base = "⟳ Ejecutando"
+    return {**info, "avance": min(n / total, 0.99),
+            "texto": f"{base} · Paso {n} de {total}: {prog.get('paso', '')}"
+                     + (f" · {prog.get('actualizado')}" if prog.get("actualizado") else "")}
+
+
 # ------------------------------------------------------------------ para el panel
-def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
+def estado_solicitud(sol: dict, ocupados: set[str], tipica: float | None = None) -> dict:
     """Estado legible de un clic a un flujo de n8n. Nunca lanza excepción.
 
     Devuelve: texto, final (bool), exito (bool|None), url, ejecucion_id, error, avance."""
@@ -226,11 +255,11 @@ def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
     if ej is None:
         espera = ahora - float(sol.get("ts") or ahora)
         limite = max(float(sol.get("timeout_min") or 30), 30) * 60
-        if espera < 90:
-            texto = "⟳ Iniciando en n8n…"
-        elif espera < limite:  # lo normal en flujos largos: n8n la publica al terminar
-            texto = (f"⟳ En proceso en n8n · {_fmt_dur(espera)} desde el clic "
-                     "(n8n la mostrará con su resultado al terminar)")
+        avance, est = _estimado(espera, tipica)
+        if espera < limite:  # lo normal: la API de n8n solo publica la ejecución al terminar
+            texto = (f"⟳ {'Iniciando' if espera < 30 else 'En proceso'} en n8n · {_fmt_dur(espera)} desde el clic"
+                     + (f" · {est}" if est else " (n8n la mostrará con su resultado al terminar)"))
+            return {**base, "texto": texto, "avance": avance}
         else:  # pista para diagnosticar: qué flujo se consultó y qué tiene guardado
             ultima = max((str(e.get("startedAt", ""))[:16].replace("T", " ") for e in lista), default="ninguna")
             texto = (f"Enviada a n8n · no aparece su ejecución en el flujo {wf} "
@@ -249,6 +278,10 @@ def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
         if info["nodos"] and not out["final"]:
             out["avance"] = min(info["nodos"] / total, 0.99) if total else None
             partes.append(f"{info['nodos']} de {total} nodos · en «{info['ultimo_nodo']}»")
+        elif not out["final"]:
+            out["avance"], est = _estimado(_duracion(ej.get("startedAt"), None, ahora) or 0, tipica)
+            if est:
+                partes.append(est)
         if estado in FINALES and estado != "success":
             out["error"] = (f"Nodo «{info['nodo_error']}»: " if info["nodo_error"] else "") + (info["mensaje"] or estado)
     except requests.RequestException:

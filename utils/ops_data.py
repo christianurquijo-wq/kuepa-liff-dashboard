@@ -85,6 +85,17 @@ def registrar_solicitud(fila: dict) -> None:
         st.warning(f"No se pudo registrar la solicitud: {exc}")
 
 
+@st.cache_data(ttl=10, show_spinner=False)
+def leer_progreso() -> dict:
+    """Hoja PROGRESO (la escriben los flujos de n8n que reportan su paso): {request_id: fila}.
+    Si la hoja no existe o falla la lectura, devuelve {} y el panel usa el avance estimado."""
+    try:
+        filas = _hoja("PROGRESO").get_all_records()
+    except Exception:  # noqa: BLE001 -- el progreso es opcional
+        return {}
+    return {str(f.get("request_id", "")).strip(): f for f in filas if str(f.get("request_id", "")).strip()}
+
+
 def refrescar() -> None:
     leer_catalogo.clear()
     leer_log.clear()
