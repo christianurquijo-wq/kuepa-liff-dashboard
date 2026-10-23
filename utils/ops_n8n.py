@@ -99,17 +99,42 @@ def _explicar(exc: requests.RequestException) -> str:
 def _ts(valor) -> float | None:
     if not valor:
         return None
-    return datetime.fromisoformat(str(valor).replace("Z", "+00:00")).timestamp()
+    d = datetime.fromisoformat(str(valor).replace("Z", "+00:00"))
+    if d.tzinfo is None:  # n8n sin zona: se asume UTC (no la hora del servidor de Streamlit)
+        d = d.replace(tzinfo=timezone.utc)
+    return d.timestamp()
 
 
-def _elegir(lista: list[dict], desde_ts: float, ocupados: set[str]) -> dict | None:
+def _num(ejecucion_id) -> int:
+    try:
+        return int(str(ejecucion_id))
+    except ValueError:
+        return -1
+
+
+def ultimo_id(workflow_id: str) -> int | None:
+    """ID de la ejecución más reciente del flujo justo ANTES de disparar. Los IDs de n8n son
+    crecientes: la del clic será la primera mayor a este, sin depender de relojes ni zonas."""
+    if not configurado() or not workflow_id or workflow_id.startswith("ID_"):
+        return None
+    try:
+        datos = _get("/executions", workflowId=workflow_id, limit=1).get("data", [])
+    except requests.RequestException:
+        return None
+    return _num(datos[0]["id"]) if datos else 0
+
+
+def _elegir(lista: list[dict], desde_ts: float, ocupados: set[str], base_id: int | None = None) -> dict | None:
     """La primera ejecución por webhook que arrancó después del clic (margen 20 s por reloj)
     y que no se haya asignado ya a otro clic de la misma sesión."""
-    candidatas = [e for e in lista
-                  if str(e.get("mode")) == "webhook"
-                  and (_ts(e.get("startedAt")) or 0) >= desde_ts - 20
-                  and str(e.get("id")) not in ocupados]
-    return min(candidatas, key=lambda e: _ts(e.get("startedAt")) or 0) if candidatas else None
+    if base_id is not None:  # criterio principal: ID mayor al último antes del clic
+        despues = [e for e in lista if _num(e.get("id")) > base_id and str(e.get("id")) not in ocupados]
+    else:                    # respaldo: por hora de inicio
+        despues = [e for e in lista
+                   if (_ts(e.get("startedAt")) or 0) >= desde_ts - 20 and str(e.get("id")) not in ocupados]
+    # Se prefieren las de modo webhook; si n8n las reporta con otro modo, se toma la primera igual.
+    candidatas = [e for e in despues if str(e.get("mode")) == "webhook"] or despues
+    return min(candidatas, key=lambda e: _num(e.get("id"))) if candidatas else None
 
 
 def _resumen_detalle(det: dict) -> dict:
@@ -152,17 +177,24 @@ def estado_solicitud(sol: dict, ocupados: set[str]) -> dict:
     if not wf or wf.startswith("ID_"):
         return {**base, "texto": "Enviada a n8n · el CATALOGO no tiene el ID del flujo (columna script)"}
     ahora = datetime.now(timezone.utc).timestamp()
+    lista: list[dict] = []
     try:
         if sol.get("ejecucion_id"):  # ya ubicada en una vuelta anterior: se consulta directo
             ej = detalle(str(sol["ejecucion_id"]))
         else:
-            ej = _elegir(ejecuciones(wf), float(sol.get("ts") or 0), ocupados)
+            lista = ejecuciones(wf)
+            ej = _elegir(lista, float(sol.get("ts") or 0), ocupados, sol.get("base_id"))
     except requests.RequestException as exc:
         return {**base, "texto": f"Enviada a n8n · no se pudo consultar su API ({_explicar(exc)})"}
     if ej is None:
         espera = ahora - float(sol.get("ts") or ahora)
-        texto = ("⟳ Iniciando en n8n…" if espera < 90 else
-                 "Enviada a n8n · aún no aparece la ejecución (¿el flujo no guarda ejecuciones por webhook?)")
+        if espera < 90:
+            texto = "⟳ Iniciando en n8n…"
+        else:  # pista para diagnosticar: qué flujo se consultó y qué tiene guardado
+            ultima = max((str(e.get("startedAt", ""))[:16].replace("T", " ") for e in lista), default="ninguna")
+            texto = (f"Enviada a n8n · no aparece su ejecución en el flujo {wf} "
+                     f"({len(lista)} guardadas, última: {ultima} UTC). Revisa el ID en el CATALOGO "
+                     "y que el flujo guarde ejecuciones")
         return {**base, "texto": texto}
 
     eid, estado = str(ej.get("id")), str(ej.get("status") or ("success" if ej.get("finished") else "running"))
