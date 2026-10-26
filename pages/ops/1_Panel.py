@@ -90,14 +90,17 @@ def seguimiento():
                 else:
                     info = estado_solicitud(s, ocupados - {s.get("ejecucion_id", "")},
                                             tipicas.get(f"n8n:{s.get('workflow_id', '')}"))
-                    info = aplicar_progreso(info, progreso.get(s["request_id"]))  # opción B
+                    errores = [v for k, v in progreso.items() if k.startswith(f"{s['request_id']}·error")]
+                    info = aplicar_progreso(info, progreso.get(s["request_id"]), errores)  # opción B
                     if info["ejecucion_id"]:
                         s["ejecucion_id"] = info["ejecucion_id"]
                         ocupados.add(info["ejecucion_id"])
                     if info["final"]:
                         s["final"], s["resultado_n8n"] = True, info
-                        st.toast(f"{s['nombre']}: {'terminó bien' if info['exito'] else 'falló'}",
-                                 icon="✅" if info["exito"] else "❌")
+                        bien = info["exito"] and not info.get("error")
+                        st.toast(f"{s['nombre']}: " + ("terminó bien" if bien else
+                                 "terminó con pasos fallidos" if info["exito"] else "falló"),
+                                 icon="✅" if bien else "⚠️" if info["exito"] else "❌")
                 estado, url = info["texto"], info["url"]
             enlace = f" · [ver en n8n]({url})" if url and s.get("plataforma") == "n8n" else (
                 f" · [ver ejecución]({url})" if url else "")

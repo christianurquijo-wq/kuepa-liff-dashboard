@@ -220,9 +220,17 @@ def _estimado(espera: float, tipica: float | None) -> tuple[float | None, str]:
     return pct, f"≈ {pct * 100:.0f} % · suele tardar {_fmt_dur(tipica)}"
 
 
-def aplicar_progreso(info: dict, prog: dict | None) -> dict:
+def aplicar_progreso(info: dict, prog: dict | None, errores: list[dict] | None = None) -> dict:
     """Opción B: si el flujo reportó su paso en la hoja PROGRESO, reemplaza el estimado por el
-    paso real ("Paso 3 de 9: CRM (Backup)") y la barra exacta. No toca los finales."""
+    paso real ("Paso 3 de 9: CRM (Backup)") y la barra exacta.
+    errores: filas de PROGRESO con estado «error» de esta ejecución (request_id·error·N). Se muestran
+    en rojo aunque n8n marque el flujo como exitoso (las ramas con salida de error no lo detienen)."""
+    errores = [e for e in (errores or []) if str(e.get("estado", "")).lower() == "error"]
+    if errores:
+        detalle = "\n".join(f"• {e.get('paso', '')}" for e in errores)
+        info = {**info, "error": (info.get("error") + "\n" if info.get("error") else "") + detalle}
+        if info.get("final") and info.get("exito"):
+            info["texto"] = info["texto"].replace("✔ Exitosa", f"⚠ Terminó con {len(errores)} paso(s) fallido(s)")
     if not prog or info.get("final"):
         return info
     try:
@@ -236,7 +244,8 @@ def aplicar_progreso(info: dict, prog: dict | None) -> dict:
         base = "⟳ Ejecutando"
     return {**info, "avance": min(n / total, 0.99),
             "texto": f"{base} · Paso {n} de {total}: {prog.get('paso', '')}"
-                     + (f" · {prog.get('actualizado')}" if prog.get("actualizado") else "")}
+                     + (f" · {prog.get('actualizado')}" if prog.get("actualizado") else "")
+                     + (f" · ⚠ {len(errores)} con error" if errores else "")}
 
 
 # ------------------------------------------------------------------ para el panel
