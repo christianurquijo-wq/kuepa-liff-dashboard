@@ -18,6 +18,7 @@ Notas:
 """
 from __future__ import annotations
 
+import math
 from datetime import datetime, timezone
 
 import requests
@@ -193,8 +194,16 @@ def _duracion(inicio, fin, ahora_ts: float) -> float | None:
     return (_ts(fin) or ahora_ts) - a
 
 
+def _valido(x) -> bool:
+    """Número real y finito (descarta None, NaN e infinito)."""
+    try:
+        return x is not None and math.isfinite(float(x))
+    except (TypeError, ValueError):
+        return False
+
+
 def _fmt_dur(seg: float | None) -> str:
-    if seg is None:
+    if not _valido(seg):
         return ""
     seg = max(0, int(seg))
     return f"{seg // 60} min {seg % 60:02d} s" if seg >= 60 else f"{seg} s"
@@ -202,7 +211,8 @@ def _fmt_dur(seg: float | None) -> str:
 
 def _estimado(espera: float, tipica: float | None) -> tuple[float | None, str]:
     """Opción A: avance estimado con la duración típica (mediana de las exitosas en el LOG)."""
-    if not tipica or tipica <= 0:
+    # La mediana del LOG puede venir vacía (NaN) si el flujo no tiene duraciones registradas.
+    if not _valido(tipica) or tipica <= 0 or not _valido(espera):
         return None, ""
     if espera > tipica * 1.5:
         return 0.95, f"más de lo habitual (suele tardar {_fmt_dur(tipica)})"
