@@ -84,6 +84,9 @@ ops_manual = st.Page("pages/ops/0_Manual.py", title="Manual de automatizaciones"
                      icon="📘")
 ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel")
 ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis")
+# oct-2026: horas de trabajo manual ahorradas por las automatizaciones. PÚBLICA (solo horas por
+# automatización/proyecto, sin datos personales). Reglas en utils/ops_ahorro.py.
+ops_ahorro = st.Page("pages/ops/3_Ahorro.py", title="Ahorro de tiempo", url_path="ops-ahorro", icon="⏱️")
 
 # oct-2026: EFE General -- migración de «Dash General EFE2» (n8n), que ya no cargaba.
 # Requiere login (misma lista del Panel de control): Consulta tiene datos personales.
@@ -103,7 +106,7 @@ PROYECTOS = {
     "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
     "IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],
-    "Operaciones": [ops_panel, ops_analisis],
+    "Operaciones": [ops_panel, ops_analisis, ops_ahorro],
 }
 
 pg = st.navigation(PROYECTOS)
