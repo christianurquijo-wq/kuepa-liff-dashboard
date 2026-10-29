@@ -60,6 +60,24 @@ with col3, st.container(border=True):
         use_container_width=True,
     )
 
+# oct-2026: EFE General (migrado de n8n). Pide login con Google.
+st.write("")
+with st.container(border=True):
+    c1, c2 = st.columns([4, 1.3], vertical_alignment="center")
+    with c1:
+        st.markdown("### 📈 EFE General")
+        st.caption(
+            "Colsubsidio, Suba, Ecolombia y Jóvenes a la E: estado académico, tendencias por día, "
+            "semana o mes, satisfacción, caracterización, empleabilidad y KPIs históricos. Requiere iniciar sesión."
+        )
+    with c2:
+        st.page_link(
+            "pages/efe/1_Overview.py",
+            label="Ir a EFE General",
+            icon="➡️",
+            use_container_width=True,
+        )
+
 # oct-2026: acceso al Manual de automatizaciones (consulta pública).
 st.write("")
 with st.container(border=True):

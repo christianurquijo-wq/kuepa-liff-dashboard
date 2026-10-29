@@ -25,8 +25,12 @@ def _correo() -> str:
     return str(getattr(st.user, "email", "") or "").strip().lower()
 
 
-def requiere_login() -> str:
-    """Corta la página si no hay sesión autorizada. Devuelve el correo."""
+def requiere_login(titulo: str = "Operaciones",
+                   mensaje: str = "Esta sección dispara procesos reales. Inicia sesión con tu cuenta de Google de Kuepa.",
+                   ) -> str:
+    """Corta la página si no hay sesión autorizada. Devuelve el correo.
+    oct-2026: titulo/mensaje opcionales para reutilizar el mismo login en EFE General
+    (misma lista de usuarios del Panel de control)."""
     if "auth" not in st.secrets:
         st.error(
             "Falta configurar el login con Google ([auth] en los secrets de Streamlit). "
@@ -35,8 +39,8 @@ def requiere_login() -> str:
         st.stop()
 
     if not st.user.is_logged_in:
-        st.title("Operaciones")
-        st.info("Esta sección dispara procesos reales. Inicia sesión con tu cuenta de Google de Kuepa.")
+        st.title(titulo)
+        st.info(mensaje)
         st.button("Iniciar sesión con Google", type="primary", on_click=st.login)
         st.stop()
 
@@ -47,7 +51,7 @@ def requiere_login() -> str:
     dominio = str(cfg.get("dominio", "")).strip().lower()
     autorizado = correo in usuarios or correo in admins or (dominio and correo.endswith("@" + dominio))
     if not autorizado:
-        st.error(f"La cuenta {correo} no está autorizada para Operaciones. Pide acceso a Christian.")
+        st.error(f"La cuenta {correo} no está autorizada para {titulo}. Pide acceso a Christian.")
         st.button("Cerrar sesión", on_click=st.logout)
         st.stop()
 

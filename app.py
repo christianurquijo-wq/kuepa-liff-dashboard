@@ -85,8 +85,21 @@ ops_manual = st.Page("pages/ops/0_Manual.py", title="Manual de automatizaciones"
 ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel")
 ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis")
 
+# oct-2026: EFE General -- migración de «Dash General EFE2» (n8n), que ya no cargaba.
+# Requiere login (misma lista del Panel de control): Consulta tiene datos personales.
+# Reglas de negocio en utils/efe_metrics.py; consultas en queries/efe.py.
+efe_overview = st.Page("pages/efe/1_Overview.py", title="Overview", url_path="efe-overview")
+efe_satisfaccion = st.Page("pages/efe/2_Satisfaccion.py", title="Satisfacción", url_path="efe-satisfaccion")
+efe_caracterizacion = st.Page("pages/efe/3_Caracterizacion.py", title="Caracterización", url_path="efe-caracterizacion")
+efe_empleabilidad = st.Page("pages/efe/4_Empleabilidad.py", title="Empleabilidad", url_path="efe-empleabilidad")
+efe_tendencias = st.Page("pages/efe/5_Tendencias.py", title="Tendencias", url_path="efe-tendencias")
+efe_kpis = st.Page("pages/efe/6_KPIs_Historicos.py", title="KPIs históricos", url_path="efe-kpis")
+efe_consulta = st.Page("pages/efe/7_Consulta.py", title="Consulta", url_path="efe-consulta")
+
 PROYECTOS = {
     "General": [inicio, ops_manual],
+    "EFE General": [efe_overview, efe_tendencias, efe_satisfaccion, efe_caracterizacion, efe_empleabilidad,
+                    efe_kpis, efe_consulta],
     "LIFF Data": [liff_data, liff_empleabilidad],
     "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
     "IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],
