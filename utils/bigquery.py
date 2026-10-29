@@ -26,7 +26,12 @@ def get_client() -> bigquery.Client:
     credentials_info = dict(st.secrets["gcp_service_account"])
     credentials = service_account.Credentials.from_service_account_info(
         credentials_info,
-        scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        # oct-2026: + Drive (solo lectura). Las vistas Unificado_* de EFE leen tablas EXTERNAS
+        # vinculadas a Google Sheets, y BigQuery necesita permiso de Drive para leerlas
+        # ("Permission denied while getting Drive credentials"). No cambia nada para las
+        # tablas normales (LIFF, Ecolombia, IQ).
+        scopes=["https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/drive.readonly"],
     )
     return bigquery.Client(credentials=credentials, project=credentials_info["project_id"])
 

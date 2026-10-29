@@ -18,10 +18,29 @@ import streamlit as st
 
 from queries import efe as q
 from utils import efe_metrics as m
-from utils.bigquery import run_query
+from utils.bigquery import run_query as _run_query
 
 PESTANA_HISTORICO = "EFE_KPI_HISTORICO"
 WEBHOOK_CORREO = "https://n8n.kuepa.com/webhook/enviar-data-correo"
+
+
+def run_query(sql: str) -> pd.DataFrame:
+    """run_query con el error de BigQuery VISIBLE. Streamlit Cloud oculta el mensaje de las
+    excepciones ("error message is redacted"); los errores de BigQuery no traen datos personales
+    (tabla, columna, permiso), así que se muestran para poder diagnosticar."""
+    try:
+        return _run_query(sql)
+    except Exception as exc:
+        errores = getattr(exc, "errors", None) or []
+        detalle = "; ".join(e.get("message", "") for e in errores if isinstance(e, dict)) or getattr(exc, "message", "") or str(exc)
+        tabla = next((t for t in ("Seguimiento_DIARIO", "Empleabilidad_DIARIO", "Unificado_Seguimiento_APPEND",
+                                  "Unificado_Empleabilidad_APPEND", "Unificado_Seguimiento", "Unificado_Satisfaccion",
+                                  "Unificado_Caracterizacion", "Unificado_Empleabilidad") if t in sql), "BigQuery")
+        st.error(f"Error de BigQuery al leer {tabla}: {detalle[:600]}")
+        if "drive" in detalle.lower():
+            st.info("La vista lee una hoja de Google Sheets vinculada: comparte esa hoja (Lector) con el correo "
+                    "de la cuenta de servicio del dashboard.")
+        st.stop()
 
 
 def _cfg() -> dict:
@@ -48,7 +67,7 @@ def empleabilidad() -> pd.DataFrame:
 # --------------------------------------------------------------------------- series
 def _hay_diaria(tabla: str) -> bool:
     try:
-        return int(run_query(q.existe_tabla(tabla))["n"].iloc[0]) > 0
+        return int(_run_query(q.existe_tabla(tabla))["n"].iloc[0]) > 0  # sin mensaje: si falla, no hay diaria
     except Exception:
         return False
 
