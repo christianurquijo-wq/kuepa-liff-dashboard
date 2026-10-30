@@ -168,8 +168,7 @@ sin = tabla[tabla["estado"] == a.ESTADO_SIN]
 if not sin.empty:
     with st.expander(f"⚠️ {len(sin)} automatizaciones con ejecuciones pero sin minutos estimados (no suman)"):
         st.dataframe(sin[["nombre", "proyecto", "ejecuciones", "exitosas"]], hide_index=True, use_container_width=True)
-        st.caption("Pon sus minutos en el CATALOGO (columna min_ahorro_ejecucion). Las que digan "
-                   "«sin ficha» no tienen fila en el CATALOGO: agrégala o ignóralas si son internas.")
+        st.caption("Pon sus minutos en el CATALOGO (columna min_ahorro_ejecucion).")
 
 if (df["fuente"] == "Historial reconstruido").any():
     n_hist = int((df["fuente"] == "Historial reconstruido").sum())

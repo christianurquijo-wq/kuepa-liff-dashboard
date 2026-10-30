@@ -64,6 +64,12 @@ def preparar(log: pd.DataFrame, catalogo: pd.DataFrame) -> pd.DataFrame:
         mapa = (catalogo.drop_duplicates("automatizacion_id")
                 .set_index("automatizacion_id")[["nombre", "proyecto"]])
         df = df.join(mapa, on="automatizacion_id")
+        # oct-2026 (Christian): el panel SOLO muestra automatizaciones del CATALOGO. Las ejecuciones
+        # de flujos sin ficha (pruebas, flujos de otras cuentas, scripts internos) se descartan aquí,
+        # así no aparecen en el Panel, el Análisis ni el Manual. Para mostrar un flujo: darle su fila.
+        df = df[df["automatizacion_id"].isin(set(catalogo["automatizacion_id"]))].copy()
+        if df.empty:
+            return df.assign(dia=[], hora=[], dia_semana=[])
     else:
         df["nombre"], df["proyecto"] = np.nan, np.nan
     sin_nombre = df["nombre"].isna() | df["nombre"].astype(str).str.strip().eq("")

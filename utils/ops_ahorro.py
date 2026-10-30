@@ -69,6 +69,11 @@ def preparar(log: pd.DataFrame, historico: pd.DataFrame, catalogo: pd.DataFrame)
             cat[c] = ""
     mapa = cat.drop_duplicates("automatizacion_id").set_index("automatizacion_id")[cols]
     df = df.join(mapa, on="automatizacion_id")
+    # Igual que el resto de Operaciones: solo automatizaciones del CATALOGO (sin flujos "sin ficha").
+    if not cat.empty:
+        df = df[df["automatizacion_id"].isin(set(cat["automatizacion_id"]))].copy()
+        if df.empty:
+            return df
 
     df["en_catalogo"] = df["nombre"].notna()
     sin_nombre = df["nombre"].isna() | df["nombre"].astype(str).str.strip().eq("")
