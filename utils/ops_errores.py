@@ -212,11 +212,13 @@ CATALOGO: list[dict] = [
      "reportar": False},
     {"id": "pdf_tunel", "categoria": AUTOMATIZACION, "codigos": "PDF",
      "patrones": [r"Convertidor a PDF", r"crear-pdf", r"trycloudflare"],
-     "titulo": "El servicio que arma los PDF no está disponible",
-     "que_paso": "Los PDF de evidencia se generan en un servicio que corre en el computador de Christian; "
-                 "si está apagado, el flujo no puede crear los PDF.",
-     "que_hacer": ["No sirve reintentar hasta que el servicio esté encendido.", REPORTA],
-     "reportar": True},
+     "titulo": "El servicio que arma los PDF no estaba disponible",
+     "que_paso": "Los PDF de Remisiones se generan en un servicio temporal que se abre solo cuando ejecutas "
+                 "«STC 3.0 · Remisiones» desde el Panel, y se cierra al terminar. Si el flujo se ejecutó "
+                 "directamente en n8n, o el servicio no alcanzó a abrir, n8n no encuentra dónde crear los PDF.",
+     "que_hacer": ["Ejecuta Remisiones desde el Panel de control (no desde n8n).",
+                   "Si vuelve a fallar desde el panel, " + REPORTA[0].lower() + REPORTA[1:]],
+     "reportar": False},
     {"id": "libreria", "categoria": AUTOMATIZACION, "codigos": "Instalación",
      "patrones": [r"ModuleNotFoundError", r"No module named"],
      "titulo": "Falta un componente para ejecutar la automatización",
