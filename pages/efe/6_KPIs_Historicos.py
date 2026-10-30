@@ -86,7 +86,15 @@ for i in range(0, len(graficas), 2):
             extra = {} if tipo == "bar" else {"markers": True}
             fig = fn(datos, x="mes", y=nombre, title=nombre, text=nombre, color_discrete_sequence=[col_color], **extra)
             if tipo == "line":
-                fig.update_traces(textposition="top center")
+                fig.update_traces(textposition="top center", cliponaxis=False)  # que no se corte la etiqueta en 100
+            # Escala completa: los % (y el NPS) de 0 a 100 y la satisfacción de 0 a 5, para no exagerar
+            # variaciones pequeñas (antes el eje se ajustaba solo al rango de los datos).
+            if campo in ("retencion", "aprobacion"):
+                fig.update_yaxes(range=[0, 100], dtick=20, ticksuffix="%")
+            elif campo == "nps":
+                fig.update_yaxes(range=[0, 100], dtick=20)
+            elif campo == "satisfaccion":
+                fig.update_yaxes(range=[0, 5], dtick=1)
             st.plotly_chart(dark(eje_periodo(fig), 300), use_container_width=True)
 
 st.subheader("Detalle por proyecto y mes")
