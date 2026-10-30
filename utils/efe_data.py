@@ -19,6 +19,7 @@ import streamlit as st
 from queries import efe as q
 from utils import efe_metrics as m
 from utils.bigquery import run_query as _run_query
+from utils.ops_errores import mostrar
 
 PESTANA_HISTORICO = "EFE_KPI_HISTORICO"
 WEBHOOK_CORREO = "https://n8n.kuepa.com/webhook/enviar-data-correo"
@@ -36,10 +37,9 @@ def run_query(sql: str) -> pd.DataFrame:
         tabla = next((t for t in ("Seguimiento_DIARIO", "Empleabilidad_DIARIO", "Unificado_Seguimiento_APPEND",
                                   "Unificado_Empleabilidad_APPEND", "Unificado_Seguimiento", "Unificado_Satisfaccion",
                                   "Unificado_Caracterizacion", "Unificado_Empleabilidad") if t in sql), "BigQuery")
-        st.error(f"Error de BigQuery al leer {tabla}: {detalle[:600]}")
-        if "drive" in detalle.lower():
-            st.info("La vista lee una hoja de Google Sheets vinculada: comparte esa hoja (Lector) con el correo "
-                    "de la cuenta de servicio del dashboard.")
+        # Explicado en lenguaje práctico, con detalle técnico plegado y botón Reportar (utils/ops_errores.py)
+        mostrar(f"Error de BigQuery al leer {tabla}: {detalle[:1200]}", f"EFE · {tabla}",
+                str(getattr(st.user, "email", "") or ""))
         st.stop()
 
 

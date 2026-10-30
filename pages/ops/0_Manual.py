@@ -23,7 +23,8 @@ import streamlit as st
 
 from utils.ops_auth import es_admin, sesion_opcional
 from utils.ops_data import TZ, leer_catalogo, leer_log, refrescar
-from utils.ops_manual import (GUIA_ERRORES, ORDEN_SEMAFORO, SEMAFORO, buscar, diagrama_dot, estados,
+from utils.ops_errores import mostrar, mostrar_pendiente, render_catalogo
+from utils.ops_manual import (ORDEN_SEMAFORO, SEMAFORO, buscar, diagrama_dot, estados,
                               normalizar, partes)
 from utils.ops_metrics import preparar
 from utils.ops_ui import boton_ejecutar
@@ -38,6 +39,7 @@ col_t.title("📘 Manual de automatizaciones")
 if col_b.button("↻ Actualizar", use_container_width=True):
     refrescar()
     st.rerun()
+mostrar_pendiente(correo or "")  # error del último clic en «Ejecutar», explicado
 st.caption("Qué hace cada automatización, cuándo usarla, de dónde lee y dónde escribe, y qué hacer si falla. "
            "Busca por proyecto, por palabra o por estado.")
 
@@ -147,7 +149,7 @@ def ficha(r: pd.Series) -> None:
                 st.caption("🔐 Inicia sesión arriba para ejecutar.")
         if r["semaforo"] == "REQUIERE" and r["ultimo_error"]:
             st.markdown("**Último error registrado**")
-            st.code(str(r["ultimo_error"])[:600], language="text")
+            mostrar(str(r["ultimo_error"]), f"Manual · {r['nombre']}", correo or "", compacto=True)
 
 
 tab_fichas, tab_flujo, tab_fallas, tab_ayuda = st.tabs(
@@ -179,17 +181,9 @@ with tab_flujo:
             st.graphviz_chart(diagrama_dot(sub), use_container_width=True)
 
 with tab_fallas:
-    st.caption("Errores conocidos y qué hacer. Si el tuyo no está aquí, revisa el mensaje completo en "
-               "Operaciones → Análisis de ejecuciones → Fallos recientes.")
-    q = st.text_input("Buscar en la guía", placeholder="ej. 401, columnas, token, n8n…", key="man_guia_q")
-    guia = [g for g in GUIA_ERRORES if not q.strip()
-            or q.strip().lower() in " ".join(g.values()).lower()]
-    if not guia:
-        st.info("No hay coincidencias en la guía.")
-    for g in guia:
-        with st.expander(f"⚠️ {g['sintoma']}"):
-            st.markdown(f"**Dónde aparece:** {g['donde']}  \n**Causa probable:** {g['causa']}  \n"
-                        f"**Qué hacer:** {g['accion']}")
+    st.caption("Qué significa cada mensaje de error y qué puedes hacer. Es el mismo catálogo de "
+               "Operaciones › Errores frecuentes.")
+    render_catalogo("man")
     st.page_link("pages/ops/2_Analisis.py", label="Ver fallos recientes en Análisis de ejecuciones", icon="📈")
 
 with tab_ayuda:

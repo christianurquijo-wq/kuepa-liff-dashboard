@@ -15,6 +15,7 @@ import streamlit as st
 
 from utils.ops_auth import pin_valido
 from utils.ops_data import TZ, registrar_solicitud
+from utils.ops_errores import guardar_pendiente
 from utils.ops_dispatch import disparar_github, disparar_n8n, nuevo_request_id
 from utils.ops_n8n import ultimo_id, ultimo_id_global
 
@@ -43,7 +44,9 @@ def disparar(item: dict, usuario: str) -> bool:
         })
         st.toast(f"▶ {item['nombre']}: {msg}", icon="✅")
     else:
-        st.toast(f"{item['nombre']}: {msg}", icon="⚠️")
+        # oct-2026: el error se explica en lenguaje práctico arriba de la página (utils/ops_errores.py)
+        guardar_pendiente(msg, f"Ejecutar · {item['nombre']}")
+        st.rerun()
     return ok
 
 
@@ -58,7 +61,8 @@ def boton_ejecutar(item: dict, usuario: str, admin: bool, prefijo: str = "") -> 
                 if pin_valido(pin):
                     disparar(item, usuario)
                 else:
-                    st.error("PIN incorrecto")
+                    guardar_pendiente("PIN incorrecto", f"Ejecutar · {item['nombre']}")
+                    st.rerun()
     elif item["sensible"]:
         with st.popover("▶ Ejecutar", use_container_width=True):
             st.caption("Automatización sensible. ¿Confirmas?")

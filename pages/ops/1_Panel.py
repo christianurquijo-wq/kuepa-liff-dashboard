@@ -19,6 +19,7 @@ import streamlit as st
 from utils.ops_auth import es_admin, requiere_login
 from utils.ops_data import TZ, leer_catalogo, leer_log, leer_progreso, refrescar
 from utils.ops_dispatch import buscar_run, runs_recientes
+from utils.ops_errores import mostrar, mostrar_pendiente
 from utils.ops_metrics import preparar, ultimo_lote
 from utils.ops_n8n import aplicar_progreso, estado_solicitud
 from utils.ops_ui import boton_ejecutar
@@ -37,6 +38,8 @@ if col_b.button("↻ Actualizar", use_container_width=True):
     refrescar()
     runs_recientes.clear()
     st.rerun()
+
+mostrar_pendiente(usuario)  # error del último clic en «Ejecutar», explicado
 
 catalogo = leer_catalogo()
 if catalogo.empty:
@@ -109,7 +112,7 @@ def seguimiento():
                 if info.get("avance") is not None:
                     st.progress(info["avance"])
                 if info.get("error"):
-                    st.error(info["error"], icon="✖")
+                    mostrar(info["error"], f"Seguimiento · {s['nombre']}", usuario, compacto=True)
         otros = [r for r in curso if not any(s["request_id"] in r["titulo"] for s in sol)]
         for r in otros:
             st.markdown(f"- {r['repo']} · {r['titulo']} · ⟳ {r['estado']} · [ver]({r['url']})")
@@ -136,6 +139,20 @@ def _ultima(item: pd.Series) -> tuple[str, str]:
     return u["estado"], f"{u['fecha_inicio']:%d-%b %H:%M} · {u['duracion_seg']:.0f} s · {u['origen_grupo']}"
 
 
+def _ultimo_error(item: pd.Series) -> str:
+    """Texto de error de la última ejecución fallida (para explicarlo en la tarjeta)."""
+    if not len(log):
+        return ""
+    sub = log[log["automatizacion_id"].eq(item["automatizacion_id"]) & ~log["exito"]]
+    if str(item["script"]).startswith("lote:"):
+        sub = log[log["lote"].astype(str).eq(str(item["script"]).split(":", 1)[1]) & ~log["exito"]]
+    if sub.empty:
+        return ""
+    u = sub.iloc[-1]
+    texto = str(u.get("error", "") or "").strip()
+    return texto if texto else str(u["estado"])
+
+
 def tarjeta(item: pd.Series) -> None:
     estado, detalle = _ultima(item)
     with st.container(border=True):
@@ -151,6 +168,9 @@ def tarjeta(item: pd.Series) -> None:
                         unsafe_allow_html=True)
             if item.get("descripcion"):
                 st.caption(item["descripcion"])
+            if estado in ("FALLIDO", "TIMEOUT"):
+                with st.expander("¿Por qué falló?"):
+                    mostrar(_ultimo_error(item) or estado, f"Panel · {item['nombre']}", usuario, compacto=True)
         with c2:
             # oct-2026: el botón vive en utils/ops_ui.py (lo comparte el Manual de automatizaciones)
             boton_ejecutar(item.to_dict(), usuario, admin)
