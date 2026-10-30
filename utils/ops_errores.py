@@ -200,6 +200,16 @@ CATALOGO: list[dict] = [
      "que_hacer": ["Espera 10 a 15 minutos y vuelve a ejecutar una sola vez.",
                    "Si es la auditoría con IA, espera al día siguiente."],
      "reportar": False},
+    {"id": "google_caido", "categoria": AUTOMATIZACION, "codigos": "500 · 502 · 503",
+     "patrones": [r"APIError: \[50[0234]\]", r"service is currently unavailable", r"Internal error encountered",
+                  r"backendError", r"HttpError 50[0234]", r"googleapis.*50[0234]"],
+     "titulo": "Google (Sheets, Drive o BigQuery) no respondió en ese momento",
+     "que_paso": "El servicio de Google estuvo caído o saturado por unos minutos y la automatización no pudo "
+                 "leer o escribir. No es un problema de la hoja ni de lo que hiciste.",
+     "que_hacer": ["Espera 10 a 15 minutos y vuelve a ejecutar una sola vez.",
+                   "Si es una carga programada, normalmente se corrige sola en la siguiente ejecución.",
+                   "Si se repite varias veces en el mismo día, " + REPORTA[0].lower() + REPORTA[1:]],
+     "reportar": False},
     {"id": "pdf_tunel", "categoria": AUTOMATIZACION, "codigos": "PDF",
      "patrones": [r"Convertidor a PDF", r"crear-pdf", r"trycloudflare"],
      "titulo": "El servicio que arma los PDF no está disponible",
@@ -307,7 +317,9 @@ def mostrar(texto: str, contexto: str, usuario: str = "", compacto: bool = False
         if not compacto or e["que_hacer"]:
             st.markdown("**Qué puedes hacer:**\n" + "\n".join(f"- {p}" for p in e["que_hacer"]))
         with st.expander("Detalle técnico (para soporte)"):
-            st.code(str(texto)[:1500], language="text")
+            texto_largo = str(texto)
+            # En los tracebacks la causa está en la ÚLTIMA línea: se muestra el final.
+            st.code(texto_largo if len(texto_largo) <= 1500 else "…" + texto_largo[-1500:], language="text")
         enviados = st.session_state.setdefault("ops_reportes_enviados", set())
         if clave in enviados:
             st.caption("✔ Ya reportaste este error.")
