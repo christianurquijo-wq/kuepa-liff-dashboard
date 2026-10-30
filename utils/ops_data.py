@@ -14,6 +14,8 @@ import gspread
 import pandas as pd
 import streamlit as st
 
+from utils.ops_periodicidad import normalizar as normalizar_periodicidad
+
 TZ = timezone(timedelta(hours=-5))
 _SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
@@ -56,7 +58,8 @@ def leer_catalogo() -> pd.DataFrame:
     df["automatizacion_id"] = df.apply(
         lambda r: f"n8n:{r['script']}" if r["plataforma"] == "n8n" else f"{r['repo']}:{r['script']}", axis=1
     )
-    return df.reset_index(drop=True)
+    # oct-2026: periodicidad (etiqueta, filtro y desfase); alinea frecuencia_horas con el horario real
+    return normalizar_periodicidad(df.reset_index(drop=True))
 
 
 @st.cache_data(ttl=60, show_spinner=False)

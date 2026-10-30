@@ -124,6 +124,7 @@ def salud(df: pd.DataFrame, catalogo: pd.DataFrame, ahora: pd.Timestamp) -> pd.D
             "proyecto": info["proyecto"] if info is not None else "Sin catálogo",
             "activo": bool(info["activo"]) if info is not None else True,
             "frecuencia_esperada_h": freq or None,
+            "periodicidad": (info.get("periodicidad", "") if info is not None else "") or "Sin catálogo",
         }
         if g is None or g.empty:
             fila.update({"ejecuciones": 0, "ultimo_estado": "SIN DATOS", "atrasada": freq > 0})

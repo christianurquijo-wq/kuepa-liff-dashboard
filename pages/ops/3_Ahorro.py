@@ -157,7 +157,8 @@ tabla = a.tabla_automatizaciones(df)
 st.dataframe(
     tabla, hide_index=True, use_container_width=True,
     column_config={
-        "nombre": "Automatización", "proyecto": "Proyecto", "ejecuciones": "Ejecuciones",
+        "nombre": "Automatización", "proyecto": "Proyecto", "periodicidad": "Periodicidad",
+        "ejecuciones": "Ejecuciones",
         "exitosas": "Exitosas", "suman": "Suman", "sobre_tope": "Sobre tope",
         "min_ejecucion": st.column_config.NumberColumn("Min/ejecución", format="%.0f"),
         "tope": st.column_config.NumberColumn("Tope/día", format="%.0f"),

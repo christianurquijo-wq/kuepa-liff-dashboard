@@ -62,7 +62,8 @@ def preparar(log: pd.DataFrame, historico: pd.DataFrame, catalogo: pd.DataFrame)
     df = df.sort_values("fuente").drop_duplicates("id_ejecucion", keep="first")  # la bitácora manda
     df = df.sort_values("fecha_inicio").reset_index(drop=True)
 
-    cols = ["nombre", "proyecto", "responsable", "min_ahorro_ejecucion", "tope_ejecuciones_dia", "ahorro_estado"]
+    cols = ["nombre", "proyecto", "responsable", "min_ahorro_ejecucion", "tope_ejecuciones_dia", "ahorro_estado",
+            "periodicidad"]
     cat = catalogo.copy()
     for c in cols:
         if c not in cat:
@@ -80,6 +81,7 @@ def preparar(log: pd.DataFrame, historico: pd.DataFrame, catalogo: pd.DataFrame)
     df.loc[sin_nombre, "nombre"] = df[sin_nombre].apply(_nombre_respaldo, axis=1)
     df["proyecto"] = df["proyecto"].fillna("Sin catálogo").replace("", "Sin catálogo")
     df["responsable"] = df["responsable"].fillna("").replace("", "Sin responsable")
+    df["periodicidad"] = df["periodicidad"].fillna("").replace("", "Sin dato")
     df["min_unit"] = _num(df["min_ahorro_ejecucion"].fillna(""))
     infra = df["script"].astype(str).isin(INFRA) & ~df["en_catalogo"]
     df.loc[infra, "min_unit"] = 0.0
@@ -174,9 +176,11 @@ def tabla_automatizaciones(df: pd.DataFrame) -> pd.DataFrame:
               suman=("motivo", lambda s: int(s.eq("Suma").sum())),
               sobre_tope=("motivo", lambda s: int(s.eq("Sobre el tope diario").sum())),
               min_ejecucion=("min_unit", "first"), tope=("tope", "first"),
-              estado=("ahorro_estado", "first"), horas=("horas", "sum"))
+              estado=("ahorro_estado", "first"), periodicidad=("periodicidad", "first"),
+              horas=("horas", "sum"))
          .reset_index().sort_values("horas", ascending=False))
-    return g.drop(columns="automatizacion_id")
+    g = g.drop(columns="automatizacion_id")
+    return g[["nombre", "proyecto", "periodicidad"] + [c for c in g.columns if c not in ("nombre", "proyecto", "periodicidad")]]
 
 
 def matriz(df: pd.DataFrame, granularidad: str, filas: str = "proyecto") -> pd.DataFrame:

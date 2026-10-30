@@ -230,12 +230,13 @@ if proyectos:
 vista = s.assign(
     ultima_ejecucion=s["ultima_ejecucion"].map(lambda t: t.strftime("%d-%b %H:%M") if pd.notna(t) else "—"),
     atrasada=s["atrasada"].map({True: "⚠ Sí", False: "No"}),
-)[["nombre", "proyecto", "ultimo_estado", "ultima_ejecucion", "racha_fallos", "atrasada",
+)[["nombre", "proyecto", "periodicidad", "ultimo_estado", "ultima_ejecucion", "racha_fallos", "atrasada",
    "exito_pct", "ejecuciones", "frecuencia_esperada_h", "periodicidad_real_h", "dur_p50_seg", "dur_p95_seg"]]
 st.dataframe(
     vista, hide_index=True, use_container_width=True,
     column_config={
-        "nombre": "Automatización", "proyecto": "Proyecto", "ultimo_estado": "Último estado",
+        "nombre": "Automatización", "proyecto": "Proyecto", "periodicidad": "Periodicidad",
+        "ultimo_estado": "Último estado",
         "ultima_ejecucion": "Última ejecución",
         "racha_fallos": st.column_config.NumberColumn("Racha de fallos", format="%d"),
         "atrasada": "Atrasada",

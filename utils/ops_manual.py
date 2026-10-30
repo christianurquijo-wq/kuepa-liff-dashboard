@@ -90,6 +90,9 @@ def estados(catalogo: pd.DataFrame, log: pd.DataFrame, ahora: pd.Timestamp) -> p
             sem, motivo = "REQUIERE", f"Atrasada: no corre hace {horas:.0f} h (esperado cada {freq:.0f} h)."
         elif freq > 0:
             sem, motivo = "AL_DIA", "Corrió bien dentro de su frecuencia."
+        elif item.get("periodicidad_tipo") == "EVENTO":
+            sem, motivo = "MANUAL", ("Corre sola cuando ocurre un evento"
+                                     + (f" ({item['periodicidad_detalle']})." if item.get("periodicidad_detalle") else "."))
         else:
             sem, motivo = "MANUAL", "Se ejecuta a mano cuando se necesita."
         filas.append({

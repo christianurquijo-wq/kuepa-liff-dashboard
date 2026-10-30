@@ -22,6 +22,7 @@ from utils.ops_dispatch import buscar_run, runs_recientes
 from utils.ops_errores import mostrar, mostrar_pendiente
 from utils.ops_metrics import preparar, ultimo_lote
 from utils.ops_n8n import aplicar_progreso, estado_solicitud
+from utils.ops_periodicidad import chip, desfase, opciones_filtro, tipos_de
 from utils.ops_ui import boton_ejecutar
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, badge, inject_css, kpi_row
 
@@ -160,9 +161,11 @@ def tarjeta(item: pd.Series) -> None:
         with c1:
             plataforma = "n8n" if item["plataforma"] == "n8n" else "GitHub"
             extra = " · 🔒 sensible" if item["sensible"] else ""
-            st.markdown(f"**{item['nombre']}**  \n"
-                        f"<span style='color:#9A9A9A;font-size:0.8rem'>{plataforma} · "
-                        f"{item['frecuencia']}{extra}</span>", unsafe_allow_html=True)
+            # oct-2026: etiqueta de periodicidad junto al nombre (+ alerta si no cuadra con el historial)
+            st.markdown(f"<span style='font-weight:700;font-size:1rem;margin-right:8px'>{item['nombre']}</span>"
+                        f"{chip(item, alertas.get(item['automatizacion_id'], ''))}  \n"
+                        f"<span style='color:#9A9A9A;font-size:0.8rem'>{plataforma}{extra}</span>",
+                        unsafe_allow_html=True)
             st.markdown(badge(f"{ICONO_ESTADO.get(estado, '')} {estado}", COLOR_ESTADO.get(estado, GRIS))
                         + f"<span style='color:#AAAAAA;font-size:0.78rem;margin-left:8px'>{detalle}</span>",
                         unsafe_allow_html=True)
@@ -178,8 +181,20 @@ def tarjeta(item: pd.Series) -> None:
 
 # ------------------------------------------------------------------ Tarjetas por proyecto
 activos = catalogo[catalogo["activo"]]
-busqueda = st.text_input("Buscar automatización", placeholder="ej. JAE, satisfacción, lote…",
-                         label_visibility="collapsed")
+alertas = {r["automatizacion_id"]: a for _, r in activos.iterrows() if (a := desfase(r, log, ahora))}
+st.write("")
+c_busca, c_per = st.columns([2, 3], vertical_alignment="center")
+busqueda = c_busca.text_input("Buscar automatización", placeholder="ej. JAE, satisfacción, lote…",
+                              label_visibility="collapsed")
+filtro_per = c_per.pills("Periodicidad", opciones_filtro(activos), selection_mode="multi",
+                         label_visibility="collapsed", key="filtro_periodicidad")
+if filtro_per:
+    activos = activos[activos["periodicidad_tipo"].isin(tipos_de(filtro_per))]
+if alertas:
+    with st.expander(f"⚠ {len(alertas)} automatización(es) con desfase en su periodicidad"):
+        nombres = catalogo.set_index("automatizacion_id")["nombre"].to_dict()
+        for aid, texto in alertas.items():
+            st.markdown(f"- **{nombres.get(aid, aid)}**: {texto}")
 if busqueda:
     patron = busqueda.strip().lower()
     activos = activos[activos.apply(lambda r: patron in f"{r['nombre']} {r['script']} {r['proyecto']}".lower(), axis=1)]

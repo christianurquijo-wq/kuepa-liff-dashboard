@@ -27,6 +27,7 @@ from utils.ops_errores import mostrar, mostrar_pendiente, render_catalogo
 from utils.ops_manual import (ORDEN_SEMAFORO, SEMAFORO, buscar, diagrama_dot, estados,
                               normalizar, partes)
 from utils.ops_metrics import preparar
+from utils.ops_periodicidad import TIPOS, chip, desfase
 from utils.ops_ui import boton_ejecutar
 from utils.ui import AZUL, GRIS, NARANJA, ROJO, VERDE, inject_css, kpi_row
 
@@ -111,7 +112,8 @@ def _lista(texto_campo: str) -> str:
 def ficha(r: pd.Series) -> None:
     icono, etiqueta = SEMAFORO[r["semaforo"]]
     candado = " · 🔒" if r["sensible"] else ""
-    with st.expander(f"{icono} **{r['nombre']}** — {etiqueta}{candado}"):
+    icono_per = TIPOS.get(r["periodicidad_tipo"], TIPOS["MANUAL"])[2]
+    with st.expander(f"{icono} **{r['nombre']}** — {etiqueta}{candado} · {icono_per} {r['periodicidad']}"):
         izq, der = st.columns([3, 1.4], gap="large")
         with izq:
             if r["ficha_completa"]:
@@ -137,8 +139,8 @@ def ficha(r: pd.Series) -> None:
                     if r["ultimo_run_url"]:
                         st.markdown(f"[Ver ejecución]({r['ultimo_run_url']})")
                 plataforma = "n8n" if r["plataforma"] == "n8n" else "GitHub Actions"
-                st.caption(f"⏱ {r['frecuencia'] or 'Manual'} · {plataforma}"
-                           + (f" · Responsable: {r['responsable']}" if r["responsable"] else ""))
+                st.markdown(chip(r, desfase(r, log, ahora)), unsafe_allow_html=True)
+                st.caption(plataforma + (f" · Responsable: {r['responsable']}" if r["responsable"] else ""))
             if not r["activo"]:
                 st.caption("Sin botón hasta que se habilite (activo = NO en el CATALOGO).")
             elif autorizado:
