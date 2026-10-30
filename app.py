@@ -32,16 +32,16 @@ st.set_page_config(
     layout="wide",
 )
 
-inicio = st.Page("pages/0_Inicio.py", title="Inicio", default=True)
-liff_data = st.Page("pages/1_LIFF_Data.py", title="LIFF Data")
+inicio = st.Page("pages/0_Inicio.py", title="Inicio", default=True, icon=":material/home:")
+liff_data = st.Page("pages/1_LIFF_Data.py", title="LIFF Data", icon=":material/school:")
 # oct-2026: página nueva de Empleabilidad para LIFF -- ver docstring de
 # utils/liff_empleabilidad_metrics.py para la auditoría de datos completa.
-liff_empleabilidad = st.Page("pages/LIFF_Empleabilidad.py", title="Empleabilidad", url_path="liff-empleabilidad")
-eco_overview = st.Page("pages/ecolombia/1_Overview.py", title="Overview")
-eco_academico = st.Page("pages/ecolombia/2_Academico.py", title="Académico")
-eco_seleccion = st.Page("pages/ecolombia/3_Seleccion_Matricula.py", title="Selección y Matrícula")
-eco_empleabilidad = st.Page("pages/ecolombia/4_Pool_Empleabilidad.py", title="Pool de Empleabilidad")
-eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacción")
+liff_empleabilidad = st.Page("pages/LIFF_Empleabilidad.py", title="Empleabilidad", url_path="liff-empleabilidad", icon=":material/work:")
+eco_overview = st.Page("pages/ecolombia/1_Overview.py", title="Overview", icon=":material/dashboard:")
+eco_academico = st.Page("pages/ecolombia/2_Academico.py", title="Académico", icon=":material/menu_book:")
+eco_seleccion = st.Page("pages/ecolombia/3_Seleccion_Matricula.py", title="Selección y Matrícula", icon=":material/how_to_reg:")
+eco_empleabilidad = st.Page("pages/ecolombia/4_Pool_Empleabilidad.py", title="Pool de Empleabilidad", icon=":material/work_history:")
+eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacción", icon=":material/sentiment_satisfied:")
 # url_path explícito -- sin esto, Streamlit infiere la URL del título, y
 # "Overview" choca con pages/ecolombia/1_Overview.py (mismo título, misma
 # URL inferida -> StreamlitAPIException al arrancar).
@@ -50,8 +50,8 @@ eco_satisfaccion = st.Page("pages/ecolombia/5_Satisfaccion.py", title="Satisfacc
 # año contra año, y filtrar por Rol/Grado/Región a la vez (las 2 páginas
 # viejas solo mostraban el mes más reciente y una serie sin esos filtros
 # combinables). Ver docstring de pages/iq/1_Analisis_Dinamico.py.
-iq_analisis = st.Page("pages/iq/1_Analisis_Dinamico.py", title="Análisis dinámico", url_path="iq-analisis")
-iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo", url_path="iq-detalle-consumo")
+iq_analisis = st.Page("pages/iq/1_Analisis_Dinamico.py", title="Análisis dinámico", url_path="iq-analisis", icon=":material/query_stats:")
+iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo", url_path="iq-detalle-consumo", icon=":material/receipt_long:")
 # oct-2026 (3): Cobertura se saca del menú a pedido de Christian ("no me
 # da información importante"). pages/iq/4_Cobertura.py sigue en el repo
 # por si hace falta recuperarla -- ver mismo criterio que pages/2_IQ.py
@@ -65,14 +65,14 @@ iq_detalle = st.Page("pages/iq/3_Detalle_Consumo.py", title="Detalle de consumo"
 # y quedaba duplicado. El archivo pages/2_IQ.py sigue en el repo por si
 # se necesita recuperar algo puntual, pero ya no aparece en la barra
 # lateral.
-iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y Última Conexión", url_path="iq-actividad-conexion")
+iq_recencia = st.Page("pages/iq/5_Recencia_Conectividad.py", title="Actividad y Última Conexión", url_path="iq-actividad-conexion", icon=":material/schedule:")
 
 # oct-2026: "Tipos de recurso" -- versión interactiva de la sección 04 del PPTX de
 # la reunión INICIA/MINERD (22/10/2026): consumo por tipo de recurso, grado,
 # programa, regional y mes del año académico, con filtros por periodo/programa/
 # tipo/rol. Lee CSV agregados del repo (sin BigQuery) -- ver docstring de
 # pages/iq/6_Tipos_de_Recurso.py y scripts/build_tipos_recurso.py.
-iq_tipos = st.Page("pages/iq/6_Tipos_de_Recurso.py", title="Tipos de recurso", url_path="iq-tipos-recurso")
+iq_tipos = st.Page("pages/iq/6_Tipos_de_Recurso.py", title="Tipos de recurso", url_path="iq-tipos-recurso", icon=":material/category:")
 
 # oct-2026: sección Operaciones -- panel para disparar automatizaciones
 # (GitHub Actions + n8n) y análisis de ejecuciones. Requiere login con Google
@@ -80,37 +80,41 @@ iq_tipos = st.Page("pages/iq/6_Tipos_de_Recurso.py", title="Tipos de recurso", u
 # GUIA_PANEL_OPERACIONES.md.
 # oct-2026: Manual de automatizaciones -- consulta pública (ejecutar pide login),
 # junto al Inicio. Ver docstring de pages/ops/0_Manual.py.
-ops_manual = st.Page("pages/ops/0_Manual.py", title="Manual de automatizaciones", url_path="manual",
-                     icon="📘")
-ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel")
-ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis")
+ops_manual = st.Page("pages/ops/0_Manual.py", title="Manual de automatizaciones", url_path="manual", icon=":material/menu_book:")
+ops_panel = st.Page("pages/ops/1_Panel.py", title="Panel de control", url_path="ops-panel", icon=":material/play_circle:")
+ops_analisis = st.Page("pages/ops/2_Analisis.py", title="Análisis de ejecuciones", url_path="ops-analisis", icon=":material/analytics:")
 # oct-2026: horas de trabajo manual ahorradas por las automatizaciones. PÚBLICA (solo horas por
 # automatización/proyecto, sin datos personales). Reglas en utils/ops_ahorro.py.
-ops_ahorro = st.Page("pages/ops/3_Ahorro.py", title="Ahorro de tiempo", url_path="ops-ahorro", icon="⏱️")
+ops_ahorro = st.Page("pages/ops/3_Ahorro.py", title="Ahorro de tiempo", url_path="ops-ahorro", icon=":material/timer:")
 # oct-2026: catálogo de errores en lenguaje práctico (público, sin datos). Mismo contenido que la
 # pestaña «Si algo falla» del Manual y que los avisos explicados del Panel (utils/ops_errores.py).
-ops_errores = st.Page("pages/ops/4_Errores.py", title="Errores frecuentes", url_path="ops-errores", icon="🧭")
+ops_errores = st.Page("pages/ops/4_Errores.py", title="Errores frecuentes", url_path="ops-errores", icon=":material/help:")
 
 # oct-2026: EFE General -- migración de «Dash General EFE2» (n8n), que ya no cargaba.
 # Requiere login (misma lista del Panel de control): Consulta tiene datos personales.
 # Reglas de negocio en utils/efe_metrics.py; consultas en queries/efe.py.
-efe_overview = st.Page("pages/efe/1_Overview.py", title="Overview", url_path="efe-overview")
-efe_satisfaccion = st.Page("pages/efe/2_Satisfaccion.py", title="Satisfacción", url_path="efe-satisfaccion")
-efe_caracterizacion = st.Page("pages/efe/3_Caracterizacion.py", title="Caracterización", url_path="efe-caracterizacion")
-efe_empleabilidad = st.Page("pages/efe/4_Empleabilidad.py", title="Empleabilidad", url_path="efe-empleabilidad")
-efe_tendencias = st.Page("pages/efe/5_Tendencias.py", title="Tendencias", url_path="efe-tendencias")
-efe_kpis = st.Page("pages/efe/6_KPIs_Historicos.py", title="KPIs históricos", url_path="efe-kpis")
-efe_consulta = st.Page("pages/efe/7_Consulta.py", title="Consulta", url_path="efe-consulta")
+efe_overview = st.Page("pages/efe/1_Overview.py", title="Overview", url_path="efe-overview", icon=":material/dashboard:")
+efe_satisfaccion = st.Page("pages/efe/2_Satisfaccion.py", title="Satisfacción", url_path="efe-satisfaccion", icon=":material/sentiment_satisfied:")
+efe_caracterizacion = st.Page("pages/efe/3_Caracterizacion.py", title="Caracterización", url_path="efe-caracterizacion", icon=":material/groups:")
+efe_empleabilidad = st.Page("pages/efe/4_Empleabilidad.py", title="Empleabilidad", url_path="efe-empleabilidad", icon=":material/work:")
+efe_tendencias = st.Page("pages/efe/5_Tendencias.py", title="Tendencias", url_path="efe-tendencias", icon=":material/trending_up:")
+efe_kpis = st.Page("pages/efe/6_KPIs_Historicos.py", title="KPIs históricos", url_path="efe-kpis", icon=":material/history:")
+efe_consulta = st.Page("pages/efe/7_Consulta.py", title="Consulta", url_path="efe-consulta", icon=":material/person_search:")
 
 PROYECTOS = {
-    "General": [inicio, ops_manual],
-    "EFE General": [efe_overview, efe_tendencias, efe_satisfaccion, efe_caracterizacion, efe_empleabilidad,
+    "🏠 General": [inicio, ops_manual],
+    "📈 EFE General": [efe_overview, efe_tendencias, efe_satisfaccion, efe_caracterizacion, efe_empleabilidad,
                     efe_kpis, efe_consulta],
-    "LIFF Data": [liff_data, liff_empleabilidad],
-    "Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
-    "IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],
-    "Operaciones": [ops_panel, ops_analisis, ops_ahorro, ops_errores],
+    "🎓 LIFF Data": [liff_data, liff_empleabilidad],
+    "🌎 Ecolombia": [eco_overview, eco_academico, eco_seleccion, eco_empleabilidad, eco_satisfaccion],
+    "📶 IQ": [iq_analisis, iq_detalle, iq_tipos, iq_recencia],
+    "⚙️ Operaciones": [ops_panel, ops_analisis, ops_ahorro, ops_errores],
 }
 
-pg = st.navigation(PROYECTOS)
+# oct-2026: menú con más vida -- logo, íconos por página, secciones con emoji y estilo propio
+# (utils/menu.py). Aplica a todas las páginas porque app.py corre antes de cada una.
+from utils.menu import decorar_menu  # noqa: E402
+
+decorar_menu()
+pg = st.navigation(PROYECTOS, expanded=True)
 pg.run()
