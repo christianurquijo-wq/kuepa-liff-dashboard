@@ -46,7 +46,7 @@ st.markdown(
 )
 
 TARJETAS = [
-    {"titulo": "EFE General", "icono": "📈", "color": "#FD531E", "etiqueta": "Requiere sesión",
+    {"titulo": "EFE General", "icono": "📈", "color": "#FD531E", "etiqueta": "Consulta con sesión",
      "desc": "Colsubsidio, Suba, Ecolombia y Jóvenes a la E: estado académico, tendencias, satisfacción, "
              "caracterización y empleabilidad.",
      "pagina": "pages/efe/1_Overview.py", "boton": "Ir a EFE General"},

@@ -23,7 +23,7 @@ import streamlit as st
 
 from utils import efe_data as data
 from utils import efe_metrics as m
-from utils.efe_ui import eje_periodo, TODOS, inicio
+from utils.efe_ui import eje_periodo, TODOS, inicio, sesion_efe
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, VERDE, dark, kpi_row
 
 correo_usuario = inicio("EFE · KPIs históricos", "Indicadores mensuales reportados · fuente: Sheet de operaciones, "
@@ -118,6 +118,23 @@ with a1:
                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", use_container_width=True)
 
 periodo_txt = " / ".join(resumen["mes"]) if elegidos else "Año completo"
+# nov-2026: la página es pública, pero enviar correos y generar el reporte de riesgos (que dispara un
+# proceso en GitHub) sigue pidiendo sesión con un correo de la lista del Panel de control.
+_, autorizado = sesion_efe()
+if not autorizado:
+    with a2, st.container(border=True):
+        st.markdown("**✉️ Enviar por correo · ⚠️ Reporte de riesgos**")
+        if correo_usuario:
+            st.caption(f"Sesión: {correo_usuario}. Tu cuenta no está autorizada para enviar reportes; "
+                       "pide acceso a Christian.")
+        else:
+            st.caption("Para enviar el reporte por correo o generar el de riesgos, inicia sesión con tu "
+                       "cuenta de Google de Kuepa.")
+            if "auth" in st.secrets:
+                st.button("Iniciar sesión con Google", on_click=st.login, key="efe_kpi_login",
+                          use_container_width=True)
+    st.stop()
+
 with a2, st.form("efe_kpi_correo", clear_on_submit=False):
     st.markdown("**✉️ Enviar reporte por correo**")
     texto = st.text_input("Destinatarios (separados por coma)", value=correo_usuario)

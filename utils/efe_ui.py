@@ -5,24 +5,37 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from utils.ops_auth import requiere_login
+from utils.ops_auth import requiere_login, sesion_opcional
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, ROJO, VERDE, dark, inject_css
 
 TODOS = "Todos"
 PALETA = [NARANJA, AZUL, VERDE, AMARILLO, "#A569BD", ROJO, GRIS, "#48C9B0", "#F1948A", "#5DADE2"]
 
 
-def inicio(titulo: str, subtitulo: str) -> str:
-    """CSS + login (misma lista del Panel de control) + título. Devuelve el correo."""
+def inicio(titulo: str, subtitulo: str, login: bool = False) -> str:
+    """CSS + título. Devuelve el correo de la sesión ("" si no hay).
+
+    nov-2026 (Christian): EFE General es PÚBLICO (solo indicadores agregados). Solo la página
+    Consulta (datos personales) pasa login=True y exige la lista del Panel de control. Las acciones
+    que envían correos o disparan procesos (KPIs históricos) piden sesión aparte (sesion_efe)."""
     inject_css()
-    correo = requiere_login(
-        titulo="EFE General",
-        mensaje="Esta sección tiene datos personales de los participantes. "
-                "Inicia sesión con tu cuenta de Google de Kuepa.",
-    )
+    if login:
+        correo = requiere_login(
+            titulo="EFE · Consulta",
+            mensaje="Esta página tiene datos personales de los participantes. "
+                    "Inicia sesión con tu cuenta de Google de Kuepa.",
+        )
+    else:
+        correo = sesion_opcional()[0] or ""
     st.title(titulo)
     st.caption(subtitulo)
     return correo
+
+
+def sesion_efe() -> tuple[str, bool]:
+    """(correo, autorizado) sin cortar la página: para botones que envían correos o disparan procesos."""
+    correo, autorizado = sesion_opcional()
+    return correo or "", autorizado
 
 
 def filtro(df: pd.DataFrame, columna: str, etiqueta: str, key: str, contenedor=st) -> str:

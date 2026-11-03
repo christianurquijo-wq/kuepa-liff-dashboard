@@ -91,7 +91,8 @@ ops_ahorro = st.Page("pages/ops/3_Ahorro.py", title="Ahorro de tiempo", url_path
 ops_errores = st.Page("pages/ops/4_Errores.py", title="Errores frecuentes", url_path="ops-errores", icon=":material/help:")
 
 # oct-2026: EFE General -- migración de «Dash General EFE2» (n8n), que ya no cargaba.
-# Requiere login (misma lista del Panel de control): Consulta tiene datos personales.
+# nov-2026: público (indicadores agregados). Solo Consulta (datos personales) y los botones de
+# enviar correo / reporte de riesgos de KPIs históricos piden login (lista del Panel de control).
 # Reglas de negocio en utils/efe_metrics.py; consultas en queries/efe.py.
 efe_overview = st.Page("pages/efe/1_Overview.py", title="Overview", url_path="efe-overview", icon=":material/dashboard:")
 efe_satisfaccion = st.Page("pages/efe/2_Satisfaccion.py", title="Satisfacción", url_path="efe-satisfaccion", icon=":material/sentiment_satisfied:")

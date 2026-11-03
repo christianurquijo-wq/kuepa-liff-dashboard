@@ -5,13 +5,14 @@ Buscador de personas por documento o nombre, con su estado en cada fuente:
 seguimiento (programa, estado, resultado), satisfacción (NPS y promedio de sus encuestas),
 caracterización (ciudad, edad, actividad) y empleabilidad (contratación, postulaciones).
 Tiene datos personales: solo con login (misma lista del Panel de control) y sin descarga.
+nov-2026: es la ÚNICA página de EFE General que sigue con login (inicio(..., login=True)).
 """
 import streamlit as st
 
 from utils import efe_data as data
 from utils.efe_ui import aplicar, filtro, inicio
 
-inicio("EFE · Consulta", "Búsqueda de participantes por documento o nombre")
+inicio("EFE · Consulta", "Búsqueda de participantes por documento o nombre", login=True)
 
 with st.spinner("Consultando BigQuery..."):
     seg = data.seguimiento(con_nombre=True)
