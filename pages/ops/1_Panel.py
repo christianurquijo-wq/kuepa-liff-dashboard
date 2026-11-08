@@ -113,7 +113,9 @@ def seguimiento():
                 if info.get("avance") is not None:
                     st.progress(info["avance"])
                 if info.get("error"):
-                    mostrar(info["error"], f"Seguimiento · {s['nombre']}", usuario, compacto=True)
+                    # request_id en el contexto: si se ejecutó 2 veces el mismo flujo con el mismo error, cada
+                    # bloque necesita su propia clave (si no, Streamlit falla con DuplicateElementKey).
+                    mostrar(info["error"], f"Seguimiento · {s['nombre']} · {s['request_id']}", usuario, compacto=True)
         otros = [r for r in curso if not any(s["request_id"] in r["titulo"] for s in sol)]
         for r in otros:
             st.markdown(f"- {r['repo']} · {r['titulo']} · ⟳ {r['estado']} · [ver]({r['url']})")
@@ -137,7 +139,8 @@ def _ultima(item: pd.Series) -> tuple[str, str]:
     if sub.empty:
         return "SIN DATOS", "Sin ejecuciones registradas"
     u = sub.iloc[-1]
-    return u["estado"], f"{u['fecha_inicio']:%d-%b %H:%M} · {u['duracion_seg']:.0f} s · {u['origen_grupo']}"
+    dur = f" · {u['duracion_seg']:.0f} s" if pd.notna(u["duracion_seg"]) else ""  # n8n a veces no trae la duración
+    return u["estado"], f"{u['fecha_inicio']:%d-%b %H:%M}{dur} · {u['origen_grupo']}"
 
 
 def _ultimo_error(item: pd.Series) -> str:
