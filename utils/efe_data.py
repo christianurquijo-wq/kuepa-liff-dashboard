@@ -111,7 +111,7 @@ def kpi_historico() -> pd.DataFrame:
     df = pd.DataFrame(valores[1:], columns=[c.strip().lower() for c in valores[0]])
     df = df[df["mes"].str.strip() != ""].copy()
     df["mes"] = df["mes"].str.strip().str[:7]
-    for c in ("impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion"):
+    for c in ("impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion", "licencias"):
         if c in df:
             # admite coma decimal (si alguien escribe 82,5 en el Sheet)
             df[c] = pd.to_numeric(df[c].str.strip().str.replace("%", "").str.replace(",", "."), errors="coerce")

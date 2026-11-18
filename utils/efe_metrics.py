@@ -293,10 +293,13 @@ def resumen_historico(h: pd.DataFrame) -> pd.DataFrame:
             "aprobacion": promedio_ponderado(x["aprobacion"], x["impactados"]),
             "nps": promedio_ponderado(x["nps"], x["impactados"]),
             "satisfaccion": promedio_ponderado(x["satisfaccion"], x["impactados"]),
+            # Licencias: suma de los proyectos del mes; vacío (NaN) si nadie la diligenció ese mes.
+            "licencias": (pd.to_numeric(x["licencias"], errors="coerce").sum(min_count=1)
+                          if "licencias" in x else None),
         })
         previo = imp
     out = pd.DataFrame(filas)
-    for c in ("impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion"):
+    for c in ("impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion", "licencias"):
         if c in out:
             out[c] = pd.to_numeric(out[c], errors="coerce")  # None -> NaN (meses sin dato)
     return out

@@ -59,6 +59,10 @@ ultimo = resumen.iloc[-1]
 varios = len(resumen) > 1
 nota_prom = f"Prom. ponderado, {len(resumen)} meses" if varios else f"Dato de {ultimo['mes']}"
 color = AZUL if grupo == "Employability" else NARANJA
+color_lic = NARANJA if color == AZUL else AZUL
+# Licencias = dato al corte (como impactados): se muestra el último mes elegido que tenga dato.
+con_lic = resumen.dropna(subset=["licencias"])
+lic_ultimo = con_lic.iloc[-1] if not con_lic.empty else None
 st.markdown(f"### {titulo}")
 kpi_row([
     ("Total impactados", m.fmt_num(ultimo["impactados"]), color, f"Corte a {ultimo['mes']}"),
@@ -69,12 +73,15 @@ kpi_row([
     ("NPS", m.fmt_num(m.promedio_ponderado(resumen["nps"], resumen["impactados"]), 1), GRIS, nota_prom),
     ("Satisfacción", m.fmt_num(m.promedio_ponderado(resumen["satisfaccion"], resumen["impactados"]), 2), AMARILLO,
      nota_prom),
+    ("Licencias", m.fmt_num(lic_ultimo["licencias"]) if lic_ultimo is not None else "–", color_lic,
+     f"Corte a {lic_ultimo['mes']}" if lic_ultimo is not None else "Sin dato en el Sheet"),
 ])
 
 st.divider()
 graficas = [("impactados", "Impactados", color, "line"), ("nuevos", "Nuevos", VERDE, "bar"),
             ("retencion", "% Retención", VERDE, "line"), ("aprobacion", "% Aprobación", color, "line"),
-            ("nps", "NPS", GRIS, "line"), ("satisfaccion", "Satisfacción", AMARILLO, "line")]
+            ("nps", "NPS", GRIS, "line"), ("satisfaccion", "Satisfacción", AMARILLO, "line"),
+            ("licencias", "Licencias", color_lic, "line")]
 for i in range(0, len(graficas), 2):
     cols = st.columns(2)
     for col, (campo, nombre, col_color, tipo) in zip(cols, graficas[i:i + 2]):
@@ -98,7 +105,8 @@ for i in range(0, len(graficas), 2):
 
 st.subheader("Detalle por proyecto y mes")
 detalle = (h[h["mes"].isin(resumen["mes"])]
-           [["mes", "proyecto", "grupo", "impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion"]]
+           [["mes", "proyecto", "grupo", "impactados", "nuevos", "retencion", "aprobacion", "nps", "satisfaccion"]
+            + (["licencias"] if "licencias" in h else [])]
            .sort_values(["mes", "proyecto"]))
 st.dataframe(detalle, hide_index=True, use_container_width=True)
 
