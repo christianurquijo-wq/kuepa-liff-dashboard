@@ -26,8 +26,7 @@ from utils import efe_metrics as m
 from utils.efe_ui import eje_periodo, TODOS, inicio, sesion_efe
 from utils.ui import AMARILLO, AZUL, GRIS, NARANJA, VERDE, dark, kpi_row
 
-correo_usuario = inicio("EFE · KPIs históricos", "Indicadores mensuales reportados · fuente: Sheet de operaciones, "
-                                                 "pestaña EFE_KPI_HISTORICO")
+correo_usuario = inicio("EFE · KPIs históricos", "Indicadores mensuales reportados")
 
 try:
     hist = data.kpi_historico()
@@ -40,7 +39,7 @@ if hist.empty:
     st.stop()
 
 c1, c2, c3 = st.columns([1.3, 1.3, 2])
-grupo = c1.radio("Grupo", ["Further Education", "Employability", "General EFE"], horizontal=True, key="efe_kpi_grupo")
+grupo = c1.radio("Grupo", ["Further Education", "Employability", "Tech For Education", "General EFE"], horizontal=True, key="efe_kpi_grupo")
 h = hist if grupo == "General EFE" else hist[hist["grupo"] == grupo]
 proyecto = c2.selectbox("Proyecto", [TODOS] + sorted(h["proyecto"].unique()), key="efe_kpi_proy")
 if proyecto != TODOS:
