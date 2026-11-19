@@ -64,10 +64,12 @@ if cubo.empty:
 info = periodos_info(cubo)
 periodos_all = list(info["periodo"])
 incompletos = {r.periodo: int(r.meses) for r in info.itertuples() if not r.completo}
-ultimo = cubo.loc[cubo["periodo"] == periodos_all[-1], ["anio", "mes"]].sort_values(["anio", "mes"]).iloc[-1]
+# Cada programa llega con su propio corte (nov-2026: IQ Primaria hasta 11/2026, IQ Secundaria hasta 10/2026).
+_ult = cubo.assign(_am=cubo["anio"] * 100 + cubo["mes"]).groupby("prog")["_am"].max()
+cortes = " · ".join(f"{prog} {int(am) % 100:02d}/{int(am) // 100}" for prog, am in _ult.items())
 st.caption(
     f"Fuente: exportes BigQuery de recursos de IQ Primaria y Secundaria (base depurada) · último mes con datos: "
-    f"{int(ultimo['mes']):02d}/{int(ultimo['anio'])}. Periodo académico = agosto a julio. "
+    f"{cortes}. Periodo académico = agosto a julio. "
     "Definiciones y límites en la pestaña **Método**."
 )
 

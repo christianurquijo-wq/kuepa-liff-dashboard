@@ -79,9 +79,21 @@ def cargar(src: Path) -> pd.DataFrame:
     partes = []
     for p in archivos:
         df = leer_xlsx(p)
+        df["prog_archivo"] = _prog_por_archivo(p.name)
         print(f"  {p.name}: {len(df):,} filas")
         partes.append(df)
     return pd.concat(partes, ignore_index=True)
+
+
+def _prog_por_archivo(nombre: str) -> str | None:
+    """'IQS'/'IQP' según el nombre del exporte (Tipos de recurso IQS-12.xlsx -> IQS).
+
+    nov-2026: el exporte IQS-12 trae las vistas de componente (origen academic_component) de Secundaria
+    marcadas con Alliance = 'IQ Primaria' (recursos como «Ecuaciones trigonométricas», usuarios que también
+    tienen intentos en Secundaria). El nombre del archivo es más confiable que Alliance para separar programas.
+    """
+    m = re.search(r"\b(IQS|IQP)\b", nombre.upper().replace("-", " "))
+    return m.group(1) if m else None
 
 
 def _grado(x) -> str:
@@ -112,10 +124,18 @@ def _area(tipo, recurso, area_raw) -> str:
 def preparar(a: pd.DataFrame) -> pd.DataFrame:
     """Tipifica, normaliza y marca cons / atip / dep. Idempotente sobre datos ya tipados."""
     a = a.copy()
-    a["f"] = pd.to_datetime(a["fecha"].astype(str).str[:19], errors="coerce").dt.normalize()
+    # Formatos vistos: "2026-08-25 14:28:11.123" y (IQS-12, nov-2026) "2026-09-01T01:01:27.693000".
+    # Se normaliza la «T» y se fija el formato: con formatos mezclados, pandas infiere el del primer valor y
+    # descarta EN SILENCIO los demás (así se perdían las 14.759 filas de IQS-12).
+    txt = a["fecha"].astype(str).str.replace("T", " ", regex=False).str[:19]
+    a["f"] = pd.to_datetime(txt, format="%Y-%m-%d %H:%M:%S", errors="coerce").dt.normalize()
+    sin_fecha = int(a["f"].isna().sum())
+    if sin_fecha:
+        print(f"  aviso: {sin_fecha:,} filas sin fecha válida se descartan")
     a = a[a["f"].notna()].copy()
     a["score"] = pd.to_numeric(a["score"], errors="coerce")
-    a["prog"] = np.where(a["Alliance"] == "IQ Primaria", "IQP", "IQS")
+    por_alianza = np.where(a["Alliance"] == "IQ Primaria", "IQP", "IQS")
+    a["prog"] = a["prog_archivo"].fillna(pd.Series(por_alianza, index=a.index)) if "prog_archivo" in a else por_alianza
     a["grado"] = a["GRADO"].map(_grado)
     a["region"] = (
         a["REGION"].fillna("").astype(str).str.strip().str.upper()

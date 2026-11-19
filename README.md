@@ -133,6 +133,11 @@ Para refrescarlos cuando haya un corte nuevo:
 3. Revisar `recursos_conciliacion.csv` (registros brutos -> depurados) y hacer
    commit SOLO de `data/iq/tipos_recursos/agregados/`.
 
+**nov-2026:** corte con `IQS-12` (sep–oct 2026) e `IQP-BV` (sep–14 nov 2026). Dos ajustes en el script:
+(a) la fecha ahora acepta el formato con «T» (`2026-09-01T01:01:27`) -- antes esas filas se descartaban sin
+aviso; (b) el programa sale del nombre del archivo (IQS/IQP) y no de `Alliance`, porque IQS-12 trae las vistas
+de Secundaria marcadas como «IQ Primaria».
+
 Definiciones (consumo, base depurada, finalización, puntaje, usuarios únicos)
 en el docstring de `utils/iq_tipos_recurso.py` y en la pestaña **Método** de
 la página.
