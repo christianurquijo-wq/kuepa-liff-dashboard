@@ -62,7 +62,11 @@ inject_css()
 
 st.markdown(badge("IQ · Análisis dinámico", "#29B6F6"), unsafe_allow_html=True)
 st.title("Análisis dinámico")
-st.caption(f"Datos de uso al {usage_hours_actualizado_al()} (fuente: `active_usage_hours`, BigQuery).")
+st.caption(
+    f"Datos de uso al {usage_hours_actualizado_al()} (fuente: `active_usage_hours`, BigQuery). "
+    "El último mes, trimestre, semestre y año están **incompletos** hasta esa fecha: su variación contra "
+    "períodos completos se ve más baja de lo que será al cierre."
+)
 
 alianzas_todas = alianzas_disponibles()
 if not alianzas_todas:

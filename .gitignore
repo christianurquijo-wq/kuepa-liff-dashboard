@@ -28,3 +28,7 @@ service_account.json
 data/iq/tipos_recursos/*.xlsx
 data/iq/tipos_recursos/*.parquet
 data/iq/tipos_recursos/agregados/*.pptx
+
+# Exportes crudos de active_usage_hours (BigQuery): traen IDs de usuario y centro.
+# Solo los CSV agregados de data/iq/usage_hours/ van al repo.
+data/iq/usage_hours/crudo/

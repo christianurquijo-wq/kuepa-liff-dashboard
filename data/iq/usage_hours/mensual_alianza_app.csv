@@ -202,7 +202,15 @@ Anio,Mes,Alliance,app,usuarios_activos,horas_totales,registros
 2026,8,IQ Primaria,lms,35,13.2,66
 2026,8,IQ Secundaria,app,195,35.7,281
 2026,8,IQ Secundaria,lms,778,380.2,1170
-2026,9,512,lms,45,37.0,54
-2026,9,IQ Primaria,lms,29,14.3,66
-2026,9,IQ Secundaria,app,138,23.3,206
-2026,9,IQ Secundaria,lms,813,326.3,1155
+2026,9,512,lms,80,61.6,100
+2026,9,IQ Primaria,lms,39,20.5,97
+2026,9,IQ Secundaria,app,170,28.6,257
+2026,9,IQ Secundaria,lms,1045,447.9,1558
+2026,10,512,lms,314,1162.3,1144
+2026,10,IQ Primaria,lms,36,29.1,87
+2026,10,IQ Secundaria,app,177,50.4,337
+2026,10,IQ Secundaria,lms,1080,944.3,2192
+2026,11,512,lms,42,25.3,54
+2026,11,IQ Primaria,lms,24,10.7,39
+2026,11,IQ Secundaria,app,134,23.5,199
+2026,11,IQ Secundaria,lms,991,628.3,1644

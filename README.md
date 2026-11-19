@@ -90,7 +90,13 @@ Hay dos familias de CSV en `data/iq/usage_hours/`:
   2 veces. Es inherente a trabajar con agregados estáticos y no con la
   data cruda en vivo; la propia página avisa cuando aplica.
 
-Para refrescar estos 15 archivos (proceso manual, no hay botón "Actualizar" acá):
+**Actualización nov-2026 (automatizada):** los exportes crudos van a `data/iq/usage_hours/crudo/` (en
+`.gitignore`) y se corre `python scripts/build_usage_hours.py`. El script recalcula SOLO los años que traen los
+exportes (cada año debe venir completo desde el 1 de enero, porque los usuarios únicos no se suman entre meses)
+y deja intactos los años anteriores. Reglas calibradas contra los CSV de sept-2026 (coinciden exacto): fecha =
+`created_at` UTC, sin duplicados por `_id`, horas = `time_view` / 3600. Corte actual: 18/11/2026.
+
+Proceso original (sept-2026), como referencia:
 
 1. Christian exporta la tabla desde la consola de BigQuery con su propio
    usuario (`bq` CLI), partida en varios Excel/CSV para no pasar el límite
